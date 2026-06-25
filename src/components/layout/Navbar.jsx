@@ -4,17 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_LINKS, PRODUCTS, SECTORS, SITE } from '../../data/siteData'
 
 const VayuronLogo = () => (
-  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="#00d4ff" strokeWidth="1.5"/>
-    <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" fill="none" stroke="#00d4ff" strokeWidth="1" opacity="0.5"/>
-    <circle cx="18" cy="18" r="3" fill="#00d4ff"/>
-    <line x1="18" y1="2"  x2="18" y2="8"  stroke="#00d4ff" strokeWidth="1"/>
-    <line x1="34" y1="10" x2="28" y2="13" stroke="#00d4ff" strokeWidth="1"/>
-    <line x1="34" y1="26" x2="28" y2="23" stroke="#00d4ff" strokeWidth="1"/>
-    <line x1="18" y1="34" x2="18" y2="28" stroke="#00d4ff" strokeWidth="1"/>
-    <line x1="2"  y1="26" x2="8"  y2="23" stroke="#00d4ff" strokeWidth="1"/>
-    <line x1="2"  y1="10" x2="8"  y2="13" stroke="#00d4ff" strokeWidth="1"/>
-  </svg>
+  <img
+    src="/favicon.jpeg"
+    alt="Vayuron Logo"
+    className="w-9 h-9 object-contain"
+  />
 )
 
 const dropdownVariants = {
@@ -74,10 +68,10 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3 group">
             <VayuronLogo />
             <div>
-              <div className="font-display font-bold text-white text-lg leading-none tracking-wider group-hover:text-cyan transition-colors">
+              <div className="font-display font-bold uppercase text-white text-lg leading-none tracking-[0.12em] group-hover:text-cyan transition-colors">
                 VAYURON
               </div>
-              <div className="font-mono text-[9px] text-muted tracking-[0.2em] uppercase">
+              <div className="font-mono text-[9px] text-white tracking-[0.2em] uppercase">
                 Advanced Systems
               </div>
             </div>
@@ -94,7 +88,7 @@ export default function Navbar() {
                     className={`flex items-center gap-1 px-4 py-2 font-mono text-xs tracking-widest uppercase transition-colors ${
                       location.pathname.startsWith(link.path)
                         ? 'text-cyan'
-                        : 'text-muted hover:text-white'
+                        : 'text-white hover:text-cyan'
                     }`}
                   >
                     {link.label}
@@ -107,7 +101,7 @@ export default function Navbar() {
                     to={link.path}
                     className={({ isActive }) =>
                       `px-4 py-2 font-mono text-xs tracking-widest uppercase transition-colors block ${
-                        isActive ? 'text-cyan' : 'text-muted hover:text-white'
+                        isActive ? 'text-cyan' : 'text-white hover:text-cyan'
                       }`
                     }
                   >
@@ -137,7 +131,7 @@ export default function Navbar() {
                               <div className="font-display font-semibold text-white text-sm group-hover:text-cyan transition-colors">
                                 {product.label}
                               </div>
-                              <div className="text-muted text-xs mt-0.5 leading-relaxed">
+                              <div className="text-white text-xs mt-0.5 leading-relaxed">
                                 {product.description}
                               </div>
                             </div>
@@ -171,7 +165,7 @@ export default function Navbar() {
                             className="flex items-center gap-3 px-3 py-2.5 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
                           >
                             <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0"/>
-                            <span className="font-mono text-xs text-muted group-hover:text-white transition-colors">
+                            <span className="font-mono text-xs text-white group-hover:text-cyan transition-colors">
                               {sector.label}
                             </span>
                           </Link>
@@ -199,7 +193,7 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex flex-col gap-1.5 p-2 text-muted hover:text-white transition-colors"
+              className="lg:hidden flex flex-col gap-1.5 p-2 text-white hover:text-cyan transition-colors"
               aria-label="Toggle menu"
             >
               <span className={`block w-5 h-px bg-current transition-all ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`}/>
@@ -242,7 +236,7 @@ export default function Navbar() {
                               <Link
                                 key={item.id}
                                 to={item.path}
-                                className="flex items-center gap-2 py-2 pl-4 font-mono text-xs text-muted hover:text-cyan transition-colors"
+                                className="flex items-center gap-2 py-2 pl-4 font-mono text-xs text-white hover:text-cyan transition-colors"
                               >
                                 <span className="w-1 h-1 rounded-full bg-dim"/>
                                 {item.label}
@@ -257,7 +251,7 @@ export default function Navbar() {
                       to={link.path}
                       className={({ isActive }) =>
                         `block py-3 font-mono text-xs tracking-widest uppercase border-b border-[rgba(0,212,255,0.08)] transition-colors ${
-                          isActive ? 'text-cyan' : 'text-muted hover:text-white'
+                          isActive ? 'text-cyan' : 'text-white hover:text-cyan'
                         }`
                       }
                     >

@@ -9,9 +9,14 @@ import { useScrollReveal } from '../hooks'
 // ─── Hero Section ──────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
-      {/* Animated Grid */}
-      <div className="absolute inset-0 grid-overlay" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-24 pb-24">      <div className="absolute inset-0 grid-overlay" />
+      
+      {/* Drone Background Image */}
+      <img
+        src="/drone-bg.png"
+        alt="Drone Background"
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
+      />
 
       {/* Radial glow */}
       <div className="absolute inset-0 bg-gradient-radial from-[rgba(0,212,255,0.04)] via-transparent to-transparent" />
@@ -36,11 +41,11 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-display text-5xl sm:text-7xl md:text-8xl font-bold text-white leading-none tracking-tight mb-6"
         >
-          Engineering
+          Vayuron
           <br />
-          <span className="text-cyan text-glow-cyan">Indigenous</span>
+          <span className="text-cyan text-glow-cyan">Advanced</span>
           <br />
-          Innovation
+          Systems
         </motion.h1>
 
         <motion.p
@@ -57,23 +62,23 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-x-12 gap-y-6 justify-center mt-6"
         >
           <CTAButton to="/products" variant="primary">Explore Products</CTAButton>
           <CTAButton to="/about" variant="secondary">Our Mission</CTAButton>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-2 left-1/2 -translate-x-1/2"
       >
         <div className="font-mono text-[10px] tracking-widest uppercase text-dim">Scroll</div>
         <div className="w-px h-12 bg-gradient-to-b from-dim to-transparent animate-pulse-slow" />
-      </motion.div>
+      </motion.div>*/}
     </section>
   )
 }
@@ -193,7 +198,7 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Vayuron Advanced Systems — Engineering Indigenous Innovation</title>
+        <title>Vayuron Advanced Systems — Vayuron Advanced Systems</title>
         <meta name="description" content="Vayuron Advanced Systems builds autonomous UAVs, AI platforms, and defence-grade software for critical national and industrial operations." />
       </Helmet>
       <main>

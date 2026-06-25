@@ -19,7 +19,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
-        display: ['Rajdhani', 'Inter', 'sans-serif'],
+        display: ['Teko', 'Inter', 'sans-serif'],
       },
       backgroundImage: {
         'grid-cyan': 'linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px)',

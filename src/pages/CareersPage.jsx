@@ -9,7 +9,7 @@ const openRoles = [
     location: 'Bhopal, MP',
     type: 'Full-Time',
     description: 'Design and develop avionics firmware, sensor interfaces, and real-time control systems for our UAV platforms.',
-    requirements: ['5+ years embedded C/C++', 'RTOS experience', 'PCB design familiarity', 'DGCA knowledge a plus'],
+    requirements: ['C/C++', 'RTOS experience', 'PCB design familiarity', 'DGCA knowledge a plus'],
   },
   {
     title: 'AI/ML Engineer — Computer Vision',
@@ -25,7 +25,7 @@ const openRoles = [
     location: 'Bhopal, MP',
     type: 'Full-Time',
     description: 'Lead flight test campaigns, develop test procedures, and validate platform performance across operational scenarios.',
-    requirements: ['DGCA RPAS certification', '200+ flight hours', 'Test documentation experience', 'Military background preferred'],
+    requirements: ['DGCA RPAS certification', 'Test documentation experience', 'Military background preferred'],
   },
   {
     title: 'Full-Stack Software Engineer',
@@ -132,7 +132,9 @@ export default function CareersPage() {
                     ))}
                   </ul>
                   <a
-                    href={`mailto:careers@vayuronadvancedsystems.com?subject=Application: ${role.title}`}
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSf9WNfK3XwIMXWCLWNKt15HFDkM8xGS6lXWAt78Fn0_Nj1oPA/viewform?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-5 py-2.5 font-mono text-xs tracking-widest uppercase"
                   >
                     Apply Now →
@@ -144,30 +146,6 @@ export default function CareersPage() {
         </section>
 
         <CyanDivider className="max-w-[1400px] mx-auto px-6" />
-
-        {/* Speculative Applications */}
-        <section className="py-16 px-6 max-w-[1200px] mx-auto">
-          <h2 className="font-display text-3xl font-bold text-white mb-4 text-center">
-            Apply to Join Vayuron
-          </h2>
-
-          <p className="text-muted mb-10 text-center">
-            Complete the candidate application form below.
-          </p>
-
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSf9WNfK3XwIMXWCLWNKt15HFDkM8xGS6lXWAt78Fn0_Nj1oPA/viewform?usp=sharing&ouid=100144093646921205317"
-            width="100%"
-            height="1500"
-            frameBorder="0"
-            marginHeight="0"
-            marginWidth="0"
-            className="bg-white rounded-lg"
-            title="Candidate Application Form"
-          >
-            Loading...
-          </iframe>
-        </section>
       </main>
     </>
   )

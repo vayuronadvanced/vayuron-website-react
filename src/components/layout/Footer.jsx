@@ -36,22 +36,22 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4 group w-fit">
               <div>
-                <div className="font-display font-bold text-white text-xl tracking-wider group-hover:text-cyan transition-colors">
+                <div className="font-display font-bold uppercase text-white text-xl tracking-[0.12em] group-hover:text-cyan transition-colors">
                   VAYURON
                 </div>
-                <div className="font-mono text-[10px] text-muted tracking-[0.2em] uppercase">
+                <div className="font-mono text-[10px] text-white tracking-[0.2em] uppercase">
                   Advanced Systems
                 </div>
               </div>
             </Link>
-            <p className="text-muted text-sm leading-relaxed max-w-xs mb-6">
+            <p className="text-white text-sm leading-relaxed max-w-xs mb-6">
               Engineering indigenous innovation in defence, aerospace, and autonomous systems for critical national operations.
             </p>
             <div className="flex gap-4 mb-6">
               <a
                 href={SITE.instagram}
                 target="_blank" rel="noopener noreferrer"
-                className="text-dim hover:text-cyan transition-colors"
+                className="text-white hover:text-cyan transition-colors"
                 aria-label="Instagram"
               >
                 <InstagramIcon />
@@ -60,7 +60,7 @@ export default function Footer() {
                 href={SITE.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-dim hover:text-cyan transition-colors"
+                className="text-white hover:text-cyan transition-colors"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon />
@@ -70,17 +70,17 @@ export default function Footer() {
                 href={SITE.x}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-dim hover:text-cyan transition-colors"
+                className="text-white hover:text-cyan transition-colors"
                 aria-label="X"
               >
                 <XIcon />
               </a>
             </div>
             <div className="space-y-1">
-              <a href={`tel:${SITE.phoneTel}`} className="block font-mono text-xs text-muted hover:text-cyan transition-colors">
+              <a href={`tel:${SITE.phoneTel}`} className="block font-mono text-xs text-white hover:text-cyan transition-colors">
                 {SITE.phone}
               </a>
-              <a href={`mailto:${SITE.email}`} className="block font-mono text-xs text-muted hover:text-cyan transition-colors">
+              <a href={`mailto:${SITE.email}`} className="block font-mono text-xs text-white hover:text-cyan transition-colors">
                 {SITE.email}
               </a>
             </div>
@@ -88,11 +88,10 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">Products</h4>
-            <ul className="space-y-2.5">
+            <h4 className="font-display text-lg uppercase tracking-[0.08em] text-cyan mb-4">Products</h4>            <ul className="space-y-2.5">
               {FOOTER_LINKS.products.map(link => (
                 <li key={link.path}>
-                  <Link to={link.path} className="font-mono text-xs text-muted hover:text-white transition-colors">
+                  <Link to={link.path} cclassName="font-sans text-sm text-white hover:text-cyan transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -106,7 +105,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {FOOTER_LINKS.company.map(link => (
                 <li key={link.path}>
-                  <Link to={link.path} className="font-mono text-xs text-muted hover:text-white transition-colors">
+                  <Link to={link.path} className="font-mono text-xs text-white hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -117,17 +116,16 @@ export default function Footer() {
           {/* Newsletter */}
           <div>
             <h4 className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">Stay Updated</h4>
-            <p className="font-mono text-xs text-muted mb-4 leading-relaxed">
+            <p className="font-sans text-sm text-white mb-4 leading-relaxed">
               Defence technology insights and company updates.
             </p>
             <div className="flex flex-col gap-2">
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="bg-black border border-[rgba(0,212,255,0.15)] text-text px-3 py-2 font-mono text-xs focus:border-cyan focus:outline-none transition-colors placeholder-dim"
+                className="bg-black border border-[rgba(0,212,255,0.15)] text-white px-3 py-2 font-mono text-xs focus:border-cyan focus:outline-none transition-colors placeholder-white"
               />
-              <button className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-3 py-2 font-mono text-xs tracking-widest uppercase">
-                Subscribe
+                <button className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-3 py-2 font-display text-lg uppercase tracking-[0.08em]">                Subscribe
               </button>
             </div>
           </div>
@@ -135,12 +133,12 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-[rgba(0,212,255,0.08)] pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="font-mono text-xs text-dim">
+          <p className="font-sans text-sm text-white">
             © {year} Vayuron Advanced Systems. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             {FOOTER_LINKS.legal.map(link => (
-              <Link key={link.path} to={link.path} className="font-mono text-xs text-dim hover:text-muted transition-colors">
+              <Link key={link.path} to={link.path} className="font-sans text-sm text-white hover:text-cyan transition-colors">
                 {link.label}
               </Link>
             ))}

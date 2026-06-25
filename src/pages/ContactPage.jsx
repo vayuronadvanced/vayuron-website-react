@@ -200,23 +200,19 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="lg:col-span-2">
-  <h2 className="font-display text-2xl font-bold text-white mb-8">
-    Send an Enquiry
-  </h2>
+              <h2 className="font-display text-2xl font-bold text-white mb-8">
+                Send an Enquiry
+              </h2>
 
-  <iframe
-    src="YOUR_CONTACT_GOOGLE_FORM_EMBED_URL"
-    width="100%"
-    height="1200"
-    frameBorder="0"
-    marginHeight="0"
-    marginWidth="0"
-    className="bg-white rounded-lg"
-    title="Contact Form"
-  >
-    Loading...
-  </iframe>
-</div>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSewI60dNbbQqrlHw_Xh8Wa3b_desNWJkJuFoICh01gi6NFRnw/viewform?usp=sharing&ouid=100144093646921205317"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block border border-cyan text-cyan px-6 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
+              >
+                Open Secure Form →
+              </a>
+            </div>
           </div>
         </section>
       </main>

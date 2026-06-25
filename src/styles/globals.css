@@ -11,9 +11,9 @@
   --surface-2: #111620;
   --cyan:     #00d4ff;
   --cyan-dim: rgba(0, 212, 255, 0.15);
-  --text:     #d8dce4;
-  --muted:    #68788a;
-  --dim:      #35455a;
+  --text:      #ffffff;
+  --muted:    #ffffff;
+  --dim:      #ffffff;
   --radius:   4px;
   --transition: 0.3s ease;
 }
@@ -58,10 +58,11 @@ body {
 
 /* ─── Typography ─── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Rajdhani', 'Inter', sans-serif;
+  font-family: 'Teko', sans-serif;
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--text);
 }
 
@@ -76,7 +77,12 @@ img, video {
 }
 
 /* ─── Utility Classes ─── */
-.font-display { font-family: 'Rajdhani', sans-serif; }
+.font-display {font-family: 'Teko', sans-serif; }
+.font-defense {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 .font-mono    { font-family: 'JetBrains Mono', monospace; }
 
 .text-cyan  { color: var(--cyan); }
@@ -189,21 +195,6 @@ img, video {
 }
 
 /* ─── Cursor ─── */
-.custom-cursor {
-  width: 12px;
-  height: 12px;
-  background: var(--cyan);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 99999;
-  mix-blend-mode: screen;
-  transition: transform 0.15s ease, opacity 0.2s ease;
-}
-.custom-cursor.hovering {
-  transform: scale(3);
-  opacity: 0.5;
-}
 
 /* ─── Scroll Progress Bar ─── */
 .scroll-progress {
