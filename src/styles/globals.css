@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Google Fonts already loaded via index.html ─── */
+
+/* ─── CSS Custom Properties (preserved from original) ─── */
+:root {
+  --black:    #050607;
+  --surface:  #0a0c0f;
+  --surface-2: #111620;
+  --cyan:     #00d4ff;
+  --cyan-dim: rgba(0, 212, 255, 0.15);
+  --text:     #d8dce4;
+  --muted:    #68788a;
+  --dim:      #35455a;
+  --radius:   4px;
+  --transition: 0.3s ease;
+}
+
+/* ─── Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--cyan);
+}
+
+/* ─── Focus visible ─── */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+/* ─── Typography ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+/* ─── Utility Classes ─── */
+.font-display { font-family: 'Rajdhani', sans-serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+.text-cyan  { color: var(--cyan); }
+.text-muted { color: var(--muted); }
+.text-dim   { color: var(--dim); }
+
+.bg-black   { background-color: var(--black); }
+.bg-surface { background-color: var(--surface); }
+
+.border-cyan-dim { border-color: var(--cyan-dim); }
+
+/* ─── Animated Grid Overlay ─── */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Glow Effects ─── */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* ─── Noise overlay ─── */
+.noise-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ─── Scroll reveal animations ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Scan line decoration ─── */
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: scan 4s linear infinite;
+  opacity: 0.4;
+  pointer-events: none;
+}
+@keyframes scan {
+  0%   { top: 0; }
+  100% { top: 100%; }
+}
+
+/* ─── Loading Screen ─── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  gap: 1.5rem;
+}
+.loading-bar {
+  width: 200px;
+  height: 1px;
+  background: var(--dim);
+  overflow: hidden;
+}
+.loading-bar-fill {
+  height: 100%;
+  background: var(--cyan);
+  animation: loadFill 1.5s ease forwards;
+}
+@keyframes loadFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ─── Cursor ─── */
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  background: var(--cyan);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: screen;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+.custom-cursor.hovering {
+  transform: scale(3);
+  opacity: 0.5;
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--cyan);
+  z-index: 9998;
+  transform-origin: left;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* ─── Page transitions ─── */
+.page-enter { opacity: 0; transform: translateY(10px); }
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.page-exit { opacity: 1; }
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Print ─── */
+@media print {
+  .no-print { display: none; }
+  body { background: white; color: black; }
+}
