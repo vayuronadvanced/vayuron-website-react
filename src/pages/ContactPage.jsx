@@ -200,9 +200,23 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="lg:col-span-2">
-              <h2 className="font-display text-2xl font-bold text-white mb-8">Send an Enquiry</h2>
-              <ContactForm />
-            </div>
+  <h2 className="font-display text-2xl font-bold text-white mb-8">
+    Send an Enquiry
+  </h2>
+
+  <iframe
+    src="YOUR_CONTACT_GOOGLE_FORM_EMBED_URL"
+    width="100%"
+    height="1200"
+    frameBorder="0"
+    marginHeight="0"
+    marginWidth="0"
+    className="bg-white rounded-lg"
+    title="Contact Form"
+  >
+    Loading...
+  </iframe>
+</div>
           </div>
         </section>
       </main>

@@ -146,18 +146,27 @@ export default function CareersPage() {
         <CyanDivider className="max-w-[1400px] mx-auto px-6" />
 
         {/* Speculative Applications */}
-        <section className="py-16 text-center px-6">
-          <h2 className="font-display text-3xl font-bold text-white mb-4">Don't See Your Role?</h2>
-          <p className="text-muted mb-8 max-w-xl mx-auto">
-            We always welcome speculative applications from exceptional engineers and researchers.
-            Send us your CV and tell us what you'd build.
+        <section className="py-16 px-6 max-w-[1200px] mx-auto">
+          <h2 className="font-display text-3xl font-bold text-white mb-4 text-center">
+            Apply to Join Vayuron
+          </h2>
+
+          <p className="text-muted mb-10 text-center">
+            Complete the candidate application form below.
           </p>
-          <a
-            href="mailto:careers@vayuronadvancedsystems.com?subject=Speculative Application"
-            className="inline-flex items-center gap-2 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-6 py-3 font-mono text-xs tracking-widest uppercase"
+
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSf9WNfK3XwIMXWCLWNKt15HFDkM8xGS6lXWAt78Fn0_Nj1oPA/viewform?usp=sharing&ouid=100144093646921205317"
+            width="100%"
+            height="1500"
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+            className="bg-white rounded-lg"
+            title="Candidate Application Form"
           >
-            Send a Speculative Application
-          </a>
+            Loading...
+          </iframe>
         </section>
       </main>
     </>

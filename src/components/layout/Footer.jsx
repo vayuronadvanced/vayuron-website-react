@@ -16,6 +16,12 @@ const LinkedInIcon = () => (
   </svg>
 )
 
+const XIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.3L6.6 22H3.5l7.3-8.3L1 2h6.2l4.3 5.7L18.9 2z"/>
+  </svg>
+)
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -52,11 +58,22 @@ export default function Footer() {
               </a>
               <a
                 href={SITE.linkedin}
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-dim hover:text-cyan transition-colors"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon />
+              </a>
+
+              <a
+                href={SITE.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dim hover:text-cyan transition-colors"
+                aria-label="X"
+              >
+                <XIcon />
               </a>
             </div>
             <div className="space-y-1">

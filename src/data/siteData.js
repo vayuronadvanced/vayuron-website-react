@@ -7,8 +7,9 @@ export const SITE = {
   email: 'info@vayuronadvancedsystems.com',
   phone: '07554 582 442',
   phoneTel: '+910755458244',
-  instagram: 'https://instagram.com/vayuronadvanced', // update with real URL
-  linkedin: 'https://linkedin.com/company/vayuron',   // update with real URL
+  instagram: 'https://www.instagram.com/vayuron.advanced.systms?igsh=MWF4ZWRzdW53cWd0Nw==', // update with real URL
+  linkedin: 'https://www.linkedin.com/company/vaayu-robotics/',   // update with real URL
+  x: 'https://x.com/VayuronUAV',
   url: 'https://vayuronadvancedsystems.com',
 }
 
