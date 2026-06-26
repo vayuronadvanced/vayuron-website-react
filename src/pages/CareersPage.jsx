@@ -75,6 +75,7 @@ export default function CareersPage() {
           title="Build What Matters"
           subtitle="Join the team engineering India's next generation of autonomous defence and industrial systems."
           crumbs={[{ label: 'Careers' }]}
+          backgroundImage="/CareerPageDrone.png"
         />
 
         {/* Perks */}

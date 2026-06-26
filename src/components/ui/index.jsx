@@ -22,20 +22,47 @@ export function Breadcrumb({ crumbs = [] }) {
 }
 
 // ─── Page Banner ───────────────────────────────────────────────────────────
-export function PageBanner({ eyebrow, title, subtitle, crumbs = [] }) {
+export function PageBanner({
+  eyebrow,
+  title,
+  subtitle,
+  crumbs = [],
+  backgroundImage // ✅ NEW PROP
+}) {
   return (
-    <section className="relative bg-surface border-b border-[rgba(0,212,255,0.1)] pt-32 pb-16 overflow-hidden">
+    <section
+      className="relative border-b border-[rgba(0,212,255,0.1)] pt-32 pb-16 overflow-hidden"
+      style={{
+        backgroundImage: backgroundImage
+          ? `url(${backgroundImage})`
+          : undefined,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      {/* DARK OVERLAY FOR READABILITY */}
+      <div className="absolute inset-0 bg-black/60" />
+
       {/* Cyan glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
       <div className="relative max-w-[1400px] mx-auto px-6">
         <Breadcrumb crumbs={crumbs} />
+
         {eyebrow && (
-          <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">{eyebrow}</p>
+          <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+            {eyebrow}
+          </p>
         )}
-        <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">{title}</h1>
+
+        <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">
+          {title}
+        </h1>
+
         {subtitle && (
-          <p className="text-muted text-lg max-w-2xl leading-relaxed">{subtitle}</p>
+          <p className="text-muted text-lg max-w-2xl leading-relaxed">
+            {subtitle}
+          </p>
         )}
       </div>
     </section>
@@ -146,5 +173,3 @@ export function LoadingScreen() {
     </motion.div>
   )
 }
-
-// ScrollProgressBar and CustomCursor live in App.jsx as self-contained components.

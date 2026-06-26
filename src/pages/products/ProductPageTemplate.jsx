@@ -7,6 +7,7 @@ export default function ProductPageTemplate({
   subtitle,
   eyebrow,
   description,
+  backgroundImage,
   specs = [],
   features = [],
   relatedProducts = [],
@@ -25,14 +26,45 @@ export default function ProductPageTemplate({
           title={title}
           subtitle={subtitle}
           crumbs={crumbs}
+          backgroundImage={backgroundImage}
         />
+        
+        {/* UAV VIDEO SECTION */}
+          <section className="relative w-full h-[500px] overflow-hidden">
+
+            {/* 🎥 BACKGROUND VIDEO */}
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src="/Drone1.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+
+            {/* 🔳 DARK OVERLAY */}
+            <div className="absolute inset-0 bg-black/50" />
+
+            {/* OPTIONAL TITLE OVER VIDEO */}
+            <div className="relative z-10 h-full flex items-center px-6 max-w-[1400px] mx-auto">
+              <div className="max-w-2xl">
+                <p className="text-cyan text-xs tracking-widest uppercase mb-3">
+                  Product Overview
+                </p>
+
+                <h2 className="text-white text-3xl md:text-4xl font-bold mb-3">
+                  UAV Systems in Action
+                </h2>
+
+                <p className="text-gray-300 text-base leading-relaxed">
+                  Autonomous aerial platforms designed for real-world mission environments.
+                </p>
+              </div>
+            </div>
+
+          </section>
 
         {/* Description */}
-        <section className="py-16 px-6 max-w-[1400px] mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-text text-lg leading-relaxed">{description}</p>
-          </div>
-        </section>
 
         {/* Specs */}
         {specs.length > 0 && (

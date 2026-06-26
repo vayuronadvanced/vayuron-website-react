@@ -56,6 +56,7 @@ export default function TechnologyPage() {
           title="Our Technology Stack"
           subtitle="Six core technology pillars engineered entirely in India for defence-grade operational requirements."
           crumbs={[{ label: 'Technology' }]}
+          backgroundImage="/technology-bg.png.png"
         />
 
         {/* Pillars */}

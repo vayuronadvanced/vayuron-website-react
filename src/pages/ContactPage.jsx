@@ -149,11 +149,28 @@ export default function ContactPage() {
           title="Get in Touch"
           subtitle="Speak with our engineering and commercial team about your operational requirements."
           crumbs={[{ label: 'Contact' }]}
+          backgroundImage="/RightDrone.png"
         />
 
-        <section className="py-24 px-6 max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          <section className="relative min-h-[750px] py-24 px-6 overflow-hidden">
+          {/* Background Image */}
+          {/* Background Image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/DCONTACTDRONE.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></div>
 
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/35"></div>
+
+          <div className="relative z-10 max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          
             {/* Info */}
             <div className="lg:col-span-1 space-y-8">
               <div>
@@ -199,19 +216,28 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="lg:col-span-2">
-              <h2 className="font-display text-2xl font-bold text-white mb-8">
-                Send an Enquiry
-              </h2>
+            {/* Right Side */}
+              <div className="lg:col-span-2 relative min-h-[650px]">
 
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSewI60dNbbQqrlHw_Xh8Wa3b_desNWJkJuFoICh01gi6NFRnw/viewform?usp=sharing&ouid=100144093646921205317"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block border border-cyan text-cyan px-6 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
-              >
-                Open Secure Form →
-              </a>
+                {/* Bottom Right Content */}
+                <div className="absolute bottom-10 right-10 text-right">
+
+                  <h2 className="font-display text-4xl font-bold text-white mb-6">
+                    Send an Enquiry
+                  </h2>
+
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSewI60dNbbQqrlHw_Xh8Wa3b_desNWJkJuFoICh01gi6NFRnw/viewform?usp=sharing&ouid=100144093646921205317"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-block border border-cyan text-cyan px-8 py-4 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
+                  >
+                    Open Secure Form →
+                  </a>
+
+                </div>
+
+              </div>
             </div>
           </div>
         </section>

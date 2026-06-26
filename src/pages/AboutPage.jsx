@@ -32,6 +32,7 @@ export default function AboutPage() {
           title="Our Mission"
           subtitle="Building indigenous defence and aerospace technology for India's operational sovereignty."
           crumbs={[{ label: 'About' }]}
+          backgroundImage="/FixedWingDRone.png"
         />
 
         {/* Mission Statement */}
