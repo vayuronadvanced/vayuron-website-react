@@ -36,10 +36,10 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4 group w-fit">
               <div>
-                <div className="font-display font-bold uppercase text-white text-xl tracking-[0.12em] group-hover:text-cyan transition-colors">
+                <div className="font-display font-bold uppercase text-white text-sm tracking-[0.12em] group-hover:text-cyan transition-colors">
                   VAYURON
                 </div>
-                <div className="font-mono text-[10px] text-white tracking-[0.2em] uppercase">
+                <div className="font-mono text-sm text-white  tracking-[0.2em] uppercase">
                   Advanced Systems
                 </div>
               </div>
@@ -77,10 +77,10 @@ export default function Footer() {
               </a>
             </div>
             <div className="space-y-1">
-              <a href={`tel:${SITE.phoneTel}`} className="block font-mono text-xs text-white hover:text-cyan transition-colors">
+              <a href={`tel:${SITE.phoneTel}`} className="block font-mono text-sm text-white hover:text-cyan transition-colors">
                 {SITE.phone}
               </a>
-              <a href={`mailto:${SITE.email}`} className="block font-mono text-xs text-white hover:text-cyan transition-colors">
+              <a href={`mailto:${SITE.email}`} className="block font-mono text-sm text-white hover:text-cyan transition-colors">
                 {SITE.email}
               </a>
             </div>
@@ -88,10 +88,11 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="font-display text-lg uppercase tracking-[0.08em] text-cyan mb-4">Products</h4>            <ul className="space-y-2.5">
+            <h4 className="font-display text-sm uppercase tracking-[0.08em] text-cyan mb-4">Products</h4>
+            <ul className="space-y-2.5">
               {FOOTER_LINKS.products.map(link => (
                 <li key={link.path}>
-                  <Link to={link.path} cclassName="font-sans text-sm text-white hover:text-cyan transition-colors">
+                  <Link to={link.path} className="font-sans text-sm text-white hover:text-cyan transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -101,11 +102,11 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">Company</h4>
+            <h4 className="font-mono text-sm tracking-widest uppercase text-cyan mb-4">Company</h4>
             <ul className="space-y-2.5">
               {FOOTER_LINKS.company.map(link => (
                 <li key={link.path}>
-                  <Link to={link.path} className="font-mono text-xs text-white hover:text-white transition-colors">
+                  <Link to={link.path} className="font-mono text-sm text-white hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -115,7 +116,7 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">Stay Updated</h4>
+            <h4 className="font-mono text-sm tracking-widest uppercase text-cyan mb-4">Stay Updated</h4>
             <p className="font-sans text-sm text-white mb-4 leading-relaxed">
               Defence technology insights and company updates.
             </p>
@@ -123,9 +124,10 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="bg-black border border-[rgba(0,212,255,0.15)] text-white px-3 py-2 font-mono text-xs focus:border-cyan focus:outline-none transition-colors placeholder-white"
+                className="bg-black border border-[rgba(0,212,255,0.15)] text-white px-3 py-2 font-mono text-sm focus:border-cyan focus:outline-none transition-colors placeholder-white"
               />
-                <button className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-3 py-2 font-display text-lg uppercase tracking-[0.08em]">                Subscribe
+              <button className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-3 py-2 font-display text-sm uppercase tracking-[0.08em]">
+                Subscribe
               </button>
             </div>
           </div>
