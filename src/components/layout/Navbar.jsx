@@ -124,11 +124,11 @@ export default function Navbar() {
                           <Link
                             key={product.id}
                             to={product.path}
-                            className="flex items-start gap-3 p-3 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
+                            className="flex items-start gap-3 p-3 rounded-sm hover:bg-[rgba(0,212,255,0.06)] hover:pl-4 transition-all duration-200 group"
                           >
                             <span className="text-cyan mt-0.5 text-lg">{product.icon}</span>
                             <div>
-                              <div className="font-display font-semibold text-white text-sm group-hover:text-cyan transition-colors">
+                              <div className="font-mono text-xs text-white group-hover:text-cyan transition-colors">
                                 {product.label}
                               </div>
                               <div className="text-white text-xs mt-0.5 leading-relaxed">

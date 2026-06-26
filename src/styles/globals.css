@@ -33,7 +33,7 @@ html {
 body {
   background-color: var(--black);
   color: var(--text);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -96,10 +96,7 @@ img, video {
 
 /* ─── Animated Grid Overlay ─── */
 .grid-overlay {
-  background-image:
-    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  display: none;
 }
 
 /* ─── Glow Effects ─── */

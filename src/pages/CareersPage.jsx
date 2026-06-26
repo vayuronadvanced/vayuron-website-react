@@ -81,11 +81,10 @@ export default function CareersPage() {
         <section className="py-16 bg-surface border-b border-[rgba(0,212,255,0.1)] px-6">
           <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
             {perks.map((perk, i) => (
-              <div key={i} className="text-center p-6">
-                <div className="text-3xl mb-3">{perk.icon}</div>
-                <h3 className="font-display font-semibold text-white text-sm mb-2">{perk.label}</h3>
-                <p className="font-mono text-xs text-muted leading-relaxed">{perk.description}</p>
-              </div>
+              <div key={i} className="text-center p-6 font-sans">
+                <div className="text-4xl mb-3">{perk.icon}</div>
+                <h3 className="font-display text-white text-base mb-2 tracking-wide">{perk.label}</h3>
+                <p className="font-sans text-xs text-white/100 leading-relaxed">{perk.description}</p>              </div>
             ))}
           </div>
         </section>

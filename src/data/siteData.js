@@ -5,8 +5,8 @@ export const SITE = {
   name: 'Vayuron Advanced Systems',
   tagline: 'Vayuron Advanced Systems',
   email: 'info@vayuronadvancedsystems.com',
-  phone: '07554 582 442',
-  phoneTel: '+910755458244',
+  phone: '+91 7554582442',
+  phoneTel: '+91 7554582442',
   instagram: 'https://www.instagram.com/vayuron.advanced.systms?igsh=MWF4ZWRzdW53cWd0Nw==', // update with real URL
   linkedin: 'https://www.linkedin.com/company/vaayu-robotics/',   // update with real URL
   x: 'https://x.com/VayuronUAV',

@@ -9,7 +9,7 @@ import { useScrollReveal } from '../hooks'
 // ─── Hero Section ──────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-24 pb-24">      <div className="absolute inset-0 grid-overlay" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-24 pb-24">      
       
       {/* Drone Background Image */}
       <img
@@ -69,16 +69,6 @@ function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
-        className="absolute bottom-2 left-1/2 -translate-x-1/2"
-      >
-        <div className="font-mono text-[10px] tracking-widest uppercase text-dim">Scroll</div>
-        <div className="w-px h-12 bg-gradient-to-b from-dim to-transparent animate-pulse-slow" />
-      </motion.div>*/}
     </section>
   )
 }
@@ -171,7 +161,6 @@ function MissionCTA() {
   const ref = useScrollReveal()
   return (
     <section ref={ref} className="reveal py-32 px-6 text-center relative overflow-hidden">
-      <div className="absolute inset-0 grid-overlay opacity-30" />
       <div className="relative max-w-3xl mx-auto">
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-cyan mb-6">
           Indigenous Technology

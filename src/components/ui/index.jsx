@@ -25,8 +25,6 @@ export function Breadcrumb({ crumbs = [] }) {
 export function PageBanner({ eyebrow, title, subtitle, crumbs = [] }) {
   return (
     <section className="relative bg-surface border-b border-[rgba(0,212,255,0.1)] pt-32 pb-16 overflow-hidden">
-      {/* Grid overlay */}
-      <div className="absolute inset-0 grid-overlay opacity-50" />
       {/* Cyan glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 

@@ -1,27 +1,6 @@
 import { Link } from 'react-router-dom'
 import { SITE, FOOTER_LINKS } from '../../data/siteData'
 
-const InstagramIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-    <circle cx="12" cy="12" r="4"/>
-    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
-  </svg>
-)
-
-const LinkedInIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
-    <circle cx="4" cy="4" r="2"/>
-  </svg>
-)
-
-const XIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.3L6.6 22H3.5l7.3-8.3L1 2h6.2l4.3 5.7L18.9 2z"/>
-  </svg>
-)
-
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -47,35 +26,53 @@ export default function Footer() {
             <p className="text-white text-sm leading-relaxed max-w-xs mb-6">
               Engineering indigenous innovation in defence, aerospace, and autonomous systems for critical national operations.
             </p>
+            
             <div className="flex gap-4 mb-6">
-              <a
-                href={SITE.instagram}
-                target="_blank" rel="noopener noreferrer"
-                className="text-white hover:text-cyan transition-colors"
-                aria-label="Instagram"
-              >
-                <InstagramIcon />
-              </a>
-              <a
-                href={SITE.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-cyan transition-colors"
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon />
-              </a>
 
-              <a
-                href={SITE.x}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-cyan transition-colors"
-                aria-label="X"
-              >
-                <XIcon />
-              </a>
-            </div>
+            <a
+              href={SITE.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="hover:scale-110 transition-transform duration-300"
+            >
+              <img
+                src="/icons/instagram.png"
+                alt="Instagram"
+                className="w-7 h-7 object-contain"
+              />
+            </a>
+
+            <a
+              href={SITE.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hover:scale-110 transition-transform duration-300"
+            >
+              <img
+                src="/icons/linkedin.png"
+                alt="LinkedIn"
+                className="w-7 h-7 object-contain"
+              />
+            </a>
+
+            <a
+              href={SITE.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X"
+              className="hover:scale-110 transition-transform duration-300"
+            >
+              <img
+                src="/icons/x.png"
+                alt="X"
+                className="w-7 h-7 object-contain"
+              />
+            </a>
+
+          </div>
+
             <div className="space-y-1">
               <a href={`tel:${SITE.phoneTel}`} className="block font-mono text-sm text-white hover:text-cyan transition-colors">
                 {SITE.phone}
@@ -138,15 +135,21 @@ export default function Footer() {
           <p className="font-sans text-sm text-white">
             © {year} Vayuron Advanced Systems. All rights reserved.
           </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
+
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 list-none">
             {FOOTER_LINKS.legal.map(link => (
-              <Link key={link.path} to={link.path} className="font-sans text-sm text-white hover:text-cyan transition-colors">
-                {link.label}
-              </Link>
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  className="font-sans text-sm text-white hover:text-cyan transition-colors"
+                >
+                  {link.label}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-      </div>
+        </div>
     </footer>
   )
 }
