@@ -77,12 +77,25 @@ function Hero() {
 function StatsBar() {
   const ref = useScrollReveal()
   return (
-    <section ref={ref} className="reveal bg-surface border-y border-[rgba(0,212,255,0.1)] py-12">
-      <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-        <StatCard value={8}   suffix="+"  label="Sectors Served" />
-        <StatCard value={4}   suffix=""   label="Product Lines" />
-        <StatCard value={50}  suffix="+"  label="Deployments" />
-        <StatCard value={100} suffix="+"  label="Team Members" />
+    <section
+      ref={ref}
+      className="reveal relative border-y border-[rgba(0,212,255,0.1)] py-12 overflow-hidden"
+      style={{
+        backgroundImage: "url('/Tablong.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "scroll",
+      }}
+    >
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <StatCard value={8} suffix="+" label="Sectors Served" />
+        <StatCard value={4} suffix="" label="Product Lines" />
+        <StatCard value={50} suffix="+" label="Deployments" />
+        <StatCard value={100} suffix="+" label="Team Members" />
       </div>
     </section>
   )
@@ -106,11 +119,11 @@ function ProductsPreview() {
           >
             <span className="text-3xl text-cyan mt-1">{product.icon}</span>
             <div>
-              <h3 className="font-display text-xl font-semibold text-white group-hover:text-cyan transition-colors mb-2">
+              <h3 className="font-sans text-xl font-semibold text-white group-hover:text-cyan transition-colors mb-2">
                 {product.label}
               </h3>
               <p className="text-muted text-sm leading-relaxed mb-4">{product.description}</p>
-              <span className="font-mono text-xs text-cyan group-hover:text-white transition-colors">
+              <span className="font-sans text-sm text-cyan group-hover:text-white transition-colors">
                 Learn More →
               </span>
             </div>
@@ -127,8 +140,19 @@ function ProductsPreview() {
 // ─── Sectors Preview ───────────────────────────────────────────────────────
 function SectorsPreview() {
   return (
-    <section className="py-24 bg-surface border-y border-[rgba(0,212,255,0.08)]">
-      <div className="max-w-[1400px] mx-auto px-6">
+    <section
+      className="relative py-24 border-y border-[rgba(0,212,255,0.08)] overflow-hidden"
+      style={{
+        backgroundImage: "url('/Operational DomainsHome.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "right center", // Move the image to the right
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
         <SectionHeader
           eyebrow="Sectors"
           title="Operational Domains"
@@ -141,8 +165,7 @@ function SectorsPreview() {
               to={sector.path}
               className="group border border-[rgba(0,212,255,0.08)] hover:border-cyan p-4 transition-all duration-200 flex items-center gap-3"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0" />
-              <span className="font-mono text-xs text-muted group-hover:text-white transition-colors leading-tight">
+              <span className="font-sans text-sm font-medium text-muted group-hover:text-white transition-colors leading-tight">
                 {sector.label}
               </span>
             </Link>
@@ -160,8 +183,19 @@ function SectorsPreview() {
 function MissionCTA() {
   const ref = useScrollReveal()
   return (
-    <section ref={ref} className="reveal py-32 px-6 text-center relative overflow-hidden">
-      <div className="relative max-w-3xl mx-auto">
+    <section
+        ref={ref}
+        className="reveal relative py-32 px-6 text-center overflow-hidden"
+        style={{
+          backgroundImage: "url('/IndiTechHome.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="relative z-10 max-w-3xl mx-auto">
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-cyan mb-6">
           Indigenous Technology
         </p>

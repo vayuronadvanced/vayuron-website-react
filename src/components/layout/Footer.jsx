@@ -5,15 +5,27 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-surface border-t border-[rgba(0,212,255,0.1)] mt-auto">
-      <div className="max-w-[1400px] mx-auto px-6 py-16">
+      <footer
+        className="relative mt-auto border-t border-[rgba(0,212,255,0.1)] overflow-hidden"
+        style={{
+          backgroundImage: "url('/Footer.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-10">      
+      {/* Your existing footer content */}
 
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-10">
 
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-4 group w-fit">
+            <Link to="/" className="flex items-center gap-3 mb-3 group w-fit">
               <div>
                 <div className="font-display font-bold uppercase text-white text-sm tracking-[0.12em] group-hover:text-cyan transition-colors">
                   VAYURON
@@ -23,11 +35,11 @@ export default function Footer() {
                 </div>
               </div>
             </Link>
-            <p className="text-white text-sm leading-relaxed max-w-xs mb-6">
+            <p className="text-white text-sm leading-relaxed max-w-xs mb-4">
               Engineering indigenous innovation in defence, aerospace, and autonomous systems for critical national operations.
             </p>
             
-            <div className="flex gap-4 mb-6">
+            <div className="flex gap-3 mb-4">
 
             <a
               href={SITE.instagram}
@@ -86,7 +98,7 @@ export default function Footer() {
           {/* Products */}
           <div>
             <h4 className="font-display text-sm uppercase tracking-[0.08em] text-cyan mb-4">Products</h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-1.5">
               {FOOTER_LINKS.products.map(link => (
                 <li key={link.path}>
                   <Link to={link.path} className="font-sans text-sm text-white hover:text-cyan transition-colors">
@@ -114,10 +126,10 @@ export default function Footer() {
           {/* Newsletter */}
           <div>
             <h4 className="font-mono text-sm tracking-widest uppercase text-cyan mb-4">Stay Updated</h4>
-            <p className="font-sans text-sm text-white mb-4 leading-relaxed">
+            <p className="font-sans text-sm text-white mb-3 leading-relaxed">
               Defence technology insights and company updates.
             </p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1.5">
               <input
                 type="email"
                 placeholder="your@email.com"
@@ -131,7 +143,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[rgba(0,212,255,0.08)] pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="border-t border-[rgba(0,212,255,0.08)] pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="font-sans text-sm text-white">
             © {year} Vayuron Advanced Systems. All rights reserved.
           </p>

@@ -71,7 +71,7 @@ export default function Navbar() {
               <div className="font-display font-bold uppercase text-white text-lg leading-none tracking-[0.12em] group-hover:text-cyan transition-colors">
                 VAYURON
               </div>
-              <div className="font-mono text-[9px] text-white tracking-[0.2em] uppercase">
+              <div className="font-sans text-[9px] text-white tracking-[0.2em] uppercase">
                 Advanced Systems
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function Navbar() {
                   <button
                     onMouseEnter={() => setActiveDropdown(link.label)}
                     onMouseLeave={() => setActiveDropdown(null)}
-                    className={`flex items-center gap-1 px-4 py-2 font-mono text-xs tracking-widest uppercase transition-colors ${
+                    className={`flex items-center gap-1 px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase transition-colors ${
                       location.pathname.startsWith(link.path)
                         ? 'text-cyan'
                         : 'text-white hover:text-cyan'
@@ -100,7 +100,7 @@ export default function Navbar() {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `px-4 py-2 font-mono text-xs tracking-widest uppercase transition-colors block ${
+                      `px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase transition-colors block ${
                         isActive ? 'text-cyan' : 'text-white hover:text-cyan'
                       }`
                     }
@@ -128,18 +128,22 @@ export default function Navbar() {
                           >
                             <span className="text-cyan mt-0.5 text-lg">{product.icon}</span>
                             <div>
-                              <div className="font-mono text-xs text-white group-hover:text-cyan transition-colors">
+                              <div className="font-sans font-semibold text-sm text-white group-hover:text-cyan transition-colors">
                                 {product.label}
                               </div>
-                              <div className="text-white text-xs mt-0.5 leading-relaxed">
+                              <div className="font-sans text-xs text-white/80 mt-0.5 leading-relaxed">
                                 {product.description}
                               </div>
                             </div>
                           </Link>
                         ))}
                       </div>
+
                       <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
-                        <Link to="/products" className="font-mono text-xs text-cyan hover:text-white transition-colors flex items-center gap-1">
+                        <Link
+                          to="/products"
+                          className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1"
+                        >
                           View All Products →
                         </Link>
                       </div>
@@ -165,14 +169,15 @@ export default function Navbar() {
                             className="flex items-center gap-3 px-3 py-2.5 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
                           >
                             <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0"/>
-                            <span className="font-mono text-xs text-white group-hover:text-cyan transition-colors">
+                            <span className="font-sans text-xs text-white group-hover:text-cyan transition-colors">
                               {sector.label}
                             </span>
                           </Link>
                         ))}
                       </div>
+
                       <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
-                        <Link to="/sectors" className="font-mono text-xs text-cyan hover:text-white transition-colors flex items-center gap-1">
+                        <Link to="/sectors" className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1">
                           View All Sectors →
                         </Link>
                       </div>
@@ -187,10 +192,11 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/contact"
-              className="hidden lg:flex items-center gap-2 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all duration-200 px-4 py-2 font-mono text-xs tracking-widest uppercase"
+              className="hidden lg:flex items-center gap-2 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all duration-200 px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase"
             >
               Get in Touch
             </Link>
+
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden flex flex-col gap-1.5 p-2 text-white hover:text-cyan transition-colors"
@@ -219,11 +225,12 @@ export default function Navbar() {
                     <>
                       <button
                         onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
-                        className="w-full flex items-center justify-between py-3 font-mono text-xs tracking-widest uppercase text-muted hover:text-white transition-colors border-b border-[rgba(0,212,255,0.08)]"
+                        className="w-full flex items-center justify-between py-3 font-sans text-xs tracking-[0.14em] uppercase text-muted hover:text-white transition-colors border-b border-[rgba(0,212,255,0.08)]"
                       >
                         {link.label}
                         <span className={`transition-transform ${mobileExpanded === link.label ? 'rotate-180' : ''}`}>▾</span>
                       </button>
+
                       <AnimatePresence>
                         {mobileExpanded === link.label && (
                           <motion.div
@@ -236,7 +243,7 @@ export default function Navbar() {
                               <Link
                                 key={item.id}
                                 to={item.path}
-                                className="flex items-center gap-2 py-2 pl-4 font-mono text-xs text-white hover:text-cyan transition-colors"
+                                className="flex items-center gap-2 py-2 pl-4 font-sans text-xs text-white hover:text-cyan transition-colors"
                               >
                                 <span className="w-1 h-1 rounded-full bg-dim"/>
                                 {item.label}
@@ -250,7 +257,7 @@ export default function Navbar() {
                     <NavLink
                       to={link.path}
                       className={({ isActive }) =>
-                        `block py-3 font-mono text-xs tracking-widest uppercase border-b border-[rgba(0,212,255,0.08)] transition-colors ${
+                        `block py-3 font-sans text-xs tracking-[0.14em] uppercase border-b border-[rgba(0,212,255,0.08)] transition-colors ${
                           isActive ? 'text-cyan' : 'text-white hover:text-cyan'
                         }`
                       }
@@ -260,9 +267,10 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
+
               <Link
                 to="/contact"
-                className="mt-6 w-full border border-cyan text-cyan text-center py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
+                className="mt-6 w-full border border-cyan text-cyan text-center py-3 font-sans text-xs tracking-[0.14em] uppercase hover:bg-cyan hover:text-black transition-all"
               >
                 Get in Touch
               </Link>

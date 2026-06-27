@@ -51,6 +51,20 @@ export const PRODUCTS = [
     description: 'Precision manufacturing and systems integration for aerospace and defence.',
     icon: '⬢',
   },
+  {
+  id: 'avionics',
+  label: 'Avionics',
+  path: '/products/avionics',
+  description: 'Advanced avionics, flight control electronics, navigation, and mission systems.',
+  icon: '✦',
+},
+{
+  id: 'carbon-composite',
+  label: 'Carbon & Composite',
+  path: '/products/carbon-composite',
+  description: 'Lightweight carbon fibre and composite structures for aerospace and defence applications.',
+  icon: '⬢',
+},
 ]
 
 export const SECTORS = [

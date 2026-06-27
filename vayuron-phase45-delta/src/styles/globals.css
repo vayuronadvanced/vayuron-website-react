@@ -1,0 +1,538 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Google Fonts already loaded via index.html ─── */
+
+/* ─── CSS Custom Properties (preserved from original) ─── */
+:root {
+  --black:    #050607;
+  --surface:  #0a0c0f;
+  --surface-2: #111620;
+  --cyan:     #00d4ff;
+  --cyan-dim: rgba(0, 212, 255, 0.15);
+  --text:     #d8dce4;
+  --muted:    #68788a;
+  --dim:      #35455a;
+  --radius:   4px;
+  --transition: 0.3s ease;
+}
+
+/* ─── Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--cyan);
+}
+
+/* ─── Focus visible ─── */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+/* ─── Typography ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+/* ─── Utility Classes ─── */
+.font-display { font-family: 'Rajdhani', sans-serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+.text-cyan  { color: var(--cyan); }
+.text-muted { color: var(--muted); }
+.text-dim   { color: var(--dim); }
+
+.bg-black   { background-color: var(--black); }
+.bg-surface { background-color: var(--surface); }
+
+.border-cyan-dim { border-color: var(--cyan-dim); }
+
+/* ─── Animated Grid Overlay ─── */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Glow Effects ─── */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* ─── Noise overlay ─── */
+.noise-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ─── Scroll reveal animations ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Scan line decoration ─── */
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: scan 4s linear infinite;
+  opacity: 0.4;
+  pointer-events: none;
+}
+@keyframes scan {
+  0%   { top: 0; }
+  100% { top: 100%; }
+}
+
+/* ─── Loading Screen ─── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  gap: 1.5rem;
+}
+.loading-bar {
+  width: 200px;
+  height: 1px;
+  background: var(--dim);
+  overflow: hidden;
+}
+.loading-bar-fill {
+  height: 100%;
+  background: var(--cyan);
+  animation: loadFill 1.5s ease forwards;
+}
+@keyframes loadFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ─── Cursor ─── */
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  background: var(--cyan);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: screen;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+.custom-cursor.hovering {
+  transform: scale(3);
+  opacity: 0.5;
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--cyan);
+  z-index: 9998;
+  transform-origin: left;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* ─── Page transitions ─── */
+.page-enter { opacity: 0; transform: translateY(10px); }
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.page-exit { opacity: 1; }
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Print ─── */
+@media print {
+  .no-print { display: none; }
+  body { background: white; color: black; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PHASE 3 — ANIMATION & 3D FOUNDATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Lenis Smooth Scroll Override ─────────────────────────────────────── */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ─── GSAP Will-Change hints ────────────────────────────────────────────── */
+.gsap-animated {
+  will-change: transform, opacity;
+}
+.gsap-pin-spacer {
+  pointer-events: none !important;
+}
+
+/* ─── Three.js Canvas ───────────────────────────────────────────────────── */
+canvas {
+  display: block;
+}
+.three-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.three-canvas-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ─── Hero animations ───────────────────────────────────────────────────── */
+.hero-text-line {
+  overflow: hidden;
+  display: block;
+}
+.hero-text-inner {
+  display: block;
+  transform: translateY(100%);
+}
+
+/* ─── Glitch effect ─────────────────────────────────────────────────────── */
+.glitch-text {
+  position: relative;
+  cursor: pointer;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.glitch-text:hover::before {
+  opacity: 0.7;
+  color: #ff006e;
+  clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+  transform: translate(-2px, 2px);
+  animation: glitch-clip-1 0.3s infinite;
+}
+.glitch-text:hover::after {
+  opacity: 0.7;
+  color: #00d4ff;
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  transform: translate(2px, -2px);
+  animation: glitch-clip-2 0.3s infinite;
+}
+@keyframes glitch-clip-1 {
+  0%   { clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%); transform: translate(-3px, 2px); }
+  33%  { clip-path: polygon(0 45%, 100% 45%, 100% 65%, 0 65%); transform: translate(3px, -1px); }
+  66%  { clip-path: polygon(0 70%, 100% 70%, 100% 90%, 0 90%); transform: translate(-2px, 3px); }
+  100% { clip-path: polygon(0 5%, 100%  5%, 100% 25%, 0 25%); transform: translate(2px,  -2px); }
+}
+@keyframes glitch-clip-2 {
+  0%   { clip-path: polygon(0 55%, 100% 55%, 100% 75%, 0 75%); transform: translate(2px, -2px); }
+  33%  { clip-path: polygon(0 10%, 100% 10%, 100% 30%, 0 30%); transform: translate(-2px, 2px); }
+  66%  { clip-path: polygon(0 80%, 100% 80%, 100% 95%, 0 95%); transform: translate(3px, 1px); }
+  100% { clip-path: polygon(0 35%, 100% 35%, 100% 55%, 0 55%); transform: translate(-3px, 0px); }
+}
+
+/* ─── Horizontal scroll section ─────────────────────────────────────────── */
+.horizontal-section {
+  overflow: hidden;
+}
+.horizontal-track {
+  display: flex;
+  will-change: transform;
+}
+
+/* ─── Marquee ticker ────────────────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* ─── Cinematic reveal ───────────────────────────────────────────────────── */
+.word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  margin-right: 0.25em;
+}
+.word {
+  display: inline-block;
+  transform: translateY(110%);
+}
+
+/* ─── Page banner parallax ───────────────────────────────────────────────── */
+.parallax-content {
+  will-change: transform;
+}
+
+/* ─── CTA button shine sweep ─────────────────────────────────────────────── */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s ease;
+}
+.btn-shine:hover::after {
+  left: 100%;
+}
+
+/* ─── Status dot pulse ───────────────────────────────────────────────────── */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(0, 212, 255, 0); }
+}
+.status-dot {
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+/* ─── ScrollTrigger debug (remove in production) ────────────────────────── */
+/* .gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end {
+  display: none !important;
+} */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PHASE 5 — DEFENCE VISUALIZATION & 3D EXPERIENCE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── 3D Scene containers ────────────────────────────────────────────────── */
+.scene-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+}
+.scene-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* ─── HUD corner brackets on 3D panels ──────────────────────────────────── */
+.scene-hud::before,
+.scene-hud::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 20px;
+  border-color: rgba(0,212,255,0.5);
+  border-style: solid;
+  z-index: 10;
+  pointer-events: none;
+}
+.scene-hud::before { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
+.scene-hud::after  { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
+
+/* ─── Bloom glow utilities ───────────────────────────────────────────────── */
+.glow-intense {
+  box-shadow:
+    0 0 10px rgba(0,212,255,0.4),
+    0 0 40px rgba(0,212,255,0.2),
+    0 0 80px rgba(0,212,255,0.1);
+}
+.text-glow-intense {
+  text-shadow:
+    0 0 10px rgba(0,212,255,0.8),
+    0 0 30px rgba(0,212,255,0.4),
+    0 0 60px rgba(0,212,255,0.2);
+}
+
+/* ─── 3D Component highlight pulse ──────────────────────────────────────── */
+.part-highlight {
+  animation: part-pulse 1.5s ease-in-out infinite;
+}
+@keyframes part-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ─── Scene label overlay ────────────────────────────────────────────────── */
+.scene-label {
+  position: absolute;
+  bottom: 1rem; left: 1rem;
+  z-index: 20;
+  pointer-events: none;
+}
+.scene-label-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 2px;
+}
+.scene-label-desc {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ─── Neural network pulse animation ────────────────────────────────────── */
+@keyframes neural-pulse {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.3; transform: scale(0.8); }
+}
+.neural-node {
+  animation: neural-pulse 2s ease-in-out infinite;
+}
+
+/* ─── Radar sweep ────────────────────────────────────────────────────────── */
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.radar-sweep {
+  animation: radar-sweep 3s linear infinite;
+  transform-origin: center;
+}
+
+/* ─── Target marker ──────────────────────────────────────────────────────── */
+@keyframes target-ping {
+  0%   { transform: scale(1);   opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.target-ping {
+  animation: target-ping 1.5s ease-out infinite;
+}
+
+/* ─── Loading state for 3D scenes ────────────────────────────────────────── */
+.scene-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+}
+.scene-loading::after {
+  content: 'LOADING 3D SCENE...';
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: rgba(0,212,255,0.4);
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Post-processing overlay hint ──────────────────────────────────────── */
+/* Scanline overlay on top of 3D scenes for CRT effect */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 5;
+}

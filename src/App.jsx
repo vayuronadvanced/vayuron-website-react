@@ -28,6 +28,8 @@ import AboutPage from './pages/AboutPage'
 import CareersPage from './pages/CareersPage'
 import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
+import AvionicsPage from './pages/products/AvionicsPage'
+import CarbonCompositePage from './pages/products/CarbonCompositePage'
 
 // ─── Page Transition Wrapper ───────────────────────────────────────────────
 const pageVariants = {
@@ -124,6 +126,8 @@ export default function App() {
               <Route path="/products/artificial-intelligence" element={<PageWrapper><AIPage /></PageWrapper>} />
               <Route path="/products/software-systems" element={<PageWrapper><SoftwarePage /></PageWrapper>} />
               <Route path="/products/advanced-engineering" element={<PageWrapper><EngineeringPage /></PageWrapper>} />
+              <Route path="/products/avionics" element={<PageWrapper><AvionicsPage /></PageWrapper>}/>
+              <Route path="/products/carbon-composite" element={<PageWrapper><CarbonCompositePage /></PageWrapper>}/>
 
               {/* Sectors */}
               <Route path="/sectors" element={<PageWrapper><SectorsPage /></PageWrapper>} />
