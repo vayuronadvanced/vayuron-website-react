@@ -82,95 +82,228 @@ export default function TechnologyPage() {
         />
 
         {/* Pillars */}
-        <section className="py-24 px-6 max-w-[1400px] mx-auto">
-          <SectionHeader
-            eyebrow="Core Pillars"
-            title="Built From First Principles"
-            subtitle="Every technology domain developed in-house, ensuring operational sovereignty and deep mission customisation."
+        {/* ═══════════════════════════════════════
+        CORE PILLARS
+        ═══════════════════════════════════════ */}
+        <section className="relative py-24 overflow-hidden">
+
+          {/* Background Image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/Tech2.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {techPillars.map((pillar, i) => (
-              <FeatureCard
-                key={i}
-                title={pillar.title}
-                description={pillar.description}
-              />
-            ))}
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/15 to-black/75" />
+
+          {/* Content */}
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+
+            <SectionHeader
+              eyebrow="Core Pillars"
+              title="Built From First Principles"
+              subtitle="Every technology domain developed in-house, ensuring operational sovereignty and deep mission customisation."
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+              {techPillars.map((pillar, i) => (
+                <div
+                  key={i}
+                  className="group relative rounded-xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-8 overflow-hidden"
+                >
+                  {/* Top Accent Line */}
+                  <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
+
+                  <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
+                    {pillar.title}
+                  </h3>
+
+                  <p className="text-white/75 leading-relaxed group-hover:text-white transition-colors">
+                    {pillar.description}
+                  </p>
+                </div>
+              ))}
+
+            </div>
+
           </div>
+
         </section>
 
         <CyanDivider className="max-w-[1400px] mx-auto px-6" />
 
-        {/* Tech Stack Grid */}
-        <section className="py-24 px-6 max-w-[1400px] mx-auto">
-          <SectionHeader
-            eyebrow="Stack Details"
-            title="Technology Components"
-            subtitle="The specific technologies and standards deployed across our product lines."
+        {/* ═══════════════════════════════════════
+            STACK DETAILS
+        ═══════════════════════════════════════ */}
+        <section className="relative py-24 overflow-hidden">
+
+          {/* Background Image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/Tech4.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Dark Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
+
+          {/* Content */}
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+
+            <SectionHeader
+              eyebrow="Stack Details"
+              title="Technology Components"
+              subtitle="The specific technologies and standards deployed across our product lines."
+            />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
             {techStack.map((stack, i) => (
               <div
                 key={i}
-                className="bg-surface border border-[rgba(0,212,255,0.1)] p-6"
+                className="group relative rounded-xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-8 overflow-hidden"
               >
-                <h3 className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">
-                  {stack.category}
-                </h3>
 
-                <ul className="space-y-2">
-                  {stack.items.map((item, j) => (
-                    <li
-                      key={j}
-                      className="flex items-center gap-3 text-muted text-sm"
-                    >
-                      <span className="w-1 h-1 rounded-full bg-dim flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          {/* Top Accent Line */}
+          <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
+
+          <h3 className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">
+            {stack.category}
+          </h3>
+
+          <ul className="space-y-3">
+            {stack.items.map((item, j) => (
+              <li
+                key={j}
+                className="flex items-center gap-3 text-white/75 text-sm group-hover:text-white transition-colors"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+                {item}
+              </li>
             ))}
+          </ul>
+
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+        {/* ═══════════════════════════════════════
+            IP OWNERSHIP
+        ═══════════════════════════════════════ */}
+        <section className="relative py-24 overflow-hidden">
+
+          {/* Background Image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/TechIndigenous.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/80" />
+
+          {/* Content */}
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+
+              {/* Left Side */}
+              <div>
+                <p className="font-mono text-xs tracking-[0.25em] uppercase text-cyan mb-4">
+                  IP Ownership
+                </p>
+
+                <h2 className="font-display text-4xl font-bold text-white leading-tight">
+                  100% Indigenous IP
+                </h2>
+              </div>
+
+              {/* Right Side */}
+              <div className="lg:col-span-2">
+
+                <div className="group relative rounded-2xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-8 overflow-hidden">
+
+                  {/* Cyan Accent */}
+                  <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
+
+                  <p className="text-white/80 text-lg leading-relaxed group-hover:text-white transition-colors">
+                    Every algorithm, firmware module, structural design, and manufacturing
+                    process in the Vayuron technology stack is developed and owned entirely
+                    by Vayuron Advanced Systems. No licensed foreign technology. No
+                    third-party dependency risk. Full operational sovereignty for our
+                    clients.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
+
         </section>
 
-        {/* IP Statement */}
-        <section className="py-16 bg-surface border-t border-b border-[rgba(0,212,255,0.1)] px-6">
-          <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-start gap-12">
-            <div className="lg:w-1/3">
-              <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
-                IP Ownership
-              </p>
-              <h2 className="font-display text-3xl font-bold text-white">
-                100% Indigenous IP
+        {/* ═══════════════════════════════════════
+            TECHNICAL BRIEFING CTA
+        ═══════════════════════════════════════ */}
+        <section className="relative py-24 overflow-hidden">
+
+          {/* Background Image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/Tech5.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/80" />
+
+          {/* Content */}
+          <div className="relative z-10 max-w-[1000px] mx-auto px-6 text-center">
+
+            <div className="group rounded-2xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-12">
+
+              <h2 className="font-display text-4xl font-bold text-white mb-6 group-hover:text-cyan transition-colors">
+                Technical Briefings Available
               </h2>
-            </div>
 
-            <div className="lg:w-2/3">
-              <p className="text-muted leading-relaxed text-lg">
-                Every algorithm, firmware module, structural design, and manufacturing process in the Vayuron
-                technology stack is developed and owned entirely by Vayuron Advanced Systems. No licensed
-                foreign technology. No third-party dependency risk. Full operational sovereignty for our clients.
+              <p className="text-white/80 text-lg leading-relaxed max-w-2xl mx-auto mb-10 group-hover:text-white transition-colors">
+                Our engineering team can provide detailed technical briefings under NDA
+                for qualified defence and government clients.
               </p>
+
+              <CTAButton to="/contact" variant="primary">
+                Request a Technical Briefing
+              </CTAButton>
+
             </div>
+
           </div>
-        </section>
 
-        {/* CTA */}
-        <section className="py-16 text-center px-6">
-          <h2 className="font-display text-3xl font-bold text-white mb-4">
-            Technical Briefings Available
-          </h2>
-
-          <p className="text-muted mb-8 max-w-xl mx-auto">
-            Our engineering team can provide detailed technical briefings under NDA for qualified defence and government clients.
-          </p>
-
-          <CTAButton to="/contact" variant="primary">
-            Request a Technical Briefing
-          </CTAButton>
         </section>
       </main>
     </>

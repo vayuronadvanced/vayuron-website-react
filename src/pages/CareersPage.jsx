@@ -125,8 +125,19 @@ export default function CareersPage() {
         />
 
         {/* Perks */}
-        <section className="py-16 bg-surface border-b border-[rgba(0,212,255,0.1)] px-6">
-          <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+        <section
+          className="relative py-16 border-b border-[rgba(0,212,255,0.1)] px-6 overflow-hidden"
+          style={{
+            backgroundImage: "url('/career2.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/70"></div>
+
+          <div className="relative z-10 max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
             {perks.map((perk, i) => (
               <div key={i} className="text-center p-6 font-sans">
                 <h3 className="font-display text-white text-base mb-2 tracking-wide">
@@ -141,7 +152,25 @@ export default function CareersPage() {
         </section>
 
         {/* Open Roles */}
-        <section ref={ref} className="reveal py-24 px-6 max-w-[1400px] mx-auto">
+        <section
+        ref={ref}
+        className="relative py-20 overflow-hidden"
+      >
+        {/* Background Image */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "url('/career3.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+
+        {/* Gradient Overlay (same as Product Page) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-black/70 pointer-events-none" />
+
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6">
           <h2 className="font-display text-3xl font-bold text-white mb-3">
             Open Positions
           </h2>
@@ -154,7 +183,7 @@ export default function CareersPage() {
             {openRoles.map((role, i) => (
               <details
                 key={i}
-                className="group bg-surface border border-[rgba(0,212,255,0.1)] hover:border-[rgba(0,212,255,0.3)] transition-colors"
+                className="group bg-white/5 backdrop-blur-xl border border-[rgba(0,212,255,0.25)] hover:border-cyan transition-all duration-300"
               >
                 <summary className="flex items-start justify-between gap-4 p-6 cursor-pointer list-none">
                   <div className="flex-1">
@@ -212,6 +241,7 @@ export default function CareersPage() {
               </details>
             ))}
           </div>
+         </div>
         </section>
 
         <CyanDivider className="max-w-[1400px] mx-auto px-6" />

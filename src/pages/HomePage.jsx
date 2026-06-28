@@ -104,34 +104,58 @@ function StatsBar() {
 // ─── Products Preview ──────────────────────────────────────────────────────
 function ProductsPreview() {
   return (
-    <section className="py-24 px-6 max-w-[1400px] mx-auto">
-      <SectionHeader
-        eyebrow="Capabilities"
-        title="Our Product Lines"
-        subtitle="Four core technology domains engineered for defence, security, and industrial operations."
-      />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        {PRODUCTS.map((product, i) => (
-          <Link
-            key={product.id}
-            to={product.path}
-            className="group bg-surface border border-[rgba(0,212,255,0.1)] hover:border-[rgba(0,212,255,0.35)] p-8 transition-all duration-300 flex items-start gap-4"
-          >
-            <span className="text-3xl text-cyan mt-1">{product.icon}</span>
-            <div>
-              <h3 className="font-sans text-xl font-semibold text-white group-hover:text-cyan transition-colors mb-2">
-                {product.label}
-              </h3>
-              <p className="text-muted text-sm leading-relaxed mb-4">{product.description}</p>
-              <span className="font-sans text-sm text-cyan group-hover:text-white transition-colors">
-                Learn More →
+    <section
+      className="relative py-24 overflow-hidden"
+      style={{
+        backgroundImage: "url('/rectors.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/70"></div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+        <SectionHeader
+          eyebrow="Capabilities"
+          title="Our Product Lines"
+          subtitle="Four core technology domains engineered for defence, security, and industrial operations."
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          {PRODUCTS.map((product) => (
+            <Link
+              key={product.id}
+              to={product.path}
+              className="group bg-surface/70 backdrop-blur-sm border border-[rgba(0,212,255,0.1)] hover:border-[rgba(0,212,255,0.35)] p-8 transition-all duration-300 flex items-start gap-4"
+            >
+              <span className="text-3xl text-cyan mt-1">
+                {product.icon}
               </span>
-            </div>
-          </Link>
-        ))}
-      </div>
-      <div className="text-center">
-        <CTAButton to="/products" variant="secondary">View All Products</CTAButton>
+
+              <div>
+                <h3 className="font-sans text-xl font-semibold text-white group-hover:text-cyan transition-colors mb-2">
+                  {product.label}
+                </h3>
+
+                <p className="text-muted text-sm leading-relaxed mb-4">
+                  {product.description}
+                </p>
+
+                <span className="font-sans text-sm text-cyan group-hover:text-white transition-colors">
+                  Learn More →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <CTAButton to="/products" variant="secondary">
+            View All Products
+          </CTAButton>
+        </div>
       </div>
     </section>
   )
