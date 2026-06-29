@@ -30,6 +30,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import AvionicsPage from './pages/products/AvionicsPage'
 import CarbonCompositePage from './pages/products/CarbonCompositePage'
 import ScrollToTop from './components/utils/ScrollToTop'
+import CareersPage from './pages/CareersPage'
 
 // ─── Page Transition Wrapper ───────────────────────────────────────────────
 const pageVariants = {
@@ -144,6 +145,7 @@ export default function App() {
           <Route path="/sectors/industrial-inspection" element={<PageWrapper><IndustrialPage /></PageWrapper>} />
 
           {/* Core Pages */}
+          <Route path="/careers" element={<PageWrapper><CareersPage /></PageWrapper>} />
           <Route path="/technology" element={<PageWrapper><TechnologyPage /></PageWrapper>} />
           <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />

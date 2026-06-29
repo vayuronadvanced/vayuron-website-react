@@ -7,15 +7,16 @@ export default function Footer() {
   return (
       <footer
         className="relative mt-auto border-t border-[rgba(0,212,255,0.1)] overflow-hidden"
+        // Changes footer colour  className="relative mt-auto overflow-hidden border-t border-gray-400 bg-gradient-to-b from-gray-300 via-gray-200 to-gray-400"
         style={{
-          backgroundImage: "url('/Footer.png')",
+          //backgroundImage: "url('/Footer.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      {/* Dark Overlay  - <div className="absolute inset-0 bg-black/10"></div>- */}
+      
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-6">      
       {/* Your existing footer content */}
@@ -152,6 +153,6 @@ export default function Footer() {
 
       </div> {/* closes relative z-10 */}
 
-</footer>
+</>
   )
 }

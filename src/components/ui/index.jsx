@@ -73,7 +73,7 @@ export function PageBanner({
 export function SectionHeader({ eyebrow, title, subtitle, centered = false, className = '' }) {
   const ref = useScrollReveal()
   return (
-    <div ref={ref} className={`reveal mb-12 ${centered ? 'text-center' : ''} ${className}`}>
+    <div ref={ref} className={`reveal ${centered ? 'text-center' : ''} ${className || 'mb-12'}`}>
       {eyebrow && (
         <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">{eyebrow}</p>
       )}
