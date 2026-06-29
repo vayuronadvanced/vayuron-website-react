@@ -43,7 +43,7 @@ function Hero() {
         >
           Vayuron
           <br />
-          <span className="text-cyan text-glow-cyan">Advanced</span>
+          <span className="text-cyan">Advanced</span>
           <br />
           Systems
         </motion.h1>
@@ -202,39 +202,75 @@ function SectorsPreview() {
     </section>
   )
 }
-
 // ─── Mission CTA ───────────────────────────────────────────────────────────
 function MissionCTA() {
   const ref = useScrollReveal()
+
+  // 🔧 Scroll to top function (safe, local scope)
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <section
-        ref={ref}
-        className="reveal relative py-32 px-6 text-center overflow-hidden"
-        style={{
-          backgroundImage: "url('/IndiTechHome.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+      ref={ref}
+      className="reveal relative py-32 px-6 text-center overflow-hidden"
+      style={{
+        backgroundImage: "url('/IndiTechHome.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/70"></div>
+
       <div className="relative z-10 max-w-3xl mx-auto">
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-cyan mb-6">
           Indigenous Technology
         </p>
+
         <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
           Built for India.<br />Ready for the World.
         </h2>
+
         <p className="text-muted text-lg leading-relaxed mb-10">
           From autonomous UAV swarms to AI-powered command systems, Vayuron is designing
           the next generation of defence and industrial technology — rooted in indigenous
           engineering excellence.
         </p>
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <CTAButton to="/about" variant="primary">Our Story</CTAButton>
-          <CTAButton to="/contact" variant="secondary">Partner With Us</CTAButton>
+          <CTAButton to="/about" variant="primary">
+            Our Story
+          </CTAButton>
+
+          <CTAButton to="/contact" variant="secondary">
+            Partner With Us
+          </CTAButton>
         </div>
+
+        {/* 🔻 NEW: Vayuron Advanced System Bottom Icon */}
+        {/* 🔻 FIXED: Vayuron Advanced System Click */}
+<button
+  type="button"
+  onClick={() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }}
+  className="mt-12 flex flex-col items-center justify-center mx-auto text-cyan hover:text-white transition-all duration-300 group"
+  style={{ position: 'relative', zIndex: 20 }}
+>
+  <div className="text-xs tracking-[0.3em] uppercase group-hover:scale-105 transition-transform">
+    Vayuron Advanced System
+  </div>
+
+  <div className="w-2 h-2 bg-cyan rounded-full mt-2 group-hover:shadow-cyan"></div>
+</button>
+
       </div>
     </section>
   )
@@ -246,8 +282,12 @@ export default function HomePage() {
     <>
       <Helmet>
         <title>Vayuron Advanced Systems — Vayuron Advanced Systems</title>
-        <meta name="description" content="Vayuron Advanced Systems builds autonomous UAVs, AI platforms, and defence-grade software for critical national and industrial operations." />
+        <meta
+          name="description"
+          content="Vayuron Advanced Systems builds autonomous UAVs, AI platforms, and defence-grade software for critical national and industrial operations."
+        />
       </Helmet>
+
       <main>
         <Hero />
         <StatsBar />

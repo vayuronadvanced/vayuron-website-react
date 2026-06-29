@@ -19,12 +19,12 @@ export function SoftwarePage() {
         { label: 'Users',         value: 'Unlimited' },
       ]}
       features={[
-        { icon: '🎮', title: 'Ground Control Station', description: 'Full-featured GCS software for UAV fleet management, mission planning, telemetry monitoring, and payload control.' },
-        { icon: '🗺', title: 'Mission Planning Suite', description: 'Advanced route planning with terrain analysis, threat overlay, and multi-platform mission deconfliction tools.' },
-        { icon: '📊', title: 'Operational Dashboards', description: 'Real-time situational awareness displays aggregating sensor feeds, mission status, and asset tracking data.' },
-        { icon: '🔒', title: 'Secure Communications', description: 'End-to-end encrypted messaging, command channels, and audit-logged data transfer for classified environments.' },
-        { icon: '🔌', title: 'Integration APIs', description: 'Open API architecture for integration with existing defence information systems, radar networks, and sensor arrays.' },
-        { icon: '⚙', title: 'Maintenance Intelligence', description: 'Predictive maintenance analytics using platform telemetry to schedule servicing before failures occur.' },
+        { title: 'Ground Control Station', description: 'Full-featured GCS software for UAV fleet management, mission planning, telemetry monitoring, and payload control.' },
+        { title: 'Mission Planning Suite', description: 'Advanced route planning with terrain analysis, threat overlay, and multi-platform mission deconfliction tools.' },
+        { title: 'Operational Dashboards', description: 'Real-time situational awareness displays aggregating sensor feeds, mission status, and asset tracking data.' },
+        { title: 'Secure Communications', description: 'End-to-end encrypted messaging, command channels, and audit-logged data transfer for classified environments.' },
+        { title: 'Integration APIs', description: 'Open API architecture for integration with existing defence information systems, radar networks, and sensor arrays.' },
+        { title: 'Maintenance Intelligence', description: 'Predictive maintenance analytics using platform telemetry to schedule servicing before failures occur.' },
       ]}
       nextProduct={{ label: 'Advanced Engineering', path: '/products/advanced-engineering' }}
     />
@@ -50,12 +50,12 @@ export function EngineeringPage() {
         { label: 'Testing',        value: 'MIL-STD-810' },
       ]}
       features={[
-        { icon: '🏗', title: 'Composite Structures', description: 'Carbon fibre reinforced polymer airframes and structural components manufactured to aerospace tolerances.' },
-        { icon: '🔧', title: 'Systems Integration', description: 'Full subsystem integration — avionics, propulsion, payload, and communications — tested as a unified platform.' },
-        { icon: '🧪', title: 'Environmental Testing', description: 'MIL-STD-810 environmental testing for vibration, shock, humidity, altitude, and temperature extremes.' },
-        { icon: '📐', title: 'Precision Fabrication', description: 'CNC machining, 3D metal printing, and precision sheet metal fabrication for complex geometry components.' },
-        { icon: '🛸', title: 'Payload Integration', description: 'Custom payload mounting, gimbal design, and interface electronics for diverse sensor and effector packages.' },
-        { icon: '📋', title: 'Compliance & Certification', description: 'DGCA, BIS, and export compliance documentation support for defence procurement and regulatory approval.' },
+        { title: 'Composite Structures', description: 'Carbon fibre reinforced polymer airframes and structural components manufactured to aerospace tolerances.' },
+        { title: 'Systems Integration', description: 'Full subsystem integration — avionics, propulsion, payload, and communications — tested as a unified platform.' },
+        { title: 'Environmental Testing', description: 'MIL-STD-810 environmental testing for vibration, shock, humidity, altitude, and temperature extremes.' },
+        { title: 'Precision Fabrication', description: 'CNC machining, 3D metal printing, and precision sheet metal fabrication for complex geometry components.' },
+        { title: 'Payload Integration', description: 'Custom payload mounting, gimbal design, and interface electronics for diverse sensor and effector packages.' },
+        { title: 'Compliance & Certification', description: 'DGCA, BIS, and export compliance documentation support for defence procurement and regulatory approval.' },
       ]}
       nextProduct={{ label: 'UAV Systems', path: '/products/uav-systems' }}
     />

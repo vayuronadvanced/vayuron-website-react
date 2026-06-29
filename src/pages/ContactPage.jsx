@@ -188,12 +188,25 @@ export default function ContactPage() {
               <CyanDivider />
 
               <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">Headquarters</p>
-                <p className="text-muted font-mono text-sm leading-relaxed">
-                  Vayuron Advanced Systems<br />
-                  Bhopal, Madhya Pradesh<br />
-                  India
+                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+                  Office Address
                 </p>
+
+                <p className="text-muted font-mono text-sm leading-relaxed">
+                  Vayuron Advanced Systems
+                </p>
+
+                <a
+                  href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-muted font-mono text-sm leading-relaxed mt-2 hover:text-cyan transition-colors"
+                >
+                  47, Balaji Nagar,<br />
+                  Ayodhya Nagar,<br />
+                  Bhopal, Madhya Pradesh 462023,<br />
+                  India
+                </a>
               </div>
 
               <CyanDivider />

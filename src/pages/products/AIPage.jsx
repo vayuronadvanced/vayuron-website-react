@@ -19,12 +19,12 @@ export default function AIPage() {
         { label: 'Cloud Required',  value: 'No' },
       ]}
       features={[
-        { icon: '👁', title: 'Computer Vision', description: 'Real-time object detection, classification, and tracking across electro-optical, infrared, and multispectral imagery.' },
-        { icon: '🧠', title: 'Decision Intelligence', description: 'AI-driven situational awareness engines that fuse multi-sensor data and present prioritised threat assessments.' },
-        { icon: '⚡', title: 'Edge AI Deployment', description: 'Models optimised for embedded hardware — NVIDIA Jetson, Hailo, and custom NPUs — with no cloud connectivity required.' },
-        { icon: '🛡', title: 'Adversarial Robustness', description: 'Models hardened against adversarial inputs and sensor spoofing common in contested operational environments.' },
-        { icon: '📡', title: 'Signal Intelligence', description: 'AI-powered RF signal classification and spectrum monitoring for electronic warfare support.' },
-        { icon: '🔄', title: 'Continuous Learning', description: 'Federated learning pipelines enabling model improvement from field data without centralised data exposure.' },
+        { title: 'Computer Vision', description: 'Real-time object detection, classification, and tracking across electro-optical, infrared, and multispectral imagery.' },
+        { title: 'Decision Intelligence', description: 'AI-driven situational awareness engines that fuse multi-sensor data and present prioritised threat assessments.' },
+        { title: 'Edge AI Deployment', description: 'Models optimised for embedded hardware — NVIDIA Jetson, Hailo, and custom NPUs — with no cloud connectivity required.' },
+        { title: 'Adversarial Robustness', description: 'Models hardened against adversarial inputs and sensor spoofing common in contested operational environments.' },
+        { title: 'Signal Intelligence', description: 'AI-powered RF signal classification and spectrum monitoring for electronic warfare support.' },
+        { title: 'Continuous Learning', description: 'Federated learning pipelines enabling model improvement from field data without centralised data exposure.' },
       ]}
       nextProduct={{ label: 'Software Systems', path: '/products/software-systems' }}
     />

@@ -28,37 +28,31 @@ export default function CarbonCompositePage() {
 
       features={[
         {
-          icon: '✈',
           title: 'Lightweight Airframes',
           description:
             'Carbon fibre airframes engineered for maximum structural strength with minimal weight.'
         },
         {
-          icon: '🛡',
           title: 'Defence Structures',
           description:
             'Composite components designed for demanding military and security applications.'
         },
         {
-          icon: '⚙',
           title: 'Custom Manufacturing',
           description:
             'Precision manufacturing of mission-specific carbon fibre and composite assemblies.'
         },
         {
-          icon: '📦',
           title: 'Payload Enclosures',
           description:
             'Lightweight protective housings for avionics, sensors, batteries, and mission payloads.'
         },
         {
-          icon: '🔬',
           title: 'Advanced Materials',
           description:
             'Use of aerospace-grade composite materials for superior durability and performance.'
         },
         {
-          icon: '🏭',
           title: 'Rapid Prototyping',
           description:
             'Fast design, prototyping, and production for defence and industrial programmes.'

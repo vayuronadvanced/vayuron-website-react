@@ -17,151 +17,141 @@ export default function Footer() {
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/70"></div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-10">      
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-6">      
       {/* Your existing footer content */}
 
-        {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-10">
+      {/* Top Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] items-center gap-24 py-3">
 
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-3 group w-fit">
-              <div>
-                <div className="font-display font-bold uppercase text-white text-sm tracking-[0.12em] group-hover:text-cyan transition-colors">
-                  VAYURON
-                </div>
-                <div className="font-mono text-sm text-white  tracking-[0.2em] uppercase">
-                  Advanced Systems
-                </div>
-              </div>
-            </Link>
-            <p className="text-white text-sm leading-relaxed max-w-xs mb-4">
-              Engineering indigenous innovation in defence, aerospace, and autonomous systems for critical national operations.
-            </p>
-            
-            <div className="flex gap-3 mb-4">
+      {/* Brand */}
+      <div className="flex flex-col items-start max-w-md">
 
-            <a
-              href={SITE.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="hover:scale-110 transition-transform duration-300"
-            >
-              <img
-                src="/icons/instagram.png"
-                alt="Instagram"
-                className="w-7 h-7 object-contain"
-              />
-            </a>
+        <Link to="/" className="group inline-block">
 
-            <a
-              href={SITE.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="hover:scale-110 transition-transform duration-300"
-            >
-              <img
-                src="/icons/linkedin.png"
-                alt="LinkedIn"
-                className="w-7 h-7 object-contain"
-              />
-            </a>
+          <h2 className="font-display text-[2.8rem] md:text-[3.6rem] leading-none tracking-[0.05em] text-cyan group-hover:text-white transition-colors">
+            VAYURON
+          </h2>
 
-            <a
-              href={SITE.x}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X"
-              className="hover:scale-110 transition-transform duration-300"
-            >
-              <img
-                src="/icons/x.png"
-                alt="X"
-                className="w-7 h-7 object-contain"
-              />
-            </a>
+          <p className="font-mono text-xs md:text-sm tracking-[0.30em] uppercase text-white mt-1">
+            ADVANCED SYSTEMS
+          </p>
 
-          </div>
+        </Link>
 
-            <div className="space-y-1">
-              <a href={`tel:${SITE.phoneTel}`} className="block font-mono text-sm text-white hover:text-cyan transition-colors">
-                {SITE.phone}
-              </a>
-              <a href={`mailto:${SITE.email}`} className="block font-mono text-sm text-white hover:text-cyan transition-colors">
-                {SITE.email}
-              </a>
-            </div>
-          </div>
+        {/* Social Icons */}
+        <div className="flex gap-3 mt-4">
 
-          {/* Products */}
-          <div>
-            <h4 className="font-display text-sm uppercase tracking-[0.08em] text-cyan mb-4">Products</h4>
-            <ul className="space-y-1.5">
-              {FOOTER_LINKS.products.map(link => (
-                <li key={link.path}>
-                  <Link to={link.path} className="font-sans text-sm text-white hover:text-cyan transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <a
+            href={SITE.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-110 transition-transform"
+          >
+            <img
+              src="/icons/instagram.png"
+              alt="Instagram"
+              className="w-7 h-7"
+            />
+          </a>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-mono text-sm tracking-widest uppercase text-cyan mb-4">Company</h4>
-            <ul className="space-y-2.5">
-              {FOOTER_LINKS.company.map(link => (
-                <li key={link.path}>
-                  <Link to={link.path} className="font-mono text-sm text-white hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <a
+            href={SITE.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-110 transition-transform"
+          >
+            <img
+              src="/icons/linkedin.png"
+              alt="LinkedIn"
+              className="w-7 h-7"
+            />
+          </a>
 
-          {/* Newsletter */}
-          <div>
-            <h4 className="font-mono text-sm tracking-widest uppercase text-cyan mb-4">Stay Updated</h4>
-            <p className="font-sans text-sm text-white mb-3 leading-relaxed">
-              Defence technology insights and company updates.
-            </p>
-            <div className="flex flex-col gap-1.5">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="bg-black border border-[rgba(0,212,255,0.15)] text-white px-3 py-2 font-mono text-sm focus:border-cyan focus:outline-none transition-colors placeholder-white"
-              />
-              <button className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-3 py-2 font-display text-sm uppercase tracking-[0.08em]">
-                Subscribe
-              </button>
-            </div>
-          </div>
+          <a
+            href={SITE.x}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:scale-110 transition-transform"
+          >
+            <img
+              src="/icons/x.png"
+              alt="X"
+              className="w-7 h-7"
+            />
+          </a>
+
         </div>
 
+        {/* Contact */}
+        <div className="mt-3 space-y-1">
+
+          <a
+            href={`tel:${SITE.phoneTel}`}
+            className="block text-sm text-white hover:text-cyan transition-colors"
+          >
+            {SITE.phone}
+          </a>
+
+          <a
+            href={`mailto:${SITE.email}`}
+            className="block text-sm text-white hover:text-cyan transition-colors"
+          >
+            {SITE.email}
+          </a>
+
+        </div>
+
+      </div>
+
+      {/* Newsletter */}
+          <div className="justify-self-end w-full max-w-sm">
+
+            <h4 className="font-display text-lg uppercase tracking-[0.12em] text-cyan mb-2">
+              Stay Updated
+            </h4>
+
+            <p className="text-sm text-white/80 mb-4">
+              Defence technology insights and company updates.
+            </p>
+
+            <input
+              type="email"
+              placeholder="your@email.com"
+              className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+            />
+
+            <button
+              className="w-full mt-2 border border-cyan py-2 text-cyan uppercase text-sm tracking-[0.12em] hover:bg-cyan hover:text-black transition-all"
+            >
+              Subscribe
+            </button>
+
+          </div>
+          </div>
+          
         {/* Bottom Bar */}
-        <div className="border-t border-[rgba(0,212,255,0.08)] pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="font-sans text-sm text-white">
+        <div className="border-t border-[rgba(0,212,255,0.08)] mt-6 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
+
+          <p className="text-sm text-white/70 text-center md:text-left">
             © {year} Vayuron Advanced Systems. All rights reserved.
           </p>
 
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 list-none">
-            {FOOTER_LINKS.legal.map(link => (
-              <li key={link.path}>
-                <Link
-                  to={link.path}
-                  className="font-sans text-sm text-white hover:text-cyan transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
+          <div className="flex items-center gap-6">
+            {FOOTER_LINKS.legal.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="text-sm text-white/70 hover:text-cyan transition-colors"
+              >
+                {link.label}
+              </Link>
             ))}
-          </ul>
-        </div>
-        </div>
-    </footer>
+          </div>
+
+        </div>  
+
+      </div> {/* closes relative z-10 */}
+
+</footer>
   )
 }

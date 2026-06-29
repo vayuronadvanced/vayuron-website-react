@@ -22,12 +22,12 @@ export default function UAVSystemsPage() {
         { label: 'Navigation',       value: 'GPS + INS' },
       ]}
       features={[
-        { icon: '🛰', title: 'Multi-Mission Platforms', description: 'Configurable airframes supporting ISR, cargo, electronic warfare, and strike missions with quick-change payload interfaces.' },
-        { icon: '🤖', title: 'Autonomous Flight', description: 'AI-driven autopilot with terrain-following, obstacle avoidance, and autonomous return-to-home under comms-denied conditions.' },
-        { icon: '🔐', title: 'Encrypted Datalinks', description: 'Military-grade encrypted command and control channels with frequency-hopping and anti-jam protection.' },
-        { icon: '👁', title: 'EO/IR Sensor Suite', description: 'Integrated electro-optical and infrared camera systems with real-time target tracking and geo-tagging.' },
-        { icon: '🔋', title: 'Extended Endurance', description: 'Hybrid propulsion options delivering 6+ hours of flight time on a single charge or fuel load.' },
-        { icon: '🌐', title: 'Swarm Coordination', description: 'Multi-UAV swarm intelligence protocols enabling coordinated missions across distributed platforms.' },
+        { title: 'Multi-Mission Platforms', description: 'Configurable airframes supporting ISR, cargo, electronic warfare, and strike missions with quick-change payload interfaces.' },
+        { title: 'Autonomous Flight', description: 'AI-driven autopilot with terrain-following, obstacle avoidance, and autonomous return-to-home under comms-denied conditions.' },
+        { title: 'Encrypted Datalinks', description: 'Military-grade encrypted command and control channels with frequency-hopping and anti-jam protection.' },
+        { title: 'EO/IR Sensor Suite', description: 'Integrated electro-optical and infrared camera systems with real-time target tracking and geo-tagging.' },
+        { title: 'Extended Endurance', description: 'Hybrid propulsion options delivering 6+ hours of flight time on a single charge or fuel load.' },
+        { title: 'Swarm Coordination', description: 'Multi-UAV swarm intelligence protocols enabling coordinated missions across distributed platforms.' },
       ]}
       nextProduct={{ label: 'Artificial Intelligence', path: '/products/artificial-intelligence' }}
     />

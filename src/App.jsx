@@ -25,11 +25,11 @@ import EnvironmentalPage from './pages/sectors/EnvironmentalPage'
 import IndustrialPage from './pages/sectors/IndustrialPage'
 import TechnologyPage from './pages/TechnologyPage'
 import AboutPage from './pages/AboutPage'
-import CareersPage from './pages/CareersPage'
 import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 import AvionicsPage from './pages/products/AvionicsPage'
 import CarbonCompositePage from './pages/products/CarbonCompositePage'
+import ScrollToTop from './components/utils/ScrollToTop'
 
 // ─── Page Transition Wrapper ───────────────────────────────────────────────
 const pageVariants = {
@@ -106,54 +106,55 @@ export default function App() {
 
   return (
     <>
+  <AnimatePresence mode="wait">
+    {isLoading && <LoadingScreen key="loading" />}
+  </AnimatePresence>
+
+  {!isLoading && (
+    <>
+      <CustomCursor />
+      <ScrollProgressBar />
+      <Navbar />
+
+      {/* ✅ MUST BE HERE (outside AnimatePresence) */}
+      <ScrollToTop />
+
       <AnimatePresence mode="wait">
-        {isLoading && <LoadingScreen key="loading" />}
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
+
+          {/* Products */}
+          <Route path="/products" element={<PageWrapper><ProductsPage /></PageWrapper>} />
+          <Route path="/products/uav-systems" element={<PageWrapper><UAVSystemsPage /></PageWrapper>} />
+          <Route path="/products/artificial-intelligence" element={<PageWrapper><AIPage /></PageWrapper>} />
+          <Route path="/products/software-systems" element={<PageWrapper><SoftwarePage /></PageWrapper>} />
+          <Route path="/products/advanced-engineering" element={<PageWrapper><EngineeringPage /></PageWrapper>} />
+          <Route path="/products/avionics" element={<PageWrapper><AvionicsPage /></PageWrapper>} />
+          <Route path="/products/carbon-composite" element={<PageWrapper><CarbonCompositePage /></PageWrapper>} />
+
+          {/* Sectors */}
+          <Route path="/sectors" element={<PageWrapper><SectorsPage /></PageWrapper>} />
+          <Route path="/sectors/defence-security" element={<PageWrapper><DefencePage /></PageWrapper>} />
+          <Route path="/sectors/smart-cities" element={<PageWrapper><SmartCitiesPage /></PageWrapper>} />
+          <Route path="/sectors/municipal-operations" element={<PageWrapper><MunicipalPage /></PageWrapper>} />
+          <Route path="/sectors/infrastructure-monitoring" element={<PageWrapper><InfrastructurePage /></PageWrapper>} />
+          <Route path="/sectors/agriculture" element={<PageWrapper><AgriculturePage /></PageWrapper>} />
+          <Route path="/sectors/disaster-management" element={<PageWrapper><DisasterPage /></PageWrapper>} />
+          <Route path="/sectors/environmental-monitoring" element={<PageWrapper><EnvironmentalPage /></PageWrapper>} />
+          <Route path="/sectors/industrial-inspection" element={<PageWrapper><IndustrialPage /></PageWrapper>} />
+
+          {/* Core Pages */}
+          <Route path="/technology" element={<PageWrapper><TechnologyPage /></PageWrapper>} />
+          <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
+          <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
+
+          <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
+        </Routes>
       </AnimatePresence>
 
-      {!isLoading && (
-        <>
-          <CustomCursor />
-          <ScrollProgressBar />
-          <Navbar />
-
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
-
-              {/* Products */}
-              <Route path="/products" element={<PageWrapper><ProductsPage /></PageWrapper>} />
-              <Route path="/products/uav-systems" element={<PageWrapper><UAVSystemsPage /></PageWrapper>} />
-              <Route path="/products/artificial-intelligence" element={<PageWrapper><AIPage /></PageWrapper>} />
-              <Route path="/products/software-systems" element={<PageWrapper><SoftwarePage /></PageWrapper>} />
-              <Route path="/products/advanced-engineering" element={<PageWrapper><EngineeringPage /></PageWrapper>} />
-              <Route path="/products/avionics" element={<PageWrapper><AvionicsPage /></PageWrapper>}/>
-              <Route path="/products/carbon-composite" element={<PageWrapper><CarbonCompositePage /></PageWrapper>}/>
-
-              {/* Sectors */}
-              <Route path="/sectors" element={<PageWrapper><SectorsPage /></PageWrapper>} />
-              <Route path="/sectors/defence-security" element={<PageWrapper><DefencePage /></PageWrapper>} />
-              <Route path="/sectors/smart-cities" element={<PageWrapper><SmartCitiesPage /></PageWrapper>} />
-              <Route path="/sectors/municipal-operations" element={<PageWrapper><MunicipalPage /></PageWrapper>} />
-              <Route path="/sectors/infrastructure-monitoring" element={<PageWrapper><InfrastructurePage /></PageWrapper>} />
-              <Route path="/sectors/agriculture" element={<PageWrapper><AgriculturePage /></PageWrapper>} />
-              <Route path="/sectors/disaster-management" element={<PageWrapper><DisasterPage /></PageWrapper>} />
-              <Route path="/sectors/environmental-monitoring" element={<PageWrapper><EnvironmentalPage /></PageWrapper>} />
-              <Route path="/sectors/industrial-inspection" element={<PageWrapper><IndustrialPage /></PageWrapper>} />
-
-              {/* Core Pages */}
-              <Route path="/technology" element={<PageWrapper><TechnologyPage /></PageWrapper>} />
-              <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
-              <Route path="/careers" element={<PageWrapper><CareersPage /></PageWrapper>} />
-              <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
-
-              {/* 404 */}
-              <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
-            </Routes>
-          </AnimatePresence>
-
-          <Footer />
-        </>
-      )}
+      <Footer />
     </>
+  )}
+</>
   )
 }

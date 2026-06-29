@@ -28,37 +28,31 @@ export default function AvionicsPage() {
 
       features={[
         {
-          icon: '🛰',
           title: 'Flight Control Computers',
           description:
             'High-reliability embedded flight controllers supporting autonomous missions and manual override.'
         },
         {
-          icon: '📡',
           title: 'Navigation Systems',
           description:
             'GPS, INS and sensor fusion for precise positioning in challenging environments.'
         },
         {
-          icon: '🔋',
           title: 'Power Management',
           description:
             'Redundant power distribution systems with intelligent battery monitoring.'
         },
         {
-          icon: '🧭',
           title: 'Mission Computers',
           description:
             'Onboard processors handling navigation, payload management and mission execution.'
         },
         {
-          icon: '📶',
           title: 'Communication Modules',
           description:
             'Encrypted radio and telemetry interfaces for secure command and control.'
         },
         {
-          icon: '⚙',
           title: 'Embedded Electronics',
           description:
             'Custom-designed avionics hardware engineered for defence-grade reliability.'

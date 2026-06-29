@@ -23,6 +23,14 @@ const mobileMenuVariants = {
   exit:   { opacity: 0, x: '100%', transition: { duration: 0.2 } },
 }
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  })
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
@@ -65,7 +73,12 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          {/* Logo */}
+          <Link
+            to="/"
+            onClick={scrollToTop}
+            className="flex items-center gap-3 group"
+          >
             <VayuronLogo />
             <div>
               <div className="font-display font-bold uppercase text-white text-lg leading-none tracking-[0.12em] group-hover:text-cyan transition-colors">
@@ -124,17 +137,21 @@ export default function Navbar() {
                           <Link
                             key={product.id}
                             to={product.path}
-                            className="flex items-start gap-3 p-3 rounded-sm hover:bg-[rgba(0,212,255,0.06)] hover:pl-4 transition-all duration-200 group"
+                            className="block px-3 py-3 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
                           >
-                            <span className="text-cyan mt-0.5 text-lg">{product.icon}</span>
-                            <div>
-                              <div className="font-sans font-semibold text-sm text-white group-hover:text-cyan transition-colors">
+                            {/* Heading */}
+                            <div className="flex items-center gap-3">
+                              <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0" />
+
+                              <h3 className="font-sans font-semibold text-sm text-white group-hover:text-cyan transition-colors">
                                 {product.label}
-                              </div>
-                              <div className="font-sans text-xs text-white/80 mt-0.5 leading-relaxed">
-                                {product.description}
-                              </div>
+                              </h3>
                             </div>
+
+                            {/* Description */}
+                            <p className="ml-4 mt-1 text-[11px] text-white/70 leading-relaxed">
+                              {product.description}
+                            </p>
                           </Link>
                         ))}
                       </div>
@@ -161,17 +178,18 @@ export default function Navbar() {
                       onMouseLeave={() => setActiveDropdown(null)}
                       className="absolute top-full left-0 mt-1 w-72 bg-surface border border-[rgba(0,212,255,0.15)] rounded-sm shadow-2xl"
                     >
-                      <div className="p-2 grid grid-cols-1 gap-0.5">
+                      <div className="p-2">
                         {SECTORS.map((sector) => (
                           <Link
                             key={sector.id}
                             to={sector.path}
-                            className="flex items-center gap-3 px-3 py-2.5 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
+                            className="flex items-center gap-3 px-2 py-2 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
                           >
-                            <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0"/>
-                            <span className="font-sans text-xs text-white group-hover:text-cyan transition-colors">
+                            <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0" />
+
+                            <h3 className="font-sans font-semibold text-xs text-white group-hover:text-cyan transition-colors">
                               {sector.label}
-                            </span>
+                            </h3>
                           </Link>
                         ))}
                       </div>
@@ -243,10 +261,23 @@ export default function Navbar() {
                               <Link
                                 key={item.id}
                                 to={item.path}
-                                className="flex items-center gap-2 py-2 pl-4 font-sans text-xs text-white hover:text-cyan transition-colors"
+                                className="block px-3 py-3 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
                               >
-                                <span className="w-1 h-1 rounded-full bg-dim"/>
-                                {item.label}
+                                <div className="flex items-center gap-3">
+                                  <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0" />
+
+                                  <div>
+                                    <h3 className="font-sans font-semibold text-sm text-white group-hover:text-cyan transition-colors">
+                                      {item.label}
+                                    </h3>
+
+                                    {link.label === 'Products' && (
+                                      <p className="text-xs text-white/80 mt-1 leading-relaxed">
+                                        {item.description}
+                                      </p>
+                                    )}
+                                  </div>
+                                </div>
                               </Link>
                             ))}
                           </motion.div>
