@@ -7,7 +7,8 @@ export default function Footer() {
   return (
       <footer
         className="relative mt-auto border-t border-[rgba(0,212,255,0.1)] overflow-hidden"
-        // Changes footer colour  className="relative mt-auto overflow-hidden border-t border-gray-400 bg-gradient-to-b from-gray-300 via-gray-200 to-gray-400"
+     // className="relative mt-auto overflow-hidden border-t border-gray-400 bg-gradient-to-b from-gray-300 via-gray-200 to-gray-400"
+     // Changes footer colour
         style={{
           //backgroundImage: "url('/Footer.png')",
           backgroundSize: "cover",
@@ -153,6 +154,6 @@ export default function Footer() {
 
       </div> {/* closes relative z-10 */}
 
-</>
+  </footer>
   )
 }

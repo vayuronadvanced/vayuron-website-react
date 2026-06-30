@@ -203,9 +203,8 @@ export default function ContactPage() {
                   className="block text-muted font-mono text-sm leading-relaxed mt-2 hover:text-cyan transition-colors"
                 >
                   47, Balaji Nagar,<br />
-                  Ayodhya Nagar,<br />
-                  Bhopal, Madhya Pradesh 462023,<br />
-                  India
+                  Ayodhya Bypass, Bhopal,<br />
+                   Madhya Pradesh 462023, India
                 </a>
               </div>
 
