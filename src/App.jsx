@@ -29,6 +29,7 @@ import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
 import AvionicsPage from './pages/products/AvionicsPage'
 import CarbonCompositePage from './pages/products/CarbonCompositePage'
+import DroneModelsPage from './pages/products/DroneModelsPage'
 import ScrollToTop from './components/utils/ScrollToTop'
 import CareersPage from './pages/CareersPage'
 
@@ -132,6 +133,7 @@ export default function App() {
           <Route path="/products/advanced-engineering" element={<PageWrapper><EngineeringPage /></PageWrapper>} />
           <Route path="/products/avionics" element={<PageWrapper><AvionicsPage /></PageWrapper>} />
           <Route path="/products/carbon-composite" element={<PageWrapper><CarbonCompositePage /></PageWrapper>} />
+          <Route path="/products/drone-models" element={<PageWrapper><DroneModelsPage /></PageWrapper>} />
 
           {/* Sectors */}
           <Route path="/sectors" element={<PageWrapper><SectorsPage /></PageWrapper>} />

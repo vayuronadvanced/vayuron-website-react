@@ -58,7 +58,7 @@ export const PRODUCTS = [
     label: 'Carbon & Composite',
     path: '/products/carbon-composite',
     description: 'Lightweight composite structures for aerospace applications.',
-  },
+  }
 ]
 
 export const SECTORS = [

@@ -94,22 +94,38 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map((link) => (
               <div key={link.label} className="relative">
-                {link.hasDropdown ? (
-                  <button
-                    onMouseEnter={() => setActiveDropdown(link.label)}
-                    onMouseLeave={() => setActiveDropdown(null)}
-                    className={`flex items-center gap-1 px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase transition-colors ${
-                      location.pathname.startsWith(link.path)
-                        ? 'text-cyan'
-                        : 'text-white hover:text-cyan'
-                    }`}
-                  >
-                    {link.label}
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" className="mt-0.5">
-                      <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-                    </svg>
-                  </button>
-                ) : (
+                  {link.hasDropdown ? (
+                    <div
+                      className="flex items-center"
+                      onMouseEnter={() => setActiveDropdown(link.label)}
+                      onMouseLeave={() => setActiveDropdown(null)}
+                    >
+                      <Link
+                        to={link.path}
+                        className={`px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase transition-colors ${
+                          location.pathname.startsWith(link.path)
+                            ? 'text-cyan'
+                            : 'text-white hover:text-cyan'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+
+                      <button
+                        className="pr-4 py-2 text-white hover:text-cyan transition-colors"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                          <path
+                            d="M2 3.5L5 6.5L8 3.5"
+                            stroke="currentColor"
+                            strokeWidth="1.2"
+                            fill="none"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  ) : (
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>

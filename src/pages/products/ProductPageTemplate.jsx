@@ -51,7 +51,7 @@ export default function ProductPageTemplate({
               playsInline
             />
 
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+            {/* <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" /> */}
 
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24 flex items-center">
               <div className="max-w-2xl border-l-2 border-cyan pl-6">
