@@ -41,7 +41,7 @@ export default function ProductPageTemplate({
         ═══════════════════════════════════════ */}
         
         {heroVideo && (
-          <section className="relative w-full h-[520px] overflow-hidden">
+          <section className="relative min-h-screen flex items-center overflow-hidden">
             <video
               className="absolute inset-0 w-full h-full object-cover"
               src={heroVideo}
@@ -53,7 +53,7 @@ export default function ProductPageTemplate({
 
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
 
-            <div className="relative z-10 h-full flex items-center px-6 max-w-[1400px] mx-auto">
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24 flex items-center">
               <div className="max-w-2xl border-l-2 border-cyan pl-6">
                 <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">
                   Product Overview
@@ -74,7 +74,7 @@ export default function ProductPageTemplate({
         {/* ═══════════════════════════════════════
             SPECS + CAPABILITIES (over drone BG)
         ═══════════════════════════════════════ */}
-        <section className="relative py-20 overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden">
 
           {/* Full-bleed background — no dimming filter */}
           {contentBackgroundImage && (
@@ -89,20 +89,21 @@ export default function ProductPageTemplate({
             />
           )}
 
-          {/* Gradient: dark top/bottom, clear in the middle so drone is visible */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-black/70 pointer-events-none" />
+          {/* Gradient: dark top/bottom, clear in the middle so drone is visible
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-black/70 pointer-events-none" /> */}
+          
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
 
             {/* ── KEY SPECIFICATIONS ── */}
             {specs.length > 0 && (
-              <div className="mb-16">
+              <div className="mb-24">
                 <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">Technical Data</p>
                 <h2 className="font-sans text-2xl font-bold text-white mb-8 uppercase tracking-wide">
                   Key Specifications
                 </h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {specs.map((spec, i) => (
                     <div
                       key={i}
@@ -123,7 +124,7 @@ export default function ProductPageTemplate({
             )}
 
             {/* Divider */}
-            <div className="mb-16 opacity-30">
+            <div className="mb-24 opacity-30">
               <CyanDivider />
             </div>
 
@@ -135,7 +136,7 @@ export default function ProductPageTemplate({
                   Capabilities
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {features.map((feature, i) => (
                     <div
                       key={i}
@@ -168,8 +169,7 @@ export default function ProductPageTemplate({
         {/* ═══════════════════════════════════════
           CTA
       ═══════════════════════════════════════ */}
-      <section className="relative py-20 overflow-hidden border-t border-[rgba(0,212,255,0.1)]">
-
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden border-t border-[rgba(0,212,255,0.1)]">
         {/* Background Image */}
         <div
           className="absolute inset-0"
@@ -181,20 +181,20 @@ export default function ProductPageTemplate({
           }}
         />
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/70" />
+        {/* Dark Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/80" /> */}
+        
 
         {/* Content */}
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 text-center">
-          <h2 className="font-sans text-3xl font-bold text-white mb-4">
+        <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 text-center">          
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">            
             Interested in {title}?
           </h2>
 
-          <p className="text-white/80 mb-8 max-w-xl mx-auto">
+          <p className="text-white/80 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
             Speak with our engineering team about your operational requirements.
           </p>
 
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex justify-center gap-5 flex-wrap mt-10">
             <CTAButton to="/contact" variant="primary">
               Request a Briefing
             </CTAButton>

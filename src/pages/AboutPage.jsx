@@ -51,7 +51,7 @@ export default function AboutPage() {
         {/* Mission Statement */}
         <section
           ref={missionRef}
-          className="reveal relative py-24 overflow-hidden"
+          className="reveal relative min-h-screen flex items-center overflow-hidden"
         >
           {/* Background Image */}
           <div
@@ -68,8 +68,8 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-black/75" />
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
               {/* Left Content */}
               <div>
@@ -114,7 +114,7 @@ export default function AboutPage() {
         {/* Values */}
         <section
           ref={valuesRef}
-          className="reveal relative py-24 overflow-hidden"
+          className="reveal relative min-h-screen flex items-center overflow-hidden"
         >
           {/* Background Image */}
           <div
@@ -131,7 +131,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
 
             <SectionHeader
               eyebrow="Our Values"
@@ -139,7 +139,7 @@ export default function AboutPage() {
               subtitle="The principles that guide every engineering decision, partnership, and deployment."
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               {values.map((v, i) => (
                 <div
                   key={i}
@@ -163,7 +163,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
           {/* Background Image */}
           <div
@@ -180,9 +180,9 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 text-center">
+          <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 text-center">
 
-            <h2 className="font-display text-4xl font-bold text-white mb-5">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
               Join Our Mission
             </h2>
 
@@ -191,7 +191,7 @@ export default function AboutPage() {
               to build meaningful technology for national security.
             </p>
 
-            <div className="flex justify-center gap-6 flex-wrap">
+            <div className="flex justify-center gap-5 flex-wrap mt-10">
               <CTAButton to="/careers" variant="primary">
                 View Open Roles
               </CTAButton>

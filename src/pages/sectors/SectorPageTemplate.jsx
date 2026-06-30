@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, StatCard, FeatureCard, CTAButton, CyanDivider } from '../../components/ui'
-import { PRODUCTS } from '../../data/siteData'
+import { PageBanner, StatCard, CTAButton } from '../../components/ui'
 
 export default function SectorPageTemplate({
   title,
@@ -30,39 +29,105 @@ export default function SectorPageTemplate({
 
         {/* Stats */}
         {stats.length > 0 && (
-          <section className="bg-surface border-b border-[rgba(0,212,255,0.1)] py-12 px-6">
-            <div className="max-w-[1400px] mx-auto grid grid-cols-3 gap-8">
-              {stats.map((stat, i) => (
-                <StatCard key={i} value={stat.value} suffix={stat.suffix} label={stat.label} />
+          <section className="relative min-h-screen flex items-center overflow-hidden">            
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage: "url('/Sector2.png')",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />
+
+              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">              {stats.map((stat, i) => (
+              <StatCard key={i} value={stat.value} suffix={stat.suffix} label={stat.label} />
               ))}
+            </div>
             </div>
           </section>
         )}
 
         {/* Overview */}
-        <section className="py-16 px-6 max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="font-display text-3xl font-bold text-white mb-4">Sector Overview</h2>
-              <p className="text-muted leading-relaxed">{overview}</p>
-            </div>
-            {solution && (
-              <div className="bg-surface border border-[rgba(0,212,255,0.15)] p-8">
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">Vayuron Solution</p>
-                <p className="text-text leading-relaxed">{solution}</p>
+        <section className="relative min-h-screen flex items-center overflow-hidden">
+
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/Sector3.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
+
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+              <div>
+                <h2 className="font-display text-3xl font-bold text-white mb-4">
+                  Sector Overview
+                </h2>
+
+                <p className="text-muted leading-relaxed">
+                  {overview}
+                </p>
               </div>
-            )}
+
+              {solution && (
+                <div className="rounded-xl border border-white/10 bg-black/20 backdrop-blur-md p-8 hover:border-cyan/40 transition-all duration-300">
+                  <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">
+                    Vayuron Solution
+                  </p>
+
+                  <p className="text-text leading-relaxed">
+                    {solution}
+                  </p>
+                </div>
+              )}
+
+            </div>
+
           </div>
+
         </section>
 
         {/* Challenges */}
         {challenges.length > 0 && (
-          <section className="py-16 bg-surface border-y border-[rgba(0,212,255,0.08)] px-6">
-            <div className="max-w-[1400px] mx-auto">
+        <section className="relative min-h-screen flex items-center overflow-hidden">     
+        <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('/Sector4.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />       
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
               <h2 className="font-display text-2xl font-bold text-white mb-8">Sector Challenges</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {challenges.map((c, i) => (
-                  <FeatureCard key={i} icon={c.icon} title={c.title} description={c.description} />
+                  <div
+                    key={i}
+                    className="group rounded-xl border border-white/10 bg-black/20 backdrop-blur-md p-8 hover:border-cyan/40 hover:bg-black/35 transition-all duration-300"
+                  >
+                    <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
+                      {c.title}
+                    </h3>
+
+                    <p className="text-white/75 leading-relaxed">
+                      {c.description}
+                    </p>
+                  </div>                
                 ))}
               </div>
             </div>
@@ -71,37 +136,90 @@ export default function SectorPageTemplate({
 
         {/* Technology Cards */}
         {technologies.length > 0 && (
-          <section className="py-16 px-6 max-w-[1400px] mx-auto">
-            <h2 className="font-display text-2xl font-bold text-white mb-8">Technologies Deployed</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {technologies.map((tech, i) => (
-                <Link
-                  key={i}
-                  to={tech.path || '/products'}
-                  className="group bg-surface border border-[rgba(0,212,255,0.1)] hover:border-cyan p-6 transition-all"
-                >
-                  <div className="text-2xl mb-3">{tech.icon}</div>
-                  <h3 className="font-display font-semibold text-white group-hover:text-cyan transition-colors mb-2">
-                    {tech.label}
-                  </h3>
-                  <p className="text-muted text-xs leading-relaxed">{tech.description}</p>
-                </Link>
-              ))}
+          <section className="relative min-h-screen flex items-center overflow-hidden">
+
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/Sector5.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
+
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+
+              <h2 className="font-display text-2xl font-bold text-white mb-8">
+                Technologies Deployed
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                {technologies.map((tech, i) => (
+                  <Link
+                    key={i}
+                    to={tech.path || '/products'}
+                    className="group rounded-xl border border-white/10 bg-black/20 backdrop-blur-md p-8 hover:bg-black/35 hover:border-cyan/40 hover:-translate-y-1 transition-all duration-300"
+                  >
+                    <div className="text-2xl mb-3">
+                      {tech.icon}
+                    </div>
+
+                    <h3 className="font-display font-semibold text-white group-hover:text-cyan transition-colors mb-2">
+                      {tech.label}
+                    </h3>
+
+                    <p className="text-muted text-xs leading-relaxed">
+                      {tech.description}
+                    </p>
+                  </Link>
+                ))}
+
+              </div>
+
             </div>
+
           </section>
         )}
 
-        {/* CTA */}
-        <section className="py-16 bg-surface border-t border-[rgba(0,212,255,0.1)] text-center px-6">
-          <h2 className="font-display text-3xl font-bold text-white mb-4">
-            Deploy in {title}?
-          </h2>
-          <p className="text-muted mb-8 max-w-xl mx-auto">
-            Our sector specialists can design a tailored solution for your operational requirements.
-          </p>
-          <CTAButton to="/contact" variant="primary">Start a Conversation</CTAButton>
+       {/* CTA */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/Sector6.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/80" />
+
+          <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 text-center">
+
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+              Deploy in {title}?
+            </h2>
+
+            <p className="text-white/80 text-lg leading-relaxed max-w-3xl mx-auto mb-10">
+              Our sector specialists can design a tailored solution for your operational requirements.
+            </p>
+
+            <CTAButton to="/contact" variant="primary">
+              Start a Conversation
+            </CTAButton>
+
+          </div>
+
         </section>
-      </main>
-    </>
-  )
-}
+
+        </main>
+        </>
+        )
+        }
+

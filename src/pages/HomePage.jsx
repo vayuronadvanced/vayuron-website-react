@@ -15,7 +15,7 @@ function Hero() {
       <img
         src="/drone-bg.png"
         alt="Drone Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
+        className="absolute inset-0 w-full h-full object-cover opacity-100"
       />
 
       {/* Radial glow */}
@@ -88,8 +88,8 @@ function StatsBar() {
         backgroundAttachment: "scroll",
       }}
     >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
+      
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         <StatCard value={8} suffix="+" label="Sectors Served" />
@@ -105,30 +105,30 @@ function StatsBar() {
 function ProductsPreview() {
   return (
     <section
-      className="relative py-24 overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         backgroundImage: "url('/rectors.png')",
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
+      
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 py-16">
         <SectionHeader
           eyebrow="Capabilities"
           title="Our Product Lines"
           subtitle="Four core technology domains engineered for defence, security, and industrial operations."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
           {PRODUCTS.map((product) => (
             <Link
               key={product.id}
               to={product.path}
-              className="group bg-surface/70 backdrop-blur-sm border border-[rgba(0,212,255,0.1)] hover:border-[rgba(0,212,255,0.35)] p-8 transition-all duration-300 flex items-start gap-4"
+              className="group bg-surface/70 backdrop-blur-sm border border-[rgba(0,212,255,0.1)] hover:border-[rgba(0,212,255,0.35)] p-6 transition-all duration-300 flex items-start gap-4"
             >
               <span className="text-3xl text-cyan mt-1">
                 {product.icon}
@@ -165,18 +165,18 @@ function ProductsPreview() {
 function SectorsPreview() {
   return (
     <section
-      className="relative py-24 border-y border-[rgba(0,212,255,0.08)] overflow-hidden"
+      className="relative min-h-screen flex items-center border-y border-[rgba(0,212,255,0.08)] overflow-hidden"
       style={{
         backgroundImage: "url('/Operational DomainsHome.png')",
         backgroundSize: "cover",
-        backgroundPosition: "right center", // Move the image to the right
+        backgroundPosition: "center center", // Move the image to the right
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
+      
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-8 py-16">
         <SectionHeader
           eyebrow="Sectors"
           title="Operational Domains"
@@ -218,16 +218,16 @@ function MissionCTA() {
   return (
     <section
       ref={ref}
-      className="reveal relative py-32 px-6 text-center overflow-hidden"
+      className="reveal relative min-h-screen flex items-center justify-center px-6 text-center overflow-hidden"
       style={{
         backgroundImage: "url('/IndiTechHome.png')",
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      {/* Dark Overlay <div className="absolute inset-0 bg-black/70"></div> */}
+      
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-cyan mb-6">

@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, SectionHeader, FeatureCard, CTAButton, CyanDivider } from '../components/ui'
-
+import { PageBanner, SectionHeader, CTAButton, CyanDivider } from '../components/ui'
 const techPillars = [
   {
     title: 'Autonomous Flight Systems',
@@ -81,11 +80,11 @@ export default function TechnologyPage() {
           backgroundImage="/technology-bg.png.png"
         />
 
-        {/* Pillars */}
+
         {/* ═══════════════════════════════════════
         CORE PILLARS
         ═══════════════════════════════════════ */}
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden">
 
           {/* Background Image */}
           <div
@@ -98,11 +97,11 @@ export default function TechnologyPage() {
             }}
           />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/15 to-black/75" />
+          {/* Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/15 to-black/75" />*/}
+          
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col justify-center">
 
             <SectionHeader
               eyebrow="Core Pillars"
@@ -110,7 +109,7 @@ export default function TechnologyPage() {
               subtitle="Every technology domain developed in-house, ensuring operational sovereignty and deep mission customisation."
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
 
               {techPillars.map((pillar, i) => (
                 <div
@@ -141,7 +140,7 @@ export default function TechnologyPage() {
         {/* ═══════════════════════════════════════
             STACK DETAILS
         ═══════════════════════════════════════ */}
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden">
 
           {/* Background Image */}
           <div
@@ -154,11 +153,11 @@ export default function TechnologyPage() {
             }}
           />
 
-          {/* Dark Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
+          {/* Dark Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" /> */}
+          
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col justify-center">
 
             <SectionHeader
               eyebrow="Stack Details"
@@ -166,7 +165,7 @@ export default function TechnologyPage() {
               subtitle="The specific technologies and standards deployed across our product lines."
             />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
 
             {techStack.map((stack, i) => (
               <div
@@ -205,7 +204,7 @@ export default function TechnologyPage() {
         {/* ═══════════════════════════════════════
             IP OWNERSHIP
         ═══════════════════════════════════════ */}
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden">
 
           {/* Background Image */}
           <div
@@ -218,13 +217,13 @@ export default function TechnologyPage() {
             }}
           />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/80" />
+          {/* Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/80" />*/}
+          
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24 flex items-center">
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
 
               {/* Left Side */}
               <div>
@@ -266,7 +265,7 @@ export default function TechnologyPage() {
         {/* ═══════════════════════════════════════
             TECHNICAL BRIEFING CTA
         ═══════════════════════════════════════ */}
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative min-h-screen flex items-center overflow-hidden">
 
           {/* Background Image */}
           <div
@@ -279,15 +278,13 @@ export default function TechnologyPage() {
             }}
           />
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/80" />
+          {/* Dark Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/80" /> */}
+          
 
           {/* Content */}
-          <div className="relative z-10 max-w-[1000px] mx-auto px-6 text-center">
-
-            <div className="group rounded-2xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-12">
-
-              <h2 className="font-display text-4xl font-bold text-white mb-6 group-hover:text-cyan transition-colors">
+          <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 flex items-center justify-center text-center">   
+            
+            <div className="group w-full rounded-2xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-12 md:p-16">              <h2 className="font-display text-4xl font-bold text-white mb-6 group-hover:text-cyan transition-colors">
                 Technical Briefings Available
               </h2>
 
