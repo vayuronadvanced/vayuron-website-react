@@ -165,8 +165,8 @@ export default function ContactPage() {
             }}
           ></div>
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/35"></div>
+          {/* Dark Overlay <div className="absolute inset-0 bg-black/35"></div> */}
+          
 
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">

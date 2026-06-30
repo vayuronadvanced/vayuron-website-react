@@ -64,8 +64,8 @@ export default function AboutPage() {
             }}
           />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-black/75" />
+          {/* Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-black/75" />*/}
+          
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
@@ -127,8 +127,8 @@ export default function AboutPage() {
             }}
           />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />
+          {/* Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />*/}
+          
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
@@ -176,8 +176,8 @@ export default function AboutPage() {
             }}
           />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />
+          {/* Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" /> */}
+          
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 text-center">

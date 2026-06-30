@@ -26,8 +26,8 @@ export default function CareersPage() {
             backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/70"></div>
+          {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
+          
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-20 text-center">
