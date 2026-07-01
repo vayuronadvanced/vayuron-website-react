@@ -33,7 +33,7 @@ html {
 body {
   background-color: var(--black);
   color: var(--text);
-  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -83,7 +83,7 @@ img, video {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-.font-mono    { font-family: 'JetBrains Mono', monospace; }
+.font-mono { font-family: 'Inter', system-ui, sans-serif; }
 
 .text-cyan  { color: var(--cyan); }
 .text-muted { color: var(--muted); }

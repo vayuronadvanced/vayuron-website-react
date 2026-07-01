@@ -18,7 +18,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        mono: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Teko', 'Inter', 'sans-serif'],
       },
       backgroundImage: {

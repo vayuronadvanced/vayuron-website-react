@@ -1,18 +1,8 @@
-import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, CyanDivider } from '../components/ui'
+import { Breadcrumb, CyanDivider } from '../components/ui'
 import { SITE } from '../data/siteData'
 
-const enquiryTypes = [
-  'Product Enquiry',
-  'Partnership / Integration',
-  'Defence / Government',
-  'Media / Press',
-  'Careers',
-  'General',
-]
-
-function ContactForm() {
+/* function ContactForm() {
   const [form, setForm] = useState({ name: '', org: '', email: '', phone: '', type: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
@@ -134,7 +124,7 @@ function ContactForm() {
       </button>
     </form>
   )
-}
+} */
 
 export default function ContactPage() {
   return (
@@ -144,16 +134,19 @@ export default function ContactPage() {
         <meta name="description" content="Contact Vayuron Advanced Systems for product enquiries, partnerships, and defence briefings." />
       </Helmet>
       <main>
-        <PageBanner
+        {/*<PageBanner
           eyebrow="Contact"
           title="Get in Touch"
           subtitle="Speak with our engineering and commercial team about your operational requirements."
           crumbs={[{ label: 'Contact' }]}
           backgroundImage="/RightDrone.png"
-        />
+        />*/}
 
-          <section className="relative min-h-screen flex items-center overflow-hidden">
-          {/* Background Image */}
+          <section className="relative min-h-screen flex items-center overflow-hidden border-b border-[rgba(0,212,255,0.1)]">
+          
+          {/* Cyan glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
+          
           {/* Background Image */}
           <div
             className="absolute inset-0"
@@ -167,32 +160,46 @@ export default function ContactPage() {
 
           {/* Dark Overlay <div className="absolute inset-0 bg-black/35"></div> */}
           
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24">
 
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+            <Breadcrumb crumbs={[{ label: 'Contact' }]} />
+
+            <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+              Contact
+            </p>
+
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">
+              Get in Touch
+            </h1>
+
+            <p className="text-muted max-w-2xl mb-16">
+              Speak with our engineering and commercial team about your operational requirements.
+            </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center justify-between">
           
             {/* Info */}
-            <div className="lg:col-span-1 space-y-8">
+            <div className="lg:col-span-1 space-y-4">
               <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">Direct Contact</p>
-                <div className="space-y-3">
-                  <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-3 text-muted hover:text-white transition-colors font-mono text-sm">
+                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">Direct Contact</p>
+                <div className="space-y-2">
+                  <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-3 text-gray-800 hover:text-black transition-colors font-mono text-sm">
                     <span className="text-cyan">📞</span> {SITE.phone}
                   </a>
-                  <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 text-muted hover:text-white transition-colors font-mono text-sm">
+                  <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 text-gray-800 hover:text-black transition-colors font-mono text-sm">
                     <span className="text-cyan">✉</span> {SITE.email}
                   </a>
                 </div>
               </div>
 
-              <CyanDivider />
+              <div className="py-1"><CyanDivider /></div>
 
               <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">
                   Office Address
                 </p>
 
-                <p className="text-muted font-mono text-sm leading-relaxed">
+                <p className="text-gray-800 font-mono text-sm leading-relaxed">
                   Vayuron Advanced Systems
                 </p>
 
@@ -200,7 +207,7 @@ export default function ContactPage() {
                   href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-muted font-mono text-sm leading-relaxed mt-2 hover:text-cyan transition-colors"
+                  className="block text-gray-800 font-mono text-sm leading-relaxed mt-1 hover:text-cyan transition-colors"
                 >
                   47, Balaji Nagar,<br />
                   Ayodhya Bypass, Bhopal,<br />
@@ -208,35 +215,38 @@ export default function ContactPage() {
                 </a>
               </div>
 
-              <CyanDivider />
+              <div className="py-1"><CyanDivider /></div>
 
               <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">Response Time</p>
-                <p className="text-muted font-mono text-sm">
+                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">Response Time</p>
+                <p className="text-gray-800 font-mono text-sm leading-relaxed">
                   We respond to all enquiries within 2 business days. For urgent operational requirements, call directly.
                 </p>
               </div>
 
-              <CyanDivider />
+              <div className="py-1"><CyanDivider /></div>
 
               <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">Defence Enquiries</p>
-                <p className="text-muted font-mono text-sm">
+                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">Defence Enquiries</p>
+                <p className="text-gray-800 font-mono text-sm leading-relaxed">
                   For classified or sensitive defence requirements, please contact us directly by phone to arrange a secure channel.
                 </p>
               </div>
             </div>
 
-            {/* Form */}
-            {/* Right Side */}
-              <div className="lg:col-span-2 flex items-center justify-end">
+            {/* Right Side CTA */}
+              <div className="lg:col-span-2 flex justify-end items-end min-h-[520px]">
 
                 {/* Bottom Right Content */}
-                <div className="text-right">
+                <div className="text-right max-w-xl self-end"> 
 
-                  <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+                  <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6">
                     Send an Enquiry
                   </h2>
+                  
+                  <p className="text-muted mb-8 max-w-md ml-auto">
+                    Complete our secure enquiry form and our engineering team will respond within two business days.
+                  </p>
 
                   <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLSewI60dNbbQqrlHw_Xh8Wa3b_desNWJkJuFoICh01gi6NFRnw/viewform?usp=sharing&ouid=100144093646921205317"

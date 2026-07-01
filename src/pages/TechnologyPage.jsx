@@ -293,8 +293,11 @@ export default function TechnologyPage() {
                 for qualified defence and government clients.
               </p>
 
-              <CTAButton to="/contact" variant="primary">
-                Request a Technical Briefing
+              <CTAButton
+                href="/documents/vayuron-technology-brochure.pdf"
+                variant="primary"
+              >
+                Download Technology Brochure
               </CTAButton>
 
             </div>

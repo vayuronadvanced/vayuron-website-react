@@ -6,7 +6,14 @@ export default function Footer() {
 
   return (
       <footer
-        className="relative mt-auto border-t border-[rgba(0,212,255,0.1)] overflow-hidden"
+      className="relative mt-auto border-t border-[rgba(0,212,255,0.15)] overflow-hidden bg-gradient-to-b from-black via-[#050608] to-black"
+      >
+      
+      {/* Subtle top glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
+      
+      {/*<footer
+      className="relative mt-auto border-t border-[rgba(0,212,255,0.15)] overflow-hidden bg-gradient-to-b from-black via-[#050608] to-black"
      // className="relative mt-auto overflow-hidden border-t border-gray-400 bg-gradient-to-b from-gray-300 via-gray-200 to-gray-400"
      // Changes footer colour
         style={{
@@ -15,15 +22,15 @@ export default function Footer() {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-      >
+      >8/}
       {/* Dark Overlay  - <div className="absolute inset-0 bg-black/10"></div>- */}
       
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-6">      
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-5">     
       {/* Your existing footer content */}
 
       {/* Top Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] items-center gap-24 py-3">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] items-start gap-20 py-2">
 
       {/* Brand */}
       <div className="flex flex-col items-start max-w-md">
@@ -41,7 +48,7 @@ export default function Footer() {
         </Link>
 
         {/* Social Icons */}
-        <div className="flex gap-3 mt-4">
+        <div className="flex gap-3 mt-3">
 
           <a
             href={SITE.instagram}
@@ -84,8 +91,21 @@ export default function Footer() {
 
         </div>
 
+        {/* Address */}
+        <a
+          href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 flex items-start gap-2 text-xs text-white/100 hover:text-cyan transition-colors leading-relaxed"
+        >
+          <span>
+            47, Balaji Nagar,Ayodhya Bypass,<br />
+             Bhopal,Madhya Pradesh 462023, INDIA 
+          </span>
+        </a>
+
         {/* Contact */}
-        <div className="mt-3 space-y-1">
+        <div className="mt-2 space-y-1">
 
           <a
             href={`tel:${SITE.phoneTel}`}
@@ -112,7 +132,7 @@ export default function Footer() {
               Stay Updated
             </h4>
 
-            <p className="text-sm text-white/80 mb-4">
+            <p className="text-sm text-white/80 mb-3">
               Defence technology insights and company updates.
             </p>
 
@@ -132,7 +152,7 @@ export default function Footer() {
           </div>
           
         {/* Bottom Bar */}
-        <div className="border-t border-[rgba(0,212,255,0.08)] mt-6 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
+        <div className="border-t border-[rgba(0,212,255,0.08)] mt-5 pt-3 flex flex-col md:flex-row justify-between items-center gap-3">
 
           <p className="text-sm text-white/70 text-center md:text-left">
             © {year} Vayuron Advanced Systems. All rights reserved.

@@ -7,7 +7,7 @@ const VayuronLogo = () => (
   <img
     src="/favicon.jpeg"
     alt="Vayuron Logo"
-    className="w-9 h-9 object-contain"
+    className="w-10 h-10 object-contain shrink-0"
   />
 )
 
@@ -72,23 +72,24 @@ export default function Navbar() {
       >
         <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
 
-          {/* Logo */}
-          {/* Logo */}
-          <Link
-            to="/"
-            onClick={scrollToTop}
-            className="flex items-center gap-3 group"
-          >
-            <VayuronLogo />
-            <div>
-              <div className="font-display font-bold uppercase text-white text-lg leading-none tracking-[0.12em] group-hover:text-cyan transition-colors">
-                VAYURON
-              </div>
-              <div className="font-sans text-[9px] text-white tracking-[0.2em] uppercase">
-                Advanced Systems
-              </div>
-            </div>
-          </Link>
+        {/* Logo */}
+        <Link
+          to="/"
+          onClick={scrollToTop}
+          className="flex items-center gap-3 group shrink-0"
+        >
+          <VayuronLogo />
+
+          <div className="flex flex-col justify-center leading-none">
+            <span className="font-display font-bold uppercase text-white text-lg leading-none tracking-[0.12em] group-hover:text-cyan transition-colors">
+              VAYURON
+            </span>
+
+            <span className="font-sans text-[9px] text-white/70 tracking-[0.2em] uppercase mt-[3px]">
+              Advanced Systems
+            </span>
+          </div>
+        </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
