@@ -114,10 +114,9 @@ export default function TechnologyPage() {
               {techPillars.map((pillar, i) => (
                 <div
                   key={i}
-                  className="group relative rounded-xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-8 overflow-hidden"
-                >
+                  className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6"                >
                   {/* Top Accent Line */}
-                  <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
+                  <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
 
                   <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
                     {pillar.title}
@@ -170,21 +169,21 @@ export default function TechnologyPage() {
             {techStack.map((stack, i) => (
               <div
                 key={i}
-                className="group relative rounded-xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-8 overflow-hidden"
-              >
+                className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6"              
+                >
 
           {/* Top Accent Line */}
           <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
 
-          <h3 className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">
+          <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-cyan mb-4">
             {stack.category}
           </h3>
 
-          <ul className="space-y-3">
+          <ul className="space-y-2.5">
             {stack.items.map((item, j) => (
               <li
                 key={j}
-                className="flex items-center gap-3 text-white/75 text-sm group-hover:text-white transition-colors"
+                className="flex items-center gap-2.5 text-white/75 text-[13px] leading-relaxed group-hover:text-white transition-colors"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
                 {item}
@@ -239,12 +238,12 @@ export default function TechnologyPage() {
               {/* Right Side */}
               <div className="lg:col-span-2">
 
-                <div className="group relative rounded-2xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-8 overflow-hidden">
-
+              <div className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6">
+                  
                   {/* Cyan Accent */}
                   <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
 
-                  <p className="text-white/80 text-lg leading-relaxed group-hover:text-white transition-colors">
+                  <p className="text-white/80 text-base leading-7 group-hover:text-white transition-colors">
                     Every algorithm, firmware module, structural design, and manufacturing
                     process in the Vayuron technology stack is developed and owned entirely
                     by Vayuron Advanced Systems. No licensed foreign technology. No
@@ -284,11 +283,13 @@ export default function TechnologyPage() {
           {/* Content */}
           <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 flex items-center justify-center text-center">   
             
-            <div className="group w-full rounded-2xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-12 md:p-16">              <h2 className="font-display text-4xl font-bold text-white mb-6 group-hover:text-cyan transition-colors">
+          <div className="group relative w-full rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-8 md:p-10">           
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5 group-hover:text-cyan transition-colors">
                 Technical Briefings Available
-              </h2>
+          <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+          </h2>
 
-              <p className="text-white/80 text-lg leading-relaxed max-w-2xl mx-auto mb-10 group-hover:text-white transition-colors">
+              <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8 group-hover:text-white transition-colors">
                 Our engineering team can provide detailed technical briefings under NDA
                 for qualified defence and government clients.
               </p>

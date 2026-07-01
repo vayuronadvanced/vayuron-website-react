@@ -128,26 +128,34 @@ function ProductsPreview() {
             <Link
               key={product.id}
               to={product.path}
-              className="group bg-surface/70 backdrop-blur-sm border border-[rgba(0,212,255,0.1)] hover:border-[rgba(0,212,255,0.35)] p-6 transition-all duration-300 flex items-start gap-4"
-            >
-              <span className="text-3xl text-cyan mt-1">
+              className="group relative overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-4 flex items-start gap-3">
+              
+              {/* Top Accent Line */}
+              <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+
+              <span className="text-cyan text-2xl mt-1 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                 {product.icon}
               </span>
-
+              
               <div>
-                <h3 className="font-sans text-xl font-semibold text-white group-hover:text-cyan transition-colors mb-2">
+                <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">
                   {product.label}
                 </h3>
 
-                <p className="text-muted text-sm leading-relaxed mb-4">
+                <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors mb-4">
                   {product.description}
                 </p>
 
-                <span className="font-sans text-sm text-cyan group-hover:text-white transition-colors">
-                  Learn More →
+                <span className="inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
+                  Learn More
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
                 </span>
+
               </div>
             </Link>
+            
           ))}
         </div>
 

@@ -4,14 +4,14 @@ import { PageBanner, CTAButton } from '../../components/ui'
 import { SECTORS } from '../../data/siteData'
 
 const sectorIcons = {
-  'defence-security':          '🛡',
-  'smart-cities':              '🏙',
-  'municipal-operations':      '🏛',
-  'infrastructure-monitoring': '🔌',
-  'agriculture':               '🌾',
-  'disaster-management':       '🚨',
-  'environmental-monitoring':  '🌿',
-  'industrial-inspection':     '🏭',
+  'defence-security':          "",
+  'smart-cities':              '',
+  'municipal-operations':      '',
+  'infrastructure-monitoring': '',
+  'agriculture':               '',
+  'disaster-management':       '',
+  'environmental-monitoring':  '',
+  'industrial-inspection':     '',
 }
 
 const sectorDescriptions = {

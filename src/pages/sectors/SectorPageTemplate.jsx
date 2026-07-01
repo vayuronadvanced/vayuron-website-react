@@ -51,84 +51,108 @@ export default function SectorPageTemplate({
           </section>
         )}
 
-        {/* Overview */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+          {/* Overview */}
+          <section className="relative min-h-screen flex items-center overflow-hidden">
 
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url('/Sector3.png')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/Sector3.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
 
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
 
-              <div>
-                <h2 className="font-display text-3xl font-bold text-white mb-4">
-                  Sector Overview
-                </h2>
+                {/* Overview Card */}
+                <div className="group relative overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1">
 
-                <p className="text-muted leading-relaxed">
-                  {overview}
-                </p>
+                  {/* Top Accent Line */}
+                  <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+
+                  <h2 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
+                    Sector Overview
+                  </h2>
+
+                  <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors">
+                    {overview}
+                  </p>
+
+                </div>
+
+                {/* Solution Card */}
+                {solution && (
+                  <div className="group relative overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1">
+
+                    {/* Top Accent Line */}
+                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+
+                    <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">
+                      Vayuron Solution
+                    </p>
+
+                    <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors">
+                      {solution}
+                    </p>
+
+                  </div>
+                )}
+
               </div>
 
-              {solution && (
-                <div className="rounded-xl border border-white/10 bg-black/20 backdrop-blur-md p-8 hover:border-cyan/40 transition-all duration-300">
-                  <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">
-                    Vayuron Solution
-                  </p>
-
-                  <p className="text-text leading-relaxed">
-                    {solution}
-                  </p>
-                </div>
-              )}
-
             </div>
-
-          </div>
-
-        </section>
+          </section>
 
         {/* Challenges */}
         {challenges.length > 0 && (
-        <section className="relative min-h-screen flex items-center overflow-hidden">     
-        <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "url('/Sector4.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      />
+          <section className="relative min-h-screen flex items-center overflow-hidden">     
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />       
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
-              <h2 className="font-display text-2xl font-bold text-white mb-8">Sector Challenges</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/Sector4.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />       
+
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+
+              <h2 className="font-display text-2xl font-bold text-white mb-8">
+                Sector Challenges
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
                 {challenges.map((c, i) => (
                   <div
                     key={i}
-                    className="group rounded-xl border border-white/10 bg-black/20 backdrop-blur-md p-8 hover:border-cyan/40 hover:bg-black/35 transition-all duration-300"
+                    className="group relative overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-5 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1"
                   >
-                    <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
+
+                    {/* Top Accent Line */}
+                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+
+                    <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">
                       {c.title}
                     </h3>
 
-                    <p className="text-white/75 leading-relaxed">
+                    <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors">
                       {c.description}
                     </p>
-                  </div>                
+
+                  </div>
                 ))}
+
               </div>
             </div>
           </section>
@@ -162,19 +186,24 @@ export default function SectorPageTemplate({
                   <Link
                     key={i}
                     to={tech.path || '/products'}
-                    className="group rounded-xl border border-white/10 bg-black/20 backdrop-blur-md p-8 hover:bg-black/35 hover:border-cyan/40 hover:-translate-y-1 transition-all duration-300"
+                    className="group relative overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1"
                   >
-                    <div className="text-2xl mb-3">
+
+                    {/* Top Accent Line */}
+                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+
+                    <div className="text-cyan text-2xl mb-3 transition-transform duration-300 group-hover:scale-110">
                       {tech.icon}
                     </div>
 
-                    <h3 className="font-display font-semibold text-white group-hover:text-cyan transition-colors mb-2">
+                    <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">
                       {tech.label}
                     </h3>
 
-                    <p className="text-muted text-xs leading-relaxed">
+                    <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors">
                       {tech.description}
                     </p>
+
                   </Link>
                 ))}
 

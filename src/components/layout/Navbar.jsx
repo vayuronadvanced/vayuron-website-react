@@ -154,21 +154,15 @@ export default function Navbar() {
                           <Link
                             key={product.id}
                             to={product.path}
-                            className="block px-3 py-3 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
-                          >
+                            className="flex items-center gap-3 w-full px-2 py-2 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"                          >
                             {/* Heading */}
                             <div className="flex items-center gap-3">
                               <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0" />
 
-                              <h3 className="font-sans font-semibold text-sm text-white group-hover:text-cyan transition-colors">
+                              <h3 className="font-sans font-semibold text-xs text-white group-hover:text-cyan transition-colors">
                                 {product.label}
                               </h3>
                             </div>
-
-                            {/* Description */}
-                            <p className="ml-4 mt-1 text-[11px] text-white/70 leading-relaxed">
-                              {product.description}
-                            </p>
                           </Link>
                         ))}
                       </div>

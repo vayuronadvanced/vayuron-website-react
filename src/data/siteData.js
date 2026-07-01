@@ -27,37 +27,31 @@ export const PRODUCTS = [
     id: 'uav-systems',
     label: 'UAV Systems',
     path: '/products/uav-systems',
-    description: 'Autonomous unmanned aerial systems for defence operations.',
   },
   {
     id: 'artificial-intelligence',
     label: 'Artificial Intelligence',
     path: '/products/artificial-intelligence',
-    description: 'Edge AI, computer vision, and intelligent automation.',
   },
   {
     id: 'software-systems',
     label: 'Software Systems',
     path: '/products/software-systems',
-    description: 'Mission planning, command, control, and data platforms.',
   },
   {
     id: 'advanced-engineering',
     label: 'Advanced Engineering',
     path: '/products/advanced-engineering',
-    description: 'Precision manufacturing and advanced systems integration.',
   },
   {
     id: 'avionics',
     label: 'Avionics',
     path: '/products/avionics',
-    description: 'Flight electronics, navigation, and mission systems.',
   },
   {
     id: 'carbon-composite',
     label: 'Carbon & Composite',
     path: '/products/carbon-composite',
-    description: 'Lightweight composite structures for aerospace applications.',
   }
 ]
 

@@ -127,6 +127,59 @@ export function CyanDivider({ className = '' }) {
   )
 }
 
+// ─── Universal Card ───────────────────────────────────────────────────────
+export function Card({
+  children,
+  className = '',
+  hover = true,
+  reveal = false,
+}) {
+  const ref = useScrollReveal()
+
+  return (
+    <div
+      ref={reveal ? ref : null}
+      className={`
+        ${reveal ? 'reveal' : ''}
+        group
+        relative
+        overflow-hidden
+        rounded-xl
+        border
+        border-[rgba(0,212,255,0.10)]
+        bg-black/20
+        backdrop-blur-md
+        p-6
+        transition-all
+        duration-300
+        ${
+          hover
+            ? 'hover:border-cyan/40 hover:bg-black/35 hover:-translate-y-1'
+            : ''
+        }
+        ${className}
+      `}
+    >
+      {/* Top Accent Line */}
+      <div
+        className="
+          absolute
+          top-0
+          left-0
+          h-[2px]
+          w-0
+          bg-cyan
+          transition-all
+          duration-300
+          group-hover:w-full
+        "
+      />
+
+      {children}
+    </div>
+  )
+}
+
 // ─── Feature Card ─────────────────────────────────────────────────────────
 export function FeatureCard({ icon, title, description, className = '' }) {
   const ref = useScrollReveal()

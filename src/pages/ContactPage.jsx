@@ -1,266 +1,137 @@
 import { Helmet } from 'react-helmet-async'
-import { Breadcrumb, CyanDivider } from '../components/ui'
 import { SITE } from '../data/siteData'
-
-/* function ContactForm() {
-  const [form, setForm] = useState({ name: '', org: '', email: '', phone: '', type: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // In production: connect to your backend / Formspree / EmailJS
-    console.log('Form submitted:', form)
-    setSubmitted(true)
-  }
-
-  if (submitted) {
-    return (
-      <div className="bg-surface border border-[rgba(0,212,255,0.2)] p-12 text-center">
-        <div className="text-4xl mb-4">✓</div>
-        <h3 className="font-display text-2xl font-bold text-cyan mb-3">Message Received</h3>
-        <p className="text-muted">Our team will review your enquiry and respond within 2 business days.</p>
-      </div>
-    )
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block font-mono text-xs tracking-widest uppercase text-cyan mb-2">
-            Full Name *
-          </label>
-          <input
-            name="name"
-            required
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            className="w-full bg-black border border-[rgba(0,212,255,0.15)] focus:border-cyan text-text px-4 py-3 font-mono text-sm outline-none transition-colors placeholder-dim"
-          />
-        </div>
-        <div>
-          <label className="block font-mono text-xs tracking-widest uppercase text-cyan mb-2">
-            Organisation
-          </label>
-          <input
-            name="org"
-            value={form.org}
-            onChange={handleChange}
-            placeholder="Company / Agency"
-            className="w-full bg-black border border-[rgba(0,212,255,0.15)] focus:border-cyan text-text px-4 py-3 font-mono text-sm outline-none transition-colors placeholder-dim"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block font-mono text-xs tracking-widest uppercase text-cyan mb-2">
-            Email *
-          </label>
-          <input
-            name="email"
-            type="email"
-            required
-            value={form.email}
-            onChange={handleChange}
-            placeholder="your@email.com"
-            className="w-full bg-black border border-[rgba(0,212,255,0.15)] focus:border-cyan text-text px-4 py-3 font-mono text-sm outline-none transition-colors placeholder-dim"
-          />
-        </div>
-        <div>
-          <label className="block font-mono text-xs tracking-widest uppercase text-cyan mb-2">
-            Phone
-          </label>
-          <input
-            name="phone"
-            type="tel"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="+91 00000 00000"
-            className="w-full bg-black border border-[rgba(0,212,255,0.15)] focus:border-cyan text-text px-4 py-3 font-mono text-sm outline-none transition-colors placeholder-dim"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className="block font-mono text-xs tracking-widest uppercase text-cyan mb-2">
-          Enquiry Type *
-        </label>
-        <select
-          name="type"
-          required
-          value={form.type}
-          onChange={handleChange}
-          className="w-full bg-black border border-[rgba(0,212,255,0.15)] focus:border-cyan text-text px-4 py-3 font-mono text-sm outline-none transition-colors appearance-none"
-        >
-          <option value="" disabled>Select enquiry type</option>
-          {enquiryTypes.map(t => <option key={t} value={t}>{t}</option>)}
-        </select>
-      </div>
-
-      <div>
-        <label className="block font-mono text-xs tracking-widest uppercase text-cyan mb-2">
-          Message *
-        </label>
-        <textarea
-          name="message"
-          required
-          rows={6}
-          value={form.message}
-          onChange={handleChange}
-          placeholder="Describe your requirements or enquiry..."
-          className="w-full bg-black border border-[rgba(0,212,255,0.15)] focus:border-cyan text-text px-4 py-3 font-mono text-sm outline-none transition-colors placeholder-dim resize-none"
-        />
-      </div>
-
-      <button
-        type="submit"
-        className="w-full md:w-auto border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-8 py-3 font-mono text-xs tracking-widest uppercase"
-      >
-        Send Enquiry →
-      </button>
-    </form>
-  )
-} */
+import { Breadcrumb, SectionHeader } from '../components/ui'
 
 export default function ContactPage() {
   return (
     <>
       <Helmet>
         <title>Contact — Vayuron Advanced Systems</title>
-        <meta name="description" content="Contact Vayuron Advanced Systems for product enquiries, partnerships, and defence briefings." />
+        <meta
+          name="description"
+          content="Contact Vayuron Advanced Systems for product enquiries, partnerships, and defence briefings."
+        />
       </Helmet>
+
       <main>
-        {/*<PageBanner
-          eyebrow="Contact"
-          title="Get in Touch"
-          subtitle="Speak with our engineering and commercial team about your operational requirements."
-          crumbs={[{ label: 'Contact' }]}
-          backgroundImage="/RightDrone.png"
-        />*/}
+        <section
+          className="relative min-h-[100vh] flex items-center overflow-hidden border-b border-[rgba(0,212,255,0.1)]"
+          style={{
+            backgroundImage: "url('/Green.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          {/* Dark overlay so text stays readable over the background photo */}
+          <div className="absolute inset-0 bg-black/50" />
 
-          <section className="relative min-h-screen flex items-center overflow-hidden border-b border-[rgba(0,212,255,0.1)]">
-          
-          {/* Cyan glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
-          
-          {/* Background Image */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url('/DCONTACTDRONE.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
-              backgroundRepeat: "no-repeat",
-            }}
-          ></div>
 
-          {/* Dark Overlay <div className="absolute inset-0 bg-black/35"></div> */}
-          
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24">
+          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-28">
 
-            <Breadcrumb crumbs={[{ label: 'Contact' }]} />
+            <div className="mb-6">
+              <Breadcrumb crumbs={[{ label: 'Contact' }]} />
+            </div>
 
-            <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+            <p className="font-mono text-xs tracking-[0.25em] uppercase text-cyan mb-4">
               Contact
             </p>
 
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">
-              Get in Touch
-            </h1>
+            <SectionHeader
+              title="Get in Touch"
+              className="mb-6"
+            />
 
-            <p className="text-muted max-w-2xl mb-16">
-              Speak with our engineering and commercial team about your operational requirements.
+            <p className="max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-14">
+              Speak with our engineering and commercial team about your
+              operational requirements.
             </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center justify-between">
-          
-            {/* Info */}
-            <div className="lg:col-span-1 space-y-4">
+            {/* Two-column layout: direct contact info + enquiry card */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-16 items-start">
+
+              {/* Direct Contact */}
               <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">Direct Contact</p>
-                <div className="space-y-2">
-                  <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-3 text-gray-800 hover:text-black transition-colors font-mono text-sm">
-                    <span className="text-cyan">📞</span> {SITE.phone}
+                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">
+                  Direct Contact
+                </p>
+
+                <div className="space-y-3 mb-10">
+
+                  <a
+                    href={`tel:${SITE.phoneTel}`}
+                    className="flex items-center gap-3 text-white hover:text-cyan transition-colors font-mono text-base"
+                  >
+                    <span>📞</span>
+                    {SITE.phone}
                   </a>
-                  <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 text-gray-800 hover:text-black transition-colors font-mono text-sm">
-                    <span className="text-cyan">✉</span> {SITE.email}
+
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="flex items-center gap-3 text-white hover:text-cyan transition-colors font-mono text-base"
+                  >
+                    <span>✉</span>
+                    {SITE.email}
                   </a>
+
                 </div>
-              </div>
 
-              <div className="py-1"><CyanDivider /></div>
+                <div>
+                  <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+                    Office Address
+                  </p>
 
-              <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">
-                  Office Address
-                </p>
-
-                <p className="text-gray-800 font-mono text-sm leading-relaxed">
-                  Vayuron Advanced Systems
-                </p>
-
-                <a
-                  href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-gray-800 font-mono text-sm leading-relaxed mt-1 hover:text-cyan transition-colors"
-                >
-                  47, Balaji Nagar,<br />
-                  Ayodhya Bypass, Bhopal,<br />
-                   Madhya Pradesh 462023, India
-                </a>
-              </div>
-
-              <div className="py-1"><CyanDivider /></div>
-
-              <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">Response Time</p>
-                <p className="text-gray-800 font-mono text-sm leading-relaxed">
-                  We respond to all enquiries within 2 business days. For urgent operational requirements, call directly.
-                </p>
-              </div>
-
-              <div className="py-1"><CyanDivider /></div>
-
-              <div>
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">Defence Enquiries</p>
-                <p className="text-gray-800 font-mono text-sm leading-relaxed">
-                  For classified or sensitive defence requirements, please contact us directly by phone to arrange a secure channel.
-                </p>
-              </div>
-            </div>
-
-            {/* Right Side CTA */}
-              <div className="lg:col-span-2 flex justify-end items-end min-h-[520px]">
-
-                {/* Bottom Right Content */}
-                <div className="text-right max-w-xl self-end"> 
-
-                  <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6">
-                    Send an Enquiry
-                  </h2>
-                  
-                  <p className="text-muted mb-8 max-w-md ml-auto">
-                    Complete our secure enquiry form and our engineering team will respond within two business days.
+                  <p className="text-[var(--muted)] leading-relaxed mb-2">
+                    Vayuron Advanced Systems
                   </p>
 
                   <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSewI60dNbbQqrlHw_Xh8Wa3b_desNWJkJuFoICh01gi6NFRnw/viewform?usp=sharing&ouid=100144093646921205317"
+                    href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
                     target="_blank"
-                    rel="noreferrer"
-                    className="inline-block mt-2 border border-cyan text-cyan px-8 py-4 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
+                    rel="noopener noreferrer"
+                    className="block text-[var(--muted)] hover:text-cyan transition leading-relaxed"
                   >
-                    Open Secure Form →
+                    47, Balaji Nagar,Ayodhya Bypass,
+                    <br />
+                    Bhopal, Madhya Pradesh 462023,
+                    <br />
+                    India
                   </a>
-
                 </div>
+              </div>
+
+              {/* Enquiry Card */}
+              <div className="border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full">
+
+                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+                  Response Time
+                </p>
+
+
+
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
+                  Send an Enquiry
+                </h2>
+
+                <p className="text-[var(--muted)] leading-relaxed mb-6 text-sm">
+                  Complete our secure enquiry form and our engineering team
+                  will respond within two business days.
+                </p>
+
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSewI60dNbbQqrlHw_Xh8Wa3b_desNWJkJuFoICh01gi6NFRnw/viewform?usp=sharing&ouid=100144093646921205317"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center w-full border border-cyan text-cyan px-7 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
+                >
+                  Open Secure Form →
+                </a>
 
               </div>
+
             </div>
+
           </div>
         </section>
       </main>

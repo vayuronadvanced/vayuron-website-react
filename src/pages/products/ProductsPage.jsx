@@ -49,25 +49,24 @@ export default function ProductsPage() {
                 <Link
                   key={product.id}
                   to={product.path}
-                  className="group relative rounded-xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-10 overflow-hidden"
-                >
-                  {/* Top Accent Line */}
-                  <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
+                  className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-8">                  <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
 
-                  <div className="text-4xl text-cyan mb-6">
+                  <div className="text-cyan text-3xl mb-5 transition-transform duration-300 group-hover:scale-110">
                     {product.icon}
                   </div>
 
-                  <h2 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
-                    {product.label}
+                  <h2 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">                    {product.label}
                   </h2>
 
-                  <p className="text-white/75 leading-relaxed flex-1 mb-8 group-hover:text-white transition-colors">
+                  <p className="text-white/75 text-sm leading-relaxed mb-6 group-hover:text-white transition-colors">
                     {product.description}
                   </p>
 
-                  <span className="font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
-                    Explore {product.label} →
+                  <span className="inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
+                    Explore
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
                   </span>
                 </Link>
               ))}
