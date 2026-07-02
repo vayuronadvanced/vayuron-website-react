@@ -5,18 +5,63 @@ import { Helmet } from 'react-helmet-async'
 import { SectionHeader, StatCard, FeatureCard, CTAButton, CyanDivider } from '../components/ui'
 import { PRODUCTS, SECTORS, SITE } from '../data/siteData'
 import { useScrollReveal } from '../hooks'
+import { useScrollPin } from '../hooks/useScrollPin'
 
 // ─── Hero Section ──────────────────────────────────────────────────────────
 function Hero() {
+
+const heroRef = useScrollPin((tl, el) => {
+  const imageWrapper = el.querySelector("[data-hero-wrapper]")
+  const image = el.querySelector("[data-hero-image]")
+  const content = el.querySelector("[data-hero-content]")
+
+tl.to(
+  imageWrapper,
+  {
+    clipPath: "inset(6% 6% 6% 6% round 28px)",
+    ease: "none",
+  },
+  0
+)
+
+.to(
+  image,
+  {
+    scale: 1.15,
+    ease: "none",
+  },
+  0
+)
+
+.to(
+  content,
+  {
+    opacity: 0,
+    y: -120,
+    ease: "none",
+  },
+  0
+)
+})
+
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pt-24 pb-24">      
-      
+    <section
+      ref={heroRef}
+      className="relative min-h-screen flex flex-col items-center justify-center bg-black pt-24 pb-24"
+    >      
       {/* Drone Background Image */}
-      <img
-        src="/drone-bg.png"
-        alt="Drone Background"
-        className="absolute inset-0 w-full h-full object-cover opacity-100"
-      />
+      <div
+        data-hero-wrapper
+        className="absolute inset-0 overflow-hidden"
+      >
+        <img
+          data-hero-image
+          src="/drone-bg.png"
+          alt="Drone Background"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
 
       {/* Radial glow */}
       <div className="absolute inset-0 bg-gradient-radial from-[rgba(0,212,255,0.04)] via-transparent to-transparent" />
@@ -25,8 +70,11 @@ function Hero() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <motion.p
+      <div
+        data-hero-content
+        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+      >        
+      <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -79,8 +127,7 @@ function StatsBar() {
   return (
     <section
       ref={ref}
-      className="reveal relative border-y border-[rgba(0,212,255,0.1)] py-12 overflow-hidden"
-      style={{
+      className="reveal relative -mt-24 z-20 border-y border-[rgba(0,212,255,0.1)] py-12 overflow-hidden"      style={{
         backgroundImage: "url('/Tablong.png')",
         backgroundSize: "cover",
         backgroundPosition: "center center",
@@ -91,32 +138,60 @@ function StatsBar() {
       {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
       
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-        <StatCard value={8} suffix="+" label="Sectors Served" />
-        <StatCard value={4} suffix="" label="Product Lines" />
-        <StatCard value={50} suffix="+" label="Deployments" />
-        <StatCard value={100} suffix="+" label="Team Members" />
-      </div>
+<motion.div
+  initial={{ opacity: 0, y: 80 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.3 }}
+  transition={{ duration: 0.8 }}
+  className="relative z-10 max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8"
+>
+  <StatCard value={8} suffix="+" label="Sectors Served" />
+  <StatCard value={4} suffix="" label="Product Lines" />
+  <StatCard value={50} suffix="+" label="Deployments" />
+  <StatCard value={100} suffix="+" label="Team Members" />
+</motion.div>
     </section>
   )
 }
 
 // ─── Products Preview ──────────────────────────────────────────────────────
 function ProductsPreview() {
+  const sectionRef = useScrollPin((tl, el) => {
+    const bg = el.querySelector('[data-products-bg]')
+    const content = el.querySelector('[data-products-content]')
+
+    tl.fromTo(
+      bg,
+      { scale: 1.1, filter: 'brightness(0.5)' },
+      { scale: 1, filter: 'brightness(1)', ease: 'none' },
+      0
+    ).fromTo(
+      content,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, ease: 'none' },
+      0
+    )
+  })
+
   return (
     <section
+      ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        backgroundImage: "url('/rectors.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-      }}
     >
+      <div
+        data-products-bg
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('/rectors.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
       {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
       
 
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 py-16">
+      <div data-products-content className="relative z-10 w-full max-w-[1600px] mx-auto px-6 py-16">
         <SectionHeader
           eyebrow="Capabilities"
           title="Our Product Lines"
@@ -296,6 +371,9 @@ export default function HomePage() {
         />
       </Helmet>
 
+      {/* Phase 1: pinned/scrubbed transitions on this page's sections.
+          Smooth scroll (Lenis) is provided globally in App.jsx — do not
+          wrap this page in SmoothScrollProvider again here. */}
       <main>
         <Hero />
         <StatsBar />

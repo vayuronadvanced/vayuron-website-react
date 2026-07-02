@@ -1,3 +1,4 @@
+{/*AboutPage.jsx*/}
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, SectionHeader, StatCard, CTAButton, CyanDivider } from '../components/ui'
 import { useScrollReveal } from '../hooks'

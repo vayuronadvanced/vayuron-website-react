@@ -1,3 +1,4 @@
+{/*CareerPage.jsx*/}
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, SectionHeader } from '../components/ui'

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import SmoothScrollProvider from './components/layout/SmoothScrollProvider'
 import { LoadingScreen } from './components/ui'
 import { useLoadingScreen, useScrollProgress } from './hooks'
 
@@ -107,58 +108,62 @@ export default function App() {
   const isLoading = useLoadingScreen(1600)
 
   return (
-    <>
-  <AnimatePresence mode="wait">
-    {isLoading && <LoadingScreen key="loading" />}
-  </AnimatePresence>
-
-  {!isLoading && (
-    <>
-      <CustomCursor />
-      <ScrollProgressBar />
-      <Navbar />
-
-      {/* ✅ MUST BE HERE (outside AnimatePresence) */}
-      <ScrollToTop />
-
+    // Mounted once for the app's whole lifetime — route changes render
+    // inside this, they never remount it. This is what lets ScrollToTop
+    // reset the SAME Lenis instance on navigation instead of racing a
+    // dying one from the previous page.
+    <SmoothScrollProvider>
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
-
-          {/* Products */}
-          <Route path="/products" element={<PageWrapper><ProductsPage /></PageWrapper>} />
-          <Route path="/products/uav-systems" element={<PageWrapper><UAVSystemsPage /></PageWrapper>} />
-          <Route path="/products/artificial-intelligence" element={<PageWrapper><AIPage /></PageWrapper>} />
-          <Route path="/products/software-systems" element={<PageWrapper><SoftwarePage /></PageWrapper>} />
-          <Route path="/products/advanced-engineering" element={<PageWrapper><EngineeringPage /></PageWrapper>} />
-          <Route path="/products/avionics" element={<PageWrapper><AvionicsPage /></PageWrapper>} />
-          <Route path="/products/carbon-composite" element={<PageWrapper><CarbonCompositePage /></PageWrapper>} />
-          <Route path="/products/drone-models" element={<PageWrapper><DroneModelsPage /></PageWrapper>} />
-
-          {/* Sectors */}
-          <Route path="/sectors" element={<PageWrapper><SectorsPage /></PageWrapper>} />
-          <Route path="/sectors/defence-security" element={<PageWrapper><DefencePage /></PageWrapper>} />
-          <Route path="/sectors/smart-cities" element={<PageWrapper><SmartCitiesPage /></PageWrapper>} />
-          <Route path="/sectors/municipal-operations" element={<PageWrapper><MunicipalPage /></PageWrapper>} />
-          <Route path="/sectors/infrastructure-monitoring" element={<PageWrapper><InfrastructurePage /></PageWrapper>} />
-          <Route path="/sectors/agriculture" element={<PageWrapper><AgriculturePage /></PageWrapper>} />
-          <Route path="/sectors/disaster-management" element={<PageWrapper><DisasterPage /></PageWrapper>} />
-          <Route path="/sectors/environmental-monitoring" element={<PageWrapper><EnvironmentalPage /></PageWrapper>} />
-          <Route path="/sectors/industrial-inspection" element={<PageWrapper><IndustrialPage /></PageWrapper>} />
-
-          {/* Core Pages */}
-          <Route path="/careers" element={<PageWrapper><CareersPage /></PageWrapper>} />
-          <Route path="/technology" element={<PageWrapper><TechnologyPage /></PageWrapper>} />
-          <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
-          <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
-
-          <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
-        </Routes>
+        {isLoading && <LoadingScreen key="loading" />}
       </AnimatePresence>
 
-      <Footer />
-    </>
-  )}
-</>
+      {!isLoading && (
+        <>
+          <CustomCursor />
+          <ScrollProgressBar />
+          <Navbar />
+
+          {/* MUST be here: inside SmoothScrollProvider, outside AnimatePresence */}
+          <ScrollToTop />
+
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
+
+              {/* Products */}
+              <Route path="/products" element={<PageWrapper><ProductsPage /></PageWrapper>} />
+              <Route path="/products/uav-systems" element={<PageWrapper><UAVSystemsPage /></PageWrapper>} />
+              <Route path="/products/artificial-intelligence" element={<PageWrapper><AIPage /></PageWrapper>} />
+              <Route path="/products/software-systems" element={<PageWrapper><SoftwarePage /></PageWrapper>} />
+              <Route path="/products/advanced-engineering" element={<PageWrapper><EngineeringPage /></PageWrapper>} />
+              <Route path="/products/avionics" element={<PageWrapper><AvionicsPage /></PageWrapper>} />
+              <Route path="/products/carbon-composite" element={<PageWrapper><CarbonCompositePage /></PageWrapper>} />
+              <Route path="/products/drone-models" element={<PageWrapper><DroneModelsPage /></PageWrapper>} />
+
+              {/* Sectors */}
+              <Route path="/sectors" element={<PageWrapper><SectorsPage /></PageWrapper>} />
+              <Route path="/sectors/defence-security" element={<PageWrapper><DefencePage /></PageWrapper>} />
+              <Route path="/sectors/smart-cities" element={<PageWrapper><SmartCitiesPage /></PageWrapper>} />
+              <Route path="/sectors/municipal-operations" element={<PageWrapper><MunicipalPage /></PageWrapper>} />
+              <Route path="/sectors/infrastructure-monitoring" element={<PageWrapper><InfrastructurePage /></PageWrapper>} />
+              <Route path="/sectors/agriculture" element={<PageWrapper><AgriculturePage /></PageWrapper>} />
+              <Route path="/sectors/disaster-management" element={<PageWrapper><DisasterPage /></PageWrapper>} />
+              <Route path="/sectors/environmental-monitoring" element={<PageWrapper><EnvironmentalPage /></PageWrapper>} />
+              <Route path="/sectors/industrial-inspection" element={<PageWrapper><IndustrialPage /></PageWrapper>} />
+
+              {/* Core Pages */}
+              <Route path="/careers" element={<PageWrapper><CareersPage /></PageWrapper>} />
+              <Route path="/technology" element={<PageWrapper><TechnologyPage /></PageWrapper>} />
+              <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
+              <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
+
+              <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
+            </Routes>
+          </AnimatePresence>
+
+          <Footer />
+        </>
+      )}
+    </SmoothScrollProvider>
   )
 }

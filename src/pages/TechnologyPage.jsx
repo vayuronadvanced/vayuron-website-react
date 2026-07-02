@@ -1,5 +1,8 @@
+{/*TechnologyPage.jsx*/}
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, SectionHeader, CTAButton, CyanDivider } from '../components/ui'
+import { useScrollPin } from '../hooks/useScrollPin'
+
 const techPillars = [
   {
     title: 'Autonomous Flight Systems',
@@ -61,6 +64,26 @@ const techStack = [
 ]
 
 export default function TechnologyPage() {
+  // Pinned scroll transition for the Core Pillars section — the first
+  // content block after the page banner, so it's the natural "arrival"
+  // moment on this page.
+  const pillarsRef = useScrollPin((tl, el) => {
+    const bg = el.querySelector('[data-pillars-bg]')
+    const content = el.querySelector('[data-pillars-content]')
+
+    tl.fromTo(
+      bg,
+      { scale: 1.12, filter: 'brightness(0.45)' },
+      { scale: 1, filter: 'brightness(1)', ease: 'none' },
+      0
+    ).fromTo(
+      content,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, ease: 'none' },
+      0
+    )
+  })
+
   return (
     <>
       <Helmet>
@@ -82,12 +105,13 @@ export default function TechnologyPage() {
 
 
         {/* ═══════════════════════════════════════
-        CORE PILLARS
+        CORE PILLARS (pinned + scrubbed on scroll)
         ═══════════════════════════════════════ */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+        <section ref={pillarsRef} className="relative min-h-screen flex items-center overflow-hidden">
 
           {/* Background Image */}
           <div
+            data-pillars-bg
             className="absolute inset-0"
             style={{
               backgroundImage: "url('/Tech2.png')",
@@ -101,7 +125,7 @@ export default function TechnologyPage() {
           
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col justify-center">
+          <div data-pillars-content className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24 flex flex-col justify-center">
 
             <SectionHeader
               eyebrow="Core Pillars"
