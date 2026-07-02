@@ -57,7 +57,7 @@ export function useScrollPin(buildTimeline, pinDistance = '+=100%', deps = []) {
                 trigger: el,
                 start: 'top top',
                 end: pinDistance,
-                scrub: 1,
+                scrub: 0.1,
                 pin: true,
                 anticipatePin: 1,
               },

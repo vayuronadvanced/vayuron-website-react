@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useScrollReveal, useStatCounter } from '../../hooks'
+import { useScrollPin } from '../../hooks/useScrollPin'
 
 // ─── Breadcrumb ────────────────────────────────────────────────────────────
 export function Breadcrumb({ crumbs = [] }) {
@@ -27,27 +28,89 @@ export function PageBanner({
   title,
   subtitle,
   crumbs = [],
-  backgroundImage // ✅ NEW PROP
+  backgroundImage,      // used as: (a) poster / reduced-motion fallback when video props are given, (b) plain background when they aren't
+  backgroundVideoMp4,    // ✅ NEW — optional, e.g. "/videos/technology-banner.mp4"
+  backgroundVideoWebm,   // ✅ NEW — optional, e.g. "/videos/technology-banner.webm"
 }) {
+  const hasVideo = Boolean(backgroundVideoMp4 || backgroundVideoWebm)
+
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  const showVideo = hasVideo && !prefersReducedMotion
+
+  // Same pinned reveal used on the homepage Hero — pins the banner while
+  // the media scales/clips in and the text content fades up and out.
+  // Only pins when there's a video background; plain-image banners keep
+  // their original static behavior so existing pages don't shift
+  // unexpectedly until you opt them into video.
+  const bannerRef = useScrollPin((tl, el) => {
+    const mediaWrapper = el.querySelector('[data-banner-wrapper]')
+    const media = el.querySelector('[data-banner-media]')
+    const content = el.querySelector('[data-banner-content]')
+
+    if (!mediaWrapper || !media) return
+
+    tl.to(mediaWrapper, { clipPath: 'inset(6% 6% 6% 6% round 28px)', ease: 'none' }, 0)
+      .to(media, { scale: 1.15, ease: 'none' }, 0)
+      .to(content, { opacity: 0, y: -80, ease: 'none' }, 0)
+  })
+
   return (
     <section
+      ref={hasVideo ? bannerRef : null}
       className="relative min-h-screen flex items-center border-b border-[rgba(0,212,255,0.1)] overflow-hidden"
-        style={{
-          backgroundImage: backgroundImage
-            ? `url(${backgroundImage})`
-            : undefined,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-        }}
+      style={
+        !hasVideo
+          ? {
+              backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }
+          : undefined
+      }
     >
+      {hasVideo && (
+        <div data-banner-wrapper className="absolute inset-0 overflow-hidden">
+          {showVideo ? (
+            <video
+              data-banner-media
+              className="absolute inset-0 h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster={backgroundImage}
+              aria-hidden="true"
+            >
+              {backgroundVideoWebm && <source src={backgroundVideoWebm} type="video/webm" />}
+              {backgroundVideoMp4 && <source src={backgroundVideoMp4} type="video/mp4" />}
+            </video>
+          ) : (
+            <img
+              data-banner-media
+              src={backgroundImage}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          )}
+        </div>
+      )}
+
       {/* DARK OVERLAY FOR READABILITY : <div className="absolute inset-0 bg-black/60" />*/}
       
 
       {/* Cyan glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24">
+      <div
+        data-banner-content
+        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24"
+      >
         <Breadcrumb crumbs={crumbs} />
 
         {eyebrow && (

@@ -1,13 +1,173 @@
-{/**Contact Page*/}
 import { Helmet } from 'react-helmet-async'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
 import { SITE } from '../data/siteData'
 import { Breadcrumb, SectionHeader } from '../components/ui'
 
 export default function ContactPage() {
+  const heroRef = useRef(null)
+  const bgRef = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+
+      gsap.set(
+        [
+          '.contact-breadcrumb',
+          '.contact-tag',
+          '.contact-title',
+          '.contact-text',
+          '.contact-info',
+          '.enquiry-card',
+          '.response-tag',
+          '.enquiry-title',
+          '.enquiry-text',
+          '.enquiry-btn',
+        ],
+        {
+          opacity: 0,
+          y: 30,
+        }
+      )
+
+      gsap.set(bgRef.current, {
+        scale: 1.1,
+      })
+
+      const tl = gsap.timeline()
+
+      tl.to(bgRef.current, {
+        scale: 1,
+        duration: 1.2,
+        ease: 'power2.out',
+      })
+
+      .to(
+        '.contact-breadcrumb',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.25,
+        },
+        '-=1'
+      )
+
+      .to(
+        '.contact-tag',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.25,
+        },
+        '-=0.15'
+      )
+
+      .to(
+        '.contact-title',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.35,
+        },
+        '-=0.15'
+      )
+      
+      .to(
+        '.enquiry-card',
+        {
+          opacity: 1,
+          y: 30,
+          duration: 0,
+        }
+      )
+
+      .to(
+        '.enquiry-card',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.45,
+          ease: 'power3.out',
+        }
+      )
+
+      .to(
+        '.response-tag',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.2,
+        },
+        '-=0.25'
+      )
+
+      .to(
+        '.enquiry-title',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.25,
+        },
+        '-=0.1'
+                )
+
+          .to(
+            '.enquiry-text',
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.25,
+            },
+            '-=0.1'
+          )
+
+          .fromTo(
+            '.enquiry-btn',
+          {
+            opacity: 0,
+            scale: 0.9,
+            y: 15,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.35,
+            ease: 'back.out(1.7)',
+          },
+          '-=0.1'
+        )
+
+      .to(
+        '.contact-text',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+        },
+        '-=0.15'
+      )
+
+      .to(
+        '.contact-info',
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.35,
+        },
+        '-=0.05'
+      )
+
+    }, heroRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <>
       <Helmet>
         <title>Contact — Vayuron Advanced Systems</title>
+
         <meta
           name="description"
           content="Contact Vayuron Advanced Systems for product enquiries, partnerships, and defence briefings."
@@ -15,45 +175,57 @@ export default function ContactPage() {
       </Helmet>
 
       <main>
+
         <section
+          ref={heroRef}
           className="relative min-h-[100vh] flex items-center overflow-hidden border-b border-[rgba(0,212,255,0.1)]"
-          style={{
-            backgroundImage: "url('/Green.png')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat',
-          }}
         >
-          {/* Dark overlay so text stays readable over the background photo */}
+
+          {/* Animated Background */}
+          <div
+            ref={bgRef}
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/Green.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/50" />
 
+          {/* Cyan Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
           <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-28">
 
-            <div className="mb-6">
+            <div className="contact-breadcrumb mb-6">
               <Breadcrumb crumbs={[{ label: 'Contact' }]} />
             </div>
 
-            <p className="font-mono text-xs tracking-[0.25em] uppercase text-cyan mb-4">
+            <p className="contact-tag font-mono text-xs tracking-[0.25em] uppercase text-cyan mb-4">
               Contact
             </p>
 
-            <SectionHeader
-              title="Get in Touch"
-              className="mb-6"
-            />
+            <div className="contact-title">
+              <SectionHeader
+                title="Get in Touch"
+                className="mb-6"
+              />
+            </div>
 
-            <p className="max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-14">
+            <p className="contact-text max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-14">
               Speak with our engineering and commercial team about your
               operational requirements.
             </p>
 
-            {/* Two-column layout: direct contact info + enquiry card */}
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-16 items-start">
 
               {/* Direct Contact */}
-              <div>
+              <div className="contact-info">
+
                 <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">
                   Direct Contact
                 </p>
@@ -79,6 +251,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
+
                   <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
                     Office Address
                   </p>
@@ -93,30 +266,28 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="block text-[var(--muted)] hover:text-cyan transition leading-relaxed"
                   >
-                    47, Balaji Nagar,Ayodhya Bypass,
+                    47, Balaji Nagar, Ayodhya Bypass,
                     <br />
                     Bhopal, Madhya Pradesh 462023,
                     <br />
                     India
                   </a>
+
                 </div>
+
               </div>
 
-              {/* Enquiry Card */}
-              <div className="border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full">
-
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+                            {/* Enquiry Card */}
+              <div className="enquiry-card border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full">
+                <p className="response-tag font-mono text-xs tracking-widest uppercase text-cyan mb-3">                  
                   Response Time
                 </p>
 
-
-
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
+                <h2 className="enquiry-title font-display text-2xl md:text-3xl font-bold text-white mb-4">                  
                   Send an Enquiry
                 </h2>
 
-                <p className="text-[var(--muted)] leading-relaxed mb-6 text-sm">
-                  Complete our secure enquiry form and our engineering team
+                <p className="enquiry-text text-[var(--muted)] leading-relaxed mb-6 text-sm">                  Complete our secure enquiry form and our engineering team
                   will respond within two business days.
                 </p>
 
@@ -124,7 +295,7 @@ export default function ContactPage() {
                   href="https://docs.google.com/forms/d/e/1FAIpQLSewI60dNbbQqrlHw_Xh8Wa3b_desNWJkJuFoICh01gi6NFRnw/viewform?usp=sharing&ouid=100144093646921205317"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center w-full border border-cyan text-cyan px-7 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
+                  className="enquiry-btn inline-flex items-center justify-center w-full border border-cyan text-cyan px-7 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
                 >
                   Open Secure Form →
                 </a>
@@ -134,8 +305,11 @@ export default function ContactPage() {
             </div>
 
           </div>
+
         </section>
+
       </main>
+
     </>
   )
 }

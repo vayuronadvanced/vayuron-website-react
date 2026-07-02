@@ -1,7 +1,6 @@
-{/*AboutPage.jsx*/}
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, SectionHeader, StatCard, CTAButton, CyanDivider } from '../components/ui'
-import { useScrollReveal } from '../hooks'
+import { useScrollPin } from '../hooks/useScrollPin'
 
 const values = [
   {
@@ -27,8 +26,51 @@ const values = [
 ]
 
 export default function AboutPage() {
-  const missionRef = useScrollReveal()
-  const valuesRef = useScrollReveal()
+
+  // Section 1 — Mission: bg brightens + content fades up (same as ProductsPreview)
+  const missionRef = useScrollPin((tl, el) => {
+    const bg      = el.querySelector('[data-mission-bg]')
+    const content = el.querySelector('[data-mission-content]')
+    tl.fromTo(bg,
+      { scale: 1.1, filter: 'brightness(0.45)' },
+      { scale: 1,   filter: 'brightness(1)',    ease: 'none' },
+      0
+    ).fromTo(content,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0,  ease: 'none' },
+      0
+    )
+  }, '+=100%')
+
+  // Section 2 — Values: clip-path reveal (same as Hero / IP Ownership)
+  const valuesRef = useScrollPin((tl, el) => {
+    const bg      = el.querySelector('[data-values-bg]')
+    const content = el.querySelector('[data-values-content]')
+    tl.fromTo(bg,
+      { scale: 1.08, clipPath: 'inset(0% 0% 0% 0%)' },
+      { scale: 1,    clipPath: 'inset(4% 4% 4% 4% round 16px)', ease: 'none' },
+      0
+    ).fromTo(content,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0,  ease: 'none' },
+      0
+    )
+  }, '+=100%')
+
+  // Section 3 — CTA: lighter fade-up, shorter pin
+  const ctaRef = useScrollPin((tl, el) => {
+    const bg      = el.querySelector('[data-cta-bg]')
+    const content = el.querySelector('[data-cta-content]')
+    tl.fromTo(bg,
+      { scale: 1.06, filter: 'brightness(0.5)' },
+      { scale: 1,    filter: 'brightness(1)',   ease: 'none' },
+      0
+    ).fromTo(content,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0,  ease: 'none' },
+      0
+    )
+  }, '+=80%')
 
   return (
     <>
@@ -49,13 +91,15 @@ export default function AboutPage() {
           backgroundImage="/FixedWingDRone.png"
         />
 
-        {/* Mission Statement */}
+        {/* ═══════════════════════════════════════
+            SECTION 1 — MISSION (pinned)
+        ═══════════════════════════════════════ */}
         <section
           ref={missionRef}
-          className="reveal relative min-h-screen flex items-center overflow-hidden"
+          className="relative min-h-screen flex items-center overflow-hidden"
         >
-          {/* Background Image */}
           <div
+            data-mission-bg
             className="absolute inset-0"
             style={{
               backgroundImage: "url('/about2.png')",
@@ -65,30 +109,22 @@ export default function AboutPage() {
             }}
           />
 
-          {/* Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-black/75" />*/}
-          
-
-          {/* Content */}
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+          <div data-mission-content className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-              {/* Left Content */}
               <div>
                 <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">
                   Why We Exist
                 </p>
-
                 <h2 className="font-display text-4xl font-bold text-white mb-6 leading-tight">
                   India's critical operations deserve indigenous technology
                 </h2>
-
                 <p className="text-white/80 leading-relaxed mb-6">
                   Vayuron Advanced Systems was founded on a single conviction: that
                   India's defence forces, security agencies, and critical infrastructure
                   operators should not depend on foreign technology for their most
                   sensitive operations.
                 </p>
-
                 <p className="text-white/80 leading-relaxed">
                   We build the autonomous systems, AI platforms, and defence-grade
                   software that give India genuine operational sovereignty —
@@ -97,28 +133,28 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              {/* Right Stats */}
               <div className="grid grid-cols-2 gap-4">
-                <StatCard value={4} suffix="" label="Years Operating" />
-                <StatCard value={50} suffix="+" label="Deployments" />
-                <StatCard value={8} suffix="" label="Sectors Served" />
+                <StatCard value={4}   suffix=""  label="Years Operating" />
+                <StatCard value={50}  suffix="+" label="Deployments" />
+                <StatCard value={8}   suffix=""  label="Sectors Served" />
                 <StatCard value={100} suffix="+" label="Team Members" />
               </div>
 
             </div>
           </div>
-        </section>      
+        </section>
 
-        {/* Divider */}
         <CyanDivider className="max-w-[1400px] mx-auto px-6 my-4" />
 
-        {/* Values */}
+        {/* ═══════════════════════════════════════
+            SECTION 2 — VALUES (pinned, clip-path)
+        ═══════════════════════════════════════ */}
         <section
           ref={valuesRef}
-          className="reveal relative min-h-screen flex items-center overflow-hidden"
+          className="relative min-h-screen flex items-center overflow-hidden"
         >
-          {/* Background Image */}
           <div
+            data-values-bg
             className="absolute inset-0"
             style={{
               backgroundImage: "url('/about3.png')",
@@ -128,12 +164,7 @@ export default function AboutPage() {
             }}
           />
 
-          {/* Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />*/}
-          
-
-          {/* Content */}
-          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
-
+          <div data-values-content className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
             <SectionHeader
               eyebrow="Our Values"
               title="What We Stand For"
@@ -146,28 +177,28 @@ export default function AboutPage() {
                   key={i}
                   className="group relative rounded-xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-8 overflow-hidden"
                 >
-                  {/* Top Accent Line */}
                   <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
-
                   <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
                     {v.title}
                   </h3>
-
                   <p className="text-white/75 leading-relaxed group-hover:text-white transition-colors">
                     {v.description}
                   </p>
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-
-          {/* Background Image */}
+        {/* ═══════════════════════════════════════
+            SECTION 3 — CTA (pinned)
+        ═══════════════════════════════════════ */}
+        <section
+          ref={ctaRef}
+          className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        >
           <div
+            data-cta-bg
             className="absolute inset-0"
             style={{
               backgroundImage: "url('/About4.png')",
@@ -177,33 +208,25 @@ export default function AboutPage() {
             }}
           />
 
-          {/* Gradient Overlay : <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" /> */}
-          
-
-          {/* Content */}
-          <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 text-center">
-
+          <div data-cta-content className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 text-center">
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
               Join Our Mission
             </h2>
-
             <p className="text-white/80 text-lg leading-relaxed max-w-3xl mx-auto mb-10">
               We are always looking for engineers, researchers, and operators who want
               to build meaningful technology for national security.
             </p>
-
             <div className="flex justify-center gap-5 flex-wrap mt-10">
               <CTAButton to="/careers" variant="primary">
                 View Open Roles
               </CTAButton>
-
               <CTAButton to="/contact" variant="secondary">
                 Partner With Us
               </CTAButton>
             </div>
-
           </div>
         </section>
+
       </main>
     </>
   )

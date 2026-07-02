@@ -9,58 +9,63 @@ import { useScrollPin } from '../hooks/useScrollPin'
 
 // ─── Hero Section ──────────────────────────────────────────────────────────
 function Hero() {
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-const heroRef = useScrollPin((tl, el) => {
-  const imageWrapper = el.querySelector("[data-hero-wrapper]")
-  const image = el.querySelector("[data-hero-image]")
-  const content = el.querySelector("[data-hero-content]")
+  const heroRef = useScrollPin((tl, el) => {
+    const mediaWrapper = el.querySelector("[data-hero-wrapper]")
+    const media = el.querySelector("[data-hero-media]")
+    const content = el.querySelector("[data-hero-content]")
 
-tl.to(
-  imageWrapper,
-  {
-    clipPath: "inset(6% 6% 6% 6% round 28px)",
-    ease: "none",
-  },
-  0
-)
-
-.to(
-  image,
-  {
-    scale: 1.15,
-    ease: "none",
-  },
-  0
-)
-
-.to(
-  content,
-  {
-    opacity: 0,
-    y: -120,
-    ease: "none",
-  },
-  0
-)
-})
-
+    tl.to(mediaWrapper, {
+      clipPath: "inset(4% 4% 4% 4% round 24px)",
+      duration: 0.5,
+      ease: "power2.out",
+    }, 0)
+    .to(media, {
+      scale: 1.08,
+      duration: 0.5,
+      ease: "power2.out",
+    }, 0)
+    .to(content, {
+      opacity: 0,
+      y: -80,
+      duration: 0.4,
+      ease: "power3.out",
+    }, 0)
+  })
 
   return (
     <section
       ref={heroRef}
       className="relative min-h-screen flex flex-col items-center justify-center bg-black pt-24 pb-24"
-    >      
-      {/* Drone Background Image */}
-      <div
-        data-hero-wrapper
-        className="absolute inset-0 overflow-hidden"
-      >
-        <img
-          data-hero-image
-          src="/drone-bg.png"
-          alt="Drone Background"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+    >
+      {/* Drone Background Video */}
+      <div data-hero-wrapper className="absolute inset-0 overflow-hidden">
+        {prefersReducedMotion ? (
+          <img
+            data-hero-media
+            src="/images/hero-poster.jpg"
+            alt="Vayuron autonomous drone in flight"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <video
+            data-hero-media
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/images/hero-poster.jpg"
+            aria-label="Vayuron autonomous drone in flight"
+          >
+            <source src="/videos/hero.webm" type="video/webm" />
+            <source src="/Drone1.mp4" type="video/mp4" />
+          </video>
+        )}    
       </div>
 
       {/* Radial glow */}
@@ -69,12 +74,12 @@ tl.to(
       {/* Top edge line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
-      {/* Content */}
+      {/* Content (YOUR ORIGINAL UI KEPT) */}
       <div
         data-hero-content
         className="relative z-10 text-center px-6 max-w-5xl mx-auto"
-      >        
-      <motion.p
+      >
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -112,15 +117,18 @@ tl.to(
           transition={{ duration: 0.6, delay: 0.9 }}
           className="flex flex-col sm:flex-row gap-x-12 gap-y-6 justify-center mt-6"
         >
-          <CTAButton to="/products" variant="primary">Explore Products</CTAButton>
-          <CTAButton to="/about" variant="secondary">Our Mission</CTAButton>
+          <CTAButton to="/products" variant="primary">
+            Explore Products
+          </CTAButton>
+          <CTAButton to="/about" variant="secondary">
+            Our Mission
+          </CTAButton>
         </motion.div>
       </div>
-
     </section>
   )
 }
-
+{/*
 // ─── Stats Bar ─────────────────────────────────────────────────────────────
 function StatsBar() {
   const ref = useScrollReveal()
@@ -135,10 +143,7 @@ function StatsBar() {
         backgroundAttachment: "scroll",
       }}
     >
-      {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
-      
-
-<motion.div
+    <motion.div
   initial={{ opacity: 0, y: 80 }}
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: true, amount: 0.3 }}
@@ -153,6 +158,7 @@ function StatsBar() {
     </section>
   )
 }
+*/}      
 
 // ─── Products Preview ──────────────────────────────────────────────────────
 function ProductsPreview() {
@@ -162,21 +168,22 @@ function ProductsPreview() {
 
     tl.fromTo(
       bg,
-      { scale: 1.1, filter: 'brightness(0.5)' },
-      { scale: 1, filter: 'brightness(1)', ease: 'none' },
-      0
-    ).fromTo(
-      content,
-      { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, ease: 'none' },
+      { scale: 1.03, filter: 'brightness(0.75)' },
+      { scale: 1, duration: 0.35, ease: 'power2.out' },
       0
     )
-  })
+    .fromTo(
+      content,
+      { opacity: 0, y: 20 },
+      { opacity: 1, duration: 0.3, y: 0, ease: 'power3.out' },
+      0
+    )
+  }, '+=80%')   // 👈 smaller pin distance = faster section feel
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden pt-12"
     >
       <div
         data-products-bg
@@ -188,30 +195,28 @@ function ProductsPreview() {
           backgroundRepeat: "no-repeat",
         }}
       />
-      {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
-      
 
-      <div data-products-content className="relative z-10 w-full max-w-[1600px] mx-auto px-6 py-16">
+      <div
+        data-products-content
+        className="relative z-10 w-full max-w-[1250px] mx-auto px-6 py-16"
+      >
         <SectionHeader
           eyebrow="Capabilities"
           title="Our Product Lines"
-          subtitle="Four core technology domains engineered for defence, security, and industrial operations."
+          subtitle="Four core technology domains engineered for defence, security, & industrial operations."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-          {PRODUCTS.map((product) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">          
+            {PRODUCTS.map((product) => (
             <Link
               key={product.id}
               to={product.path}
-              className="group relative overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-4 flex items-start gap-3">
-              
-              {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
-
+              className="group relative overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-4 flex items-start gap-3"
+            >
               <span className="text-cyan text-2xl mt-1 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                 {product.icon}
               </span>
-              
+
               <div>
                 <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">
                   {product.label}
@@ -222,15 +227,10 @@ function ProductsPreview() {
                 </p>
 
                 <span className="inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
-                  Learn More
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
+                  Learn More →
                 </span>
-
               </div>
             </Link>
-            
           ))}
         </div>
 
@@ -259,7 +259,7 @@ function SectorsPreview() {
       {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
       
 
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-8 py-16">
+      <div className="relative z-10 w-full max-w-[1000px] mx-auto px-8 py-16">
         <SectionHeader
           eyebrow="Sectors"
           title="Operational Domains"
@@ -376,7 +376,6 @@ export default function HomePage() {
           wrap this page in SmoothScrollProvider again here. */}
       <main>
         <Hero />
-        <StatsBar />
         <ProductsPreview />
         <SectorsPreview />
         <MissionCTA />

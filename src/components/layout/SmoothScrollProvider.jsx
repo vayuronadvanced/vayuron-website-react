@@ -15,17 +15,15 @@ export default function SmoothScrollProvider({ children }) {
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
-    if (prefersReducedMotion) {
-      return undefined;
-    }
+    if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.8,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.5,
     });
+
     lenisRef.current = lenis;
     setLenisInstance(lenis);
 
@@ -34,10 +32,63 @@ export default function SmoothScrollProvider({ children }) {
     const update = (time) => {
       lenis.raf(time * 1000);
     };
+
     gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
 
+    // =========================
+    // SNAP SCROLL LOGIC
+    // =========================
+
+    let isScrolling = false;
+
+    const sections = Array.from(document.querySelectorAll('section'));
+
+    const getClosestSection = () => {
+      const scroll = window.scrollY;
+      let closest = sections[0];
+      let minDist = Infinity;
+
+      sections.forEach((section) => {
+        const offset = Math.abs(section.offsetTop - scroll);
+        if (offset < minDist) {
+          minDist = offset;
+          closest = section;
+        }
+      });
+
+      return closest;
+    };
+
+    const handleWheel = (e) => {
+      if (isScrolling) return;
+
+      e.preventDefault();
+
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const current = getClosestSection();
+      const index = sections.indexOf(current);
+
+      let targetIndex = index + direction;
+
+      if (targetIndex < 0) targetIndex = 0;
+      if (targetIndex >= sections.length) targetIndex = sections.length - 1;
+
+      isScrolling = true;
+
+      lenis.scrollTo(sections[targetIndex], {
+        duration: 0.9,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+        onComplete: () => {
+          isScrolling = false;
+        },
+      });
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
     return () => {
+      window.removeEventListener('wheel', handleWheel);
       gsap.ticker.remove(update);
       lenis.destroy();
       lenisRef.current = null;
