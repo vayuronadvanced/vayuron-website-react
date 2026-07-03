@@ -8,6 +8,7 @@ export default function AvionicsPage() {
       subtitle="Mission-critical avionics, flight control electronics, navigation, and onboard mission systems engineered for defence and aerospace platforms."
       backgroundImage="/AvionicsBanner.png"
       contentBackgroundImage="/AvionicsBG.png"
+      heroVideo="/Drone1.mp4"
       description="Vayuron's Avionics division develops indigenous flight computers, navigation systems, mission controllers, power distribution units, and embedded electronics that enable reliable autonomous operation in demanding defence and industrial environments."
 
       crumbs={[

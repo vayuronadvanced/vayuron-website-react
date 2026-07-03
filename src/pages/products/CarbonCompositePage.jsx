@@ -8,6 +8,7 @@ export default function CarbonCompositePage() {
       subtitle="Lightweight, high-strength carbon fibre and advanced composite structures engineered for aerospace, defence, and industrial applications."
       backgroundImage="/CarbonBanner.png"
       contentBackgroundImage="/CarbonBG.png"
+      heroVideo="/Drone1.mp4"
       description="Vayuron's Carbon & Composite division develops advanced composite structures, lightweight airframes, payload enclosures, and custom-engineered carbon fibre components. Our manufacturing combines precision engineering with high-performance composite materials to deliver exceptional strength, reduced weight, and long-term durability for mission-critical systems."
 
       crumbs={[
