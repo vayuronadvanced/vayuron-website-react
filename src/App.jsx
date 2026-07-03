@@ -35,10 +35,14 @@ import ScrollToTop from './components/utils/ScrollToTop'
 import CareersPage from './pages/CareersPage'
 
 // ─── Page Transition Wrapper ───────────────────────────────────────────────
+// Echoes the in-page StackSection effect at the route level: the incoming
+// page rises up (as if covering the outgoing one) instead of a flat fade,
+// so navigating between pages feels like the same "cover" motion used
+// between sections.
 const pageVariants = {
-  initial: { opacity: 0, y: 12 },
-  enter:   { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
-  exit:    { opacity: 0,       transition: { duration: 0.25, ease: 'easeIn' } },
+  initial: { opacity: 0, y: 40 },
+  enter:   { opacity: 1, y: 0,   transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+  exit:    { opacity: 0, y: -40, transition: { duration: 0.3, ease: [0.7, 0, 0.84, 0] } },
 }
 
 function PageWrapper({ children }) {

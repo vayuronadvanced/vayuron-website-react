@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useScrollReveal, useStatCounter } from '../../hooks'
-import { useScrollPin } from '../../hooks/useScrollPin'
 
 // ─── Breadcrumb ────────────────────────────────────────────────────────────
 export function Breadcrumb({ crumbs = [] }) {
@@ -23,14 +22,19 @@ export function Breadcrumb({ crumbs = [] }) {
 }
 
 // ─── Page Banner ───────────────────────────────────────────────────────────
+// Renders the hero/banner content only — no internal ScrollTrigger pin.
+// If a page wants the pin/cover stacking effect on its banner, wrap this
+// in <StackSection index={0}> from the calling page, same as any other
+// section. Keeping this component pin-free avoids double-pinning when
+// it's nested inside StackSection's own sticky wrapper.
 export function PageBanner({
   eyebrow,
   title,
   subtitle,
   crumbs = [],
   backgroundImage,      // used as: (a) poster / reduced-motion fallback when video props are given, (b) plain background when they aren't
-  backgroundVideoMp4,    // ✅ NEW — optional, e.g. "/videos/technology-banner.mp4"
-  backgroundVideoWebm,   // ✅ NEW — optional, e.g. "/videos/technology-banner.webm"
+  backgroundVideoMp4,    // optional, e.g. "/videos/technology-banner.mp4"
+  backgroundVideoWebm,   // optional, e.g. "/videos/technology-banner.webm"
 }) {
   const hasVideo = Boolean(backgroundVideoMp4 || backgroundVideoWebm)
 
@@ -40,26 +44,8 @@ export function PageBanner({
 
   const showVideo = hasVideo && !prefersReducedMotion
 
-  // Same pinned reveal used on the homepage Hero — pins the banner while
-  // the media scales/clips in and the text content fades up and out.
-  // Only pins when there's a video background; plain-image banners keep
-  // their original static behavior so existing pages don't shift
-  // unexpectedly until you opt them into video.
-  const bannerRef = useScrollPin((tl, el) => {
-    const mediaWrapper = el.querySelector('[data-banner-wrapper]')
-    const media = el.querySelector('[data-banner-media]')
-    const content = el.querySelector('[data-banner-content]')
-
-    if (!mediaWrapper || !media) return
-
-    tl.to(mediaWrapper, { clipPath: 'inset(6% 6% 6% 6% round 28px)', ease: 'none' }, 0)
-      .to(media, { scale: 1.15, ease: 'none' }, 0)
-      .to(content, { opacity: 0, y: -80, ease: 'none' }, 0)
-  })
-
   return (
     <section
-      ref={hasVideo ? bannerRef : null}
       className="relative min-h-screen flex items-center border-b border-[rgba(0,212,255,0.1)] overflow-hidden"
       style={
         !hasVideo
@@ -73,10 +59,9 @@ export function PageBanner({
       }
     >
       {hasVideo && (
-        <div data-banner-wrapper className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
           {showVideo ? (
             <video
-              data-banner-media
               className="absolute inset-0 h-full w-full object-cover"
               autoPlay
               muted
@@ -91,7 +76,6 @@ export function PageBanner({
             </video>
           ) : (
             <img
-              data-banner-media
               src={backgroundImage}
               alt=""
               aria-hidden="true"
@@ -107,10 +91,7 @@ export function PageBanner({
       {/* Cyan glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
-      <div
-        data-banner-content
-        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24"
-      >
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 pt-32 pb-24">
         <Breadcrumb crumbs={crumbs} />
 
         {eyebrow && (
@@ -188,6 +169,63 @@ export function CyanDivider({ className = '' }) {
       <div className="flex-1 h-px bg-[rgba(0,212,255,0.1)]"/>
     </div>
   )
+}
+
+// ─── Info Card (standardized card — use this everywhere) ─────────────────
+// One card component for the whole site: same size/shape, same hover
+// animation, same heading font, same description style, and an equal
+// number of bullets per card within a given grid (pass the same-length
+// `bullets` arrays for every card in a section).
+export function InfoCard({ icon, title, description, bullets = [], to, href, className = '' }) {
+  const cls = `group relative flex h-full flex-col overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 ${className}`
+
+  const content = (
+    <>
+      {/* Top Accent Line — same on every card */}
+      <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+
+      {icon && (
+        <span className="text-cyan text-2xl mb-4 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+          {icon}
+        </span>
+      )}
+
+      <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">
+        {title}
+      </h3>
+
+      {description && (
+        <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors mb-4">
+          {description}
+        </p>
+      )}
+
+      {bullets.length > 0 && (
+        <ul className="space-y-2 mb-4">
+          {bullets.map((item, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-2.5 text-white/70 text-[13px] leading-relaxed group-hover:text-white/90 transition-colors"
+            >
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {(to || href) && (
+        <span className="mt-auto inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
+          Learn More
+          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </span>
+      )}
+    </>
+  )
+
+  if (to) return <Link to={to} className={cls}>{content}</Link>
+  if (href) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{content}</a>
+  return <div className={cls}>{content}</div>
 }
 
 // ─── Universal Card ───────────────────────────────────────────────────────

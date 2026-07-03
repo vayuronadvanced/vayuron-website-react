@@ -30,32 +30,32 @@ export default function AvionicsPage() {
         {
           title: 'Flight Control Computers',
           description:
-            'High-reliability embedded flight controllers supporting autonomous missions and manual override.'
+            'High-reliability embedded flight controllers supporting autonomous missions and manual override.',
         },
         {
           title: 'Navigation Systems',
           description:
-            'GPS, INS and sensor fusion for precise positioning in challenging environments.'
+            'GPS, INS and sensor fusion for precise positioning in challenging environments.',
         },
         {
           title: 'Power Management',
           description:
-            'Redundant power distribution systems with intelligent battery monitoring.'
+            'Redundant power distribution systems with intelligent battery monitoring.',
         },
         {
           title: 'Mission Computers',
           description:
-            'Onboard processors handling navigation, payload management and mission execution.'
+            'Onboard processors handling navigation, payload management and mission execution.',
         },
         {
           title: 'Communication Modules',
           description:
-            'Encrypted radio and telemetry interfaces for secure command and control.'
+            'Encrypted radio and telemetry interfaces for secure command and control.',
         },
         {
           title: 'Embedded Electronics',
           description:
-            'Custom-designed avionics hardware engineered for defence-grade reliability.'
+            'Custom-designed avionics hardware engineered for defence-grade reliability.',
         },
       ]}
 

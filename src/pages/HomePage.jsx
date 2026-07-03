@@ -1,58 +1,32 @@
-import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { SectionHeader, StatCard, FeatureCard, CTAButton, CyanDivider } from '../components/ui'
-import { PRODUCTS, SECTORS, SITE } from '../data/siteData'
+import { SectionHeader, CTAButton, InfoCard } from '../components/ui'
+import { PRODUCTS, SECTORS } from '../data/siteData'
 import { useScrollReveal } from '../hooks'
-import { useScrollPin } from '../hooks/useScrollPin'
+import StackSection from '../components/sections/StackSection'
 
 // ─── Hero Section ──────────────────────────────────────────────────────────
+// StackSection now owns the pin/cover/scale effect — this component only
+// needs to render its content. No internal ScrollTrigger pin here anymore
+// (that would fight the sticky stacking wrapper).
 function Hero() {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  const heroRef = useScrollPin((tl, el) => {
-    const mediaWrapper = el.querySelector("[data-hero-wrapper]")
-    const media = el.querySelector("[data-hero-media]")
-    const content = el.querySelector("[data-hero-content]")
-
-    tl.to(mediaWrapper, {
-      clipPath: "inset(4% 4% 4% 4% round 24px)",
-      duration: 0.5,
-      ease: "power2.out",
-    }, 0)
-    .to(media, {
-      scale: 1.08,
-      duration: 0.5,
-      ease: "power2.out",
-    }, 0)
-    .to(content, {
-      opacity: 0,
-      y: -80,
-      duration: 0.4,
-      ease: "power3.out",
-    }, 0)
-  })
-
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex flex-col items-center justify-center bg-black pt-24 pb-24"
-    >
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-black pt-24 pb-24">
       {/* Drone Background Video */}
-      <div data-hero-wrapper className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
         {prefersReducedMotion ? (
           <img
-            data-hero-media
             src="/images/hero-poster.jpg"
             alt="Vayuron autonomous drone in flight"
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
           <video
-            data-hero-media
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay
             muted
@@ -65,7 +39,7 @@ function Hero() {
             <source src="/videos/hero.webm" type="video/webm" />
             <source src="/Drone1.mp4" type="video/mp4" />
           </video>
-        )}    
+        )}
       </div>
 
       {/* Radial glow */}
@@ -74,11 +48,8 @@ function Hero() {
       {/* Top edge line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
-      {/* Content (YOUR ORIGINAL UI KEPT) */}
-      <div
-        data-hero-content
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
-      >
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,65 +99,12 @@ function Hero() {
     </section>
   )
 }
-{/*
-// ─── Stats Bar ─────────────────────────────────────────────────────────────
-function StatsBar() {
-  const ref = useScrollReveal()
-  return (
-    <section
-      ref={ref}
-      className="reveal relative -mt-24 z-20 border-y border-[rgba(0,212,255,0.1)] py-12 overflow-hidden"      style={{
-        backgroundImage: "url('/Tablong.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "scroll",
-      }}
-    >
-    <motion.div
-  initial={{ opacity: 0, y: 80 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, amount: 0.3 }}
-  transition={{ duration: 0.8 }}
-  className="relative z-10 max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8"
->
-  <StatCard value={8} suffix="+" label="Sectors Served" />
-  <StatCard value={4} suffix="" label="Product Lines" />
-  <StatCard value={50} suffix="+" label="Deployments" />
-  <StatCard value={100} suffix="+" label="Team Members" />
-</motion.div>
-    </section>
-  )
-}
-*/}      
 
 // ─── Products Preview ──────────────────────────────────────────────────────
 function ProductsPreview() {
-  const sectionRef = useScrollPin((tl, el) => {
-    const bg = el.querySelector('[data-products-bg]')
-    const content = el.querySelector('[data-products-content]')
-
-    tl.fromTo(
-      bg,
-      { scale: 1.03, filter: 'brightness(0.75)' },
-      { scale: 1, duration: 0.35, ease: 'power2.out' },
-      0
-    )
-    .fromTo(
-      content,
-      { opacity: 0, y: 20 },
-      { opacity: 1, duration: 0.3, y: 0, ease: 'power3.out' },
-      0
-    )
-  }, '+=80%')   // 👈 smaller pin distance = faster section feel
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden pt-12"
-    >
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-12 bg-black">
       <div
-        data-products-bg
         className="absolute inset-0"
         style={{
           backgroundImage: "url('/rectors.png')",
@@ -196,41 +114,32 @@ function ProductsPreview() {
         }}
       />
 
-      <div
-        data-products-content
-        className="relative z-10 w-full max-w-[1250px] mx-auto px-6 py-16"
-      >
+      <div className="relative z-10 w-full max-w-[1250px] mx-auto px-6 py-16">
         <SectionHeader
           eyebrow="Capabilities"
           title="Our Product Lines"
-          subtitle="Four core technology domains engineered for defence, security, & industrial operations."
+          subtitle="Six core technology domains engineered for defence, security, & industrial operations."
         />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">          
-            {PRODUCTS.map((product) => (
-            <Link
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        {PRODUCTS
+          .filter(
+            (product) =>
+              ![
+                "Advanced Engineering",
+                "Avionics",
+                "Carbon & Composite",
+              ].includes(product.label)
+          )
+          .map((product) => (
+            <InfoCard
               key={product.id}
               to={product.path}
-              className="group relative overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-4 flex items-start gap-3"
-            >
-              <span className="text-cyan text-2xl mt-1 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
-                {product.icon}
-              </span>
-
-              <div>
-                <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">
-                  {product.label}
-                </h3>
-
-                <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors mb-4">
-                  {product.description}
-                </p>
-
-                <span className="inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
-                  Learn More →
-                </span>
-              </div>
-            </Link>
+              icon={product.icon}
+              title={product.label}
+              description={product.description}
+              bullets={product.bullets}
+            />
           ))}
         </div>
 
@@ -252,32 +161,31 @@ function SectorsPreview() {
       style={{
         backgroundImage: "url('/Operational DomainsHome.png')",
         backgroundSize: "cover",
-        backgroundPosition: "center center", // Move the image to the right
+        backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Dark Overlay : <div className="absolute inset-0 bg-black/70"></div> */}
-      
-
-      <div className="relative z-10 w-full max-w-[1000px] mx-auto px-8 py-16">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-16">
         <SectionHeader
           eyebrow="Sectors"
           title="Operational Domains"
           subtitle="Delivering autonomous intelligence across eight critical industries."
         />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-          {SECTORS.map((sector, i) => (
-            <Link
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {SECTORS.map((sector) => (
+            <InfoCard
               key={sector.id}
               to={sector.path}
-              className="group border border-[rgba(0,212,255,0.08)] hover:border-cyan p-4 transition-all duration-200 flex items-center gap-3"
-            >
-              <span className="font-sans text-sm font-medium text-muted group-hover:text-white transition-colors leading-tight">
-                {sector.label}
-              </span>
-            </Link>
+              icon={sector.icon}
+              title={sector.label}
+              description={sector.description}
+              bullets={sector.bullets}
+              className="p-5"
+            />
           ))}
         </div>
+
         <div className="text-center">
           <CTAButton to="/sectors" variant="secondary">Explore All Sectors</CTAButton>
         </div>
@@ -285,18 +193,10 @@ function SectorsPreview() {
     </section>
   )
 }
+
 // ─── Mission CTA ───────────────────────────────────────────────────────────
 function MissionCTA() {
   const ref = useScrollReveal()
-
-  // 🔧 Scroll to top function (safe, local scope)
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    })
-  }
 
   return (
     <section
@@ -309,9 +209,6 @@ function MissionCTA() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Dark Overlay <div className="absolute inset-0 bg-black/70"></div> */}
-      
-
       <div className="relative z-10 max-w-3xl mx-auto">
         <p className="font-mono text-xs tracking-[0.3em] uppercase text-cyan mb-6">
           Indigenous Technology
@@ -337,23 +234,17 @@ function MissionCTA() {
           </CTAButton>
         </div>
 
-        {/* 🔻 NEW: Vayuron Advanced System Bottom Icon */}
-        {/* 🔻 FIXED: Vayuron Advanced System Click */}
-<button
-  type="button"
-  onClick={() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }}
-  className="mt-12 flex flex-col items-center justify-center mx-auto text-cyan hover:text-white transition-all duration-300 group"
-  style={{ position: 'relative', zIndex: 20 }}
->
-  <div className="text-xs tracking-[0.3em] uppercase group-hover:scale-105 transition-transform">
-    Vayuron Advanced System
-  </div>
-
-  <div className="w-2 h-2 bg-cyan rounded-full mt-2 group-hover:shadow-cyan"></div>
-</button>
-
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="mt-12 flex flex-col items-center justify-center mx-auto text-cyan hover:text-white transition-all duration-300 group"
+          style={{ position: 'relative', zIndex: 20 }}
+        >
+          <div className="text-xs tracking-[0.3em] uppercase group-hover:scale-105 transition-transform">
+            Vayuron Advanced System
+          </div>
+          <div className="w-2 h-2 bg-cyan rounded-full mt-2 group-hover:shadow-cyan"></div>
+        </button>
       </div>
     </section>
   )
@@ -371,14 +262,24 @@ export default function HomePage() {
         />
       </Helmet>
 
-      {/* Phase 1: pinned/scrubbed transitions on this page's sections.
-          Smooth scroll (Lenis) is provided globally in App.jsx — do not
-          wrap this page in SmoothScrollProvider again here. */}
+      {/* Stacked scroll transitions: each StackSection pins in place
+          (position: sticky) while the next one scrolls up to cover it.
+          Give each an increasing index — that's what makes the stacking
+          order correct. Smooth scroll (Lenis) is provided globally in
+          App.jsx — do not add SmoothScrollProvider here. */}
       <main>
-        <Hero />
-        <ProductsPreview />
-        <SectorsPreview />
-        <MissionCTA />
+        <StackSection index={0}>
+          <Hero />
+        </StackSection>
+        <StackSection index={1}>
+          <ProductsPreview />
+        </StackSection>
+        <StackSection index={2}>
+          <SectorsPreview />
+        </StackSection>
+        <StackSection index={3} dim={false}>
+          <MissionCTA />
+        </StackSection>
       </main>
     </>
   )
