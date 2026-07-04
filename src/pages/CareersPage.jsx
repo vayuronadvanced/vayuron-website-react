@@ -124,9 +124,6 @@ export default function CareersPage() {
             }}
           />
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/40" />
-
           {/* Cyan Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 

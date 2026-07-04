@@ -98,7 +98,7 @@ export default function TechnologyPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/Tech2.png')",
+                backgroundImage: "url('/Tech2.png')",  
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

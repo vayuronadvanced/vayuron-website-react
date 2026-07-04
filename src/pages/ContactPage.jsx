@@ -193,9 +193,6 @@ export default function ContactPage() {
             }}
           />
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/50" />
-
           {/* Cyan Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
@@ -277,7 +274,7 @@ export default function ContactPage() {
 
               </div>
 
-                            {/* Enquiry Card */}
+              {/* Enquiry Card */}
               <div className="enquiry-card border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full">
                 <p className="response-tag font-mono text-xs tracking-widest uppercase text-cyan mb-3">                  
                   Response Time

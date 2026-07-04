@@ -6,7 +6,7 @@ export default function AvionicsPage() {
       eyebrow="Product Line 05"
       title="Avionics"
       subtitle="Mission-critical avionics, flight control electronics, navigation, and onboard mission systems engineered for defence and aerospace platforms."
-      heroVideo="/Product5.mp4"
+      heroVideo="/Drone1.mp4"
       backgroundImage="/Product5-Banner.png"
       specsBackgroundImage="/Product5-Specs.png"
       capabilitiesBackgroundImage="/Product5-Capabilities.png"

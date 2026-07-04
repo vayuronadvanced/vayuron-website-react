@@ -37,7 +37,7 @@ function Hero() {
             aria-label="Vayuron autonomous drone in flight"
           >
             <source src="/videos/hero.webm" type="video/webm" />
-            <source src="/Drone1.mp4" type="video/mp4" />
+            <source src="/Drone1.mp4" type="video/mp4" />   {/*Section 1 Hero video */}
           </video>
         )}
       </div>
@@ -107,7 +107,7 @@ function ProductsPreview() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "url('/rectors.png')",
+          backgroundImage: "url('/rectors.png')",  //Section 2
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -159,7 +159,7 @@ function SectorsPreview() {
     <section
       className="relative min-h-screen flex items-center border-y border-[rgba(0,212,255,0.08)] overflow-hidden"
       style={{
-        backgroundImage: "url('/Operational.png')",
+        backgroundImage: "url('/Operational.png')",  // Section 3
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
@@ -203,7 +203,7 @@ function MissionCTA() {
       ref={ref}
       className="reveal relative min-h-screen flex items-center justify-center px-6 text-center overflow-hidden"
       style={{
-        backgroundImage: "url('/IndiTechHome.png')",
+        backgroundImage: "url('/IndiTechHome.png')",  //  Section 4 
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",

@@ -6,7 +6,7 @@ export default function AIPage() {
       eyebrow="Product Line 02"
       title="Artificial Intelligence"
       subtitle="Edge AI, computer vision, and decision intelligence platforms for autonomous and semi-autonomous operations."
-      heroVideo="/Product2.mp4"
+      heroVideo="/Drone1.mp4"
       backgroundImage="/Product2-Banner.png"
       specsBackgroundImage="/Product2-Specs.png"
       capabilitiesBackgroundImage="/Product2-Capabilities.png"

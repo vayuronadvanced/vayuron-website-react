@@ -52,7 +52,7 @@ export default function AboutPage() {
         </StackSection>
 
         {/* ═══════════════════════════════════════
-            SECTION 1 — MISSION
+            SECTION 2 — MISSION
         ═══════════════════════════════════════ */}
         <StackSection index={1}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
@@ -101,7 +101,7 @@ export default function AboutPage() {
         </StackSection>
 
         {/* ═══════════════════════════════════════
-            SECTION 2 — VALUES
+            SECTION 3 — VALUES
         ═══════════════════════════════════════ */}
         <StackSection index={2}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
@@ -143,7 +143,7 @@ export default function AboutPage() {
         </StackSection>
 
         {/* ═══════════════════════════════════════
-            SECTION 3 — CTA
+            SECTION 4 — CTA
         ═══════════════════════════════════════ */}
         <StackSection index={3} dim={false}>
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">

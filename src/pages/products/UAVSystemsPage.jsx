@@ -6,14 +6,14 @@ export default function UAVSystemsPage() {
       eyebrow="Product Line 01"
       title="UAV Systems"
       subtitle="Autonomous unmanned aerial systems engineered for defence, surveillance, and civilian missions."
-      backgroundImage="/Quadcopter.png"
-      heroVideo="/Drone1.mp4"
+      backgroundImage="/Quadcopter.png"  // Hero Section
+      heroVideo="/Drone1.mp4"            // 2nd Section
       description="Vayuron's UAV Systems division designs and manufactures a comprehensive range of unmanned aerial vehicles — from tactical reconnaissance drones to heavy-lift autonomous platforms. Each system is built around indigenous technology, ensuring full operational sovereignty and deep customisation for mission-specific requirements."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'UAV Systems' }]}
 
-      // ── Section 2: Ghost Stalker ──
-      specsBackgroundImage="/Product1-GhostStalker.png"
-      specsEyebrow="Platform Profile"
+      // ── Section 3: Ghost Stalker ──
+      specsBackgroundImage="/Product1-GhostStalker.png"  
+      specsEyebrow="Platform Profile"  
       specsTitle="Ghost Stalker"
       specsDescription="Ghost Stalker is a vertical-takeoff tactical UAV built for rapid, infrastructure-free deployment in constrained environments."
       specs={[
@@ -27,7 +27,7 @@ export default function UAVSystemsPage() {
       ]}
       specsMoreDetailsHref="/documents/Ghost Stalker.pdf"
 
-      // ── Section 3: AGNI — FPV Tactical Strike UAV ──
+      // ── Section 4: AGNI — FPV Tactical Strike UAV ──
       secondaryBackgroundImage="/Product2-Agni.png"
       secondaryEyebrow="Platform Profile"
       secondaryTitle="AGNI — FPV Tactical Strike UAV"
