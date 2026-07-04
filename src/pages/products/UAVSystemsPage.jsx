@@ -1,4 +1,4 @@
-import ProductPageTemplate from './ProductPageTemplate'
+import ProductPageTemplate from './templates/ProductPageTemplate'
 
 export default function UAVSystemsPage() {
   return (

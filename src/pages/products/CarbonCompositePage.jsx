@@ -1,4 +1,4 @@
-import ProductPageTemplate from './ProductPageTemplate'
+import ProductPageTemplate from './templates/ProductPageTemplate'
 
 export default function CarbonCompositePage() {
   return (
@@ -6,7 +6,7 @@ export default function CarbonCompositePage() {
       eyebrow="Product Line 06"
       title="Carbon & Composite"
       subtitle="Lightweight, high-strength carbon fibre and advanced composite structures engineered for aerospace, defence, and industrial applications."
-      heroVideo="/Drone1.mp4"
+      heroVideo="/Product6.mp4"
       backgroundImage="/Product6-Banner.png"
       specsBackgroundImage="/Product6-Specs.png"
       capabilitiesBackgroundImage="/Product6-Capabilities.png"

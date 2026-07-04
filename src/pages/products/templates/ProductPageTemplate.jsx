@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, CTAButton, InfoCard, SpecCard } from '../../components/ui'
-import StackSection from '../../components/sections/StackSection'
+import { PageBanner, CTAButton, InfoCard, SpecCard } from '../../../components/ui'
+import StackSection from '../../../components/sections/StackSection'
 
 export default function ProductPageTemplate({
   title,

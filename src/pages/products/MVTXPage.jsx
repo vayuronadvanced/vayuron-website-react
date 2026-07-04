@@ -1,4 +1,4 @@
-import ProductPageTemplate from './ProductPageTemplate'
+import ProductPageTemplate from './templates/ProductPageTemplate'
 
 // NOTE: MVTX is intentionally NOT added to PRODUCTS in siteData.js.
 // This keeps it out of the homepage Products preview, the /products

@@ -31,8 +31,9 @@ import NotFoundPage from './pages/NotFoundPage'
 import AvionicsPage from './pages/products/AvionicsPage'
 import CarbonCompositePage from './pages/products/CarbonCompositePage'
 import DroneModelsPage from './pages/products/DroneModelsPage'
-import ScrollToTop from './components/utils/ScrollToTop'
+import ScrollToTop from './components/layout/ScrollToTop'
 import CareersPage from './pages/CareersPage'
+import MVTXPage from './pages/products/MVTXPage'
 
 // ─── Page Transition Wrapper ───────────────────────────────────────────────
 // Echoes the in-page StackSection effect at the route level: the incoming
@@ -143,6 +144,9 @@ export default function App() {
               <Route path="/products/avionics" element={<PageWrapper><AvionicsPage /></PageWrapper>} />
               <Route path="/products/carbon-composite" element={<PageWrapper><CarbonCompositePage /></PageWrapper>} />
               <Route path="/products/drone-models" element={<PageWrapper><DroneModelsPage /></PageWrapper>} />
+
+              {/* Standalone — not part of PRODUCTS in siteData.js, reachable only via this route and the dedicated navbar link */}
+              <Route path="/products/mvtx" element={<PageWrapper><MVTXPage /></PageWrapper>} />
 
               {/* Sectors */}
               <Route path="/sectors" element={<PageWrapper><SectorsPage /></PageWrapper>} />

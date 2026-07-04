@@ -1,4 +1,4 @@
-import SectorPageTemplate from './SectorPageTemplate'
+import SectorPageTemplate from './templates/SectorPageTemplate'
 
 // ─── Defence & Security ────────────────────────────────────────────────────
 export function DefencePage() {
@@ -8,7 +8,7 @@ export function DefencePage() {
       title="Defence & Security"
       subtitle="Autonomous systems and AI intelligence platforms for national security and armed forces operations."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Defence & Security' }]}
-      backgroundVideoMp4="/Drone1.mp4"  //video
+      backgroundVideoMp4="/Sector1.mp4"
       stats={[
         { value: 15, suffix: '+', label: 'Defence Deployments' },
         { value: 99, suffix: '%', label: 'Mission Success Rate' },
@@ -40,7 +40,7 @@ export function SmartCitiesPage() {
       title="Smart Cities"
       subtitle="Autonomous aerial monitoring and AI analytics for urban management, safety, and infrastructure."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Smart Cities' }]}
-      backgroundVideoMp4="/Drone1.mp4"  //video
+      backgroundVideoMp4="/Sector2.mp4"
       stats={[
         { value: 8, suffix: '+', label: 'City Deployments' },
         { value: 60, suffix: '%', label: 'Incident Response Improvement' },
@@ -72,7 +72,7 @@ export function MunicipalPage() {
       title="Municipal Operations"
       subtitle="UAV and AI solutions for local government asset management, inspection, and public service delivery."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Municipal Operations' }]}
-      backgroundVideoMp4="/Drone1.mp4"  //video
+      backgroundVideoMp4="/Sector3.mp4"
       stats={[
         { value: 40, suffix: '%', label: 'Cost Reduction' },
         { value: 12, suffix: '+', label: 'Municipal Clients' },
@@ -104,7 +104,7 @@ export function InfrastructurePage() {
       title="Infrastructure Monitoring"
       subtitle="Autonomous inspection and AI-powered condition monitoring for critical national infrastructure."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Infrastructure Monitoring' }]}
-      backgroundVideoMp4="/Drone1.mp4"  //video
+      backgroundVideoMp4="/Sector4.mp4"
       stats={[
         { value: 300, suffix: '+', label: 'km Pipeline Inspected' },
         { value: 85, suffix: '%', label: 'Faster than Manual' },
@@ -136,7 +136,7 @@ export function AgriculturePage() {
       title="Agriculture"
       subtitle="Precision agriculture UAV systems delivering crop health monitoring, spraying, and yield analytics."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Agriculture' }]}
-      backgroundVideoMp4="/Drone1.mp4"  //video
+      backgroundVideoMp4="/Sector5.mp4"
       stats={[
         { value: 25, suffix: '%', label: 'Input Cost Reduction' },
         { value: 10000, suffix: '+', label: 'Hectares Covered' },
@@ -168,7 +168,7 @@ export function DisasterPage() {
       title="Disaster Management"
       subtitle="Rapid-response UAV systems for disaster assessment, search and rescue, and relief coordination."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Disaster Management' }]}
-      backgroundVideoMp4="/Drone1.mp4"  //video
+      backgroundVideoMp4="/Sector6.mp4"
       stats={[
         { value: 2, suffix: 'hr', label: 'Deployment Time' },
         { value: 50, suffix: '+', label: 'Disaster Responses' },
@@ -200,7 +200,7 @@ export function EnvironmentalPage() {
       title="Environmental Monitoring"
       subtitle="UAV and AI platforms for environmental compliance, pollution monitoring, and ecological assessment."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Environmental Monitoring' }]}
-      backgroundVideoMp4="/Drone1.mp4"  //video
+      backgroundVideoMp4="/Sector7.mp4"
       stats={[
         { value: 5000, suffix: '+', label: 'sq km Surveyed' },
         { value: 95, suffix: '%', label: 'Detection Accuracy' },
@@ -232,7 +232,7 @@ export function IndustrialPage() {
       title="Industrial Inspection"
       subtitle="Autonomous UAV inspection platforms for oil & gas, manufacturing, mining, and heavy industry."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Industrial Inspection' }]}
-      backgroundVideoMp4="/Drone1.mp4"  //video
+      backgroundVideoMp4="/Sector8.mp4"
       stats={[
         { value: 70, suffix: '%', label: 'Downtime Reduction' },
         { value: 200, suffix: '+', label: 'Facility Inspections' },

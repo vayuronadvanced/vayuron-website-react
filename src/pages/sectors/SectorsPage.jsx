@@ -19,7 +19,7 @@ export default function SectorsPage() {
             title="Sectors We Serve"
             subtitle="Eight critical industries where Vayuron deploys autonomous intelligence at scale."
             crumbs={[{ label: 'Sectors' }]}
-            backgroundImage="/Operational DomainsHome.png"
+            backgroundImage="/Operational.png"
           />
         </StackSection>
 
