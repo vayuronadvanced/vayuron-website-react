@@ -6,9 +6,9 @@ export default function AIPage() {
       eyebrow="Product Line 02"
       title="Artificial Intelligence"
       subtitle="Edge AI, computer vision, and decision intelligence platforms for autonomous and semi-autonomous operations."
-      heroVideo="/Product2.mp4"
-      backgroundImage="/Product2-Banner.png"
-      specsBackgroundImage="/Product2-Specs.png"
+      heroVideo="/Drone1.mp4"
+      backgroundImage="/AI1.png"
+      specsBackgroundImage="/AI2.png"
       capabilitiesBackgroundImage="/Product2-Capabilities.png"
       description="Vayuron's AI division develops intelligent software systems that transform raw sensor data into actionable operational intelligence. From real-time object detection on embedded hardware to full command-and-control AI backends, our systems operate at the edge without cloud dependency — critical for contested and denied environments."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Artificial Intelligence' }]}
