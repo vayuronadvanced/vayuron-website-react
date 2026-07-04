@@ -6,29 +6,43 @@ export default function UAVSystemsPage() {
       eyebrow="Product Line 01"
       title="UAV Systems"
       subtitle="Autonomous unmanned aerial systems engineered for defence, surveillance, and civilian missions."
-     // backgroundImage="/Quadcopter.png"
-      heroVideo="/Drone1.mp4"
-      contentBackgroundImage="/ProductPageDroneBigImg.png"
+      backgroundImage="/Product1-Banner.png"
+      heroVideo="/Product1.mp4"
       description="Vayuron's UAV Systems division designs and manufactures a comprehensive range of unmanned aerial vehicles — from tactical reconnaissance drones to heavy-lift autonomous platforms. Each system is built around indigenous technology, ensuring full operational sovereignty and deep customisation for mission-specific requirements."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'UAV Systems' }]}
+
+      // ── Section 2: Ghost Stalker ──
+      specsBackgroundImage="/Product1-GhostStalker.png"
+      specsEyebrow="Platform Profile"
+      specsTitle="Ghost Stalker"
+      specsDescription="Ghost Stalker is a vertical-takeoff tactical UAV built for rapid, infrastructure-free deployment in constrained operational areas. It delivers up to 90 minutes of endurance across a 50 km operational radius, cruising at 60–80 km/h with a 120 km/h maximum speed while carrying a 5 kg mission payload."
       specs={[
-        { label: 'Max Altitude',     value: '4,500 m' },
-        { label: 'Endurance',        value: '6+ Hours' },
-        { label: 'Payload Capacity', value: '5 kg' },
-        { label: 'Range',            value: '80 km' },
-        { label: 'Top Speed',        value: '120 km/h' },
-        { label: 'IP Rating',        value: 'IP67' },
-        { label: 'Communication',    value: 'Encrypted' },
-        { label: 'Navigation',       value: 'GPS + INS' },
+        { label: 'Max Endurance',      value: '90 min' },
+        { label: 'Operational Radius', value: '50 km' },
+        { label: 'Cruise Speed',       value: '60–80 km/h' },
+        { label: 'Max Speed',          value: '120 km/h' },
+        { label: 'Payload Capacity',   value: '5 kg' },
+        { label: 'Takeoff Method',     value: 'VTOL' },
+        { label: 'Comm. Range',        value: '20 km' },
       ]}
-      features={[
-        { title: 'Multi-Mission Platforms', description: 'Configurable airframes supporting ISR, cargo, electronic warfare, and strike missions with quick-change payload interfaces.' },
-        { title: 'Autonomous Flight', description: 'AI-driven autopilot with terrain-following, obstacle avoidance, and autonomous return-to-home under comms-denied conditions.' },
-        { title: 'Encrypted Datalinks', description: 'Military-grade encrypted command and control channels with frequency-hopping and anti-jam protection.' },
-        { title: 'EO/IR Sensor Suite', description: 'Integrated electro-optical and infrared camera systems with real-time target tracking and geo-tagging.' },
-        { title: 'Extended Endurance', description: 'Hybrid propulsion options delivering 6+ hours of flight time on a single charge or fuel load.' },
-        { title: 'Swarm Coordination', description: 'Multi-UAV swarm intelligence protocols enabling coordinated missions across distributed platforms.' },
+      specsMoreDetailsHref="/documents/ghost-stalker-datasheet.pdf"
+
+      // ── Section 3: AGNI — FPV Tactical Strike UAV ──
+      secondaryBackgroundImage="/Product1-Agni.png"
+      secondaryEyebrow="Platform Profile"
+      secondaryTitle="AGNI — FPV Tactical Strike UAV"
+      secondaryDescription="AGNI is a tactical FPV strike platform engineered for precision terminal engagement, reaching speeds beyond 200 km/h in its final attack phase. Operating within a 35 km radius at a 90–120 km/h cruise speed and up to 180 km/h maximum speed, it carries a payload of up to 1.5 kg for mission-specific strike configurations."
+      secondarySpecs={[
+        { label: 'Terminal Attack Speed', value: '200+ km/h' },
+        { label: 'Max Speed',             value: '180 km/h' },
+        { label: 'Cruise Speed',          value: '90–120 km/h' },
+        { label: 'Operational Radius',    value: '35 km' },
+        { label: 'Max Payload',           value: '1.5 kg' },
+        { label: 'Endurance',             value: '25 min' },
+        { label: 'Guidance',              value: 'AI-Assisted Targeting' },
       ]}
+      secondaryMoreDetailsHref="/documents/agni-fpv-datasheet.pdf"
+
       nextProduct={{ label: 'Artificial Intelligence', path: '/products/artificial-intelligence' }}
     />
   )

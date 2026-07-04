@@ -78,6 +78,16 @@ export default function DroneModelsPage() {
 
         <StackSection index={1}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/DroneModels-Section1.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {DRONES.map((drone) => (
@@ -133,6 +143,16 @@ export default function DroneModelsPage() {
 
         <StackSection index={2} dim={false}>
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-center">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/DroneModels-CTA.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            <div className="absolute inset-0 bg-black/60" />
             <div className="relative z-10 max-w-2xl mx-auto px-6">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
                 Interested in These Platforms?
