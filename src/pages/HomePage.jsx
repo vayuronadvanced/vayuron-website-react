@@ -159,7 +159,7 @@ function SectorsPreview() {
     <section
       className="relative min-h-screen flex items-center border-y border-[rgba(0,212,255,0.08)] overflow-hidden"
       style={{
-        backgroundImage: "url('/Operational DomainsHome.png')",
+        backgroundImage: "url('/Operational.png')",
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",

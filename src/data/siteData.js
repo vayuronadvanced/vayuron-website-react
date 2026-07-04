@@ -31,7 +31,6 @@ export const PRODUCTS = [
     bullets: [
       'Autonomous flight & navigation',
       'Multi-mission payload support',
-      'Comms-denied return-to-home',
     ],
   },
   {
@@ -42,7 +41,6 @@ export const PRODUCTS = [
     bullets: [
       'Real-time edge inference',
       'Multi-sensor data fusion',
-      'Federated learning pipelines',
     ],
   },
   {
@@ -53,7 +51,6 @@ export const PRODUCTS = [
     bullets: [
       'Mission planning & GCS suite',
       'Digital twin simulation',
-      'Secure C2 backend',
     ],
   },
   {
@@ -64,7 +61,6 @@ export const PRODUCTS = [
     bullets: [
       'CFRP structural fabrication',
       'Precision CNC machining',
-      'Full lifecycle testing',
     ],
   },
   {
@@ -75,7 +71,6 @@ export const PRODUCTS = [
     bullets: [
       'Custom flight controllers',
       'Redundant power systems',
-      'MIL-STD-810 certified',
     ],
   },
   {
@@ -86,7 +81,6 @@ export const PRODUCTS = [
     bullets: [
       'Lightweight airframe design',
       'In-house layup & curing',
-      'Damage-tolerant structures',
     ],
   }
 ]
@@ -95,42 +89,42 @@ export const SECTORS = [
   {
     id: 'defence-security', label: 'Defence & Security', path: '/sectors/defence-security',
     description: 'ISR and force-protection support for defence and paramilitary operations.',
-    bullets: ['Border surveillance', 'Tactical ISR support'],
+    // bullets: ['Border surveillance', 'Tactical ISR support'],
   },
   {
     id: 'smart-cities', label: 'Smart Cities', path: '/sectors/smart-cities',
     description: 'Urban monitoring and traffic intelligence for modern city operations.',
-    bullets: ['Traffic flow analytics', 'Public safety monitoring'],
+    // bullets: ['Traffic flow analytics', 'Public safety monitoring'],
   },
   {
     id: 'municipal-operations', label: 'Municipal Operations', path: '/sectors/municipal-operations',
     description: 'Aerial inspection and asset tracking for municipal service delivery.',
-    bullets: ['Utility asset inspection', 'Waste & sanitation audits'],
+    // bullets: ['Utility asset inspection', 'Waste & sanitation audits'],
   },
   {
     id: 'infrastructure-monitoring', label: 'Infrastructure Monitoring', path: '/sectors/infrastructure-monitoring',
     description: 'Structural inspection of bridges, towers, and critical infrastructure.',
-    bullets: ['Structural defect detection', 'Automated inspection routes'],
+    // bullets: ['Structural defect detection', 'Automated inspection routes'],
   },
   {
     id: 'agriculture', label: 'Agriculture', path: '/sectors/agriculture',
     description: 'Precision agriculture platforms for crop health and yield monitoring.',
-    bullets: ['Multispectral crop imaging', 'Targeted spraying support'],
+    // bullets: ['Multispectral crop imaging', 'Targeted spraying support'],
   },
   {
     id: 'disaster-management', label: 'Disaster Management', path: '/sectors/disaster-management',
     description: 'Rapid-deployment aerial response for search, rescue, and damage assessment.',
-    bullets: ['Search & rescue support', 'Real-time damage mapping'],
+    // bullets: ['Search & rescue support', 'Real-time damage mapping'],
   },
   {
     id: 'environmental-monitoring', label: 'Environmental Monitoring', path: '/sectors/environmental-monitoring',
     description: 'Environmental data collection for conservation and compliance monitoring.',
-    bullets: ['Air & water quality tracking', 'Wildlife & habitat surveys'],
+    // bullets: ['Air & water quality tracking', 'Wildlife & habitat surveys'],
   },
   {
     id: 'industrial-inspection', label: 'Industrial Inspection', path: '/sectors/industrial-inspection',
     description: 'Autonomous inspection for plants, pipelines, and industrial facilities.',
-    bullets: ['Pipeline & flare-stack inspection', 'Thermal anomaly detection'],
+    // bullets: ['Pipeline & flare-stack inspection', 'Thermal anomaly detection'],
   },
 ]
 

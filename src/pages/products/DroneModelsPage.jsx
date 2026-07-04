@@ -73,7 +73,7 @@ export default function DroneModelsPage() {
             subtitle="Purpose-built unmanned platforms engineered for intercept, surveillance, strike, and communication missions."
             crumbs={[{ label: 'Products', path: '/products' }, { label: 'Tactical Drone Models' }]}
             backgroundImage="/Quadcopter.png"
-          />
+          /> 
         </StackSection>
 
         <StackSection index={1}>
