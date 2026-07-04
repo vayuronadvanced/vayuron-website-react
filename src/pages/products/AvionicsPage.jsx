@@ -6,137 +6,31 @@ export default function AvionicsPage() {
       eyebrow="Product Line 05"
       title="Avionics"
       subtitle="Mission-critical avionics, flight control electronics, navigation, and onboard mission systems engineered for defence and aerospace platforms."
-      backgroundImage="/Product5-Banner.png"
       heroVideo="/Product5.mp4"
+      backgroundImage="/Product5-Banner.png"
+      specsBackgroundImage="/Product5-Specs.png"
+      capabilitiesBackgroundImage="/Product5-Capabilities.png"
       description="Vayuron's Avionics division develops indigenous flight computers, navigation systems, mission controllers, power distribution units, and embedded electronics that enable reliable autonomous operation in demanding defence and industrial environments."
-
-      crumbs={[
-        { label: 'Products', path: '/products' },
-        { label: 'Avionics' }
+      crumbs={[{ label: 'Products', path: '/products' }, { label: 'Avionics' }]}
+      specs={[
+        { label: 'Flight Controller', value: 'Pixhawk-Based' },
+        { label: 'Processor',         value: 'STM32 / ARM Cortex' },
+        { label: 'Comm Protocols',    value: 'UART/SPI/I²C/CAN' },
+        { label: 'Telemetry Range',   value: '15 km' },
+        { label: 'Power Input',       value: '12–52V' },
+        { label: 'GNSS Support',      value: 'GPS/GLONASS' },
+        { label: 'Operating Temp',    value: '-20°C to 60°C' },
+        { label: 'Certification',     value: 'MIL-STD-810' },
       ]}
-
-      cardSections={[
-        // ── Section 1: Core Capabilities ──
-        {
-          eyebrow: 'What We Deliver',
-          title: 'Core Capabilities',
-          backgroundImage: '/Product5-Section1.png',
-          columns: 3,
-          cards: [
-            {
-              title: 'Flight Control Systems',
-              bullets: [
-                'Flight controller integration and configuration',
-                'Autopilot system development',
-                'Autonomous navigation systems',
-                'Flight stabilization and control optimization',
-              ],
-            },
-            {
-              title: 'Navigation & Positioning',
-              bullets: [
-                'GNSS/GPS integration',
-                'Inertial Measurement Units (IMU)',
-                'Magnetometer integration',
-                'Barometric altitude sensing',
-              ],
-            },
-            {
-              title: 'Communication Systems',
-              bullets: [
-                'Telemetry system integration',
-                'RF communication systems',
-                'Ground Control Station connectivity',
-                'Long-range communication architecture',
-              ],
-            },
-            {
-              title: 'Power & Electrical Systems',
-              bullets: [
-                'Power distribution system design',
-                'Battery Management Systems (BMS)',
-                'Voltage regulation',
-                'Power monitoring solutions',
-              ],
-            },
-            {
-              title: 'Sensor Integration',
-              bullets: [
-                'Environmental sensors',
-                'Payload sensor interfaces',
-                'Optical and imaging sensor integration',
-                'Rangefinding systems',
-              ],
-            },
-            {
-              title: 'Embedded Electronics',
-              bullets: [
-                'Embedded controller integration',
-                'Microcontroller-based avionics solutions',
-                'Interface electronics',
-                'Real-time embedded systems',
-              ],
-            },
-          ],
-        },
-
-        // ── Section 2: Engineering Services (top 6 only) ──
-        {
-          eyebrow: 'How We Work',
-          title: 'Engineering Services',
-          backgroundImage: '/Product5-Section2.png',
-          columns: 3,
-          cards: [
-            { title: 'Avionics system architecture design' },
-            { title: 'Flight controller integration' },
-            { title: 'Electrical wiring and harness development' },
-            { title: 'PCB integration and testing' },
-            { title: 'Communication system setup' },
-            { title: 'Sensor calibration' },
-          ],
-        },
-
-        // ── Section 3: Technology Expertise (top 6, with description + More Details) ──
-        {
-          eyebrow: 'What We Work With',
-          title: 'Technology Expertise',
-          backgroundImage: '/Product5-Section3.png',
-          columns: 3,
-          moreDetailsHref: '/documents/avionics-technology-overview.pdf',
-          moreDetailsLabel: 'More Details',
-          cards: [
-            {
-              title: 'Pixhawk Flight Controllers',
-              description: 'Industry-standard open-hardware flight controllers used across our autonomous UAV platforms.',
-            },
-            {
-              title: 'ArduPilot / PX4 Autopilot',
-              description: 'Open-source autopilot firmware customised for mission-specific flight behaviour and control.',
-            },
-            {
-              title: 'Mission Planner / QGroundControl',
-              description: 'Ground control software for mission planning, telemetry monitoring, and in-flight parameter tuning.',
-            },
-            {
-              title: 'STM32 Microcontrollers',
-              description: 'High-performance embedded microcontrollers powering custom avionics and sensor interface boards.',
-            },
-            {
-              title: 'Arduino / ESP32 Platforms',
-              description: 'Rapid-prototyping microcontroller platforms used for sensor integration and embedded testing.',
-            },
-            {
-              title: 'Communication Protocols',
-              description: 'UART, SPI, I²C, and CAN Bus protocols enabling reliable data exchange between onboard avionics components.',
-            },
-          ],
-        },
+      features={[
+        { title: 'Flight Control Systems', description: 'Flight controller integration, autopilot development, and autonomous navigation for stable, reliable flight.', bullets: ['Autopilot system development', 'Flight stabilization & control optimization'] },
+        { title: 'Navigation & Positioning', description: 'Precision GNSS, IMU, and sensor fusion for accurate positioning in demanding conditions.', bullets: ['GNSS/GPS integration', 'Inertial Measurement Units (IMU)'] },
+        { title: 'Communication Systems', description: 'Robust telemetry and RF communication architecture linking aircraft to ground control.', bullets: ['Telemetry system integration', 'Ground Control Station connectivity'] },
+        { title: 'Power & Electrical Systems', description: 'Reliable power distribution and battery management engineered for continuous operation.', bullets: ['Battery Management Systems (BMS)', 'Voltage regulation'] },
+        { title: 'Sensor Integration', description: 'Environmental, payload, and imaging sensor interfaces tailored to mission requirements.', bullets: ['Optical and imaging sensor integration', 'Rangefinding systems'] },
+        { title: 'Embedded Electronics', description: 'Custom embedded controllers and real-time systems built for defence-grade reliability.', bullets: ['Microcontroller-based avionics solutions', 'Real-time embedded systems'] },
       ]}
-
-      nextProduct={{
-        label: 'Carbon & Composite',
-        path: '/products/carbon-composite'
-      }}
+      nextProduct={{ label: 'Carbon & Composite', path: '/products/carbon-composite' }}
     />
   )
 }
