@@ -73,7 +73,7 @@ export default function StackSection({
     >
       <div
         ref={innerRef}
-        className="relative w-full min-h-screen will-change-transform"
+        className="relative w-full h-screen max-h-screen overflow-y-auto will-change-transform"
       >
         {children}
       </div>

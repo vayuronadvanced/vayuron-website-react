@@ -92,7 +92,7 @@ export default function Navbar() {
         </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {NAV_LINKS.map((link) => (
               <div key={link.label} className="relative">
                   {link.hasDropdown ? (
@@ -233,14 +233,14 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/contact"
-              className="hidden lg:flex items-center gap-2 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all duration-200 px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase"
+              className="hidden xl:flex items-center gap-2 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all duration-200 px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase"
             >
               Get in Touch
             </Link>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex flex-col gap-1.5 p-2 text-white hover:text-cyan transition-colors"
+              className="xl:hidden flex flex-col gap-1.5 p-2 text-white hover:text-cyan transition-colors"
               aria-label="Toggle menu"
             >
               <span className={`block w-5 h-px bg-current transition-all ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`}/>
@@ -257,7 +257,7 @@ export default function Navbar() {
           <motion.div
             variants={mobileMenuVariants}
             initial="hidden" animate="visible" exit="exit"
-            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-lg pt-20 overflow-y-auto lg:hidden"
+            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-lg pt-20 overflow-y-auto xl:hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-2">
               {NAV_LINKS.map((link) => (

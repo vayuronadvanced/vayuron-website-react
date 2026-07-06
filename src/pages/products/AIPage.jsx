@@ -9,7 +9,7 @@ export default function AIPage() {
       heroVideo="/Drone1.mp4"
       backgroundImage="/AI1.png"
       specsBackgroundImage="/AI2.png"
-      capabilitiesBackgroundImage="/Product2-Capabilities.png"
+      capabilitiesBackgroundImage="/AI3.png"
       description="Vayuron's AI division develops intelligent software systems that transform raw sensor data into actionable operational intelligence. From real-time object detection on embedded hardware to full command-and-control AI backends, our systems operate at the edge without cloud dependency — critical for contested and denied environments."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Artificial Intelligence' }]}
       specs={[

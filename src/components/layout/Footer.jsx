@@ -37,7 +37,7 @@ export default function Footer() {
 
         <Link to="/" className="group inline-block">
 
-          <h2 className="font-display text-[2.8rem] md:text-[3.6rem] leading-none tracking-[0.05em] text-cyan group-hover:text-white transition-colors">
+          <h2 className="font-display text-[2.2rem] sm:text-[2.8rem] md:text-[3.6rem] leading-none tracking-[0.05em] text-cyan group-hover:text-white transition-colors">
             VAYURON
           </h2>
 
@@ -126,7 +126,7 @@ export default function Footer() {
       </div>
 
       {/* Newsletter */}
-          <div className="justify-self-end w-full max-w-sm">
+          <div className="lg:justify-self-end w-full max-w-sm">
 
             <h4 className="font-display text-lg uppercase tracking-[0.12em] text-cyan mb-2">
               Stay Updated
