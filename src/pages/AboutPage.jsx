@@ -223,6 +223,17 @@ export default function AboutPage() {
         ═══════════════════════════════════════ */}
         <StackSection index={3}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/About4.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            <div className="absolute inset-0 bg-black/50" />
+
             <div className="relative z-10 w-full max-w-[1250px] mx-auto px-6 py-24">
               <SectionHeader
                 eyebrow="What We Do"
@@ -255,6 +266,17 @@ export default function AboutPage() {
         ═══════════════════════════════════════ */}
         <StackSection index={4}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/drone-bg.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            <div className="absolute inset-0 bg-black/50" />
+
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader
                 eyebrow="Industries We Serve"
@@ -324,6 +346,17 @@ export default function AboutPage() {
         ═══════════════════════════════════════ */}
         <StackSection index={6}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/Operational.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            <div className="absolute inset-0 bg-black/50" />
+
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader
                 eyebrow="By the Numbers"
@@ -401,6 +434,17 @@ export default function AboutPage() {
         ═══════════════════════════════════════ */}
         <StackSection index={8}>
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/TechIndigenous.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            <div className="absolute inset-0 bg-black/55" />
+
             <div className="relative z-10 w-full max-w-[900px] mx-auto px-6 py-24 text-center">
               <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">
                 R&amp;D

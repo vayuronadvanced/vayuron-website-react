@@ -6,10 +6,10 @@ export default function AvionicsPage() {
       eyebrow="Product Line 05"
       title="Avionics"
       subtitle="Mission-critical avionics, flight control electronics, navigation, and onboard mission systems engineered for defence and aerospace platforms."
-      heroVideo="/Product5.mp4"
-      backgroundImage="/Product5-Banner.png"
-      specsBackgroundImage="/Product5-Specs.png"
-      capabilitiesBackgroundImage="/Product5-Capabilities.png"
+      heroVideo="/Drone1.mp4"
+      backgroundImage="/AV1.png"
+      specsBackgroundImage="/AV2.png"
+      capabilitiesBackgroundImage="/AV3.png"
       description="Vayuron's Avionics division develops indigenous flight computers, navigation systems, mission controllers, power distribution units, and embedded electronics that enable reliable autonomous operation in demanding defence and industrial environments."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Avionics' }]}
       specs={[

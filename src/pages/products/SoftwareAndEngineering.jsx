@@ -7,9 +7,9 @@ export function SoftwarePage() {
       title="Software Systems"
       subtitle="Command, control, and data management software for critical defence and industrial operations."
       heroVideo="/Drone1.mp4"
-      backgroundImage="/Product3-Banner.png"
-      specsBackgroundImage="/Product3-Specs.png"
-      capabilitiesBackgroundImage="/Product3-Capabilities.png"
+      backgroundImage="/SS1.png"
+      specsBackgroundImage="/SS3.png"
+      capabilitiesBackgroundImage="/SS4.png"
       description="Vayuron Software Systems delivers mission-critical software infrastructure — from ground control stations and C2 platforms to data pipelines and operational dashboards. Built for high-availability, air-gapped environments with zero dependence on third-party cloud infrastructure."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Software Systems' }]}
       specs={[
@@ -42,9 +42,9 @@ export function EngineeringPage() {
       title="Advanced Engineering"
       subtitle="Precision manufacturing and systems integration for aerospace, defence, and industrial applications."
       heroVideo="/Drone1.mp4"
-      backgroundImage="/Product4-Banner.png"
-      specsBackgroundImage="/Product4-Specs.png"
-      capabilitiesBackgroundImage="/Product4-Capabilities.png"
+      backgroundImage="/AE1.png"
+      specsBackgroundImage="/AE2.png"
+      capabilitiesBackgroundImage="/AE3.png"
       description="Vayuron's Advanced Engineering division provides end-to-end systems integration, precision fabrication, and mechanical design services. From composite airframe structures to ruggedised electronic enclosures and field deployment packages, we engineer hardware that performs in the most demanding environments on earth."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Advanced Engineering' }]}
       specs={[

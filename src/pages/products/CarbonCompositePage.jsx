@@ -6,10 +6,10 @@ export default function CarbonCompositePage() {
       eyebrow="Product Line 06"
       title="Carbon & Composite"
       subtitle="Lightweight, high-strength carbon fibre and advanced composite structures engineered for aerospace, defence, and industrial applications."
-      heroVideo="/Product6.mp4"
-      backgroundImage="/Product6-Banner.png"
-      specsBackgroundImage="/Product6-Specs.png"
-      capabilitiesBackgroundImage="/Product6-Capabilities.png"
+      heroVideo="/Drone1.mp4"
+      backgroundImage="/CC1.png"
+      specsBackgroundImage="/CC2.png"
+      capabilitiesBackgroundImage="/CC3.png"
       description="Vayuron's Carbon & Composite division develops advanced composite structures, lightweight airframes, payload enclosures, and custom-engineered carbon fibre components. Our manufacturing combines precision engineering with high-performance composite materials to deliver exceptional strength, reduced weight, and long-term durability for mission-critical systems."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Carbon & Composite' }]}
       specs={[
