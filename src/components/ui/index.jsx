@@ -218,12 +218,14 @@ export function InfoCard({ icon, title, description, bullets = [], to, href, cla
         </ul>
       )}
 
+    {/*
       {(to || href) && (
         <span className="mt-auto inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
-          Learn More
+          Learn More link to another page 
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </span>
-      )}
+      )}    
+    */}
     </>
   )
 

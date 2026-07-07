@@ -1,5 +1,3 @@
-{/*MVTXPage*/}
-
 import ProductPageTemplate from './templates/ProductPageTemplate'
 
 // NOTE: MVTX is intentionally NOT added to PRODUCTS in siteData.js.
@@ -7,14 +5,13 @@ import ProductPageTemplate from './templates/ProductPageTemplate'
 // index grid, and any other place that maps over PRODUCTS — it's a
 // standalone page, reachable only via its direct route and the
 // dedicated navbar link.
-
 export default function MVTXPage() {
   return (
     <ProductPageTemplate
       eyebrow="Standalone Product"
-      title="MVTX — Multi View Transmission System"
-      subtitle="Real-time video, complete situational awareness. MVTX connects your ground team to multiple remote views through a simple, secure wireless link."
-      backgroundImage="/MVTX1.png"
+      title="MVTX"
+      subtitle="Multi View Transmission System is a real-time video, complete situational awareness. MVTX connects your ground team to multiple remote views through a simple, secure wireless link."
+      backgroundImage="/MVTX1.jpg"
       description="MVTX links a pilot/command station and a UAV over a long-range, encrypted command, telemetry, and video channel, then broadcasts live video to multiple ground users simultaneously — each receiving their own dedicated video-only feed."
 
       crumbs={[
@@ -22,88 +19,65 @@ export default function MVTXPage() {
         { label: 'MVTX' },
       ]}
 
-      cardSections={[
-        // ── Section 1: Core Capabilities ──
-        {
-          eyebrow: 'What It Does',
-          title: 'Core Capabilities',
-          backgroundImage: '/MVTX2.png',
-          columns: 2,
-          cards: [
-            {
-              title: 'Command & Control',
-              bullets: [
-                'Mission control and management',
-                'Live telemetry and drone status',
-                'Multi-view live video feed',
-              ],
-            },
-            {
-              title: 'Secure Long-Range Link',
-              bullets: [
-                'Long-range wireless transmission',
-                'Encrypted command, telemetry & video channel',
-                'Resistant to interference in contested environments',
-              ],
-            },
-            {
-              title: 'Multi-User Video Broadcast',
-              bullets: [
-                'Simultaneous video feed to multiple ground users',
-                'Dedicated video-only channel per user',
-                'Scalable to an entire ground team',
-              ],
-            },
-            {
-              title: 'Ground User Terminal',
-              bullets: [
-                'Compact, portable receiver hardware',
-                'Real-time video-only reception',
-                'Field-ready ergonomic design',
-              ],
-            },
-          ],
-        },
+      // ── Mission Profile + Technical Specifications ──
+      specsBackgroundImage="/MVTX2.png"
+      specsEyebrow="Mission Profile"
+      specsTitle="Technical Specifications"
+      specsDescription="MVTX is a portable video distribution system enabling simultaneous reception and viewing of live UAV video feeds by multiple operators and decision-makers. Designed for command centers, field units, and tactical operations, MVTX improves situational awareness across distributed teams."
+      specs={[
+        { label: 'System Type', value: 'Multi-User Video Distribution' },
+        { label: 'Video Format', value: 'HD Digital' },
+        { label: 'Latency', value: 'Low' },
+        { label: 'Frequency Band', value: '5.8 GHz' },
+        { label: 'Receiver Support', value: 'Multiple Simultaneous' },
+        { label: 'Deployment Time', value: '<5 Minutes' },
+        { label: 'Power Source', value: 'Portable Battery' },
+        { label: 'Ground Station', value: 'Modular' },
+      ]}
 
-        // ── Section 2: Key Features (title-only cards) ──
+      cardSections={[
+        // ── Section 1: Key Operational Advantages (title-only cards) ──
         {
-          eyebrow: 'Built For The Field',
-          title: 'Key Features',
+          eyebrow: 'Why It Matters',
+          title: 'Key Operational Advantages',
           backgroundImage: '/MVTX3.png',
           columns: 3,
           cards: [
-            { title: 'Multi View' },
-            { title: 'Wireless Transmission' },
-            { title: 'Secure & Encrypted' },
-            { title: 'Portable & Rugged' },
-            { title: 'Long-Range Connectivity' },
-            { title: 'Real-Time Video Feed' },
+            { title: 'Multiple Viewer Access' },
+            { title: 'Real-Time Intelligence Sharing' },
+            { title: 'Reduced Decision Cycle' },
+            { title: 'Portable Deployment' },
+            { title: 'No Fixed Infrastructure Required' },
           ],
         },
 
-        // ── Section 3: Mission Benefits (cards with description) ──
+        // ── Section 2: System Components (title-only cards) ──
         {
-          eyebrow: 'Why It Matters',
-          title: 'Mission Benefits',
+          eyebrow: 'What It\u2019s Made Of',
+          title: 'System Components',
           backgroundImage: '/MVTX4.png',
           columns: 3,
           cards: [
-            {
-              title: 'Enhanced Awareness',
-              description: 'Multiple simultaneous viewpoints give ground teams richer situational data for better decisions.',
-            },
-            {
-              title: 'Team Coordination',
-              description: 'Live video is shared instantly with every operator on the ground, keeping the whole team aligned.',
-            },
-            {
-              title: 'Faster Response',
-              description: 'See it, know it, act on it — reduced observation-to-action time in the field.',
-            },
-            {
-              title: 'Mission Ready',
-              description: 'Built and hardened for real-world, mission-critical operations.',
-            },
+            { title: 'Transmission Unit' },
+            { title: 'Receiving Stations' },
+            { title: 'Monitoring Displays' },
+            { title: 'Antenna Assembly' },
+            { title: 'Portable Power Module' },
+          ],
+        },
+
+        // ── Section 3: Applications (title-only cards) ──
+        {
+          eyebrow: 'Where It\u2019s Used',
+          title: 'Applications',
+          backgroundImage: '/ProductPage1.png',
+          columns: 3,
+          cards: [
+            { title: 'UAV Operations' },
+            { title: 'Surveillance Missions' },
+            { title: 'Command Centers' },
+            { title: 'Emergency Response' },
+            { title: 'Infrastructure Monitoring' },
           ],
         },
       ]}

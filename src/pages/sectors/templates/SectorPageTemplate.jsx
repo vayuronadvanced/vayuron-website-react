@@ -56,8 +56,8 @@ export default function SectorPageTemplate({
             backgroundVideoWebm={backgroundVideoWebm}
           />
         </StackSection>
-
-        {/* Stats */}
+{/*
+        
         {hasStats && (
           <StackSection index={statsIndex}>
             <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
@@ -82,7 +82,7 @@ export default function SectorPageTemplate({
             </section>
           </StackSection>
         )}
-
+*/}
         {/* Overview */}
         <StackSection index={overviewIndex}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
