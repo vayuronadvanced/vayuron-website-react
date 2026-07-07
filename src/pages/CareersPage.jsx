@@ -125,10 +125,10 @@ export default function CareersPage() {
           />
 
           {/* Cyan Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 pt-32 pb-24 text-center">
+          <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 text-center">
             <div className="career-breadcrumb mb-6 flex justify-center">
               <Breadcrumb crumbs={[{ label: 'Careers' }]} />
             </div>

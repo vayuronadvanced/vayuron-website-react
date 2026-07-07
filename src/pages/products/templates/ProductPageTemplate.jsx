@@ -146,7 +146,7 @@ export default function ProductPageTemplate({
               {/* Cinematic gradient — darker at the edges, clearer in the
                   centre, instead of a flat overlay. */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
               <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
@@ -174,7 +174,7 @@ export default function ProductPageTemplate({
 
                   {/* Right — spec grid in a glass panel */}
                   <div className="rounded-xl border border-[rgba(0,212,255,0.18)] bg-black/40 backdrop-blur-lg p-6 md:p-8 shadow-[0_0_40px_rgba(0,212,255,0.06)]">
-                    <div className="grid grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       {specs.map((spec, i) => (
                         <SpecCard key={i} label={spec.label} value={spec.value} />
                       ))}
@@ -206,13 +206,13 @@ export default function ProductPageTemplate({
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black/30" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
               <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
                   {/* Left — spec grid in a glass panel (mirrored order) */}
                   <div className="order-2 lg:order-1 rounded-xl border border-[rgba(0,212,255,0.18)] bg-black/40 backdrop-blur-lg p-6 md:p-8 shadow-[0_0_40px_rgba(0,212,255,0.06)]">
-                    <div className="grid grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       {secondarySpecs.map((spec, i) => (
                         <SpecCard key={i} label={spec.label} value={spec.value} />
                       ))}
@@ -310,7 +310,7 @@ export default function ProductPageTemplate({
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
               <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
                 <div className="border-l-2 border-cyan pl-6 mb-10">

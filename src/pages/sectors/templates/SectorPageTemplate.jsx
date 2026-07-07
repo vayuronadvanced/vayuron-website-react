@@ -70,7 +70,7 @@ export default function SectorPageTemplate({
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />
 
-              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {stats.map((stat, i) => (
                     <StatCard key={i} value={stat.value} suffix={stat.suffix} label={stat.label} />
@@ -119,7 +119,7 @@ export default function SectorPageTemplate({
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
 
-              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
                 <h2 className="font-display text-2xl font-bold text-white mb-8">
                   Sector Challenges
                 </h2>
@@ -155,7 +155,7 @@ export default function SectorPageTemplate({
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
 
-              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
+              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
                 <h2 className="font-display text-2xl font-bold text-white mb-8">
                   Technologies Deployed
                 </h2>

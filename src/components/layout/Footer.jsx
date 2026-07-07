@@ -10,7 +10,7 @@ export default function Footer() {
       >
       
       {/* Subtle top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
       
       {/*<footer
       className="relative mt-auto border-t border-[rgba(0,212,255,0.15)] overflow-hidden bg-gradient-to-b from-black via-[#050608] to-black"

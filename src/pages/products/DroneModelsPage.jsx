@@ -122,7 +122,7 @@ export default function DroneModelsPage() {
                       ))}
                     </ul>
 
-                    <div className="grid grid-cols-3 gap-3 mt-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-auto">
                       {drone.specs.map((spec, i) => (
                         <div key={i} className="border border-white/10 rounded-lg p-3">
                           <div className="font-mono text-[9px] tracking-widest uppercase text-cyan/70 mb-1">

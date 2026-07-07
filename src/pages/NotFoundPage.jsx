@@ -21,7 +21,7 @@ export default function NotFoundPage() {
             <p className="font-mono text-xs tracking-[0.3em] uppercase text-cyan mb-6">
               Error 404
             </p>
-            <h1 className="font-display text-8xl font-bold text-white mb-4 text-glow-cyan">
+            <h1 className="font-display text-7xl sm:text-8xl font-bold text-white mb-4 text-glow-cyan">
               404
             </h1>
             <h2 className="font-display text-2xl font-bold text-white mb-4">

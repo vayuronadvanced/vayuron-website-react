@@ -194,9 +194,9 @@ export default function ContactPage() {
           />
 
           {/* Cyan Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
-          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-28">
+          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-20 sm:py-24 md:py-28">
 
             <div className="contact-breadcrumb mb-6">
               <Breadcrumb crumbs={[{ label: 'Contact' }]} />
@@ -213,7 +213,7 @@ export default function ContactPage() {
               />
             </div>
 
-            <p className="contact-text max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-14">
+            <p className="contact-text max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-8 md:mb-14">
               Speak with our engineering and commercial team about your
               operational requirements.
             </p>
