@@ -1,7 +1,7 @@
 {/*SectorPageTemplate.jsx*/}
 
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, StatCard, CTAButton, InfoCard } from '../../../components/ui'
+import { PageBanner, CTAButton, InfoCard } from '../../../components/ui'
 import StackSection from '../../../components/sections/StackSection'
 
 export default function SectorPageTemplate({
@@ -9,7 +9,7 @@ export default function SectorPageTemplate({
   subtitle,
   eyebrow,
   overview,
-  stats = [],
+  // stats = [],
   challenges = [],  // each: { title, description, bullets? }
   solution,
   technologies = [], // each: { icon, label, description, path, bullets? }
@@ -18,7 +18,7 @@ export default function SectorPageTemplate({
   backgroundVideoMp4,    // optional — enables the video hero on this sector's banner
   backgroundVideoWebm,   // optional
 }) {
-  const hasStats = stats.length > 0
+ //  const hasStats = stats.length > 0
   const hasChallenges = challenges.length > 0
   const hasTechnologies = technologies.length > 0
 
@@ -28,7 +28,7 @@ export default function SectorPageTemplate({
   // rather than hardcoding, so any combination of props stays correct.
   let idx = 0
   const bannerIndex = idx++
-  const statsIndex = hasStats ? idx++ : null
+  // const statsIndex = hasStats ? idx++ : null
   const overviewIndex = idx++ // always renders
   const challengesIndex = hasChallenges ? idx++ : null
   const technologiesIndex = hasTechnologies ? idx++ : null
