@@ -1,3 +1,5 @@
+{/*App.jsx*/}
+
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState, useEffect } from 'react'

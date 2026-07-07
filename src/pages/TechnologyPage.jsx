@@ -1,3 +1,5 @@
+{/*TechnologyPage.jsx*/}
+
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, SectionHeader, CTAButton } from '../components/ui'
 import StackSection from '../components/sections/StackSection'

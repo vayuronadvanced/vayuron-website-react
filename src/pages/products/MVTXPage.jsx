@@ -1,3 +1,5 @@
+{/*MVTXPage*/}
+
 import ProductPageTemplate from './templates/ProductPageTemplate'
 
 // NOTE: MVTX is intentionally NOT added to PRODUCTS in siteData.js.
@@ -5,6 +7,7 @@ import ProductPageTemplate from './templates/ProductPageTemplate'
 // index grid, and any other place that maps over PRODUCTS — it's a
 // standalone page, reachable only via its direct route and the
 // dedicated navbar link.
+
 export default function MVTXPage() {
   return (
     <ProductPageTemplate

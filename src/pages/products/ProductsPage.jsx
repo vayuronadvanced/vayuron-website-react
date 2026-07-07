@@ -1,3 +1,5 @@
+{/*ProductsPage.jsx*/}
+
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, InfoCard } from '../../components/ui'
 import { PRODUCTS } from '../../data/siteData'

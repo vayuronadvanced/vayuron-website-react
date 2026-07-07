@@ -1,3 +1,5 @@
+{/*AlPage.jsx*/}
+
 import ProductPageTemplate from './templates/ProductPageTemplate'
 
 export default function AIPage() {

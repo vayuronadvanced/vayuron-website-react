@@ -1,3 +1,5 @@
+{/*PinnedHero.jsx*/}
+
 import PropTypes from 'prop-types';
 import { useScrollPin } from '../../hooks/useScrollPin';
 

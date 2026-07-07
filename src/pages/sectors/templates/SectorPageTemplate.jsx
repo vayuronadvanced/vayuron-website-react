@@ -1,3 +1,5 @@
+{/*SectorPageTemplate.jsx*/}
+
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, StatCard, CTAButton, InfoCard } from '../../../components/ui'
 import StackSection from '../../../components/sections/StackSection'

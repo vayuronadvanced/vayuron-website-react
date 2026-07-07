@@ -1,3 +1,5 @@
+{/*siteData.js*/}
+
 // ─── Central Site Configuration ───────────────────────────────────────────
 // Replaces config/site-config.js from the original HTML project
 

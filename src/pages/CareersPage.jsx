@@ -1,4 +1,4 @@
-/* CareerPage.jsx */
+/*CareerPage.jsx*/
 
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'

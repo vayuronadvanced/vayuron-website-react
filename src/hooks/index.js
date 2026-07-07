@@ -1,3 +1,5 @@
+{/*index.js*/}
+
 import { useEffect, useRef, useState } from 'react'
 
 // ─── Scroll Reveal Hook ────────────────────────────────────────────────────

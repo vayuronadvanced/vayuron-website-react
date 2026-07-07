@@ -1,3 +1,5 @@
+{/*index.jsx*/}
+
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useScrollReveal, useStatCounter } from '../../hooks'
@@ -27,6 +29,7 @@ export function Breadcrumb({ crumbs = [] }) {
 // in <StackSection index={0}> from the calling page, same as any other
 // section. Keeping this component pin-free avoids double-pinning when
 // it's nested inside StackSection's own sticky wrapper.
+
 export function PageBanner({
   eyebrow,
   title,
@@ -176,6 +179,7 @@ export function CyanDivider({ className = '' }) {
 // animation, same heading font, same description style, and an equal
 // number of bullets per card within a given grid (pass the same-length
 // `bullets` arrays for every card in a section).
+
 export function InfoCard({ icon, title, description, bullets = [], to, href, className = '' }) {
   const cls = `group relative flex h-full flex-col overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 ${className}`
 

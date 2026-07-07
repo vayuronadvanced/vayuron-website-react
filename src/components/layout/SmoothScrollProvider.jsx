@@ -1,3 +1,5 @@
+{/*SmoothScrollProvider.jsx*/}
+
 import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';

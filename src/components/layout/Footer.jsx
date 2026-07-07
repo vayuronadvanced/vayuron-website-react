@@ -1,3 +1,5 @@
+{/*Footer.jsx*/}
+
 import { Link } from 'react-router-dom'
 import { SITE, FOOTER_LINKS } from '../../data/siteData'
 

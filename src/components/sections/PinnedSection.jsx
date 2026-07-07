@@ -1,3 +1,5 @@
+{/*PinnedSection.jsx*/}
+
 import { useScrollPin } from "../../hooks/useScrollPin";
 
 export default function PinnedSection({ children, animation }) {

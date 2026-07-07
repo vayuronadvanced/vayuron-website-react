@@ -1,3 +1,5 @@
+{/*AboutPage.jsx*/}
+
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, SectionHeader, StatCard, CTAButton } from '../components/ui'
 import StackSection from '../components/sections/StackSection'
