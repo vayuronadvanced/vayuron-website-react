@@ -127,7 +127,7 @@ export default function AboutPage() {
         <StackSection index={0}>
           <PageBanner
             eyebrow="About Vayuron"
-            title="Absolute Precision"
+            title="Engineering Intelligent Systems for Mission-Critical Operations"
             subtitle="VAYURON Advanced Systems develops indigenous autonomous systems, UAV technologies, AI-enabled platforms, and mission-critical engineering solutions for defence, industrial, infrastructure, and government applications."
             crumbs={[{ label: 'About' }]}
             backgroundImage="/FixedWingDRone.png"

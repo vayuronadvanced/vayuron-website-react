@@ -39,28 +39,58 @@ const techPillars = [
 
 const techStack = [
   {
-    category: 'Flight Control',
-    items: ['Custom Autopilot (PX4-derived)', 'INS/GPS Fusion', 'Barometric Altimetry', 'Optical Flow'],
+    category: 'UAV Technologies',
+    items: [
+      'Multirotor Platforms',
+      'Fixed Wing Platforms',
+      'VTOL Systems',
+      'Tactical UAVs',
+    ],
   },
   {
-    category: 'AI & Vision',
-    items: ['YOLO-v8 Variants', 'Thermal Neural Networks', 'SAR Processing', 'Federated Learning'],
+    category: 'ISR Systems',
+    items: [
+      'EO Payloads',
+      'Thermal Imaging',
+      'Target Tracking',
+      'Situational Awareness',
+    ],
   },
   {
-    category: 'Communications',
-    items: ['FHSS Radio', '4G/5G LTE', 'SATCOM (VSAT)', 'Mesh Networking'],
+    category: 'Communication Systems',
+    items: [
+      'Digital FPV Systems',
+      'Secure Data Links',
+      'Long-Range Video Transmission',
+      'Fiber-Guided Systems',
+    ],
+  },
+  {
+    category: 'AI & Software',
+    items: [
+      'Computer Vision',
+      'Target Recognition',
+      'Mission Analytics',
+      'Data Processing',
+    ],
   },
   {
     category: 'Ground Systems',
-    items: ['GCS Software Suite', 'Mission Planning', 'Digital Twin', 'C2 Backend'],
+    items: [
+      'Ground Control Stations',
+      'Mission Planning',
+      'Intelligence Visualization',
+      'Fleet Management',
+    ],
   },
   {
-    category: 'Manufacturing',
-    items: ['CFRP Fabrication', 'CNC Machining', '3D Printing', 'PCB Design'],
-  },
-  {
-    category: 'Certification',
-    items: ['DGCA Compliance', 'MIL-STD-810', 'BIS Certification', 'DO-160 Testing'],
+    category: 'Manufacturing & Integration',
+    items: [
+      'Carbon Composite Structures',
+      'Embedded Electronics',
+      'Payload Integration',
+      'System Testing',
+    ],
   },
 ]
 
