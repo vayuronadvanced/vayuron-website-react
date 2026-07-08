@@ -168,7 +168,7 @@ export default function Navbar() {
                           </Link>
                         ))}
 
-                        <Link
+                    {/*}    <Link
                           to="/products/mvtx"
                           className="flex items-center gap-3 w-full px-2 py-2 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
                         >
@@ -178,7 +178,7 @@ export default function Navbar() {
                               MVTX
                             </h3>
                           </div>
-                        </Link>
+                        </Link> */}  
                       </div>
 
                       <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
@@ -306,7 +306,7 @@ export default function Navbar() {
                               </Link>
                             ))}
 
-                            {link.label === 'Products' && (
+                      {/*}      {link.label === 'Products' && (
                               <Link
                                 to="/products/mvtx"
                                 className="block px-3 py-3 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
@@ -323,7 +323,7 @@ export default function Navbar() {
                                   </div>
                                 </div>
                               </Link>
-                            )}
+                            )}           */}
                           </motion.div>
                         )}
                       </AnimatePresence>
