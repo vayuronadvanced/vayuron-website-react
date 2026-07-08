@@ -165,6 +165,7 @@ export default function Footer() {
               <Link
                 key={link.path}
                 to={link.path}
+                   onClick={(e) => scrollToTop(e, location.pathname, link.path)}
                 className="text-sm text-white/70 hover:text-cyan transition-colors"
               >
                 {link.label}

@@ -25,12 +25,16 @@ const mobileMenuVariants = {
   exit:   { opacity: 0, x: '100%', transition: { duration: 0.2 } },
 }
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth'
-  })
+const scrollToTop = (e, currentPath, targetPath) => {
+  if (currentPath === targetPath) {
+    e.preventDefault()
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
 }
 
 export default function Navbar() {
@@ -77,7 +81,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           to="/"
-          onClick={scrollToTop}
+          onClick={(e) => scrollToTop(e, location.pathname, "/")}
           className="flex items-center gap-3 group shrink-0"
         >
           <VayuronLogo />
@@ -103,14 +107,15 @@ export default function Navbar() {
                       onMouseEnter={() => setActiveDropdown(link.label)}
                       onMouseLeave={() => setActiveDropdown(null)}
                     >
-                      <Link
-                        to={link.path}
-                        className={`px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase transition-colors ${
-                          location.pathname.startsWith(link.path)
-                            ? 'text-cyan'
-                            : 'text-white hover:text-cyan'
-                        }`}
-                      >
+                    <Link
+                      to={link.path}
+                      onClick={(e) => scrollToTop(e, location.pathname, link.path)}
+                      className={`px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase transition-colors ${
+                        location.pathname.startsWith(link.path)
+                          ? 'text-cyan'
+                          : 'text-white hover:text-cyan'
+                      }`}
+                    >
                         {link.label}
                       </Link>
 
@@ -129,9 +134,10 @@ export default function Navbar() {
                       </button>
                     </div>
                   ) : (
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive }) =>
+                    <NavLink
+                      to={link.path}
+                      onClick={(e) => scrollToTop(e, location.pathname, link.path)}
+                      className={({ isActive }) =>
                       `px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase transition-colors block ${
                         isActive ? 'text-cyan' : 'text-white hover:text-cyan'
                       }`
@@ -183,7 +189,8 @@ export default function Navbar() {
 
                       <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
                         <Link
-                          to="/products"
+                          to="/products" 
+                            onClick={(e) => scrollToTop(e, location.pathname, "/products")}
                           className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1"
                         >
                           View All Products →
@@ -220,7 +227,9 @@ export default function Navbar() {
                       </div>
 
                       <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
-                        <Link to="/sectors" className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1">
+                        <Link to="/sectors" 
+                          onClick={(e) => scrollToTop(e, location.pathname, "/sectors")}
+                        className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1">
                           View All Sectors →
                         </Link>
                       </div>
@@ -283,9 +292,10 @@ export default function Navbar() {
                             className="overflow-hidden"
                           >
                             {(link.label === 'Products' ? PRODUCTS : SECTORS).map((item) => (
-                              <Link
-                                key={item.id}
-                                to={item.path}
+                            <Link
+                              key={item.id}
+                              to={item.path}
+                              onClick={(e) => scrollToTop(e, location.pathname, item.path)}
                                 className="block px-3 py-3 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
                               >
                                 <div className="flex items-center gap-3">
