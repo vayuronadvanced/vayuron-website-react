@@ -1,4 +1,4 @@
-{/*NotFound-404Page*/}
+{/*NotFoundPage.jsx*/}
 
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
@@ -42,7 +42,7 @@ export default function NotFoundPage() {
               </Link>
               <Link
                 to="/contact"
-                className="border border-dim text-muted hover:border-muted hover:text-white transition-all px-6 py-3 font-mono text-xs tracking-widest uppercase"
+                className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-6 py-3 font-mono text-xs tracking-widest uppercase"
               >
                 Contact Us
               </Link>

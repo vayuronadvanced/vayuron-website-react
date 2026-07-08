@@ -14,7 +14,7 @@ export function DefencePage() {
         { value: 99, suffix: '%', label: 'Mission Success Rate' },
         { value: 24, suffix: '/7', label: 'Operational Support' },
       ]}
-      overview="Modern defence operations demand real-time intelligence, autonomous platform coordination, and resilient communications across contested and denied environments. Vayuron's defence solutions integrate UAV platforms, AI analytics, and encrypted C2 software into a unified operational architecture."
+      overview="Modern defence operations depend on real-time intelligence, secure communications, and coordinated autonomous systems to operate effectively in complex and contested environments."
       solution="We deploy multi-domain autonomous systems with AI-powered ISR, encrypted data links, and swarm coordination capabilities — purpose-built for Indian defence forces and allied security organisations."
       challenges={[
         { title: 'Communications Denial', description: 'Operating in GPS-denied and RF-jammed environments where conventional comms are degraded or unavailable.', bullets: ['GPS-denied navigation', 'RF-jam resilient comms'] },
@@ -46,7 +46,7 @@ export function SmartCitiesPage() {
         { value: 60, suffix: '%', label: 'Incident Response Improvement' },
         { value: 365, suffix: '', label: 'Days Continuous Coverage' },
       ]}
-      overview="Smart city operations require persistent aerial surveillance, traffic analytics, crowd monitoring, and infrastructure inspection — all delivered without disrupting urban life. Vayuron's quiet electric UAVs and AI video analytics platform provide city administrators with real-time urban intelligence."
+      overview="Smart cities rely on continuous monitoring, intelligent traffic management, public safety, and infrastructure oversight to improve urban efficiency and quality of life."
       solution="We deliver integrated UAV-as-a-Service for urban centres, combining persistent drone patrols, AI crowd and traffic analytics, and a unified city operations dashboard — all managed from a single control centre."
       challenges={[
         { title: 'Urban Airspace Complexity', description: 'Navigating dense urban airspace with buildings, wires, and manned aviation requiring precise autonomous flight.', bullets: ['Precise autonomous flight', 'Obstacle-dense navigation'] },
@@ -78,7 +78,7 @@ export function MunicipalPage() {
         { value: 12, suffix: '+', label: 'Municipal Clients' },
         { value: 500, suffix: '+', label: 'Inspections Completed' },
       ]}
-      overview="Municipalities face the challenge of maintaining extensive public infrastructure — roads, bridges, water networks, parks, and public buildings — with constrained budgets and limited inspection resources. Vayuron UAV systems provide rapid, cost-effective inspection and mapping services for local government bodies."
+      overview="Municipal authorities manage extensive public infrastructure and essential services while balancing growing urban demands with limited resources and operational efficiency."
       solution="We provide municipality-specific drone inspection services and software platforms enabling councils to survey, map, and maintain public assets at a fraction of the cost of traditional methods."
       challenges={[
         { title: 'Asset Inventory Gaps', description: 'Maintaining accurate, up-to-date records of all public infrastructure assets across large geographic areas.', bullets: ['Up-to-date asset records', 'Wide-area coverage'] },
@@ -110,7 +110,7 @@ export function InfrastructurePage() {
         { value: 85, suffix: '%', label: 'Faster than Manual' },
         { value: 20, suffix: '+', label: 'Bridge Surveys' },
       ]}
-      overview="Power lines, pipelines, railways, bridges, and telecommunications towers form the backbone of national infrastructure. Traditional inspection is slow, dangerous, and expensive. Vayuron UAV systems enable rapid, repeatable inspection of linear and vertical infrastructure with AI-powered defect detection."
+      overview="Critical infrastructure networks require frequent, accurate inspections to ensure safety, reliability, and uninterrupted operation across vast geographical areas."
       solution="We deploy fixed-wing and rotary UAVs with thermal, LiDAR, and visual sensors to inspect hundreds of kilometres of infrastructure daily, with AI automatically flagging anomalies for engineer review."
       challenges={[
         { title: 'Hazardous Access', description: 'Inspecting energised power lines, elevated structures, and confined spaces that pose serious risk to human inspectors.', bullets: ['No human exposure', 'Energised-line safe'] },
@@ -142,7 +142,7 @@ export function AgriculturePage() {
         { value: 10000, suffix: '+', label: 'Hectares Covered' },
         { value: 30, suffix: '%', label: 'Yield Improvement' },
       ]}
-      overview="Indian agriculture faces productivity, water efficiency, and input cost challenges at a massive scale. Vayuron agricultural UAVs deliver precision crop monitoring, targeted spraying, and AI-powered yield prediction — enabling farmers and agri-businesses to maximise output while reducing costs and environmental impact."
+      overview="Modern agriculture increasingly depends on data-driven farming, efficient resource management, and precision monitoring to improve productivity and sustainability.."
       solution="We provide multi-rotor spray drones, multispectral survey platforms, and an agricultural AI analytics platform — delivering the full precision agriculture stack from field survey to application and reporting."
       challenges={[
         { title: 'Crop Health Monitoring', description: 'Detecting disease, pest infestation, and nutrient deficiency across large farming areas before visible damage occurs.', bullets: ['Early disease detection', 'Pest infestation alerts'] },
@@ -174,7 +174,7 @@ export function DisasterPage() {
         { value: 50, suffix: '+', label: 'Disaster Responses' },
         { value: 90, suffix: '%', label: 'Faster Damage Assessment' },
       ]}
-      overview="Natural disasters — floods, earthquakes, cyclones, and wildfires — demand immediate situational awareness and coordinated response. Vayuron UAV systems are deployable within hours of a disaster event, providing real-time imagery, survivor detection, and logistics support to relief agencies."
+      overview="Disaster response operations require rapid situational awareness, accurate damage assessment, and coordinated decision-making to protect lives and accelerate recovery."
       solution="Rapid-deployment UAV kits with man-portable airframes, satellite comms-enabled datalinks, and AI survivor detection operate independently of ground infrastructure — enabling effective response even when terrestrial communications are destroyed."
       challenges={[
         { title: 'Speed of Response', description: 'Generating situational awareness in the first critical hours after a disaster when ground access is blocked.', bullets: ['Rapid situational awareness', 'Hours-not-days deployment'] },
@@ -206,7 +206,7 @@ export function EnvironmentalPage() {
         { value: 95, suffix: '%', label: 'Detection Accuracy' },
         { value: 40, suffix: '+', label: 'Environmental Projects' },
       ]}
-      overview="Regulatory agencies, conservation organisations, and industry face growing pressure to monitor environmental conditions at scale — air quality, water bodies, deforestation, wildlife, and emissions. Vayuron provides cost-effective autonomous monitoring replacing expensive manned surveys and satellite data with high-resolution, high-frequency aerial intelligence."
+      overview="Environmental management requires continuous observation of ecosystems, natural resources, and emissions to support conservation, compliance, and sustainable development."
       solution="We deploy multi-sensor UAV platforms with gas detection, multispectral imaging, and water sampling capabilities — feeding data directly into environmental compliance reporting platforms and conservation management systems."
       challenges={[
         { title: 'Scale of Coverage', description: 'Monitoring vast forest, coastal, and watershed areas that are impractical to survey with manned resources.', bullets: ['Vast area surveys', 'Forest & coastal reach'] },
@@ -238,7 +238,7 @@ export function IndustrialPage() {
         { value: 200, suffix: '+', label: 'Facility Inspections' },
         { value: 100, suffix: '%', label: 'Coverage vs Manual' },
       ]}
-      overview="Industrial facilities — refineries, chemical plants, power stations, mining operations, and manufacturing plants — require regular inspection of assets that are hazardous, elevated, or confined. Vayuron UAV inspection systems eliminate human exposure to risk while delivering higher inspection frequency and data quality than traditional methods."
+      overview="Industrial facilities require regular inspection of critical assets to maintain operational safety, regulatory compliance, and long-term equipment reliability."
       solution="We integrate UAV platforms with non-destructive testing sensors, corrosion detection AI, and digital twin integration — delivering inspection-as-a-service for major industrial clients with measurable safety and productivity benefits."
       challenges={[
         { title: 'Worker Safety Risk', description: 'Eliminating human exposure to heights, confined spaces, toxic atmospheres, and energised equipment during inspection.', bullets: ['Zero height exposure', 'Confined-space avoidance'] },

@@ -1,7 +1,5 @@
-{/*SectorPageTemplate.jsx*/}
-
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, CTAButton, InfoCard } from '../../../components/ui'
+import { PageBanner, StatCard, CTAButton, InfoCard } from '../../../components/ui'
 import StackSection from '../../../components/sections/StackSection'
 
 export default function SectorPageTemplate({
@@ -9,7 +7,7 @@ export default function SectorPageTemplate({
   subtitle,
   eyebrow,
   overview,
-  // stats = [],
+  stats = [],
   challenges = [],  // each: { title, description, bullets? }
   solution,
   technologies = [], // each: { icon, label, description, path, bullets? }
@@ -18,7 +16,7 @@ export default function SectorPageTemplate({
   backgroundVideoMp4,    // optional — enables the video hero on this sector's banner
   backgroundVideoWebm,   // optional
 }) {
- //  const hasStats = stats.length > 0
+  const hasStats = stats.length > 0
   const hasChallenges = challenges.length > 0
   const hasTechnologies = technologies.length > 0
 
@@ -28,7 +26,7 @@ export default function SectorPageTemplate({
   // rather than hardcoding, so any combination of props stays correct.
   let idx = 0
   const bannerIndex = idx++
-  // const statsIndex = hasStats ? idx++ : null
+  const statsIndex = hasStats ? idx++ : null
   const overviewIndex = idx++ // always renders
   const challengesIndex = hasChallenges ? idx++ : null
   const technologiesIndex = hasTechnologies ? idx++ : null
@@ -56,8 +54,8 @@ export default function SectorPageTemplate({
             backgroundVideoWebm={backgroundVideoWebm}
           />
         </StackSection>
-{/*
-        
+
+        {/* Stats 
         {hasStats && (
           <StackSection index={statsIndex}>
             <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
@@ -81,9 +79,9 @@ export default function SectorPageTemplate({
               </div>
             </section>
           </StackSection>
-        )}
-*/}
-        {/* Overview */}
+        )} */}
+
+        {/* Overview — editorial layout replacing the two plain InfoCards */}
         <StackSection index={overviewIndex}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
             <div
@@ -95,12 +93,57 @@ export default function SectorPageTemplate({
                 backgroundRepeat: 'no-repeat',
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/75" />
+            {/* Cinematic gradient — dark at top, lighter in the centre,
+                dark again at bottom — gives depth behind the content */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black via-black/50 to-black/80" />
+            
+            {/* Top cyan glow line */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
-            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-                <InfoCard title="Sector Overview" description={overview} />
-                {solution && <InfoCard title="Vayuron Solution" description={solution} />}
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-16 sm:py-20 md:py-24">
+              <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
+
+                {/* Left — large editorial overview text */}
+                <div>
+                  <p className="font-display text-white text-xl sm:text-2xl md:text-[1.9rem] font-medium leading-[1.45] tracking-[-0.02em] max-w-3xl">
+                    Sector Overview
+                  </p>
+
+                  {/* Decorative cyan rule */}
+                  <div className="w-12 h-[2px] bg-cyan mb-6" />
+
+                  <p className="font-display text-white/100 text-lg sm:text-xl md:text-2xl leading-relaxed font-normal">
+                    {overview}
+                  </p>
+
+                  {/* Bottom accent */}
+                  <div className="mt-8 flex items-center gap-4">
+                    <div className="h-px flex-1 bg-gradient-to-r from-cyan/40 to-transparent" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+                  </div>
+                </div>
+
+                {/* Right — Vayuron Solution glass panel */}
+                {solution && (
+                  <div className="relative rounded-xl border border-[rgba(0,212,255,0.22)] bg-black/50 backdrop-blur-xl p-7 md:p-9 shadow-[0_0_60px_rgba(0,212,255,0.07)]">
+                    {/* Top accent line */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl bg-gradient-to-r from-cyan/60 via-cyan to-cyan/60" />
+
+                    <p className="font-mono text-xs tracking-[0.28em] uppercase text-cyan mb-4">
+                      Vayuron Solution
+                    </p>
+
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-5 leading-tight">
+                      How We Help
+                    </h3>
+
+                    <p className="text-white/100 text-base md:text-lg leading-relaxed">
+                      {solution}
+                    </p>
+
+                  </div>
+                )}
+
               </div>
             </div>
           </section>

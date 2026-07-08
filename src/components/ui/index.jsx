@@ -29,7 +29,6 @@ export function Breadcrumb({ crumbs = [] }) {
 // in <StackSection index={0}> from the calling page, same as any other
 // section. Keeping this component pin-free avoids double-pinning when
 // it's nested inside StackSection's own sticky wrapper.
-
 export function PageBanner({
   eyebrow,
   title,
@@ -152,9 +151,9 @@ export function StatCard({ value, suffix = '', label }) {
 export function CTAButton({ children, to, href, variant = 'primary', className = '', ...props }) {
   const base = 'inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-all duration-200 px-6 py-3'
   const variants = {
-    primary: 'border border-cyan text-cyan hover:bg-cyan hover:text-black',
-    secondary: 'border border-dim text-muted hover:border-muted hover:text-white',
-    ghost: 'text-cyan hover:text-white underline-offset-4 hover:underline',
+    primary:   'border border-cyan text-cyan hover:bg-cyan hover:text-black',
+    secondary: 'border border-cyan text-cyan hover:bg-cyan hover:text-black',
+    ghost:     'border border-cyan text-cyan hover:bg-cyan hover:text-black',
   }
   const cls = `${base} ${variants[variant]} ${className}`
 
@@ -179,7 +178,6 @@ export function CyanDivider({ className = '' }) {
 // animation, same heading font, same description style, and an equal
 // number of bullets per card within a given grid (pass the same-length
 // `bullets` arrays for every card in a section).
-
 export function InfoCard({ icon, title, description, bullets = [], to, href, className = '' }) {
   const cls = `group relative flex h-full flex-col overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 ${className}`
 
@@ -218,14 +216,12 @@ export function InfoCard({ icon, title, description, bullets = [], to, href, cla
         </ul>
       )}
 
-    {/*
       {(to || href) && (
         <span className="mt-auto inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
-          Learn More link to another page 
+          Learn More
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </span>
-      )}    
-    */}
+      )}
     </>
   )
 

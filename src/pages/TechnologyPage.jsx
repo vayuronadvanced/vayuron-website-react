@@ -56,7 +56,7 @@ const techStack = [
   },
   {
     category: 'Manufacturing',
-    items: ['CFRP Fabrication', 'CNC Machining', '3D Metal Print', 'PCB Design'],
+    items: ['CFRP Fabrication', 'CNC Machining', '3D Printing', 'PCB Design'],
   },
   {
     category: 'Certification',
