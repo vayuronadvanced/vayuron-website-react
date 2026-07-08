@@ -84,7 +84,17 @@ export const PRODUCTS = [
       'Lightweight airframe design',
       'In-house layup & curing',
     ],
-  }
+  },
+  {
+    id: 'mvtx',
+    label: 'MVTX',
+    path: '/products/mvtx',
+    description: 'Advanced video transmission systems delivering secure, ultra-low latency communication for defence and tactical UAV operations.',
+    bullets: [
+      'Ultra-low latency transmission',
+      'Secure long-range video links',
+    ],
+  },
 ]
 
 export const SECTORS = [

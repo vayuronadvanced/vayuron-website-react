@@ -25,7 +25,7 @@ export default function EngineeringPage() {
         { label: 'Testing',        value: 'MIL-STD-810' },
       ]}
       features={[
-        { title: 'Composite Structures', description: 'Carbon fibre reinforced polymer airframes and structural components manufactured to aerospace tolerances.', bullets: ['Aerospace-grade tolerances', 'CFRP airframe structures'] },
+        { title: 'Carbon fibre', description: 'Carbon fibre reinforced polymer airframes and structural components manufactured to aerospace tolerances.', bullets: ['Aerospace-grade tolerances', 'CFRP airframe structures'] },
         { title: 'Systems Integration', description: 'Full subsystem integration — avionics, propulsion, payload, and communications — tested as a unified platform.', bullets: ['Unified platform testing', 'Avionics-to-payload integration'] },
         { title: 'Environmental Testing', description: 'MIL-STD-810 environmental testing for vibration, shock, humidity, altitude, and temperature extremes.', bullets: ['MIL-STD-810 certified', 'Extreme-condition validated'] },
         { title: 'Precision Fabrication', description: 'CNC machining, 3D metal printing, and precision sheet metal fabrication for complex geometry components.', bullets: ['CNC & 3D metal printing', 'Complex geometry capable'] },

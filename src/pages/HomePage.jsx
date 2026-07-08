@@ -131,6 +131,7 @@ function ProductsPreview() {
                 "Advanced Engineering",
                 "Avionics",
                 "Carbon & Composite",
+                "MVTX"
               ].includes(product.label)
           )
           .map((product) => (
