@@ -42,8 +42,19 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState(null)
+  const [showAllProducts, setShowAllProducts] = useState(false)
+  const [showAllSectors, setShowAllSectors] = useState(false)
   const location = useLocation()
   const navRef = useRef(null)
+
+  const DROPDOWN_PREVIEW_COUNT = 4
+
+  const closeDropdown = () => {
+    setActiveDropdown(null)
+    // Collapse back to the 4-item preview so the next hover starts fresh.
+    setShowAllProducts(false)
+    setShowAllSectors(false)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -54,12 +65,14 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false)
     setActiveDropdown(null)
+    setShowAllProducts(false)
+    setShowAllSectors(false)
   }, [location])
 
   useEffect(() => {
     const handleClick = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
-        setActiveDropdown(null)
+        closeDropdown()
       }
     }
     document.addEventListener('mousedown', handleClick)
@@ -105,7 +118,7 @@ export default function Navbar() {
                     <div
                       className="flex items-center"
                       onMouseEnter={() => setActiveDropdown(link.label)}
-                      onMouseLeave={() => setActiveDropdown(null)}
+                      onMouseLeave={closeDropdown}
                     >
                     <Link
                       to={link.path}
@@ -154,14 +167,15 @@ export default function Navbar() {
                       variants={dropdownVariants}
                       initial="hidden" animate="visible" exit="exit"
                       onMouseEnter={() => setActiveDropdown('Products')}
-                      onMouseLeave={() => setActiveDropdown(null)}
+                      onMouseLeave={closeDropdown}
                       className="absolute top-full left-0 mt-1 w-80 bg-surface border border-[rgba(0,212,255,0.15)] rounded-sm shadow-2xl"
                     >
                       <div className="p-2">
-                        {PRODUCTS.map((product) => (
+                        {(showAllProducts ? PRODUCTS : PRODUCTS.slice(0, DROPDOWN_PREVIEW_COUNT)).map((product) => (
                           <Link
                             key={product.id}
                             to={product.path}
+                            onClick={(e) => scrollToTop(e, location.pathname, product.path)}
                             className="flex items-center gap-3 w-full px-2 py-2 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"                          >
                             {/* Heading */}
                             <div className="flex items-center gap-3">
@@ -187,15 +201,16 @@ export default function Navbar() {
                         </Link> */}  
                       </div>
 
-                      <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
-                        <Link
-                          to="/products" 
-                            onClick={(e) => scrollToTop(e, location.pathname, "/products")}
-                          className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1"
-                        >
-                          View All Products →
-                        </Link>
-                      </div>
+                      {!showAllProducts && PRODUCTS.length > DROPDOWN_PREVIEW_COUNT && (
+                        <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
+                          <button
+                            onClick={() => setShowAllProducts(true)}
+                            className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1 w-full text-left"
+                          >
+                            View More ({PRODUCTS.length - DROPDOWN_PREVIEW_COUNT} More)
+                          </button>
+                        </div>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -207,14 +222,15 @@ export default function Navbar() {
                       variants={dropdownVariants}
                       initial="hidden" animate="visible" exit="exit"
                       onMouseEnter={() => setActiveDropdown('Sectors')}
-                      onMouseLeave={() => setActiveDropdown(null)}
+                      onMouseLeave={closeDropdown}
                       className="absolute top-full left-0 mt-1 w-72 bg-surface border border-[rgba(0,212,255,0.15)] rounded-sm shadow-2xl"
                     >
                       <div className="p-2">
-                        {SECTORS.map((sector) => (
+                        {(showAllSectors ? SECTORS : SECTORS.slice(0, DROPDOWN_PREVIEW_COUNT)).map((sector) => (
                           <Link
                             key={sector.id}
                             to={sector.path}
+                            onClick={(e) => scrollToTop(e, location.pathname, sector.path)}
                             className="flex items-center gap-3 px-2 py-2 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
                           >
                             <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0" />
@@ -226,13 +242,16 @@ export default function Navbar() {
                         ))}
                       </div>
 
-                      <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
-                        <Link to="/sectors" 
-                          onClick={(e) => scrollToTop(e, location.pathname, "/sectors")}
-                        className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1">
-                          View All Sectors →
-                        </Link>
-                      </div>
+                      {!showAllSectors && SECTORS.length > DROPDOWN_PREVIEW_COUNT && (
+                        <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
+                          <button
+                            onClick={() => setShowAllSectors(true)}
+                            className="font-sans text-xs text-cyan hover:text-white transition-colors flex items-center gap-1 w-full text-left"
+                          >
+                            View More ({SECTORS.length - DROPDOWN_PREVIEW_COUNT} More)
+                          </button>
+                        </div>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -341,6 +360,7 @@ export default function Navbar() {
                   ) : (
                     <NavLink
                       to={link.path}
+                      onClick={(e) => scrollToTop(e, location.pathname, link.path)}
                       className={({ isActive }) =>
                         `block py-3 font-sans text-xs tracking-[0.14em] uppercase border-b border-[rgba(0,212,255,0.08)] transition-colors ${
                           isActive ? 'text-cyan' : 'text-white hover:text-cyan'
