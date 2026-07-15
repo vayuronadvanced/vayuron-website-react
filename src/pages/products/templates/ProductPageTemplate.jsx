@@ -32,7 +32,6 @@ export default function ProductPageTemplate({
   cardSections = [],  // arbitrary repeatable InfoCard-grid sections, each rendered as its own StackSection:
                        // { eyebrow, title, backgroundImage, columns, moreDetailsHref, moreDetailsLabel,
                        //   cards: [{ icon, title, description, bullets? }] }
-  relatedProducts = [],
   nextProduct = null,
   crumbs = [],
 }) {
@@ -62,7 +61,7 @@ export default function ProductPageTemplate({
     <>
       <Helmet>
         <title>{title} — Vayuron Advanced Systems</title>
-        <meta name="description" content={subtitle} />
+        <meta name="description" content={description || subtitle} />
       </Helmet>
 
       {/* Stacked scroll transitions — same pattern as every other page:

@@ -68,7 +68,7 @@ export default function SectorsPage() {
 
             <div className="relative z-10 max-w-2xl mx-auto px-6">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-                Don't See Your Sector?
+                Don&apos;t See Your Sector?
               </h2>
               <p className="text-muted mb-8 max-w-xl mx-auto">
                 Our technology is adaptable to new operational domains. Talk to our team about your specific requirements.

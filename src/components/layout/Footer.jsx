@@ -1,10 +1,32 @@
 {/*Footer.jsx*/}
 
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SITE, FOOTER_LINKS } from '../../data/siteData'
+import { useApi } from '../../hooks'
+import { subscribeToNewsletter } from '../../lib/api/newsletter'
+import { logBusinessEvent } from '../../lib/api/analytics'
+import { trackEvent } from '../../lib/googleAnalytics'
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
+  const { loading, error, run: subscribe } = useApi(subscribeToNewsletter)
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault()
+    if (!email) return
+    try {
+      await subscribe(email)
+      setSubscribed(true)
+      setEmail('')
+      logBusinessEvent('newsletter_subscribed')
+      trackEvent('sign_up', { method: 'newsletter' })
+    } catch {
+      // error is surfaced via the `error` value from useApi below
+    }
+  }
 
   return (
       <footer
@@ -138,17 +160,34 @@ export default function Footer() {
               Defence technology insights and company updates.
             </p>
 
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
-            />
+            {subscribed ? (
+              <p className="text-sm text-cyan/90 leading-relaxed">
+                You&apos;re subscribed. Thanks for staying updated.
+              </p>
+            ) : (
+              <form onSubmit={handleSubscribe}>
+                <input
+                  type="email"
+                  required
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                />
 
-            <button
-              className="w-full mt-2 border border-cyan py-2 text-cyan uppercase text-sm tracking-[0.12em] hover:bg-cyan hover:text-black transition-all"
-            >
-              Subscribe
-            </button>
+                {error && (
+                  <p className="text-xs text-red-400 mt-1 leading-relaxed">{error}</p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full mt-2 border border-cyan py-2 text-cyan uppercase text-sm tracking-[0.12em] hover:bg-cyan hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? 'Subscribing…' : 'Subscribe'}
+                </button>
+              </form>
+            )}
 
           </div>
           </div>
@@ -162,14 +201,15 @@ export default function Footer() {
 
           <div className="flex items-center gap-6">
             {FOOTER_LINKS.legal.map((link) => (
-              <Link
+              <a
                 key={link.path}
-                to={link.path}
-                   onClick={(e) => scrollToTop(e, location.pathname, link.path)}
+                href={link.path}
+                target="_blank"
+                rel="noreferrer"
                 className="text-sm text-white/70 hover:text-cyan transition-colors"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </div>
 

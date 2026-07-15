@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { NAV_LINKS, PRODUCTS, SECTORS, SITE } from '../../data/siteData'
+import { NAV_LINKS, PRODUCTS, SECTORS } from '../../data/siteData'
+import { scrollToTop } from '../../utils/scrollToTop'
 
 const VayuronLogo = () => (
   <img
@@ -23,18 +24,6 @@ const mobileMenuVariants = {
   hidden: { opacity: 0, x: '100%' },
   visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: 'easeOut' } },
   exit:   { opacity: 0, x: '100%', transition: { duration: 0.2 } },
-}
-
-const scrollToTop = (e, currentPath, targetPath) => {
-  if (currentPath === targetPath) {
-    e.preventDefault()
-
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    })
-  }
 }
 
 export default function Navbar() {

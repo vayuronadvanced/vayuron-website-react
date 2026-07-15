@@ -1,4 +1,4 @@
-{/*ProductsPage.jsx*/}
+{/*ProductsPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, InfoCard } from '../../components/ui'
@@ -22,7 +22,7 @@ export default function ProductsPage() {
           <PageBanner
             eyebrow="Product Lines"
             title="Our Capabilities"
-            subtitle="Six technology domains engineered for defence, security, and industrial critical operations."
+            subtitle="Various technology domains engineered for defence, security, and industrial critical operations."
             crumbs={[{ label: 'Products' }]}
             backgroundImage="/ProductPage1.png"
           />

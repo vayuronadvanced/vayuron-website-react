@@ -8,7 +8,7 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import SmoothScrollProvider from './components/layout/SmoothScrollProvider'
 import { LoadingScreen } from './components/ui'
-import { useLoadingScreen, useScrollProgress } from './hooks'
+import { useLoadingScreen, useScrollProgress, useGoogleAnalyticsPageviews } from './hooks'
 
 // ─── Pages ────────────────────────────────────────────────────────────────
 import HomePage from './pages/HomePage'
@@ -36,6 +36,20 @@ import DroneModelsPage from './pages/products/DroneModelsPage'
 import ScrollToTop from './components/layout/ScrollToTop'
 import CareersPage from './pages/CareersPage'
 import MVTXPage from './pages/products/MVTXPage'
+import BlogPage from './pages/BlogPage'
+import NewsletterUnsubscribePage from './pages/NewsletterUnsubscribePage'
+import BlogPostPage from './pages/BlogPostPage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import DashboardOverviewPage from './pages/dashboard/DashboardOverviewPage'
+import DashboardEnquiriesPage from './pages/dashboard/DashboardEnquiriesPage'
+import DashboardQuotationsPage from './pages/dashboard/DashboardQuotationsPage'
+import DashboardCareersPage from './pages/dashboard/DashboardCareersPage'
+import DashboardBlogPage from './pages/dashboard/DashboardBlogPage'
+import DashboardBlogEditorPage from './pages/dashboard/DashboardBlogEditorPage'
+import DashboardNewsletterPage from './pages/dashboard/DashboardNewsletterPage'
+import DashboardUsersPage from './pages/dashboard/DashboardUsersPage'
+import ProtectedRoute from './components/layout/ProtectedRoute'
 
 // ─── Page Transition Wrapper ───────────────────────────────────────────────
 // Echoes the in-page StackSection effect at the route level: the incoming
@@ -113,6 +127,7 @@ function CustomCursor() {
 export default function App() {
   const location = useLocation()
   const isLoading = useLoadingScreen(1600)
+  useGoogleAnalyticsPageviews()
 
   return (
     // Mounted once for the app's whole lifetime — route changes render
@@ -166,6 +181,85 @@ export default function App() {
               <Route path="/technology" element={<PageWrapper><TechnologyPage /></PageWrapper>} />
               <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
               <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
+              <Route path="/blog" element={<PageWrapper><BlogPage /></PageWrapper>} />
+              <Route path="/newsletter/unsubscribe/:token" element={<PageWrapper><NewsletterUnsubscribePage /></PageWrapper>} />
+              <Route path="/blog/:slug" element={<PageWrapper><BlogPostPage /></PageWrapper>} />
+              <Route path="/login" element={<PageWrapper><LoginPage /></PageWrapper>} />
+              <Route path="/register" element={<PageWrapper><RegisterPage /></PageWrapper>} />
+
+              {/* Admin Dashboard (Stage 4, Phase 4.1) — staff only */}
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardOverviewPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/enquiries"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardEnquiriesPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/quotations"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardQuotationsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/careers"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardCareersPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/blog"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardBlogPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/blog/new"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardBlogEditorPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/blog/:slug/edit"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardBlogEditorPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/newsletter"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardNewsletterPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/users"
+                element={
+                  <ProtectedRoute roles={['admin']}>
+                    <DashboardUsersPage />
+                  </ProtectedRoute>
+                }
+              />
 
               <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
             </Routes>

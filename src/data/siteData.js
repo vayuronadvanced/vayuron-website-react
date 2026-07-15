@@ -21,6 +21,7 @@ export const NAV_LINKS = [
   { label: 'Technology', path: '/technology' },
   { label: 'About',    path: '/about' },
   { label: 'Careers',  path: '/careers' },
+  { label: 'Blog',     path: '/blog' },
   { label: 'Contact',  path: '/contact' },
 ]
 
@@ -147,12 +148,13 @@ export const FOOTER_LINKS = {
     { label: 'About',      path: '/about' },
     { label: 'Technology', path: '/technology' },
     { label: 'Careers',    path: '/careers' },
+    { label: 'Blog',       path: '/blog' },
     { label: 'Contact',    path: '/contact' },
   ],
   legal: [
-    { label: 'Privacy Policy', path: '/legal/privacy' },
-    { label: 'Terms of Use',   path: '/legal/terms' },
-    { label: 'Cookie Policy',  path: '/legal/cookies' },
-    { label: 'Security',       path: '/legal/security' },
+    { label: 'Privacy Policy', path: '/documents/privacy-policy.pdf' },
+    { label: 'Terms of Use',   path: '/documents/terms-of-use.pdf' },
+    { label: 'Cookie Policy',  path: '/documents/cookie-policy.pdf' },
+    { label: 'Security',       path: '/documents/security-policy.pdf' },
   ],
 }

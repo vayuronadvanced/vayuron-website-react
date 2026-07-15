@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, StatCard, CTAButton, InfoCard } from '../../../components/ui'
+import { PageBanner, CTAButton, InfoCard } from '../../../components/ui'
+// import { StatCard } from '../../../components/ui' // paired with the disabled Stats section below — uncomment together
 import StackSection from '../../../components/sections/StackSection'
 
 export default function SectorPageTemplate({
@@ -7,6 +8,7 @@ export default function SectorPageTemplate({
   subtitle,
   eyebrow,
   overview,
+  // eslint-disable-next-line no-unused-vars -- reserved prop, paired with the disabled Stats section below
   stats = [],
   challenges = [],  // each: { title, description, bullets? }
   solution,
@@ -16,7 +18,7 @@ export default function SectorPageTemplate({
   backgroundVideoMp4,    // optional — enables the video hero on this sector's banner
   backgroundVideoWebm,   // optional
 }) {
-  const hasStats = stats.length > 0
+  // const hasStats = stats.length > 0 // paired with the disabled Stats section below — uncomment together
   const hasChallenges = challenges.length > 0
   const hasTechnologies = technologies.length > 0
 
@@ -26,7 +28,7 @@ export default function SectorPageTemplate({
   // rather than hardcoding, so any combination of props stays correct.
   let idx = 0
   const bannerIndex = idx++
-  const statsIndex = hasStats ? idx++ : null
+  // const statsIndex = hasStats ? idx++ : null // paired with the disabled Stats section below — uncomment together
   const overviewIndex = idx++ // always renders
   const challengesIndex = hasChallenges ? idx++ : null
   const technologiesIndex = hasTechnologies ? idx++ : null
