@@ -1,4 +1,4 @@
-{/*BlogPage.jsx*/}
+{/*BlogPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { Link, useSearchParams } from 'react-router-dom'
@@ -73,7 +73,7 @@ function BlogCard({ post, index }) {
           )}
           <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/5">
             {post.published_at && (
-              <p className="text-xs text-white/40">{formatDate(post.published_at)}</p>
+              <p className="text-xs text-white/100">{formatDate(post.published_at)}</p>
             )}
             <span className="text-xs text-cyan opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300">
               Read more →
@@ -191,11 +191,10 @@ export default function BlogPage() {
               <div className="flex flex-wrap gap-2 mb-10">
                 <button
                   onClick={() => setActiveCategory(null)}
-                  className={`px-4 py-1.5 text-xs uppercase tracking-widest border rounded-sm transition-all ${
-                    activeCategory === null
+                  className={`px-4 py-1.5 text-xs uppercase tracking-widest border rounded-sm transition-all ${activeCategory === null
                       ? 'border-cyan bg-cyan text-black shadow-[0_0_16px_rgba(0,212,255,0.35)]'
                       : 'border-cyan/30 text-cyan hover:border-cyan hover:shadow-[0_0_12px_rgba(0,212,255,0.2)]'
-                  }`}
+                    }`}
                 >
                   All
                 </button>
@@ -203,11 +202,10 @@ export default function BlogPage() {
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.slug)}
-                    className={`px-4 py-1.5 text-xs uppercase tracking-widest border rounded-sm transition-all ${
-                      activeCategory === cat.slug
+                    className={`px-4 py-1.5 text-xs uppercase tracking-widest border rounded-sm transition-all ${activeCategory === cat.slug
                         ? 'border-cyan bg-cyan text-black shadow-[0_0_16px_rgba(0,212,255,0.35)]'
                         : 'border-cyan/30 text-cyan hover:border-cyan hover:shadow-[0_0_12px_rgba(0,212,255,0.2)]'
-                    }`}
+                      }`}
                   >
                     {cat.name}
                   </button>

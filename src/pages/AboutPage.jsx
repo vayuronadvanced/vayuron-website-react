@@ -202,7 +202,7 @@ export default function AboutPage() {
           <PageBanner
             eyebrow="About Vayuron"
             title="Engineering Intelligent Systems for Mission-Critical Operations"
-            subtitle="VAYURON Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
+            subtitle="Vayuron Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
             crumbs={[{ label: 'About' }]}
             backgroundImage="/FixedWingDRone.png"
             backgroundVideoMp4="/Drone1.mp4"
@@ -213,22 +213,26 @@ export default function AboutPage() {
         <StackSection index={1}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
             <div className="absolute inset-0" style={{ backgroundImage: "url('/about2.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24">
               <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">Mission First Solutions</p>
-              <h2 className="font-display text-4xl font-bold text-white mb-6 leading-tight">
+              <h2 className="font-display text-4xl font-bold text-white mb-10 leading-tight">
                 At VAYURON Advanced Systems, we believe technology must ultimately serve a mission larger than itself.
               </h2>
-              <p className="text-white text-lg leading-relaxed mb-6">
-                Vayuron is building a future of enhanced operational effectiveness and asset protection by developing indigenous, deep-technology autonomous systems tailored for modern battlefields, critical infrastructure, and public-sector security.
-              </p>
-              <p className="text-white text-lg leading-relaxed mb-6">
-                Beyond defence applications, we are equally committed to solving real industrial challenges by delivering intelligent aerial systems that reduce maintenance costs, improve operational accountability, increase asset visibility, and provide decision-makers with actionable intelligence.
-              </p>
-              <div className="flex flex-col gap-3">
-                {['Build technologies that matter.', 'Build capabilities that create impact.', 'Build systems that save lives.'].map((line, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
-                    <span className="text-white text-lg">{line}</span>
+              <div className="flex flex-col gap-5">
+                {[
+                  { title: 'Mission-Driven Technology', description: 'Focuses on intelligent autonomous systems that save lives and protect critical assets.' },
+                  { title: 'Modern Solutions', description: 'Develops fast, adaptive, and reliable systems for battlefields, borders, and industrial networks.' },
+                  { title: 'Indigenous Deep-Tech', description: 'Specialised in localized technology for defence, homeland security, and public sectors.' },
+                  { title: 'Industrial Impact', description: 'Provides aerial systems that reduce maintenance costs and deliver actionable intelligence.' },
+                  { title: 'Core Commitment', description: 'Dedicates efforts to building impactful technologies, strengthening capabilities, and protecting lives.' },
+                ].map((point, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+                    <p className="text-white text-lg leading-relaxed">
+                      <span className="font-bold text-cyan">{point.title}: </span>
+                      {point.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -245,9 +249,9 @@ export default function AboutPage() {
               <SectionHeader eyebrow="What We Focus On" title="Our Mission Areas" subtitle="Ten technology domains where VAYURON builds indigenous, mission-critical capability." />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
                 {missionAreas.map((area, i) => (
-                  <div key={i} className="group flex items-start gap-3 rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
-                    <span className="text-white text-sm leading-relaxed">{area}</span>
+                  <div key={i} className="group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300 overflow-hidden">
+                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+                    <span className="text-white text-sm leading-relaxed group-hover:text-cyan transition-colors">{area}</span>
                   </div>
                 ))}
               </div>
@@ -304,45 +308,6 @@ export default function AboutPage() {
             </div>
           </section>
         </StackSection>
-
-        {/* ═══ S8 — INDUSTRIES SERVED  (index 7) ════════════════════════
-
-        <StackSection index={7}>
-          <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: "url('/drone-bg.png')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-              }}
-            />
-            <div className="absolute inset-0 bg-black/50" />
-
-            <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
-              <SectionHeader
-                eyebrow="Industries Served"
-                title="Where We Operate"
-                centered
-              />
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-                {industries.map((label, i) => (
-                  <div
-                    key={i}
-                    className="group flex items-center justify-center text-center rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-4 py-6 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300"
-                  >
-                    <span className="font-mono text-xs md:text-sm tracking-widest uppercase text-white/80 group-hover:text-cyan transition-colors">
-                      {label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        </StackSection>
-       */}
 
         {/* ═══ S9 — SERVICES PORTFOLIO  (index 8) — NEW ══════════════════ */}
         <StackSection index={8}>
@@ -425,9 +390,9 @@ export default function AboutPage() {
               <SectionHeader eyebrow="Research & Development" title="Current R&D Focus Areas" subtitle="Research and development form the foundation of VAYURON's long-term growth strategy." />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mb-10">
                 {rdFocusAreas.map((area, i) => (
-                  <div key={i} className="group flex items-start gap-3 rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
-                    <span className="text-white text-sm leading-relaxed">{area}</span>
+                  <div key={i} className="group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300 overflow-hidden">
+                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+                    <span className="text-white text-sm leading-relaxed group-hover:text-cyan transition-colors">{area}</span>
                   </div>
                 ))}
               </div>
@@ -444,9 +409,9 @@ export default function AboutPage() {
               <SectionHeader eyebrow="Infrastructure" title="Facilities & Capabilities" subtitle="VAYURON maintains infrastructure supporting engineering, manufacturing, testing, and deployment activities." />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
                 {facilities.map((facility, i) => (
-                  <div key={i} className="group flex items-center gap-3 rounded-lg border border-[rgba(0,212,255,0.10)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
-                    <span className="text-white text-sm">{facility}</span>
+                  <div key={i} className="group relative flex items-center rounded-lg border border-[rgba(0,212,255,0.10)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300 overflow-hidden">
+                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+                    <span className="text-white text-sm group-hover:text-cyan transition-colors">{facility}</span>
                   </div>
                 ))}
               </div>

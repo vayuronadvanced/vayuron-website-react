@@ -1,4 +1,4 @@
-{/*Footer.jsx*/}
+{/*Footer.jsx*/ }
 
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -29,134 +29,118 @@ export default function Footer() {
   }
 
   return (
-      <footer
+    <footer
       className="relative mt-auto border-t border-[rgba(0,212,255,0.15)] overflow-hidden bg-gradient-to-b from-black via-[#050608] to-black"
-      >
-      
+    >
+
       {/* Subtle top glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
-      
-      {/*<footer
-      className="relative mt-auto border-t border-[rgba(0,212,255,0.15)] overflow-hidden bg-gradient-to-b from-black via-[#050608] to-black"
-     // className="relative mt-auto overflow-hidden border-t border-gray-400 bg-gradient-to-b from-gray-300 via-gray-200 to-gray-400"
-     // Changes footer colour
-        style={{
-          //backgroundImage: "url('/Footer.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >8/}
-      {/* Dark Overlay  - <div className="absolute inset-0 bg-black/10"></div>- */}
-      
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-5">
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-5">     
-      {/* Your existing footer content */}
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] items-start gap-20 py-2">
 
-      {/* Top Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] items-start gap-20 py-2">
+          {/* Brand */}
+          <div className="flex flex-col items-start max-w-md">
 
-      {/* Brand */}
-      <div className="flex flex-col items-start max-w-md">
+            <Link to="/" className="group inline-block">
 
-        <Link to="/" className="group inline-block">
+              <h2 className="font-display text-[2.2rem] sm:text-[2.8rem] md:text-[3.6rem] leading-none tracking-[0.05em] text-cyan group-hover:text-white transition-colors">
+                VAYURON
+              </h2>
 
-          <h2 className="font-display text-[2.2rem] sm:text-[2.8rem] md:text-[3.6rem] leading-none tracking-[0.05em] text-cyan group-hover:text-white transition-colors">
-            VAYURON
-          </h2>
+              <p className="font-mono text-xs md:text-sm tracking-[0.30em] uppercase text-white mt-1">
+                ADVANCED SYSTEMS
+              </p>
 
-          <p className="font-mono text-xs md:text-sm tracking-[0.30em] uppercase text-white mt-1">
-            ADVANCED SYSTEMS
-          </p>
+            </Link>
 
-        </Link>
+            {/* Social Icons */}
+            <div className="flex gap-3 mt-3">
 
-        {/* Social Icons */}
-        <div className="flex gap-3 mt-3">
+              <a
+                href={SITE.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+              >
+                <img
+                  src="/icons/instagram.png"
+                  alt="Instagram"
+                  className="w-7 h-7"
+                />
+              </a>
 
-          <a
-            href={SITE.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform"
-          >
-            <img
-              src="/icons/instagram.png"
-              alt="Instagram"
-              className="w-7 h-7"
-            />
-          </a>
+              <a
+                href={SITE.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+              >
+                <img
+                  src="/icons/linkedin.png"
+                  alt="LinkedIn"
+                  className="w-7 h-7"
+                />
+              </a>
 
-          <a
-            href={SITE.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform"
-          >
-            <img
-              src="/icons/linkedin.png"
-              alt="LinkedIn"
-              className="w-7 h-7"
-            />
-          </a>
+              <a
+                href={SITE.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+              >
+                <img
+                  src="/icons/x.png"
+                  alt="X"
+                  className="w-7 h-7"
+                />
+              </a>
 
-          <a
-            href={SITE.x}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform"
-          >
-            <img
-              src="/icons/x.png"
-              alt="X"
-              className="w-7 h-7"
-            />
-          </a>
+            </div>
 
-        </div>
+            {/* Address */}
+            <a
+              href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex items-start gap-2 text-xs text-white/100 hover:text-cyan transition-colors leading-relaxed"
+            >
+              <span>
+                47, Balaji Nagar,Ayodhya Bypass,<br />
+                Bhopal,Madhya Pradesh 462023, INDIA
+              </span>
+            </a>
 
-        {/* Address */}
-        <a
-          href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 flex items-start gap-2 text-xs text-white/100 hover:text-cyan transition-colors leading-relaxed"
-        >
-          <span>
-            47, Balaji Nagar,Ayodhya Bypass,<br />
-             Bhopal,Madhya Pradesh 462023, INDIA 
-          </span>
-        </a>
+            {/* Contact */}
+            <div className="mt-2 space-y-1">
 
-        {/* Contact */}
-        <div className="mt-2 space-y-1">
+              <a
+                href={`tel:${SITE.phoneTel}`}
+                className="block text-sm text-white hover:text-cyan transition-colors"
+              >
+                {SITE.phone}
+              </a>
 
-          <a
-            href={`tel:${SITE.phoneTel}`}
-            className="block text-sm text-white hover:text-cyan transition-colors"
-          >
-            {SITE.phone}
-          </a>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="block text-sm text-white hover:text-cyan transition-colors"
+              >
+                {SITE.email}
+              </a>
 
-          <a
-            href={`mailto:${SITE.email}`}
-            className="block text-sm text-white hover:text-cyan transition-colors"
-          >
-            {SITE.email}
-          </a>
+            </div>
 
-        </div>
+          </div>
 
-      </div>
-
-      {/* Newsletter */}
+          {/* Newsletter */}
           <div className="lg:justify-self-end w-full max-w-sm">
 
             <h4 className="font-display text-lg uppercase tracking-[0.12em] text-cyan mb-2">
               Stay Updated
             </h4>
 
-            <p className="text-sm text-white/80 mb-3">
+            <p className="text-sm text-white/100 mb-3">
               Defence technology insights and company updates.
             </p>
 
@@ -190,12 +174,12 @@ export default function Footer() {
             )}
 
           </div>
-          </div>
-          
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-[rgba(0,212,255,0.08)] mt-5 pt-3 flex flex-col md:flex-row justify-between items-center gap-3">
 
-          <p className="text-sm text-white/70 text-center md:text-left">
+          <p className="text-sm text-white/100 text-center md:text-left">
             © {year} Vayuron Advanced Systems. All rights reserved.
           </p>
 
@@ -206,17 +190,17 @@ export default function Footer() {
                 href={link.path}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm text-white/70 hover:text-cyan transition-colors"
+                className="text-sm text-white/100 hover:text-cyan transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-        </div>  
+        </div>
 
       </div> {/* closes relative z-10 */}
 
-  </footer>
+    </footer>
   )
 }
