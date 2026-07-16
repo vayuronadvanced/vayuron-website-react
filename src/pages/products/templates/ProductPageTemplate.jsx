@@ -1,7 +1,7 @@
 {/*ProductPageTemplate.jsx*/}
 
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, CTAButton, InfoCard, SpecCard } from '../../../components/ui'
+import { PageBanner, CTAButton, InfoCard, SpecCard, CardGrid } from '../../../components/ui'
 import StackSection from '../../../components/sections/StackSection'
 
 export default function ProductPageTemplate({
@@ -274,7 +274,7 @@ export default function ProductPageTemplate({
                   Capabilities
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {features.map((feature, i) => (
                     <InfoCard
                       key={i}
@@ -284,7 +284,7 @@ export default function ProductPageTemplate({
                       bullets={feature.bullets || []}
                     />
                   ))}
-                </div>
+                </CardGrid>
               </div>
             </section>
           </StackSection>
@@ -325,8 +325,8 @@ export default function ProductPageTemplate({
                   </h2>
                 </div>
 
-                <div
-                  className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${
+                <CardGrid
+                  gridClassName={`grid grid-cols-1 md:grid-cols-2 gap-6 ${
                     (section.columns || 3) >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
                   }`}
                 >
@@ -339,7 +339,7 @@ export default function ProductPageTemplate({
                       bullets={card.bullets || []}
                     />
                   ))}
-                </div>
+                </CardGrid>
 
                 {section.moreDetailsHref && (
                   <div className="mt-10">

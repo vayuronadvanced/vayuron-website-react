@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
-import { PageBanner, SectionHeader } from '../components/ui'
+import { PageBanner, SectionHeader, CardGrid } from '../components/ui'
 import { useApi } from '../hooks'
 import { getBlogCategories, getBlogPosts } from '../lib/api/blog'
 
@@ -40,8 +40,9 @@ function BlogCard({ post, index }) {
     >
       <Link
         to={`/blog/${post.slug}`}
-        className="group relative flex flex-col h-full border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] rounded-sm overflow-hidden transition-all duration-300 hover:border-cyan/60 hover:shadow-[0_0_30px_rgba(0,212,255,0.12)] hover:-translate-y-1"
+        className="group relative flex flex-col h-full border border-[rgba(0,212,255,0.12)] bg-[rgba(0,0,0,0.45)] rounded-sm overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-[rgba(0,0,0,0.55)] hover:-translate-y-1"
       >
+        <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full z-10" />
         <div className="aspect-[16/9] overflow-hidden bg-white/5 relative">
           {post.cover_image ? (
             <img
@@ -95,8 +96,9 @@ function FeaturedPost({ post }) {
     >
       <Link
         to={`/blog/${post.slug}`}
-        className="group grid md:grid-cols-2 gap-0 border border-[rgba(0,212,255,0.2)] bg-[rgba(0,0,0,0.5)] rounded-sm overflow-hidden transition-all duration-300 hover:border-cyan/60 hover:shadow-[0_0_40px_rgba(0,212,255,0.15)]"
+        className="group relative grid md:grid-cols-2 gap-0 border border-[rgba(0,212,255,0.12)] bg-[rgba(0,0,0,0.5)] rounded-sm overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-[rgba(0,0,0,0.6)] hover:-translate-y-1"
       >
+        <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full z-10" />
         <div className="aspect-[16/10] md:aspect-auto overflow-hidden bg-white/5 relative">
           {post.cover_image ? (
             <img
@@ -235,11 +237,11 @@ export default function BlogPage() {
             {!loading && !error && posts.length > 0 && (
               <>
                 {showFeatured && <FeaturedPost post={featured} />}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {(showFeatured ? rest : posts).map((post, i) => (
                     <BlogCard key={post.id} post={post} index={i} />
                   ))}
-                </div>
+                </CardGrid>
               </>
             )}
           </div>

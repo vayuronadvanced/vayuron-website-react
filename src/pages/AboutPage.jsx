@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, SectionHeader, StatCard, CTAButton } from '../components/ui'
+import { PageBanner, SectionHeader, StatCard, CTAButton, CardGrid } from '../components/ui'
 import StackSection from '../components/sections/StackSection'
 
 // ─── Mission Areas ────────────────────────────────────────────────────────
@@ -182,7 +182,7 @@ const facilities = [
 ]
 
 // ─── Shared card class helpers ────────────────────────────────────────────
-const domainCard = "group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 overflow-hidden"
+const domainCard = "group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden"
 
 export default function AboutPage() {
   return (
@@ -247,14 +247,14 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-black/55" />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="What We Focus On" title="Our Mission Areas" subtitle="Ten technology domains where VAYURON builds indigenous, mission-critical capability." />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+              <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
                 {missionAreas.map((area, i) => (
-                  <div key={i} className="group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300 overflow-hidden">
+                  <div key={i} className="group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <span className="text-white text-sm leading-relaxed group-hover:text-cyan transition-colors">{area}</span>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -268,18 +268,18 @@ export default function AboutPage() {
               <p className="text-white text-lg leading-relaxed text-center max-w-3xl mx-auto mb-12">
                 The company specializes in UAV platforms, FPV systems, ISR technologies, AI-enabled mission systems, aerial intelligence platforms, robotics, and autonomous technologies. By combining engineering expertise, operational experience, indigenous innovation, and field deployment knowledge, VAYURON develops practical solutions designed for real-world operational environments.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 {[
                   { label: 'Vision', text: 'To become a globally respected advanced autonomous systems company developing indigenous technologies that redefine intelligence, mobility, surveillance, and operational effectiveness across defence, industrial, and public sector domains.' },
                   { label: 'Mission', text: 'To engineer reliable, intelligent, and scalable autonomous systems that solve critical challenges through innovation, precision engineering, and operational excellence while strengthening technological self-reliance through indigenous development.' },
                 ].map((card, i) => (
-                  <div key={i} className="group relative rounded-xl border border-white/10 backdrop-blur-md bg-black/20 hover:bg-black/35 hover:border-cyan/40 transition-all duration-300 p-10 overflow-hidden">
+                  <div key={i} className="group relative rounded-xl border border-[rgba(0,212,255,0.12)] backdrop-blur-lg bg-black/20 hover:bg-black/30 hover:border-cyan/50 hover:-translate-y-1 transition-all duration-300 p-10 overflow-hidden">
                     <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
                     <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">{card.label}</p>
                     <p className="text-white text-xl leading-relaxed">{card.text}</p>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -291,9 +291,9 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Business Verticals" title="Four Divisions. One Mission." subtitle="VAYURON operates through four specialised divisions covering defence, autonomy, industrial, and aerospace domains." />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 {businessVerticals.map((bv, i) => (
-                  <div key={i} className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-7 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 overflow-hidden">
+                  <div key={i} className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-7 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden">
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <h3 className="font-display text-sm font-bold text-cyan mb-1 tracking-wide">{bv.title}</h3>
                     <p className="text-white text-xs leading-normal mb-5">{bv.tagline}</p>
@@ -304,7 +304,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -316,7 +316,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-black/55" />
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Services" title="Services Portfolio" subtitle="End-to-end aerial intelligence and UAV services delivered across defence, industrial, and government sectors." />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+              <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
                 {services.map((svc, i) => (
                   <div key={i} className={domainCard}>
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
@@ -331,7 +331,7 @@ export default function AboutPage() {
                     </ul>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -343,7 +343,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-black/55" />
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Engineering" title="Engineering Capabilities" subtitle="VAYURON maintains multidisciplinary engineering capabilities covering the complete product lifecycle from concept to deployment." />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+              <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
                 {engineeringCapabilities.map((eng, i) => (
                   <div key={i} className={domainCard}>
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
@@ -358,7 +358,7 @@ export default function AboutPage() {
                     </ul>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -369,15 +369,15 @@ export default function AboutPage() {
             <div className="absolute inset-0" style={{ backgroundImage: "url('/about2.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="relative z-10 w-full max-w-[1250px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Why Vayuron" title="Built for Operational Reality" subtitle="Six pillars that define how we engineer, deploy, and support every platform." />
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {differentiators.map((d, i) => (
-                  <div key={i} className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/25 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/40 hover:-translate-y-1 overflow-hidden">
+                  <div key={i} className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden">
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-cyan transition-colors">{d.title}</h3>
                     <p className="text-white text-sm leading-relaxed">{d.description}</p>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -388,14 +388,14 @@ export default function AboutPage() {
             <div className="absolute inset-0" style={{ backgroundImage: "url('/about3.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Research & Development" title="Current R&D Focus Areas" subtitle="Research and development form the foundation of VAYURON's long-term growth strategy." />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mb-10">
+              <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mb-10">
                 {rdFocusAreas.map((area, i) => (
-                  <div key={i} className="group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300 overflow-hidden">
+                  <div key={i} className="group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <span className="text-white text-sm leading-relaxed group-hover:text-cyan transition-colors">{area}</span>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -407,14 +407,14 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Infrastructure" title="Facilities & Capabilities" subtitle="VAYURON maintains infrastructure supporting engineering, manufacturing, testing, and deployment activities." />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+              <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
                 {facilities.map((facility, i) => (
-                  <div key={i} className="group relative flex items-center rounded-lg border border-[rgba(0,212,255,0.10)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 transition-all duration-300 overflow-hidden">
+                  <div key={i} className="group relative flex items-center rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <span className="text-white text-sm group-hover:text-cyan transition-colors">{facility}</span>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>

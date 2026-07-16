@@ -241,8 +241,9 @@ export default function CareersPage() {
               {listings.map((listing) => (
                 <div
                   key={listing.id}
-                  className="border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] p-5 sm:p-6 rounded-sm"
+                  className="group relative border border-[rgba(0,212,255,0.12)] bg-[rgba(0,0,0,0.45)] backdrop-blur-lg p-5 sm:p-6 rounded-sm transition-all duration-300 hover:border-cyan/50 hover:bg-black/55 hover:-translate-y-1 overflow-hidden"
                 >
+                  <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <div>
                       <h3 className="font-display text-lg text-white">{listing.title}</h3>

@@ -1,7 +1,7 @@
-{/*TechnologyPage.jsx*/}
+{/*TechnologyPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, SectionHeader, CTAButton } from '../components/ui'
+import { PageBanner, SectionHeader, CTAButton, CardGrid } from '../components/ui'
 import StackSection from '../components/sections/StackSection'
 
 const techPillars = [
@@ -130,7 +130,7 @@ export default function TechnologyPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/Tech2.png')",  
+                backgroundImage: "url('/Tech2.png')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -144,7 +144,7 @@ export default function TechnologyPage() {
                 subtitle="Every technology domain developed in-house, ensuring operational sovereignty and deep mission customisation."
               />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {techPillars.map((pillar, i) => (
                   <div
                     key={i}
@@ -159,7 +159,7 @@ export default function TechnologyPage() {
                     </p>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -186,7 +186,7 @@ export default function TechnologyPage() {
                 subtitle="The specific technologies and standards deployed across our product lines."
               />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {techStack.map((stack, i) => (
                   <div
                     key={i}
@@ -209,7 +209,7 @@ export default function TechnologyPage() {
                     </ul>
                   </div>
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>
@@ -241,15 +241,17 @@ export default function TechnologyPage() {
                 </div>
 
                 <div className="lg:col-span-2">
-                  <div className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6">
-                    <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
-                    <p className="text-white/80 text-base leading-7 group-hover:text-white transition-colors">
-                      Every algorithm, firmware module, structural design, and manufacturing
-                      process in the Vayuron technology stack is developed and owned entirely
-                      by Vayuron Advanced Systems. No licensed foreign technology. No
-                      third-party dependency risk. Full operational sovereignty for our clients.
-                    </p>
-                  </div>
+                  <CardGrid gridClassName="grid grid-cols-1">
+                    <div className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6">
+                      <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
+                      <p className="text-white/80 text-base leading-7 group-hover:text-white transition-colors">
+                        Every algorithm, firmware module, structural design, and manufacturing
+                        process in the Vayuron technology stack is developed and owned entirely
+                        by Vayuron Advanced Systems. No licensed foreign technology. No
+                        third-party dependency risk. Full operational sovereignty for our clients.
+                      </p>
+                    </div>
+                  </CardGrid>
                 </div>
               </div>
             </div>
@@ -272,25 +274,27 @@ export default function TechnologyPage() {
             />
 
             <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 flex items-center justify-center text-center">
-              <div className="group relative w-full rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-8 md:p-10">
-                <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+              <CardGrid gridClassName="grid grid-cols-1 w-full">
+                <div className="group relative w-full rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-8 md:p-10">
+                  <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
 
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5 group-hover:text-cyan transition-colors">
-                  Technical Briefings Available
-                </h2>
+                  <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5 group-hover:text-cyan transition-colors">
+                    Technical Briefings Available
+                  </h2>
 
-                <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8 group-hover:text-white transition-colors">
-                  Our engineering team can provide detailed technical briefings under NDA
-                  for qualified defence and government clients.
-                </p>
+                  <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8 group-hover:text-white transition-colors">
+                    Our engineering team can provide detailed technical briefings under NDA
+                    for qualified defence and government clients.
+                  </p>
 
-                <CTAButton
-                  href="/documents/vayuron-technology-brochure.pdf"
-                  variant="primary"
-                >
-                  Download Technology Brochure
-                </CTAButton>
-              </div>
+                  <CTAButton
+                    href="/documents/vayuron-technology-brochure.pdf"
+                    variant="primary"
+                  >
+                    Download Technology Brochure
+                  </CTAButton>
+                </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>

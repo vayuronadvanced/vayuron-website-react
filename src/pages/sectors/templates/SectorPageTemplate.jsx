@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, CTAButton, InfoCard } from '../../../components/ui'
+import { PageBanner, CTAButton, InfoCard, CardGrid } from '../../../components/ui'
 // import { StatCard } from '../../../components/ui' // paired with the disabled Stats section below — uncomment together
 import StackSection from '../../../components/sections/StackSection'
 
@@ -57,32 +57,6 @@ export default function SectorPageTemplate({
           />
         </StackSection>
 
-        {/* Stats 
-        {hasStats && (
-          <StackSection index={statsIndex}>
-            <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage: "url('/Tablong.png')",
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />
-
-              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {stats.map((stat, i) => (
-                    <StatCard key={i} value={stat.value} suffix={stat.suffix} label={stat.label} />
-                  ))}
-                </div>
-              </div>
-            </section>
-          </StackSection>
-        )} */}
-
         {/* Overview — editorial layout replacing the two plain InfoCards */}
         <StackSection index={overviewIndex}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
@@ -98,7 +72,7 @@ export default function SectorPageTemplate({
             {/* Cinematic gradient — dark at top, lighter in the centre,
                 dark again at bottom — gives depth behind the content */}
             <div className="absolute inset-0 bg-gradient-to-br from-black via-black/50 to-black/80" />
-            
+
             {/* Top cyan glow line */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
@@ -171,7 +145,7 @@ export default function SectorPageTemplate({
                   Sector Challenges
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {challenges.map((c, i) => (
                     <InfoCard
                       key={i}
@@ -181,7 +155,7 @@ export default function SectorPageTemplate({
                       className="p-5"
                     />
                   ))}
-                </div>
+                </CardGrid>
               </div>
             </section>
           </StackSection>
@@ -207,7 +181,7 @@ export default function SectorPageTemplate({
                   Technologies Deployed
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {technologies.map((tech, i) => (
                     <InfoCard
                       key={i}
@@ -218,7 +192,7 @@ export default function SectorPageTemplate({
                       bullets={tech.bullets || []}
                     />
                   ))}
-                </div>
+                </CardGrid>
               </div>
             </section>
           </StackSection>
