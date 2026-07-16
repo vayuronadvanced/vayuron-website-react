@@ -216,7 +216,7 @@ export default function SectorPageTemplate({
               <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
                 Deploy in {title}?
               </h2>
-              <p className="text-white/80 text-lg leading-relaxed max-w-3xl mx-auto mb-10">
+              <p className="text-white/100 text-lg leading-relaxed max-w-3xl mx-auto mb-10">
                 Our sector specialists can design a tailored solution for your operational requirements.
               </p>
               <CTAButton to="/contact" variant="primary">

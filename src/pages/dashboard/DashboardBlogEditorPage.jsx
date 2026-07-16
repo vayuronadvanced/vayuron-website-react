@@ -1,4 +1,4 @@
-{/*DashboardBlogEditorPage.jsx*/}
+{/*DashboardBlogEditorPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { useEffect, useState } from 'react'
@@ -200,7 +200,7 @@ export default function DashboardBlogEditorPage() {
               type="file"
               accept=".jpg,.jpeg,.png,.webp"
               onChange={(e) => setCoverImage(e.target.files?.[0] || null)}
-              className="w-full text-sm text-white/80 file:mr-3 file:border file:border-cyan/40 file:bg-black/60 file:text-cyan file:px-3 file:py-1.5 file:text-xs file:uppercase file:tracking-widest"
+              className="w-full text-sm text-white/100 file:mr-3 file:border file:border-cyan/40 file:bg-black/60 file:text-cyan file:px-3 file:py-1.5 file:text-xs file:uppercase file:tracking-widest"
             />
           </div>
 
@@ -226,7 +226,7 @@ export default function DashboardBlogEditorPage() {
             <button
               type="button"
               onClick={() => navigate('/dashboard/blog')}
-              className="border border-white/20 text-white/70 px-6 py-2.5 text-xs uppercase tracking-widest hover:border-white/40 transition-all"
+              className="border border-white/20 text-white/100 px-6 py-2.5 text-xs uppercase tracking-widest hover:border-white/40 transition-all"
             >
               Cancel
             </button>

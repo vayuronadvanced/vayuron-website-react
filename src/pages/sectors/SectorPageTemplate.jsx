@@ -1,4 +1,4 @@
-{/* SectorPageTemplate.jsx - PHASE 3 UPDATE - applies to all 8 sector detail pages */}
+{/* SectorPageTemplate.jsx - PHASE 3 UPDATE - applies to all 8 sector detail pages */ }
 
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, CTAButton, InfoCard, CardGrid } from '../../../components/ui'
@@ -59,32 +59,6 @@ export default function SectorPageTemplate({
           />
         </StackSection>
 
-        {/* Stats 
-        {hasStats && (
-          <StackSection index={statsIndex}>
-            <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage: "url('/Tablong.png')",
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/25 to-black/75" />
-
-              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {stats.map((stat, i) => (
-                    <StatCard key={i} value={stat.value} suffix={stat.suffix} label={stat.label} />
-                  ))}
-                </div>
-              </div>
-            </section>
-          </StackSection>
-        )} */}
-
         {/* Overview — editorial layout replacing the two plain InfoCards */}
         <StackSection index={overviewIndex}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
@@ -100,7 +74,7 @@ export default function SectorPageTemplate({
             {/* Cinematic gradient — dark at top, lighter in the centre,
                 dark again at bottom — gives depth behind the content */}
             <div className="absolute inset-0 bg-gradient-to-br from-black via-black/50 to-black/80" />
-            
+
             {/* Top cyan glow line */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
@@ -246,7 +220,7 @@ export default function SectorPageTemplate({
               <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
                 Deploy in {title}?
               </h2>
-              <p className="text-white/80 text-lg leading-relaxed max-w-3xl mx-auto mb-10">
+              <p className="text-white/100 text-lg leading-relaxed max-w-3xl mx-auto mb-10">
                 Our sector specialists can design a tailored solution for your operational requirements.
               </p>
               <CTAButton to="/contact" variant="primary">

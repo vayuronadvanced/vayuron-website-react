@@ -246,7 +246,7 @@ export default function CareersPage() {
                   <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <div>
-                      <h3 className="font-display text-lg text-white">{listing.title}</h3>
+                      <h3 className="font-display text-lg text-white/100">{listing.title}</h3>
                       <p className="text-xs text-[var(--muted)] mt-1">
                         {[listing.department, listing.location, listing.employment_type]
                           .filter(Boolean)
@@ -350,7 +350,7 @@ export default function CareersPage() {
 
                     <div>
                       <label className="block text-xs text-[var(--muted)] mb-1">
-                        Resume (PDF/DOC, max 5MB) *
+                        Resume (PDF/DOC, max 10MB) *
                       </label>
                       <input
                         type="file"

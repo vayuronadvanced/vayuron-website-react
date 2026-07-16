@@ -1,4 +1,4 @@
-{/*ContactPage.jsx*/}
+{/*ContactPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { useEffect, useRef, useState } from 'react'
@@ -77,87 +77,87 @@ export default function ContactPage() {
         ease: 'power2.out',
       })
 
-      .to(
-        '.contact-breadcrumb',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.25,
-        },
-        '-=1'
-      )
+        .to(
+          '.contact-breadcrumb',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.25,
+          },
+          '-=1'
+        )
 
-      .to(
-        '.contact-tag',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.25,
-        },
-        '-=0.15'
-      )
+        .to(
+          '.contact-tag',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.25,
+          },
+          '-=0.15'
+        )
 
-      .to(
-        '.contact-title',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.35,
-        },
-        '-=0.15'
-      )
-      
-      .to(
-        '.enquiry-card',
-        {
-          opacity: 1,
-          y: 30,
-          duration: 0,
-        }
-      )
+        .to(
+          '.contact-title',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.35,
+          },
+          '-=0.15'
+        )
 
-      .to(
-        '.enquiry-card',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.45,
-          ease: 'power3.out',
-        }
-      )
+        .to(
+          '.enquiry-card',
+          {
+            opacity: 1,
+            y: 30,
+            duration: 0,
+          }
+        )
 
-      .to(
-        '.response-tag',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.2,
-        },
-        '-=0.25'
-      )
+        .to(
+          '.enquiry-card',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.45,
+            ease: 'power3.out',
+          }
+        )
 
-      .to(
-        '.enquiry-title',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.25,
-        },
-        '-=0.1'
-                )
+        .to(
+          '.response-tag',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.2,
+          },
+          '-=0.25'
+        )
 
-          .to(
-            '.enquiry-text',
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.25,
-            },
-            '-=0.1'
-          )
+        .to(
+          '.enquiry-title',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.25,
+          },
+          '-=0.1'
+        )
 
-          .fromTo(
-            '.enquiry-btn',
+        .to(
+          '.enquiry-text',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.25,
+          },
+          '-=0.1'
+        )
+
+        .fromTo(
+          '.enquiry-btn',
           {
             opacity: 0,
             scale: 0.9,
@@ -173,25 +173,25 @@ export default function ContactPage() {
           '-=0.1'
         )
 
-      .to(
-        '.contact-text',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-        },
-        '-=0.15'
-      )
+        .to(
+          '.contact-text',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+          },
+          '-=0.15'
+        )
 
-      .to(
-        '.contact-info',
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.35,
-        },
-        '-=0.05'
-      )
+        .to(
+          '.contact-info',
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.35,
+          },
+          '-=0.05'
+        )
 
     }, heroRef)
 
@@ -266,7 +266,7 @@ export default function ContactPage() {
 
                   <a
                     href={`tel:${SITE.phoneTel}`}
-                    className="flex items-center gap-3 text-white hover:text-cyan transition-colors font-mono text-base"
+                    className="flex items-center gap-3 text-white/100 hover:text-cyan transition-colors font-mono text-base"
                   >
                     <span>📞</span>
                     {SITE.phone}
@@ -274,7 +274,7 @@ export default function ContactPage() {
 
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="flex items-center gap-3 text-white hover:text-cyan transition-colors font-mono text-base"
+                    className="flex items-center gap-3 text-white/100 hover:text-cyan transition-colors font-mono text-base"
                   >
                     <span>✉</span>
                     {SITE.email}
@@ -311,11 +311,11 @@ export default function ContactPage() {
 
               {/* Enquiry Card */}
               <div className="enquiry-card border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full">
-                <p className="response-tag font-mono text-xs tracking-widest uppercase text-cyan mb-3">                  
+                <p className="response-tag font-mono text-xs tracking-widest uppercase text-cyan mb-3">
                   Response Time
                 </p>
 
-                <h2 className="enquiry-title font-display text-2xl md:text-3xl font-bold text-white mb-4">                  
+                <h2 className="enquiry-title font-display text-2xl md:text-3xl font-bold text-white mb-4">
                   Send an Enquiry
                 </h2>
 

@@ -1,4 +1,4 @@
-{/*ProductPageTemplate.jsx*/}
+{/*ProductPageTemplate.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, CTAButton, InfoCard, SpecCard, CardGrid } from '../../../components/ui'
@@ -30,8 +30,8 @@ export default function ProductPageTemplate({
   specs = [],
   features = [],     // each: { icon, title, description, bullets? } — bullets optional but should be equal-length across a page's features for card consistency
   cardSections = [],  // arbitrary repeatable InfoCard-grid sections, each rendered as its own StackSection:
-                       // { eyebrow, title, backgroundImage, columns, moreDetailsHref, moreDetailsLabel,
-                       //   cards: [{ icon, title, description, bullets? }] }
+  // { eyebrow, title, backgroundImage, columns, moreDetailsHref, moreDetailsLabel,
+  //   cards: [{ icon, title, description, bullets? }] }
   nextProduct = null,
   crumbs = [],
 }) {
@@ -118,7 +118,7 @@ export default function ProductPageTemplate({
                   <h2 className="font-sans text-white text-3xl md:text-4xl font-bold mb-2 leading-tight">
                     {title} in Action
                   </h2>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-gray-100 text-sm leading-relaxed">
                     Autonomous aerial platforms designed for real-world mission environments.
                   </p>
                 </div>
@@ -161,7 +161,7 @@ export default function ProductPageTemplate({
                     </h2>
 
                     {specsDescription && (
-                      <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
+                      <p className="text-white/100 text-base md:text-lg leading-relaxed mb-8">
                         {specsDescription}
                       </p>
                     )}
@@ -230,7 +230,7 @@ export default function ProductPageTemplate({
                     </h2>
 
                     {secondaryDescription && (
-                      <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
+                      <p className="text-white/100 text-base md:text-lg leading-relaxed mb-8">
                         {secondaryDescription}
                       </p>
                     )}
@@ -326,9 +326,8 @@ export default function ProductPageTemplate({
                 </div>
 
                 <CardGrid
-                  gridClassName={`grid grid-cols-1 md:grid-cols-2 gap-6 ${
-                    (section.columns || 3) >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
-                  }`}
+                  gridClassName={`grid grid-cols-1 md:grid-cols-2 gap-6 ${(section.columns || 3) >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
+                    }`}
                 >
                   {(section.cards || []).map((card, cIdx) => (
                     <InfoCard

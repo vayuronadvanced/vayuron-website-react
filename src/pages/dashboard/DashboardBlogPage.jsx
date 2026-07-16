@@ -1,4 +1,4 @@
-{/*DashboardBlogPage.jsx*/}
+{/*DashboardBlogPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { useEffect } from 'react'
@@ -70,7 +70,7 @@ export default function DashboardBlogPage() {
                 <StatusBadge status={post.status} />
                 <Link
                   to={`/dashboard/blog/${post.slug}/edit`}
-                  className="border border-white/20 text-white/70 px-3 py-1.5 text-xs uppercase tracking-widest hover:border-cyan hover:text-cyan transition-all"
+                  className="border border-white/20 text-white/100 px-3 py-1.5 text-xs uppercase tracking-widest hover:border-cyan hover:text-cyan transition-all"
                 >
                   Edit
                 </Link>

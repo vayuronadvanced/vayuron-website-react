@@ -105,22 +105,6 @@ const engineeringCapabilities = [
   },
 ]
 
-// ─── Industries Served ────────────────────────────────────────────────────
-{/*const industries = [
-  'Defence',
-  'Armed Forces',
-  'Government Agencies',
-  'Homeland Security',
-  'Police & Law Enforcement',
-  'Power Utilities',
-  'Transmission Operators',
-  'Renewable Energy',
-  'Mining & Metals',
-  'Infrastructure Development',
-  'Smart Cities',
-  'Agriculture',
-] */}
-
 // ─── Why Vayuron ─────────────────────────────────────────────────────────
 const differentiators = [
   {

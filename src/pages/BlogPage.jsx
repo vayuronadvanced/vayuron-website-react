@@ -120,7 +120,7 @@ function FeaturedPost({ post }) {
             {post.title}
           </h2>
           {post.excerpt && (
-            <p className="text-white/70 leading-relaxed mb-6 line-clamp-3">{post.excerpt}</p>
+            <p className="text-white/100 leading-relaxed mb-6 line-clamp-3">{post.excerpt}</p>
           )}
           <div className="flex items-center gap-4">
             {post.published_at && (
@@ -194,8 +194,8 @@ export default function BlogPage() {
                 <button
                   onClick={() => setActiveCategory(null)}
                   className={`px-4 py-1.5 text-xs uppercase tracking-widest border rounded-sm transition-all ${activeCategory === null
-                      ? 'border-cyan bg-cyan text-black shadow-[0_0_16px_rgba(0,212,255,0.35)]'
-                      : 'border-cyan/30 text-cyan hover:border-cyan hover:shadow-[0_0_12px_rgba(0,212,255,0.2)]'
+                    ? 'border-cyan bg-cyan text-black shadow-[0_0_16px_rgba(0,212,255,0.35)]'
+                    : 'border-cyan/30 text-cyan hover:border-cyan hover:shadow-[0_0_12px_rgba(0,212,255,0.2)]'
                     }`}
                 >
                   All
@@ -205,8 +205,8 @@ export default function BlogPage() {
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.slug)}
                     className={`px-4 py-1.5 text-xs uppercase tracking-widest border rounded-sm transition-all ${activeCategory === cat.slug
-                        ? 'border-cyan bg-cyan text-black shadow-[0_0_16px_rgba(0,212,255,0.35)]'
-                        : 'border-cyan/30 text-cyan hover:border-cyan hover:shadow-[0_0_12px_rgba(0,212,255,0.2)]'
+                      ? 'border-cyan bg-cyan text-black shadow-[0_0_16px_rgba(0,212,255,0.35)]'
+                      : 'border-cyan/30 text-cyan hover:border-cyan hover:shadow-[0_0_12px_rgba(0,212,255,0.2)]'
                       }`}
                   >
                     {cat.name}
@@ -229,7 +229,7 @@ export default function BlogPage() {
 
             {!loading && !error && posts.length === 0 && (
               <div className="text-center py-20 border border-dashed border-white/10 rounded-sm">
-                <p className="font-display text-xl text-white/60 mb-2">Nothing published yet</p>
+                <p className="font-display text-xl text-white/100 mb-2">Nothing published yet</p>
                 <p className="text-sm text-[var(--muted)]">Check back soon for updates.</p>
               </div>
             )}

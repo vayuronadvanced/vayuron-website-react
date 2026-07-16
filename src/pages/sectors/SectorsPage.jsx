@@ -1,4 +1,4 @@
-{/* SectorsPage.jsx - PHASE 2 UPDATE */}
+{/* SectorsPage.jsx - PHASE 2 UPDATE */ }
 
 import { Helmet } from 'react-helmet-async'
 import { PageBanner, CTAButton, InfoCard, CardGrid } from '../../components/ui'

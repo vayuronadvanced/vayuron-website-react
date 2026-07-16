@@ -105,11 +105,6 @@ export default function TechnologyPage() {
         />
       </Helmet>
 
-      {/* Stacked scroll transitions: each StackSection pins in place
-          (position: sticky) while the next one scrolls up to cover it.
-          Same pattern as HomePage — increasing index per section, and
-          no internal ScrollTrigger pins inside the sections themselves
-          (StackSection owns the pin/cover choreography). */}
       <main>
         <StackSection index={0}>
           <PageBanner
@@ -154,7 +149,7 @@ export default function TechnologyPage() {
                     <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="text-white/75 leading-relaxed group-hover:text-white transition-colors">
+                    <p className="text-white/100 leading-relaxed group-hover:text-white transition-colors">
                       {pillar.description}
                     </p>
                   </div>
@@ -200,7 +195,7 @@ export default function TechnologyPage() {
                       {stack.items.map((item, j) => (
                         <li
                           key={j}
-                          className="flex items-center gap-2.5 text-white/75 text-[13px] leading-relaxed group-hover:text-white transition-colors"
+                          className="flex items-center gap-2.5 text-white/100 text-[13px] leading-relaxed group-hover:text-white transition-colors"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
                           {item}
@@ -244,7 +239,7 @@ export default function TechnologyPage() {
                   <CardGrid gridClassName="grid grid-cols-1">
                     <div className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6">
                       <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
-                      <p className="text-white/80 text-base leading-7 group-hover:text-white transition-colors">
+                      <p className="text-white/100 text-base leading-7 group-hover:text-white transition-colors">
                         Every algorithm, firmware module, structural design, and manufacturing
                         process in the Vayuron technology stack is developed and owned entirely
                         by Vayuron Advanced Systems. No licensed foreign technology. No

@@ -1,4 +1,4 @@
-{/*DashboardCareersPage.jsx*/}
+{/*DashboardCareersPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { useEffect, useState } from 'react'
@@ -118,7 +118,7 @@ export default function DashboardCareersPage() {
           <button
             onClick={handleExport}
             disabled={exporting}
-            className="border border-white/20 text-white/70 px-4 py-2 text-xs uppercase tracking-widest hover:border-cyan hover:text-cyan transition-all disabled:opacity-50"
+            className="border border-white/20 text-white/100 px-4 py-2 text-xs uppercase tracking-widest hover:border-cyan hover:text-cyan transition-all disabled:opacity-50"
           >
             {exporting ? 'Exporting…' : 'Export CSV'}
           </button>
