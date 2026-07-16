@@ -1,7 +1,7 @@
-{/*ProductsPage.jsx*/ }
+{/*ProductsPage.jsx - PHASE 2 UPDATE*/ }
 
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, InfoCard } from '../../components/ui'
+import { PageBanner, InfoCard, CardGrid } from '../../components/ui'
 import { PRODUCTS } from '../../data/siteData'
 import StackSection from '../../components/sections/StackSection'
 
@@ -12,7 +12,7 @@ export default function ProductsPage() {
         <title>Products — Vayuron Advanced Systems</title>
         <meta
           name="description"
-          content="Vayuron's core product lines: UAV Systems, Artificial Intelligence, Software Systems, Advanced Engineering, Avionics, and Carbon & Composite."
+          content="Vayuron's core product lines: UAV Systems, MVTX, Artificial Intelligence, and Advanced Engineering."
         />
       </Helmet>
 
@@ -41,9 +41,10 @@ export default function ProductsPage() {
             />
 
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
-              {/* Row 1 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-                {PRODUCTS.slice(0, 3).map((product) => (
+              {/* Exactly 4 products: UAV Systems, MVTX, Artificial Intelligence, Advanced Engineering */}
+              {/* UPDATED: Wrapped in CardGrid for premium hover effects (16px lift) */}
+              <CardGrid>
+                {PRODUCTS.map((product) => (
                   <InfoCard
                     key={product.id}
                     to={product.path}
@@ -53,21 +54,7 @@ export default function ProductsPage() {
                     bullets={product.bullets}
                   />
                 ))}
-              </div>
-
-              {/* Row 2 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {PRODUCTS.slice(3).map((product) => (
-                  <InfoCard
-                    key={product.id}
-                    to={product.path}
-                    icon={product.icon}
-                    title={product.label}
-                    description={product.description}
-                    bullets={product.bullets}
-                  />
-                ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>

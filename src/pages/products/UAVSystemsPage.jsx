@@ -45,7 +45,7 @@ export default function UAVSystemsPage() {
       ]}
       secondaryMoreDetailsHref="/documents/AGNI FPV Tactical Strike UAV.pdf"
 
-      nextProduct={{ label: 'Artificial Intelligence', path: '/products/artificial-intelligence' }}
+      nextProduct={{ label: 'MVTX', path: '/products/mvtx' }}
     />
   )
 }

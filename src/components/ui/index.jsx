@@ -1,4 +1,4 @@
-{/*index.jsx*/}
+{/*index.jsx*/ }
 
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -52,11 +52,11 @@ export function PageBanner({
       style={
         !hasVideo
           ? {
-              backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              backgroundRepeat: 'no-repeat',
-            }
+            backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+          }
           : undefined
       }
     >
@@ -88,7 +88,7 @@ export function PageBanner({
       )}
 
       {/* DARK OVERLAY FOR READABILITY : <div className="absolute inset-0 bg-black/60" />*/}
-      
+
 
       {/* Cyan glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
@@ -151,9 +151,9 @@ export function StatCard({ value, suffix = '', label }) {
 export function CTAButton({ children, to, href, variant = 'primary', className = '', ...props }) {
   const base = 'inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-all duration-200 px-6 py-3'
   const variants = {
-    primary:   'border border-cyan text-cyan hover:bg-cyan hover:text-black',
+    primary: 'border border-cyan text-cyan hover:bg-cyan hover:text-black',
     secondary: 'border border-cyan text-cyan hover:bg-cyan hover:text-black',
-    ghost:     'border border-cyan text-cyan hover:bg-cyan hover:text-black',
+    ghost: 'border border-cyan text-cyan hover:bg-cyan hover:text-black',
   }
   const cls = `${base} ${variants[variant]} ${className}`
 
@@ -166,9 +166,9 @@ export function CTAButton({ children, to, href, variant = 'primary', className =
 export function CyanDivider({ className = '' }) {
   return (
     <div className={`flex items-center gap-4 ${className}`}>
-      <div className="flex-1 h-px bg-[rgba(0,212,255,0.1)]"/>
-      <div className="w-1 h-1 rounded-full bg-cyan"/>
-      <div className="flex-1 h-px bg-[rgba(0,212,255,0.1)]"/>
+      <div className="flex-1 h-px bg-[rgba(0,212,255,0.1)]" />
+      <div className="w-1 h-1 rounded-full bg-cyan" />
+      <div className="flex-1 h-px bg-[rgba(0,212,255,0.1)]" />
     </div>
   )
 }
@@ -255,10 +255,9 @@ export function Card({
         p-6
         transition-all
         duration-300
-        ${
-          hover
-            ? 'hover:border-cyan/40 hover:bg-black/35 hover:-translate-y-1'
-            : ''
+        ${hover
+          ? 'hover:border-cyan/40 hover:bg-black/35 hover:-translate-y-1'
+          : ''
         }
         ${className}
       `}
@@ -322,7 +321,7 @@ export function LoadingScreen() {
         Vayuron
       </div>
       <div className="loading-bar">
-        <div className="loading-bar-fill"/>
+        <div className="loading-bar-fill" />
       </div>
       <div className="font-mono text-xs text-dim tracking-widest uppercase">
         Initialising Systems...
@@ -330,3 +329,4 @@ export function LoadingScreen() {
     </motion.div>
   )
 }
+export { CardGrid, CardGridWithRef } from './CardGrid'

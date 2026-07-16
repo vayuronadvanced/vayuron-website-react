@@ -1,4 +1,4 @@
-{/*siteData.js*/}
+{/*siteData.js*/ }
 
 // ─── Central Site Configuration ───────────────────────────────────────────
 // Replaces config/site-config.js from the original HTML project
@@ -17,14 +17,21 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { label: 'Products', path: '/products', hasDropdown: true },
-  { label: 'Sectors',  path: '/sectors',  hasDropdown: true },
+  { label: 'Sectors', path: '/sectors', hasDropdown: true },
   { label: 'Technology', path: '/technology' },
-  { label: 'About',    path: '/about' },
-  { label: 'Careers',  path: '/careers' },
-  { label: 'Blog',     path: '/blog' },
-  { label: 'Contact',  path: '/contact' },
+  { label: 'About', path: '/about' },
+  { label: 'Careers', path: '/careers' },
+  { label: 'Blog', path: '/blog' },
+  { label: 'Contact', path: '/contact' },
 ]
 
+// Only 4 products remain visible site-wide: UAV Systems, MVTX, Artificial
+// Intelligence, and Advanced Engineering. Software Systems, Avionics, and
+// Carbon & Composite have been retired — Avionics' content now lives inside
+// the Advanced Engineering page (see pages/products/EngineeringPage.jsx).
+// This array is the single source of truth for the Navbar dropdown, the
+// Footer product links, the Homepage product grid, and the /products page —
+// updating it here cascades everywhere automatically.
 export const PRODUCTS = [
   {
     id: 'uav-systems',
@@ -34,6 +41,16 @@ export const PRODUCTS = [
     bullets: [
       'Autonomous flight & navigation',
       'Multi-mission payload support',
+    ],
+  },
+  {
+    id: 'mvtx',
+    label: 'MVTX',
+    path: '/products/mvtx',
+    description: 'Advanced video transmission systems delivering secure, ultra-low latency communication for defence and tactical UAV operations.',
+    bullets: [
+      'Ultra-low latency transmission',
+      'Secure long-range video links',
     ],
   },
   {
@@ -47,53 +64,13 @@ export const PRODUCTS = [
     ],
   },
   {
-    id: 'software-systems',
-    label: 'Software Systems',
-    path: '/products/software-systems',
-    description: 'Ground control, mission planning, and command-and-control software built in-house.',
-    bullets: [
-      'Mission planning & GCS suite',
-      'Digital twin simulation',
-    ],
-  },
-  {
     id: 'advanced-engineering',
     label: 'Advanced Engineering',
     path: '/products/advanced-engineering',
-    description: 'Structural design and manufacturing engineered for demanding operational environments.',
+    description: 'Structural design, precision manufacturing, and indigenous avionics engineered for demanding operational environments.',
     bullets: [
       'CFRP structural fabrication',
-      'Precision CNC machining',
-    ],
-  },
-  {
-    id: 'avionics',
-    label: 'Avionics',
-    path: '/products/avionics',
-    description: 'Flight control and power systems certified for defence-grade reliability.',
-    bullets: [
-      'Custom flight controllers',
-      'Redundant power systems',
-    ],
-  },
-  {
-    id: 'carbon-composite',
-    label: 'Carbon & Composite',
-    path: '/products/carbon-composite',
-    description: 'Lightweight, damage-tolerant airframes designed and built entirely in-house.',
-    bullets: [
-      'Lightweight airframe design',
-      'In-house layup & curing',
-    ],
-  },
-  {
-    id: 'mvtx',
-    label: 'MVTX',
-    path: '/products/mvtx',
-    description: 'Advanced video transmission systems delivering secure, ultra-low latency communication for defence and tactical UAV operations.',
-    bullets: [
-      'Ultra-low latency transmission',
-      'Secure long-range video links',
+      'Flight control & avionics systems',
     ],
   },
 ]
@@ -143,18 +120,18 @@ export const SECTORS = [
 
 export const FOOTER_LINKS = {
   products: PRODUCTS.map(p => ({ label: p.label, path: p.path })),
-  sectors:  SECTORS.slice(0, 4).map(s => ({ label: s.label, path: s.path })),
+  sectors: SECTORS.slice(0, 4).map(s => ({ label: s.label, path: s.path })),
   company: [
-    { label: 'About',      path: '/about' },
+    { label: 'About', path: '/about' },
     { label: 'Technology', path: '/technology' },
-    { label: 'Careers',    path: '/careers' },
-    { label: 'Blog',       path: '/blog' },
-    { label: 'Contact',    path: '/contact' },
+    { label: 'Careers', path: '/careers' },
+    { label: 'Blog', path: '/blog' },
+    { label: 'Contact', path: '/contact' },
   ],
   legal: [
     { label: 'Privacy Policy', path: '/documents/privacy-policy.pdf' },
-    { label: 'Terms of Use',   path: '/documents/terms-of-use.pdf' },
-    { label: 'Cookie Policy',  path: '/documents/cookie-policy.pdf' },
-    { label: 'Security',       path: '/documents/security-policy.pdf' },
+    { label: 'Terms of Use', path: '/documents/terms-of-use.pdf' },
+    { label: 'Cookie Policy', path: '/documents/cookie-policy.pdf' },
+    { label: 'Security', path: '/documents/security-policy.pdf' },
   ],
 }

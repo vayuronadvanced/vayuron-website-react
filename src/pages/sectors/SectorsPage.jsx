@@ -1,5 +1,7 @@
+{/* SectorsPage.jsx - PHASE 2 UPDATE */}
+
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, CTAButton, InfoCard } from '../../components/ui'
+import { PageBanner, CTAButton, InfoCard, CardGrid } from '../../components/ui'
 import { SECTORS } from '../../data/siteData'
 import StackSection from '../../components/sections/StackSection'
 
@@ -36,7 +38,8 @@ export default function SectorsPage() {
             />
 
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* UPDATED: Wrapped in CardGrid for premium hover effects (16px lift) */}
+              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {SECTORS.map((sector) => (
                   <InfoCard
                     key={sector.id}
@@ -48,7 +51,7 @@ export default function SectorsPage() {
                     className="p-5"
                   />
                 ))}
-              </div>
+              </CardGrid>
             </div>
           </section>
         </StackSection>

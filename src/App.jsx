@@ -1,4 +1,4 @@
-{/*App.jsx*/}
+{/*App.jsx*/ }
 
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -15,7 +15,6 @@ import HomePage from './pages/HomePage'
 import ProductsPage from './pages/products/ProductsPage'
 import UAVSystemsPage from './pages/products/UAVSystemsPage'
 import AIPage from './pages/products/AIPage'
-import SoftwarePage from './pages/products/SoftwarePage'
 import EngineeringPage from './pages/products/EngineeringPage'
 import SectorsPage from './pages/sectors/SectorsPage'
 import DefencePage from './pages/sectors/DefencePage'
@@ -30,9 +29,6 @@ import TechnologyPage from './pages/TechnologyPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import NotFoundPage from './pages/NotFoundPage'
-import AvionicsPage from './pages/products/AvionicsPage'
-import CarbonCompositePage from './pages/products/CarbonCompositePage'
-import DroneModelsPage from './pages/products/DroneModelsPage'
 import ScrollToTop from './components/layout/ScrollToTop'
 import CareersPage from './pages/CareersPage'
 import MVTXPage from './pages/products/MVTXPage'
@@ -51,15 +47,10 @@ import DashboardNewsletterPage from './pages/dashboard/DashboardNewsletterPage'
 import DashboardUsersPage from './pages/dashboard/DashboardUsersPage'
 import ProtectedRoute from './components/layout/ProtectedRoute'
 
-// ─── Page Transition Wrapper ───────────────────────────────────────────────
-// Echoes the in-page StackSection effect at the route level: the incoming
-// page rises up (as if covering the outgoing one) instead of a flat fade,
-// so navigating between pages feels like the same "cover" motion used
-// between sections.
 const pageVariants = {
   initial: { opacity: 0, y: 40 },
-  enter:   { opacity: 1, y: 0,   transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
-  exit:    { opacity: 0, y: -40, transition: { duration: 0.3, ease: [0.7, 0, 0.84, 0] } },
+  enter: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+  exit: { opacity: 0, y: -40, transition: { duration: 0.3, ease: [0.7, 0, 0.84, 0] } },
 }
 
 function PageWrapper({ children }) {
@@ -115,9 +106,8 @@ function CustomCursor() {
 
   return (
     <div
-      className={`fixed pointer-events-none z-[99999] rounded-full bg-cyan mix-blend-screen transition-transform duration-150 hidden md:block ${
-        hovering ? 'w-8 h-8 opacity-40 -translate-x-4 -translate-y-4' : 'w-3 h-3 opacity-100 -translate-x-1.5 -translate-y-1.5'
-      }`}
+      className={`fixed pointer-events-none z-[99999] rounded-full bg-cyan mix-blend-screen transition-transform duration-150 hidden md:block ${hovering ? 'w-8 h-8 opacity-40 -translate-x-4 -translate-y-4' : 'w-3 h-3 opacity-100 -translate-x-1.5 -translate-y-1.5'
+        }`}
       style={{ left: pos.x, top: pos.y }}
     />
   )
@@ -130,10 +120,6 @@ export default function App() {
   useGoogleAnalyticsPageviews()
 
   return (
-    // Mounted once for the app's whole lifetime — route changes render
-    // inside this, they never remount it. This is what lets ScrollToTop
-    // reset the SAME Lenis instance on navigation instead of racing a
-    // dying one from the previous page.
     <SmoothScrollProvider>
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen key="loading" />}
@@ -156,11 +142,7 @@ export default function App() {
               <Route path="/products" element={<PageWrapper><ProductsPage /></PageWrapper>} />
               <Route path="/products/uav-systems" element={<PageWrapper><UAVSystemsPage /></PageWrapper>} />
               <Route path="/products/artificial-intelligence" element={<PageWrapper><AIPage /></PageWrapper>} />
-              <Route path="/products/software-systems" element={<PageWrapper><SoftwarePage /></PageWrapper>} />
               <Route path="/products/advanced-engineering" element={<PageWrapper><EngineeringPage /></PageWrapper>} />
-              <Route path="/products/avionics" element={<PageWrapper><AvionicsPage /></PageWrapper>} />
-              <Route path="/products/carbon-composite" element={<PageWrapper><CarbonCompositePage /></PageWrapper>} />
-              <Route path="/products/drone-models" element={<PageWrapper><DroneModelsPage /></PageWrapper>} />
 
               {/* Standalone — not part of PRODUCTS in siteData.js, reachable only via this route and the dedicated navbar link */}
               <Route path="/products/mvtx" element={<PageWrapper><MVTXPage /></PageWrapper>} />

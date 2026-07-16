@@ -5,7 +5,7 @@ import ProductPageTemplate from './templates/ProductPageTemplate'
 export default function AIPage() {
   return (
     <ProductPageTemplate
-      eyebrow="Product Line 02"
+      eyebrow="Product Line 03"
       title="Artificial Intelligence"
       subtitle="Edge AI, computer vision, and decision intelligence platforms for autonomous and semi-autonomous operations."
       heroVideo="/Drone1.mp4"
@@ -32,7 +32,7 @@ export default function AIPage() {
         { title: 'Signal Intelligence', description: 'AI-powered RF signal classification and spectrum monitoring for electronic warfare support.', bullets: ['RF signal classification', 'Spectrum monitoring'] },
         { title: 'Continuous Learning', description: 'Federated learning pipelines enabling model improvement from field data without centralised data exposure.', bullets: ['Federated learning pipelines', 'No centralised data exposure'] },
       ]}
-      nextProduct={{ label: 'Software Systems', path: '/products/software-systems' }}
+      nextProduct={{ label: 'Advanced Engineering', path: '/products/advanced-engineering' }}
     />
   )
 }

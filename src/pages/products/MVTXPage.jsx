@@ -1,14 +1,10 @@
 import ProductPageTemplate from './templates/ProductPageTemplate'
 
-// NOTE: MVTX is intentionally NOT added to PRODUCTS in siteData.js.
-// This keeps it out of the homepage Products preview, the /products
-// index grid, and any other place that maps over PRODUCTS — it's a
-// standalone page, reachable only via its direct route and the
-// dedicated navbar link.
+// MVTX is one of the 4 core products in PRODUCTS (data/siteData.js), shown
+// in the Navbar dropdown, Footer, Homepage grid, and /products page.
 export default function MVTXPage() {
   return (
     <ProductPageTemplate
-      eyebrow="Standalone Product"
       title="MVTX"
       subtitle="Multi View Transmission System is a real-time video, complete situational awareness. MVTX connects your ground team to multiple remote views through a simple, secure wireless link."
       backgroundImage="/MVTX1.jpg"
@@ -81,6 +77,8 @@ export default function MVTXPage() {
           ],
         },
       ]}
+
+      nextProduct={{ label: 'Artificial Intelligence', path: '/products/artificial-intelligence' }}
     />
   )
 }

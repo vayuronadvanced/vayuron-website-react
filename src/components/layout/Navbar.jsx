@@ -173,18 +173,6 @@ export default function Navbar() {
                             </div>
                           </Link>
                         ))}
-
-                        {/*}    <Link
-                          to="/products/mvtx"
-                          className="flex items-center gap-3 w-full px-2 py-2 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0" />
-                            <h3 className="font-sans font-semibold text-xs text-white group-hover:text-cyan transition-colors">
-                              MVTX
-                            </h3>
-                          </div>
-                        </Link> */}
                       </div>
 
                       {!showAllProducts && PRODUCTS.length > DROPDOWN_PREVIEW_COUNT && (

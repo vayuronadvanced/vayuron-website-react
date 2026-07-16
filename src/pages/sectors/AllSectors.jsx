@@ -25,7 +25,7 @@ export function DefencePage() {
       technologies={[
         { label: 'Tactical UAVs', description: 'Fixed-wing and rotary ISR platforms for forward reconnaissance and target acquisition.', path: '/products/uav-systems', bullets: ['Forward reconnaissance', 'Target acquisition'] },
         { label: 'Target AI', description: 'Real-time target detection and tracking AI operating on embedded edge hardware.', path: '/products/artificial-intelligence', bullets: ['Real-time detection', 'Embedded edge inference'] },
-        { label: 'C2 Software', description: 'Encrypted ground control station and mission planning software.', path: '/products/software-systems', bullets: ['Encrypted mission planning', 'Ground control station'] },
+        { label: 'Tactical Video Link', description: 'Encrypted multi-view video transmission linking forward units and command centres in real time.', path: '/products/mvtx', bullets: ['Encrypted video distribution', 'Command centre connectivity'] },
         { label: 'Field Hardware', description: 'Ruggedised electronics and structures built to MIL-STD-810 standards.', path: '/products/advanced-engineering', bullets: ['MIL-STD-810 rated', 'Ruggedised electronics'] },
       ]}
     />
@@ -57,7 +57,7 @@ export function SmartCitiesPage() {
       technologies={[
         { label: 'Urban UAV Fleet', description: 'Low-noise electric drones optimised for urban flight corridors and public safety operations.', path: '/products/uav-systems', bullets: ['Low-noise electric drones', 'Public safety patrols'] },
         { label: 'Video Analytics', description: 'AI crowd density, anomaly detection, and licence plate recognition from aerial feeds.', path: '/products/artificial-intelligence', bullets: ['Crowd density detection', 'Licence plate recognition'] },
-        { label: 'City Dashboard', description: 'Unified operations centre software aggregating all sensor and UAV feeds.', path: '/products/software-systems', bullets: ['Unified sensor feeds', 'Real-time operations view'] },
+        { label: 'Multi-Agency Video Feed', description: 'Simultaneous live video distribution to police, fire, and traffic control rooms from a single UAV feed.', path: '/products/mvtx', bullets: ['Multi-agency live feeds', 'Simultaneous viewer access'] },
         { label: 'Comms Infrastructure', description: 'Mesh radio and 4G/5G datalink integration for city-wide drone connectivity.', path: '/products/advanced-engineering', bullets: ['Mesh radio network', '4G/5G datalink'] },
       ]}
     />
@@ -89,7 +89,7 @@ export function MunicipalPage() {
       technologies={[
         { label: 'Mapping UAVs', description: 'Photogrammetry drones delivering centimetre-accuracy 3D maps of municipal assets.', path: '/products/uav-systems', bullets: ['Centimetre-accuracy 3D maps', 'Photogrammetry survey'] },
         { label: 'Defect Detection AI', description: 'Automated crack, pothole, and structural defect identification from aerial imagery.', path: '/products/artificial-intelligence', bullets: ['Crack & pothole detection', 'Automated defect flagging'] },
-        { label: 'Asset Management', description: 'Municipal asset register software with inspection history, scheduling, and work order generation.', path: '/products/software-systems', bullets: ['Inspection history tracking', 'Work order generation'] },
+        { label: 'Field Video Sharing', description: 'Live inspection video shared instantly with multiple municipal departments during a single flight.', path: '/products/mvtx', bullets: ['Instant multi-department sharing', 'Live inspection feeds'] },
         { label: 'Survey Sensors', description: 'High-resolution RGB, multispectral, and LiDAR payloads for comprehensive asset surveys.', path: '/products/advanced-engineering', bullets: ['RGB & LiDAR payloads', 'Multispectral imaging'] },
       ]}
     />
@@ -121,7 +121,7 @@ export function InfrastructurePage() {
       technologies={[
         { label: 'Fixed-Wing UAV', description: 'Long-endurance fixed-wing platforms covering 200+ km per sortie for linear infrastructure surveys.', path: '/products/uav-systems', bullets: ['200+ km per sortie', 'Long-endurance survey'] },
         { label: 'Thermal AI', description: 'AI analysis of thermal imagery to detect electrical faults, corrosion, and structural anomalies.', path: '/products/artificial-intelligence', bullets: ['Electrical fault detection', 'Structural anomaly analysis'] },
-        { label: 'Inspection Reports', description: 'Automated inspection report generation with GPS-tagged defect locations and severity classifications.', path: '/products/software-systems', bullets: ['GPS-tagged defects', 'Severity classification'] },
+        { label: 'Live Inspection Feed', description: 'Real-time video distribution of structural inspections to engineers and safety teams simultaneously.', path: '/products/mvtx', bullets: ['Real-time engineer review', 'Simultaneous team viewing'] },
         { label: 'Multi-Sensor Payload', description: 'Integrated thermal, visual, and LiDAR sensor packages for comprehensive infrastructure assessment.', path: '/products/advanced-engineering', bullets: ['Thermal, visual & LiDAR', 'Comprehensive assessment'] },
       ]}
     />
@@ -153,7 +153,7 @@ export function AgriculturePage() {
       technologies={[
         { label: 'Spray Drones', description: 'High-capacity agricultural spray UAVs covering 10 hectares per hour with precision application.', path: '/products/uav-systems', bullets: ['10 ha/hour coverage', 'Precision application'] },
         { label: 'Crop AI', description: 'Multispectral AI models for NDVI mapping, disease classification, and yield prediction.', path: '/products/artificial-intelligence', bullets: ['NDVI mapping', 'Disease classification'] },
-        { label: 'Farm Dashboard', description: 'Field-by-field analytics portal with prescription maps and application records.', path: '/products/software-systems', bullets: ['Field-by-field analytics', 'Prescription maps'] },
+        { label: 'Field Video Link', description: 'Live crop survey video shared with agronomists and farm managers as the flight happens.', path: '/products/mvtx', bullets: ['Live agronomist review', 'Real-time field video'] },
         { label: 'Multispectral Sensor', description: 'Six-band multispectral cameras capturing data beyond visible spectrum for crop health analysis.', path: '/products/advanced-engineering', bullets: ['Six-band imaging', 'Beyond-visible spectrum data'] },
       ]}
     />
@@ -185,7 +185,7 @@ export function DisasterPage() {
       technologies={[
         { label: 'Rapid Deploy Kit', description: 'Man-portable UAV systems deployable by two operators in under 20 minutes.', path: '/products/uav-systems', bullets: ['Under 20-minute setup', 'Two-operator portable'] },
         { label: 'Survivor Detection AI', description: 'Thermal AI models trained to identify human heat signatures in debris and water.', path: '/products/artificial-intelligence', bullets: ['Thermal heat-signature ID', 'Debris & water search'] },
-        { label: 'Relief Dashboard', description: 'Real-time damage mapping and resource allocation software for relief coordinators.', path: '/products/software-systems', bullets: ['Real-time damage mapping', 'Resource allocation tools'] },
+        { label: 'Relief Video Distribution', description: 'Live disaster-zone video shared simultaneously across relief coordinators, medical teams, and command posts.', path: '/products/mvtx', bullets: ['Simultaneous relief-team feeds', 'No fixed infrastructure required'] },
         { label: 'SATCOM Datalink', description: 'Satellite communication-enabled datalinks for beyond-line-of-sight operations in remote areas.', path: '/products/advanced-engineering', bullets: ['Beyond-line-of-sight comms', 'Remote-area connectivity'] },
       ]}
     />
@@ -217,7 +217,7 @@ export function EnvironmentalPage() {
       technologies={[
         { label: 'Survey UAV', description: 'Fixed-wing platforms for large-area ecological and environmental baseline surveys.', path: '/products/uav-systems', bullets: ['Large-area baseline surveys', 'Fixed-wing endurance'] },
         { label: 'Species AI', description: 'Computer vision models for wildlife species identification and population counting from aerial imagery.', path: '/products/artificial-intelligence', bullets: ['Wildlife identification', 'Population counting'] },
-        { label: 'Compliance Platform', description: 'Environmental data management and regulatory reporting software.', path: '/products/software-systems', bullets: ['Regulatory data management', 'Environmental reporting'] },
+        { label: 'Survey Video Link', description: 'Live environmental survey footage shared with field scientists and compliance officers in real time.', path: '/products/mvtx', bullets: ['Real-time field review', 'Multi-viewer survey feeds'] },
         { label: 'Gas Sensors', description: 'Miniaturised gas detection payloads for methane, CO2, and pollutant concentration mapping.', path: '/products/advanced-engineering', bullets: ['Methane & CO2 detection', 'Pollutant concentration mapping'] },
       ]}
     />
@@ -249,7 +249,7 @@ export function IndustrialPage() {
       technologies={[
         { label: 'Industrial UAV', description: 'Confined-space and ex-zone rated UAVs for tank, vessel, and facility inspection.', path: '/products/uav-systems', bullets: ['Ex-zone rated', 'Confined-space capable'] },
         { label: 'Corrosion AI', description: 'AI models for automated corrosion grading, coating assessment, and anomaly classification.', path: '/products/artificial-intelligence', bullets: ['Automated grading', 'Anomaly classification'] },
-        { label: 'Maintenance Platform', description: 'Work order generation and predictive maintenance scheduling driven by inspection AI outputs.', path: '/products/software-systems', bullets: ['Work order generation', 'Predictive scheduling'] },
+        { label: 'Inspection Video Feed', description: 'Live facility inspection video distributed to maintenance engineers and safety teams simultaneously.', path: '/products/mvtx', bullets: ['Simultaneous engineer access', 'Live facility feeds'] },
         { label: 'NDT Sensors', description: 'Ultrasonic, eddy current, and radiographic NDT sensor payloads for non-contact material testing.', path: '/products/advanced-engineering', bullets: ['Ultrasonic & eddy current', 'Non-contact testing'] },
       ]}
     />

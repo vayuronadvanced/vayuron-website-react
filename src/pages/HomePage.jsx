@@ -1,16 +1,13 @@
-{/*HomePage.jsx*/}
+{/*HomePage.jsx*/ }
 
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { SectionHeader, CTAButton, InfoCard } from '../components/ui'
+import { SectionHeader, CTAButton, InfoCard, CardGrid } from '../components/ui'
 import { PRODUCTS, SECTORS } from '../data/siteData'
 import { useScrollReveal } from '../hooks'
 import StackSection from '../components/sections/StackSection'
 
 // ─── Hero Section ──────────────────────────────────────────────────────────
-// StackSection now owns the pin/cover/scale effect — this component only
-// needs to render its content. No internal ScrollTrigger pin here anymore
-// (that would fight the sticky stacking wrapper).
 function Hero() {
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
@@ -119,21 +116,11 @@ function ProductsPreview() {
         <SectionHeader
           eyebrow="Capabilities"
           title="Our Product Lines"
-          subtitle="Six core technology domains engineered for defence, security, & industrial operations."
+          subtitle="Four core technology domains engineered for defence, security, & industrial operations."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        {PRODUCTS
-          .filter(
-            (product) =>
-              ![
-                "Advanced Engineering",
-                "Avionics",
-                "Carbon & Composite",
-                "MVTX"
-              ].includes(product.label)
-          )
-          .map((product) => (
+        <CardGrid>
+          {PRODUCTS.map((product) => (
             <InfoCard
               key={product.id}
               to={product.path}
@@ -143,9 +130,9 @@ function ProductsPreview() {
               bullets={product.bullets}
             />
           ))}
-        </div>
+        </CardGrid>
 
-        <div className="text-center">
+        <div className="text-center mt-6">
           <CTAButton to="/products" variant="secondary">
             View All Products
           </CTAButton>
@@ -174,7 +161,7 @@ function SectorsPreview() {
           subtitle="Delivering autonomous intelligence across eight critical industries."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {SECTORS.map((sector) => (
             <InfoCard
               key={sector.id}
@@ -186,7 +173,7 @@ function SectorsPreview() {
               className="p-5"
             />
           ))}
-        </div>
+        </CardGrid>
 
         <div className="text-center">
           <CTAButton to="/sectors" variant="secondary">Explore All Sectors</CTAButton>
