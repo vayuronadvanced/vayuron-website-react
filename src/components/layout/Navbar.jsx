@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { NAV_LINKS, PRODUCTS, SECTORS } from '../../data/siteData'
+import { NAV_LINKS, PRODUCTS, SECTORS, SITE } from '../../data/siteData'
 import { scrollToTop } from '../../utils/scrollToTop'
 
 const VayuronLogo = () => (
@@ -20,10 +20,27 @@ const dropdownVariants = {
   exit: { opacity: 0, y: -8, transition: { duration: 0.15 } },
 }
 
-const mobileMenuVariants = {
-  hidden: { opacity: 0, x: '100%' },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: 'easeOut' } },
-  exit: { opacity: 0, x: '100%', transition: { duration: 0.2 } },
+// Mobile drawer: panel slides in from the right over a dimmed/blurred backdrop.
+const mobileBackdropVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.25, ease: 'easeOut' } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
+}
+
+const mobileDrawerVariants = {
+  hidden: { x: '100%' },
+  visible: { x: 0, transition: { type: 'spring', stiffness: 320, damping: 34 } },
+  exit: { x: '100%', transition: { duration: 0.25, ease: 'easeIn' } },
+}
+
+const mobileListVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.045, delayChildren: 0.05 } },
+}
+
+const mobileItemVariants = {
+  hidden: { opacity: 0, x: 16 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.25, ease: 'easeOut' } },
 }
 
 export default function Navbar() {
@@ -258,83 +275,162 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            variants={mobileMenuVariants}
-            initial="hidden" animate="visible" exit="exit"
-            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-lg pt-20 overflow-y-auto xl:hidden"
-          >
-            <div className="px-6 py-4 flex flex-col gap-2">
-              {NAV_LINKS.map((link) => (
-                <div key={link.label}>
-                  {link.hasDropdown ? (
-                    <>
-                      <button
-                        onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
-                        className="w-full flex items-center justify-between py-3 font-sans text-xs tracking-[0.14em] uppercase text-muted hover:text-white transition-colors border-b border-[rgba(0,212,255,0.08)]"
-                      >
-                        {link.label}
-                        <span className={`transition-transform ${mobileExpanded === link.label ? 'rotate-180' : ''}`}>▾</span>
-                      </button>
+          <>
+            {/* Backdrop — tap outside the drawer to close */}
+            <motion.div
+              variants={mobileBackdropVariants}
+              initial="hidden" animate="visible" exit="exit"
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm xl:hidden"
+            />
 
-                      <AnimatePresence>
-                        {mobileExpanded === link.label && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden"
-                          >
-                            {(link.label === 'Products' ? PRODUCTS : SECTORS).map((item) => (
-                              <Link
-                                key={item.id}
-                                to={item.path}
-                                onClick={(e) => scrollToTop(e, location.pathname, item.path)}
-                                className="block px-3 py-3 rounded-sm hover:bg-[rgba(0,212,255,0.05)] transition-colors group"
-                              >
-                                <div className="flex items-center gap-3">
-                                  <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan transition-colors flex-shrink-0" />
+            {/* Slide-in drawer */}
+            <motion.div
+              variants={mobileDrawerVariants}
+              initial="hidden" animate="visible" exit="exit"
+              className="fixed top-0 right-0 z-50 h-full w-[86%] max-w-sm bg-surface border-l border-cyan-dim shadow-2xl xl:hidden flex flex-col bg-grid-cyan bg-grid"
+            >
+              {/* Drawer header */}
+              <div className="flex items-center justify-between px-5 py-5 border-b border-cyan-dim shrink-0">
+                <Link
+                  to="/"
+                  onClick={(e) => { scrollToTop(e, location.pathname, "/"); setMobileOpen(false) }}
+                  className="flex items-center gap-3 group"
+                >
+                  <VayuronLogo />
+                  <div className="flex flex-col justify-center leading-none">
+                    <span className="font-display font-bold uppercase text-white text-base leading-none tracking-[0.12em] group-hover:text-cyan transition-colors">
+                      VAYURON
+                    </span>
+                    <span className="font-sans text-[8px] text-muted tracking-[0.2em] uppercase mt-[3px]">
+                      Advanced Systems
+                    </span>
+                  </div>
+                </Link>
 
-                                  <div>
-                                    <h3 className="font-sans font-semibold text-sm text-white group-hover:text-cyan transition-colors">
-                                      {item.label}
-                                    </h3>
+                <button
+                  onClick={() => setMobileOpen(false)}
+                  aria-label="Close menu"
+                  className="flex items-center justify-center w-9 h-9 rounded-full border border-cyan-dim text-white hover:text-cyan hover:border-cyan-mid hover:bg-[rgba(0,212,255,0.06)] transition-colors"
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                </button>
+              </div>
 
-                                    {link.label === 'Products' && (
-                                      <p className="text-xs text-white/100 mt-1 leading-relaxed">
-                                        {item.description}
-                                      </p>
-                                    )}
-                                  </div>
-                                </div>
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  ) : (
-                    <NavLink
-                      to={link.path}
-                      onClick={(e) => scrollToTop(e, location.pathname, link.path)}
-                      className={({ isActive }) =>
-                        `block py-3 font-sans text-xs tracking-[0.14em] uppercase border-b border-[rgba(0,212,255,0.08)] transition-colors ${isActive ? 'text-cyan' : 'text-white hover:text-cyan'
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  )}
-                </div>
-              ))}
-
-              <Link
-                to="/contact"
-                className="mt-6 w-full border border-cyan text-cyan text-center py-3 font-sans text-xs tracking-[0.14em] uppercase hover:bg-cyan hover:text-black transition-all"
+              {/* Nav list */}
+              <motion.div
+                variants={mobileListVariants}
+                initial="hidden" animate="visible"
+                className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-1.5"
               >
-                Get in Touch
-              </Link>
-            </div>
-          </motion.div>
+                {NAV_LINKS.map((link) => {
+                  const isActiveTop = location.pathname.startsWith(link.path)
+                  return (
+                    <motion.div key={link.label} variants={mobileItemVariants}>
+                      {link.hasDropdown ? (
+                        <div className="rounded-lg overflow-hidden bg-[rgba(255,255,255,0.02)] border border-transparent hover:border-cyan-dim transition-colors">
+                          <button
+                            onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
+                            className={`w-full flex items-center justify-between pl-4 pr-3 py-3.5 font-sans text-xs tracking-[0.14em] uppercase transition-colors ${isActiveTop ? 'text-cyan' : 'text-white'
+                              }`}
+                          >
+                            <span className="flex items-center gap-3">
+                              <span className={`w-1 h-4 rounded-full transition-colors ${isActiveTop ? 'bg-cyan' : 'bg-transparent'}`} />
+                              {link.label}
+                            </span>
+                            <svg
+                              width="11" height="11" viewBox="0 0 10 10" fill="none"
+                              className={`transition-transform duration-200 ${mobileExpanded === link.label ? 'rotate-180 text-cyan' : 'text-muted'}`}
+                            >
+                              <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </button>
+
+                          <AnimatePresence>
+                            {mobileExpanded === link.label && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                                className="overflow-hidden"
+                              >
+                                <div className="px-2 pb-2 flex flex-col gap-1">
+                                  {(link.label === 'Products' ? PRODUCTS : SECTORS).map((item) => (
+                                    <Link
+                                      key={item.id}
+                                      to={item.path}
+                                      onClick={(e) => scrollToTop(e, location.pathname, item.path)}
+                                      className="flex items-start gap-3 px-3 py-2.5 rounded-md hover:bg-[rgba(0,212,255,0.06)] transition-colors group"
+                                    >
+                                      <span className="w-1 h-1 mt-2 rounded-full bg-dim group-hover:bg-cyan group-hover:shadow-cyan-sm transition-colors flex-shrink-0" />
+                                      <div>
+                                        <h3 className="font-sans font-semibold text-sm text-white group-hover:text-cyan transition-colors">
+                                          {item.label}
+                                        </h3>
+                                        {link.label === 'Products' && item.description && (
+                                          <p className="text-xs text-muted mt-0.5 leading-relaxed">
+                                            {item.description}
+                                          </p>
+                                        )}
+                                      </div>
+                                    </Link>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ) : (
+                        <NavLink
+                          to={link.path}
+                          onClick={(e) => scrollToTop(e, location.pathname, link.path)}
+                          className={({ isActive }) =>
+                            `flex items-center gap-3 pl-4 pr-3 py-3.5 rounded-lg font-sans text-xs tracking-[0.14em] uppercase transition-colors ${isActive
+                              ? 'text-cyan bg-[rgba(0,212,255,0.06)]'
+                              : 'text-white hover:bg-[rgba(255,255,255,0.03)]'
+                            }`
+                          }
+                        >
+                          {({ isActive }) => (
+                            <>
+                              <span className={`w-1 h-4 rounded-full transition-colors ${isActive ? 'bg-cyan' : 'bg-transparent'}`} />
+                              {link.label}
+                            </>
+                          )}
+                        </NavLink>
+                      )}
+                    </motion.div>
+                  )
+                })}
+              </motion.div>
+
+              {/* Drawer footer — CTA + socials */}
+              <div className="px-5 py-5 border-t border-cyan-dim shrink-0">
+                <Link
+                  to="/contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full rounded-md border border-cyan text-cyan text-center py-3 font-sans text-xs tracking-[0.14em] uppercase hover:bg-cyan hover:text-black hover:shadow-cyan transition-all duration-200"
+                >
+                  Get in Touch
+                </Link>
+
+                <div className="flex items-center justify-center gap-4 mt-5">
+                  <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
+                    <img src="/icons/instagram.png" alt="Instagram" className="w-5 h-5" />
+                  </a>
+                  <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
+                    <img src="/icons/linkedin.png" alt="LinkedIn" className="w-5 h-5" />
+                  </a>
+                  <a href={SITE.x} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
+                    <img src="/icons/x.png" alt="X" className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
