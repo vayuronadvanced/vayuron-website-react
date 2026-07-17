@@ -6,20 +6,22 @@
 
 /* ─── CSS Custom Properties (preserved from original) ─── */
 :root {
-  --black:    #050607;
-  --surface:  #0a0c0f;
+  --black: #000000;
+  --surface: #0a0c0f;
   --surface-2: #111620;
-  --cyan:     #00d4ff;
+  --cyan: #00d4ff;
   --cyan-dim: rgba(0, 212, 255, 0.15);
-  --text:      #ffffff;
-  --muted:    #ffffff;
-  --dim:      #ffffff;
-  --radius:   4px;
+  --text: #ffffff;
+  --muted: #ffffff;
+  --dim: #ffffff;
+  --radius: 4px;
   --transition: 0.3s ease;
 }
 
 /* ─── Base ─── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -40,9 +42,18 @@ body {
 }
 
 /* ─── Custom Scrollbar ─── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyan);
+  border-radius: 2px;
+}
 
 /* ─── Selection ─── */
 ::selection {
@@ -58,7 +69,12 @@ body {
 
 
 /* ─── Typography ─── */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Teko', sans-serif;
   font-weight: 700;
   line-height: 1;
@@ -66,34 +82,56 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color: var(--text);
 }
-2
-a {
+
+2 a {
   color: inherit;
   text-decoration: none;
 }
 
-img, video {
+img,
+video {
   max-width: 100%;
   display: block;
 }
 
 /* ─── Utility Classes ─── */
-.font-display {font-family: 'Teko', sans-serif; }
+.font-display {
+  font-family: 'Teko', sans-serif;
+}
+
 .font-defense {
   font-family: 'Teko', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-.font-mono { font-family: 'Inter', system-ui, sans-serif; }
 
-.text-cyan  { color: var(--cyan); }
-.text-muted { color: var(--muted); }
-.text-dim   { color: var(--dim); }
+.font-mono {
+  font-family: 'Inter', system-ui, sans-serif;
+}
 
-.bg-black   { background-color: var(--black); }
-.bg-surface { background-color: var(--surface); }
+.text-cyan {
+  color: var(--cyan);
+}
 
-.border-cyan-dim { border-color: var(--cyan-dim); }
+.text-muted {
+  color: var(--muted);
+}
+
+.text-dim {
+  color: var(--dim);
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.border-cyan-dim {
+  border-color: var(--cyan-dim);
+}
 
 /* ─── Animated Grid Overlay ─── */
 .grid-overlay {
@@ -104,6 +142,7 @@ img, video {
 .glow-cyan {
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
+
 .text-glow-cyan {
   text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
 }
@@ -125,24 +164,29 @@ img, video {
   transform: translateY(30px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
+
 .reveal.revealed {
   opacity: 1;
   transform: translateY(0);
 }
+
 .reveal-left {
   opacity: 0;
   transform: translateX(-30px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
+
 .reveal-left.revealed {
   opacity: 1;
   transform: translateX(0);
 }
+
 .reveal-right {
   opacity: 0;
   transform: translateX(30px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
+
 .reveal-right.revealed {
   opacity: 1;
   transform: translateX(0);
@@ -152,16 +196,24 @@ img, video {
 .scanline::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--cyan), transparent);
   animation: scan 4s linear infinite;
   opacity: 0.4;
   pointer-events: none;
 }
+
 @keyframes scan {
-  0%   { top: 0; }
-  100% { top: 100%; }
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: 100%;
+  }
 }
 
 /* ─── Loading Screen ─── */
@@ -176,20 +228,28 @@ img, video {
   z-index: 10000;
   gap: 1.5rem;
 }
+
 .loading-bar {
   width: 200px;
   height: 1px;
   background: var(--dim);
   overflow: hidden;
 }
+
 .loading-bar-fill {
   height: 100%;
   background: var(--cyan);
   animation: loadFill 1.5s ease forwards;
 }
+
 @keyframes loadFill {
-  from { width: 0%; }
-  to   { width: 100%; }
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
 }
 
 /* ─── Cursor ─── */
@@ -197,7 +257,8 @@ img, video {
 /* ─── Scroll Progress Bar ─── */
 .scroll-progress {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   height: 2px;
   background: var(--cyan);
   z-index: 9998;
@@ -206,13 +267,21 @@ img, video {
 }
 
 /* ─── Page transitions ─── */
-.page-enter { opacity: 0; transform: translateY(10px); }
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 .page-enter-active {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.page-exit { opacity: 1; }
+
+.page-exit {
+  opacity: 1;
+}
+
 .page-exit-active {
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -220,7 +289,10 @@ img, video {
 
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
@@ -228,6 +300,12 @@ img, video {
 
 /* ─── Print ─── */
 @media print {
-  .no-print { display: none; }
-  body { background: white; color: black; }
+  .no-print {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
 }
