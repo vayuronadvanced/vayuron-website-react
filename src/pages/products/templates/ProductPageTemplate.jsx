@@ -1,7 +1,7 @@
 {/*ProductPageTemplate.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, CTAButton, InfoCard, SpecCard, CardGrid } from '../../../components/ui'
+import { PageBanner, CTAButton, InfoCard, SpecCard } from '../../../components/ui'
 import StackSection from '../../../components/sections/StackSection'
 
 export default function ProductPageTemplate({
@@ -35,11 +35,6 @@ export default function ProductPageTemplate({
   nextProduct = null,
   crumbs = [],
 }) {
-  const prefersReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-  const hasHeroVideo = Boolean(heroVideo)
   const hasSpecs = specs.length > 0
   const hasSecondarySpecs = secondarySpecs.length > 0
   const hasFeatures = features.length > 0
@@ -50,7 +45,6 @@ export default function ProductPageTemplate({
   // props stays correct.
   let idx = 0
   const bannerIndex = idx++
-  const heroIndex = hasHeroVideo ? idx++ : null
   const specsIndex = hasSpecs ? idx++ : null
   const secondaryIndex = hasSecondarySpecs ? idx++ : null
   const capabilitiesIndex = hasFeatures ? idx++ : null
@@ -69,7 +63,10 @@ export default function ProductPageTemplate({
           scrolls up to cover it. */}
       <main>
         {/* ═══════════════════════════════════════
-            PAGE BANNER
+            PAGE BANNER (video replaces image when heroVideo is given —
+            same title/subtitle/crumbs text as before, just a video
+            background now. The old standalone "VIDEO HERO" section has
+            been removed entirely; its video now plays here instead.)
         ═══════════════════════════════════════ */}
         <StackSection index={bannerIndex}>
           <PageBanner
@@ -77,55 +74,11 @@ export default function ProductPageTemplate({
             title={title}
             subtitle={subtitle}
             crumbs={crumbs}
-            backgroundImage={backgroundImage}
+            backgroundImage={heroPoster || backgroundImage}
+            backgroundVideoMp4={heroVideo}
+            backgroundVideoWebm={heroVideoWebm}
           />
         </StackSection>
-
-        {/* ═══════════════════════════════════════
-            VIDEO HERO
-        ═══════════════════════════════════════ */}
-        {hasHeroVideo && (
-          <StackSection index={heroIndex}>
-            <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-              {prefersReducedMotion ? (
-                <img
-                  src={heroPoster || backgroundImage}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              ) : (
-                <video
-                  className="absolute inset-0 w-full h-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  poster={heroPoster || backgroundImage}
-                  aria-hidden="true"
-                >
-                  {heroVideoWebm && <source src={heroVideoWebm} type="video/webm" />}
-                  <source src={heroVideo} type="video/mp4" />
-                </video>
-              )}
-
-              <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24 flex items-center">
-                <div className="max-w-2xl border-l-2 border-cyan pl-6">
-                  <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">
-                    Product Overview
-                  </p>
-                  <h2 className="font-sans text-white text-3xl md:text-4xl font-bold mb-2 leading-tight">
-                    {title} in Action
-                  </h2>
-                  <p className="text-gray-100 text-sm leading-relaxed">
-                    Autonomous aerial platforms designed for real-world mission environments.
-                  </p>
-                </div>
-              </div>
-            </section>
-          </StackSection>
-        )}
 
         {/* ═══════════════════════════════════════
             KEY SPECIFICATIONS
@@ -161,7 +114,7 @@ export default function ProductPageTemplate({
                     </h2>
 
                     {specsDescription && (
-                      <p className="text-white/100 text-base md:text-lg leading-relaxed mb-8">
+                      <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
                         {specsDescription}
                       </p>
                     )}
@@ -230,7 +183,7 @@ export default function ProductPageTemplate({
                     </h2>
 
                     {secondaryDescription && (
-                      <p className="text-white/100 text-base md:text-lg leading-relaxed mb-8">
+                      <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
                         {secondaryDescription}
                       </p>
                     )}
@@ -274,7 +227,7 @@ export default function ProductPageTemplate({
                   Capabilities
                 </h2>
 
-                <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {features.map((feature, i) => (
                     <InfoCard
                       key={i}
@@ -284,7 +237,7 @@ export default function ProductPageTemplate({
                       bullets={feature.bullets || []}
                     />
                   ))}
-                </CardGrid>
+                </div>
               </div>
             </section>
           </StackSection>
@@ -325,8 +278,8 @@ export default function ProductPageTemplate({
                   </h2>
                 </div>
 
-                <CardGrid
-                  gridClassName={`grid grid-cols-1 md:grid-cols-2 gap-6 ${(section.columns || 3) >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
+                <div
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${(section.columns || 3) >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
                     }`}
                 >
                   {(section.cards || []).map((card, cIdx) => (
@@ -338,7 +291,7 @@ export default function ProductPageTemplate({
                       bullets={card.bullets || []}
                     />
                   ))}
-                </CardGrid>
+                </div>
 
                 {section.moreDetailsHref && (
                   <div className="mt-10">
