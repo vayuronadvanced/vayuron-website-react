@@ -53,7 +53,7 @@ export default function Navbar() {
   const location = useLocation()
   const navRef = useRef(null)
 
-  const DROPDOWN_PREVIEW_COUNT = 4
+  const DROPDOWN_PREVIEW_COUNT = 5
 
   const closeDropdown = () => {
     setActiveDropdown(null)
@@ -214,7 +214,7 @@ export default function Navbar() {
                       initial="hidden" animate="visible" exit="exit"
                       onMouseEnter={() => setActiveDropdown('Sectors')}
                       onMouseLeave={closeDropdown}
-                      className="absolute top-full left-0 mt-1 w-72 bg-surface border border-[rgba(0,212,255,0.15)] rounded-sm shadow-2xl"
+                      className="absolute top-full left-0 mt-1 w-80 bg-surface border border-[rgba(0,212,255,0.15)] rounded-sm shadow-2xl"
                     >
                       <div className="p-2">
                         {(showAllSectors ? SECTORS : SECTORS.slice(0, DROPDOWN_PREVIEW_COUNT)).map((sector) => (

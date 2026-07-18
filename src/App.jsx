@@ -17,14 +17,11 @@ import UAVSystemsPage from './pages/products/UAVSystemsPage'
 import AIPage from './pages/products/AIPage'
 import EngineeringPage from './pages/products/EngineeringPage'
 import SectorsPage from './pages/sectors/SectorsPage'
-import DefencePage from './pages/sectors/DefencePage'
-import SmartCitiesPage from './pages/sectors/SmartCitiesPage'
-import MunicipalPage from './pages/sectors/MunicipalPage'
-import InfrastructurePage from './pages/sectors/InfrastructurePage'
-import AgriculturePage from './pages/sectors/AgriculturePage'
-import DisasterPage from './pages/sectors/DisasterPage'
-import EnvironmentalPage from './pages/sectors/EnvironmentalPage'
-import IndustrialPage from './pages/sectors/IndustrialPage'
+import DefenceHomelandSecurityPage from './pages/sectors/DefenceHomelandSecurityPage'
+import GovernmentSmartInfrastructurePage from './pages/sectors/GovernmentSmartInfrastructurePage'
+import EnergyIndustrialPage from './pages/sectors/EnergyIndustrialPage'
+import AgricultureEnvironmentalPage from './pages/sectors/AgricultureEnvironmentalPage'
+import MiningSurveyingResearchPage from './pages/sectors/MiningSurveyingResearchPage'
 import TechnologyPage from './pages/mainpages/TechnologyPage'
 import AboutPage from './pages/mainpages/AboutPage'
 import ContactPage from './pages/mainpages/ContactPage'
@@ -149,14 +146,11 @@ export default function App() {
 
               {/* Sectors */}
               <Route path="/sectors" element={<PageWrapper><SectorsPage /></PageWrapper>} />
-              <Route path="/sectors/defence-security" element={<PageWrapper><DefencePage /></PageWrapper>} />
-              <Route path="/sectors/smart-cities" element={<PageWrapper><SmartCitiesPage /></PageWrapper>} />
-              <Route path="/sectors/municipal-operations" element={<PageWrapper><MunicipalPage /></PageWrapper>} />
-              <Route path="/sectors/infrastructure-monitoring" element={<PageWrapper><InfrastructurePage /></PageWrapper>} />
-              <Route path="/sectors/agriculture" element={<PageWrapper><AgriculturePage /></PageWrapper>} />
-              <Route path="/sectors/disaster-management" element={<PageWrapper><DisasterPage /></PageWrapper>} />
-              <Route path="/sectors/environmental-monitoring" element={<PageWrapper><EnvironmentalPage /></PageWrapper>} />
-              <Route path="/sectors/industrial-inspection" element={<PageWrapper><IndustrialPage /></PageWrapper>} />
+              <Route path="/sectors/defence-homeland-security" element={<PageWrapper><DefenceHomelandSecurityPage /></PageWrapper>} />
+              <Route path="/sectors/government-smart-infrastructure" element={<PageWrapper><GovernmentSmartInfrastructurePage /></PageWrapper>} />
+              <Route path="/sectors/energy-industrial-critical-infrastructure" element={<PageWrapper><EnergyIndustrialPage /></PageWrapper>} />
+              <Route path="/sectors/agriculture-environmental-intelligence" element={<PageWrapper><AgricultureEnvironmentalPage /></PageWrapper>} />
+              <Route path="/sectors/mining-surveying-research" element={<PageWrapper><MiningSurveyingResearchPage /></PageWrapper>} />
 
               {/* Core Pages */}
               <Route path="/careers" element={<PageWrapper><CareersPage /></PageWrapper>} />

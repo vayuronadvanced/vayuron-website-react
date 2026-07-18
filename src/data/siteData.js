@@ -77,47 +77,26 @@ export const PRODUCTS = [
 
 export const SECTORS = [
   {
-    id: 'defence-security', label: 'Defence & Security', path: '/sectors/defence-security',
-    description: 'ISR and force-protection support for defence and paramilitary operations.',
-    // bullets: ['Border surveillance', 'Tactical ISR support'],
+    id: 'defence-homeland-security', label: 'Defence & Security', path: '/sectors/defence-homeland-security',
+    description: 'Strategic ISR, border protection, and tactical mission support for defence and security forces.',
   },
   {
-    id: 'smart-cities', label: 'Smart Cities', path: '/sectors/smart-cities',
-    description: 'Urban monitoring and traffic intelligence for modern city operations.',
-    // bullets: ['Traffic flow analytics', 'Public safety monitoring'],
+    id: 'government-smart-infrastructure', label: 'Government & Smart Infrastructure', path: '/sectors/government-smart-infrastructure',
+    description: 'Urban intelligence, disaster response, and public asset inspection for government agencies.',
   },
   {
-    id: 'municipal-operations', label: 'Municipal Operations', path: '/sectors/municipal-operations',
-    description: 'Aerial inspection and asset tracking for municipal service delivery.',
-    // bullets: ['Utility asset inspection', 'Waste & sanitation audits'],
+    id: 'energy-industrial-critical-infrastructure', label: 'Energy, Industrial & Critical Infrastructure', path: '/sectors/energy-industrial-critical-infrastructure',
+    description: 'Autonomous inspection for power grids, renewables, pipelines, and industrial facilities.',
   },
   {
-    id: 'infrastructure-monitoring', label: 'Infrastructure Monitoring', path: '/sectors/infrastructure-monitoring',
-    description: 'Structural inspection of bridges, towers, and critical infrastructure.',
-    // bullets: ['Structural defect detection', 'Automated inspection routes'],
+    id: 'agriculture-environmental-intelligence', label: 'Agriculture & Environmental Intelligence', path: '/sectors/agriculture-environmental-intelligence',
+    description: 'Precision agriculture, water and forest monitoring, and ecological intelligence platforms.',
   },
   {
-    id: 'agriculture', label: 'Agriculture', path: '/sectors/agriculture',
-    description: 'Precision agriculture platforms for crop health and yield monitoring.',
-    // bullets: ['Multispectral crop imaging', 'Targeted spraying support'],
-  },
-  {
-    id: 'disaster-management', label: 'Disaster Management', path: '/sectors/disaster-management',
-    description: 'Rapid-deployment aerial response for search, rescue, and damage assessment.',
-    // bullets: ['Search & rescue support', 'Real-time damage mapping'],
-  },
-  {
-    id: 'environmental-monitoring', label: 'Environmental Monitoring', path: '/sectors/environmental-monitoring',
-    description: 'Environmental data collection for conservation and compliance monitoring.',
-    // bullets: ['Air & water quality tracking', 'Wildlife & habitat surveys'],
-  },
-  {
-    id: 'industrial-inspection', label: 'Industrial Inspection', path: '/sectors/industrial-inspection',
-    description: 'Autonomous inspection for plants, pipelines, and industrial facilities.',
-    // bullets: ['Pipeline & flare-stack inspection', 'Thermal anomaly detection'],
+    id: 'mining-surveying-research', label: 'Mining, Surveying & Research', path: '/sectors/mining-surveying-research',
+    description: 'High-precision survey, 3D mapping, and exploration support for mining and research operations.',
   },
 ]
-
 export const FOOTER_LINKS = {
   products: PRODUCTS.map(p => ({ label: p.label, path: p.path })),
   sectors: SECTORS.slice(0, 4).map(s => ({ label: s.label, path: s.path })),

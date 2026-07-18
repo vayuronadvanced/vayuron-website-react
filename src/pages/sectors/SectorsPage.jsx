@@ -10,7 +10,7 @@ export default function SectorsPage() {
     <>
       <Helmet>
         <title>Sectors — Vayuron Advanced Systems</title>
-        <meta name="description" content="Vayuron deploys autonomous UAV and AI solutions across 8 critical sectors including Defence, Smart Cities, Agriculture, and Industrial Inspection." />
+        <meta name="description" content="Vayuron deploys autonomous UAV and AI solutions across 5 critical sectors including Defence & Homeland Security, Government & Smart Infrastructure, Energy & Industrial, Agriculture & Environment, and Mining & Surveying." />
       </Helmet>
 
       {/* Stacked scroll transitions — same pattern as every other page. */}
@@ -19,7 +19,7 @@ export default function SectorsPage() {
           <PageBanner
             eyebrow="Operational Domains"
             title="Sectors We Serve"
-            subtitle="Eight critical industries where Vayuron deploys autonomous intelligence at scale."
+            subtitle="Five critical industries where Vayuron deploys autonomous intelligence at scale."
             crumbs={[{ label: 'Sectors' }]}
             backgroundImage="/Operational.png"
           />
@@ -39,7 +39,7 @@ export default function SectorsPage() {
 
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
               {/* UPDATED: Wrapped in CardGrid for premium hover effects (16px lift) */}
-              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {SECTORS.map((sector) => (
                   <InfoCard
                     key={sector.id}
