@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, SectionHeader, StatCard, CTAButton, CardGrid } from '../components/ui'
-import StackSection from '../components/sections/StackSection'
+import { PageBanner, SectionHeader, StatCard, CTAButton, CardGrid } from '../../components/ui'
+import StackSection from '../../components/sections/StackSection'
 
 // ─── Mission Areas ────────────────────────────────────────────────────────
 const missionAreas = [

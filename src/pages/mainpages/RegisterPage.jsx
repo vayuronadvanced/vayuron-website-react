@@ -1,9 +1,9 @@
-{/*RegisterPage.jsx*/}
+{/*RegisterPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 
 const initialForm = {
   username: '',

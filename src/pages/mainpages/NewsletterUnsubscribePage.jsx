@@ -1,10 +1,10 @@
-{/*NewsletterUnsubscribePage.jsx*/}
+{/*NewsletterUnsubscribePage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { useApi } from '../hooks'
-import apiClient from '../lib/apiClient'
+import { useApi } from '../../hooks'
+import apiClient from '../../lib/apiClient'
 
 async function unsubscribe(token) {
   const { data } = await apiClient.post(`/newsletter/unsubscribe/${token}/`)

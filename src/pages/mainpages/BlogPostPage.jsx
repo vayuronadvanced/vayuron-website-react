@@ -1,13 +1,13 @@
-{/*BlogPostPage.jsx*/}
+{/*BlogPostPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
-import { Breadcrumb } from '../components/ui'
-import { useApi } from '../hooks'
-import { getBlogPost } from '../lib/api/blog'
-import { logBusinessEvent } from '../lib/api/analytics'
+import { Breadcrumb } from '../../components/ui'
+import { useApi } from '../../hooks'
+import { getBlogPost } from '../../lib/api/blog'
+import { logBusinessEvent } from '../../lib/api/analytics'
 
 export default function BlogPostPage() {
   const { slug } = useParams()

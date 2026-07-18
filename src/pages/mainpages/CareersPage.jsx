@@ -2,13 +2,13 @@
 
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import { Breadcrumb, SectionHeader } from '../components/ui'
+import { Breadcrumb, SectionHeader } from '../../components/ui'
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { useApi } from '../hooks'
-import { getJobListings, submitJobApplication } from '../lib/api/careers'
-import { logBusinessEvent } from '../lib/api/analytics'
-import { trackEvent } from '../lib/googleAnalytics'
+import { useApi } from '../../hooks'
+import { getJobListings, submitJobApplication } from '../../lib/api/careers'
+import { logBusinessEvent } from '../../lib/api/analytics'
+import { trackEvent } from '../../lib/googleAnalytics'
 
 const initialApplication = {
   full_name: '',

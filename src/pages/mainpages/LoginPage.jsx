@@ -1,9 +1,9 @@
-{/*LoginPage.jsx*/}
+{/*LoginPage.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 
 export default function LoginPage() {
   const { login } = useAuth()
@@ -29,7 +29,7 @@ export default function LoginPage() {
     } catch (err) {
       setError(
         err?.response?.data?.detail ||
-          'Invalid username or password. Please try again.'
+        'Invalid username or password. Please try again.'
       )
     } finally {
       setLoading(false)

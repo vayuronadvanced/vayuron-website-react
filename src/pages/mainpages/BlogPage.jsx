@@ -4,9 +4,9 @@ import { Helmet } from 'react-helmet-async'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
-import { PageBanner, SectionHeader, CardGrid } from '../components/ui'
-import { useApi } from '../hooks'
-import { getBlogCategories, getBlogPosts } from '../lib/api/blog'
+import { PageBanner, SectionHeader, CardGrid } from '../../components/ui'
+import { useApi } from '../../hooks'
+import { getBlogCategories, getBlogPosts } from '../../lib/api/blog'
 
 function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString('en-IN', {

@@ -2,10 +2,10 @@
 
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { SectionHeader, CTAButton, InfoCard, CardGrid } from '../components/ui'
-import { PRODUCTS, SECTORS } from '../data/siteData'
-import { useScrollReveal } from '../hooks'
-import StackSection from '../components/sections/StackSection'
+import { SectionHeader, CTAButton, InfoCard, CardGrid } from '../../components/ui'
+import { PRODUCTS, SECTORS } from '../../data/siteData'
+import { useScrollReveal } from '../../hooks'
+import StackSection from '../../components/sections/StackSection'
 
 // ─── Hero Section ──────────────────────────────────────────────────────────
 function Hero() {
