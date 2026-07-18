@@ -75,8 +75,8 @@ export default function SectorPageTemplate({
                 dark again at bottom — gives depth behind the content */}
             <div className="absolute inset-0 bg-gradient-to-br from-black via-black/50 to-black/80" />
 
-            {/* Top cyan glow line */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
+            {/* Top cyan glow line : <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />*/}
+
 
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-16 sm:py-20 md:py-24">
               <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">

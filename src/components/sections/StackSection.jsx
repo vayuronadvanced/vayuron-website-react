@@ -64,12 +64,22 @@ export default function StackSection({
   return (
     <section
       ref={sectionRef}
-      className={`stack-section relative w-full overflow-hidden ${className}`}
-      style={{ position: 'sticky', top: 0, zIndex: index }}
+      className={`stack-section relative w-full overflow-hidden bg-black ${className}`}
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: index,
+        isolation: 'isolate',
+      }}
     >
       <div
         ref={innerRef}
-        className="relative w-full h-screen max-h-screen overflow-y-auto will-change-transform"
+        className="relative w-full h-screen max-h-screen overflow-hidden will-change-transform"
+        style={{
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          transform: 'translateZ(0)',
+        }}
       >
         {children}
         {dim && (
@@ -77,7 +87,10 @@ export default function StackSection({
             ref={overlayRef}
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 z-20"
-            style={{ backgroundColor: 'rgba(8, 20, 60, 1)', opacity: 0 }}
+            style={{
+              background: 'linear-gradient(to bottom,#000,#000)',
+              opacity: 0,
+            }}
           />
         )}
       </div>

@@ -10,7 +10,7 @@ export default function UAVSystemsPage() {
       subtitle="Autonomous unmanned aerial systems engineered for defence, surveillance, and civilian missions."
       backgroundImage="/Quadcopter.png"  // Hero Section
       heroVideo="/VTOL.mp4"            // 2nd Section
-      description="Vayuron's UAV Systems division designs and manufactures a comprehensive range of unmanned aerial vehicles — from tactical reconnaissance drones to heavy-lift autonomous platforms. Each system is built around indigenous technology, ensuring full operational sovereignty and deep customisation for mission-specific requirements."
+      description="Vayuron's UAV Systems division designs and manufactures a comprehensive range of unmanned aerial vehicles — from tactical reconnaissance drones to heavy-lift autonomous platforms. Each system is built around indigenous technology, ensuring full operational sovereignty and deep customizations for mission-specific requirements."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'UAV Systems' }]}
 
       // ── Section 3: Ghost Stalker ──

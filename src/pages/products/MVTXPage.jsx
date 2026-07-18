@@ -8,9 +8,9 @@ export default function MVTXPage() {
       eyebrow="Standalone Product"
       title="MVTX"
       subtitle="Multi View Transmission System is a real-time video, complete situational awareness. MVTX connects your ground team to multiple remote views through a simple, secure wireless link."
-      backgroundImage="/MVTX1.jpg"
+      // backgroundImage="/MVTX1.jpg"
       heroVideo="/MVTX.mp4"
-      heroPoster="/MVTX1.jpg"
+      // heroPoster="/MVTX1.jpg"
       description="MVTX links a pilot/command station and a UAV over a long-range, encrypted command, telemetry, and video channel, then broadcasts live video to multiple ground users simultaneously — each receiving their own dedicated video-only feed."
 
       crumbs={[

@@ -1,7 +1,7 @@
 {/*ProductPageTemplate.jsx*/ }
 
 import { Helmet } from 'react-helmet-async'
-import { PageBanner, CTAButton, InfoCard, SpecCard } from '../../../components/ui'
+import { PageBanner, CTAButton, InfoCard, SpecCard, CardGrid } from '../../../components/ui'
 import StackSection from '../../../components/sections/StackSection'
 
 export default function ProductPageTemplate({
@@ -88,7 +88,7 @@ export default function ProductPageTemplate({
             <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
               {specsBackgroundImage && (
                 <div
-                  className="absolute inset-0"
+                  className="absolute inset-0 pointer-events-none"
                   style={{
                     backgroundImage: `url(${specsBackgroundImage})`,
                     backgroundSize: 'cover',
@@ -99,8 +99,8 @@ export default function ProductPageTemplate({
               )}
               {/* Cinematic gradient — darker at the edges, clearer in the
                   centre, instead of a flat overlay. */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black via-black/60 to-black/30" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] pointer-events-none bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
               <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
@@ -150,7 +150,7 @@ export default function ProductPageTemplate({
             <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
               {secondaryBackgroundImage && (
                 <div
-                  className="absolute inset-0"
+                  className="absolute inset-0 pointer-events-none"
                   style={{
                     backgroundImage: `url(${secondaryBackgroundImage})`,
                     backgroundSize: 'cover',
@@ -159,8 +159,8 @@ export default function ProductPageTemplate({
                   }}
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black/30" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black via-black/60 to-black/30" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] pointer-events-none bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
               <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
@@ -203,14 +203,17 @@ export default function ProductPageTemplate({
         {/* ═══════════════════════════════════════
             CAPABILITIES (standardized InfoCard — same card used site-wide:
             same size/shape/hover/heading font. Give every feature on a
-            page the same number of `bullets` entries so cards line up.)
+            page the same number of `bullets` entries so cards line up.
+            Uses CardGrid so hover here matches the homepage exactly:
+            lift + scale + shadow on the hovered card, blur + scale-down
+            on its siblings.)
         ═══════════════════════════════════════ */}
         {hasFeatures && (
           <StackSection index={capabilitiesIndex}>
             <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
               {capabilitiesBackgroundImage && (
                 <div
-                  className="absolute inset-0"
+                  className="absolute inset-0 pointer-events-none"
                   style={{
                     backgroundImage: `url(${capabilitiesBackgroundImage})`,
                     backgroundSize: 'cover',
@@ -219,7 +222,7 @@ export default function ProductPageTemplate({
                   }}
                 />
               )}
-              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 pointer-events-none bg-black/40" />
 
               <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
                 <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">What It Can Do</p>
@@ -227,7 +230,7 @@ export default function ProductPageTemplate({
                   Capabilities
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {features.map((feature, i) => (
                     <InfoCard
                       key={i}
@@ -237,7 +240,7 @@ export default function ProductPageTemplate({
                       bullets={feature.bullets || []}
                     />
                   ))}
-                </div>
+                </CardGrid>
               </div>
             </section>
           </StackSection>
@@ -247,14 +250,15 @@ export default function ProductPageTemplate({
             CUSTOM CARD SECTIONS (arbitrary count — e.g. Core Capabilities,
             Engineering Services, Technology Expertise). Same InfoCard used
             everywhere else on the site, same heading treatment as the
-            spec-showcase sections above for visual consistency.
+            spec-showcase sections above for visual consistency. Uses
+            CardGrid so hover here matches the homepage exactly.
         ═══════════════════════════════════════ */}
         {cardSections.map((section, sIdx) => (
           <StackSection key={sIdx} index={cardSectionIndices[sIdx]}>
             <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
               {section.backgroundImage && (
                 <div
-                  className="absolute inset-0"
+                  className="absolute inset-0 pointer-events-none"
                   style={{
                     backgroundImage: `url(${section.backgroundImage})`,
                     backgroundSize: 'cover',
@@ -263,8 +267,8 @@ export default function ProductPageTemplate({
                   }}
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black via-black/70 to-black/40" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] pointer-events-none bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40" />
 
               <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
                 <div className="border-l-2 border-cyan pl-6 mb-10">
@@ -278,8 +282,8 @@ export default function ProductPageTemplate({
                   </h2>
                 </div>
 
-                <div
-                  className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${(section.columns || 3) >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
+                <CardGrid
+                  gridClassName={`grid grid-cols-1 md:grid-cols-2 gap-6 ${(section.columns || 3) >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
                     }`}
                 >
                   {(section.cards || []).map((card, cIdx) => (
@@ -291,7 +295,7 @@ export default function ProductPageTemplate({
                       bullets={card.bullets || []}
                     />
                   ))}
-                </div>
+                </CardGrid>
 
                 {section.moreDetailsHref && (
                   <div className="mt-10">
