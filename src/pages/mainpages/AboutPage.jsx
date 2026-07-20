@@ -189,7 +189,7 @@ export default function AboutPage() {
             subtitle="Vayuron Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
             crumbs={[{ label: 'About' }]}
             backgroundImage="/FixedWingDRone.png"
-            backgroundVideoMp4="/Drone1.mp4"
+            backgroundVideoMp4="/Drone3.mp4"
           />
         </StackSection>
 

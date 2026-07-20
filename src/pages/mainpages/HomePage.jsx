@@ -35,7 +35,7 @@ function Hero() {
             aria-label="Vayuron autonomous drone in flight"
           >
             <source src="/videos/hero.webm" type="video/webm" />
-            <source src="/Drone1.mp4" type="video/mp4" />   {/*Section 1 Hero video */}
+            <source src="/DroneNew.mp4" type="video/mp4" />   {/*Section 1 Hero video */}
           </video>
         )}
       </div>

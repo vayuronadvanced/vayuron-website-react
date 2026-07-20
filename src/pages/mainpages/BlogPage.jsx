@@ -181,7 +181,7 @@ export default function BlogPage() {
           title="Blog"
           subtitle="Engineering perspectives, product updates, and news from Vayuron Advanced Systems."
           crumbs={[{ label: 'Blog' }]}
-          backgroundVideoMp4="/Drone1.mp4"
+          backgroundVideoMp4="/Drone4.mp4"
           backgroundImage="/FixedWingDRone.png"
         />
 
