@@ -1,10 +1,8 @@
 {/*ProductPageTemplate.jsx*/ }
 
-import { Link, useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { PageBanner, CTAButton, InfoCard, SpecCard, CardGrid } from '../../../components/ui'
 import StackSection from '../../../components/sections/StackSection'
-import Seo from '../../../components/seo/Seo'
-import { SITE } from '../../../data/siteData'
 
 export default function ProductPageTemplate({
   title,
@@ -40,24 +38,6 @@ export default function ProductPageTemplate({
   const hasSpecs = specs.length > 0
   const hasSecondarySpecs = secondarySpecs.length > 0
   const hasFeatures = features.length > 0
-  const location = useLocation()
-
-  // Minimal valid Product schema from what this template actually has.
-  // schema.org's Product type also commonly expects `sku` and `offers`
-  // (price/availability) — neither exists anywhere in this codebase's
-  // product data, so they're deliberately left out rather than invented.
-  // Add them to the PRODUCTS entries / template props if you want full
-  // Merchant-listing-style rich results later.
-  const productSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: title,
-    description: description || subtitle,
-    brand: { '@type': 'Brand', name: SITE.name },
-    ...((heroPoster || backgroundImage) && {
-      image: `${SITE.url}${heroPoster || backgroundImage}`,
-    }),
-  }
 
   // Sections stack in DOM order with increasing index. heroVideo/specs/
   // secondarySpecs/features are all independently optional, so indices
@@ -73,13 +53,10 @@ export default function ProductPageTemplate({
 
   return (
     <>
-      <Seo
-        title={title}
-        description={description || subtitle}
-        path={location.pathname}
-        image={heroPoster || backgroundImage}
-        jsonLd={productSchema}
-      />
+      <Helmet>
+        <title>{title} — Vayuron Advanced Systems</title>
+        <meta name="description" content={description || subtitle} />
+      </Helmet>
 
       {/* Stacked scroll transitions — same pattern as every other page:
           each StackSection pins (position: sticky) while the next one
@@ -366,17 +343,6 @@ export default function ProductPageTemplate({
                     Next: {nextProduct.label} →
                   </CTAButton>
                 )}
-              </div>
-
-              {/* Internal link: product → sectors, per SEO Phase 2's
-                  internal-linking pass. Links to the sectors index rather
-                  than a curated per-product subset — no existing data maps
-                  specific products to specific sectors, and inventing one
-                  would misrepresent real deployment relationships. */}
-              <div className="mt-8 text-sm">
-                <Link to="/sectors" className="text-[var(--muted)] hover:text-cyan hover:underline transition-colors">
-                  See which sectors deploy {title} →
-                </Link>
               </div>
             </div>
           </section>

@@ -13,19 +13,6 @@ export const SITE = {
   linkedin: 'https://www.linkedin.com/company/vaayu-robotics/',   // update with real URL
   x: 'https://x.com/VayuronUAV',
   url: 'https://vayuronadvancedsystems.com',
-  // ── Address (SEO Phase 4 — LocalBusiness schema) ──────────────────────
-  // Left blank deliberately: not invented, not pulled from anywhere else in
-  // this codebase. Fill these in and OrganizationSchema.jsx will pick them
-  // up automatically (see the streetAddress-conditional there) to emit full
-  // LocalBusiness/PostalAddress markup instead of the bare Organization
-  // schema it emits today.
-  address: {
-    streetAddress: '',   // e.g. '47 Balaji Nagar, Ayodhya Bypass'
-    addressLocality: '', // e.g. 'Bhopal'
-    addressRegion: '',   // e.g. 'Madhya Pradesh'
-    postalCode: '',
-    addressCountry: 'IN',
-  },
 }
 
 export const NAV_LINKS = [

@@ -1,8 +1,8 @@
 {/*TechnologyPage.jsx*/ }
 
+import { Helmet } from 'react-helmet-async'
 import { PageBanner, SectionHeader, CTAButton, CardGrid } from '../../components/ui'
 import StackSection from '../../components/sections/StackSection'
-import Seo from '../../components/seo/Seo'
 
 const techPillars = [
   {
@@ -97,11 +97,13 @@ const techStack = [
 export default function TechnologyPage() {
   return (
     <>
-      <Seo
-        title="Technology"
-        description="The indigenous technologies powering Vayuron's autonomous UAV, AI, and defence systems."
-        path="/technology"
-      />
+      <Helmet>
+        <title>Technology — Vayuron Advanced Systems</title>
+        <meta
+          name="description"
+          content="The indigenous technologies powering Vayuron's autonomous UAV, AI, and defence systems."
+        />
+      </Helmet>
 
       <main>
         <StackSection index={0}>

@@ -1,17 +1,17 @@
 {/* SectorsPage.jsx - PHASE 2 UPDATE */ }
 
+import { Helmet } from 'react-helmet-async'
 import { PageBanner, CTAButton, InfoCard, CardGrid } from '../../components/ui'
 import { SECTORS } from '../../data/siteData'
 import StackSection from '../../components/sections/StackSection'
-import Seo from '../../components/seo/Seo'
 
 export default function SectorsPage() {
   return (
     <>
-      <Seo
-        description="Vayuron deploys autonomous UAV and AI solutions across 5 critical sectors including Defence & Homeland Security, Government & Smart Infrastructure, Energy & Industrial, Agriculture & Environment, and Mining & Surveying."
-        path="/sectors"
-      />
+      <Helmet>
+        <title>Sectors — Vayuron Advanced Systems</title>
+        <meta name="description" content="Vayuron deploys autonomous UAV and AI solutions across 5 critical sectors including Defence & Homeland Security, Government & Smart Infrastructure, Energy & Industrial, Agriculture & Environment, and Mining & Surveying." />
+      </Helmet>
 
       {/* Stacked scroll transitions — same pattern as every other page. */}
       <main>

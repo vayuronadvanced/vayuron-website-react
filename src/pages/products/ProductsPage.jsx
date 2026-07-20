@@ -1,17 +1,20 @@
 {/*ProductsPage.jsx - PHASE 2 UPDATE*/ }
 
+import { Helmet } from 'react-helmet-async'
 import { PageBanner, InfoCard, CardGrid } from '../../components/ui'
 import { PRODUCTS } from '../../data/siteData'
 import StackSection from '../../components/sections/StackSection'
-import Seo from '../../components/seo/Seo'
 
 export default function ProductsPage() {
   return (
     <>
-      <Seo
-        description="Vayuron's core product lines: UAV Systems, MVTX, Artificial Intelligence, and Advanced Engineering."
-        path="/products"
-      />
+      <Helmet>
+        <title>Products — Vayuron Advanced Systems</title>
+        <meta
+          name="description"
+          content="Vayuron's core product lines: UAV Systems, MVTX, Artificial Intelligence, and Advanced Engineering."
+        />
+      </Helmet>
 
       {/* Stacked scroll transitions — same pattern as every other page. */}
       <main>

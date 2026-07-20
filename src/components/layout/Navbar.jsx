@@ -10,8 +10,6 @@ const VayuronLogo = () => (
   <img
     src="/favicon.jpeg"
     alt="Vayuron Logo"
-    width={40}
-    height={40}
     className="w-10 h-10 object-contain shrink-0"
   />
 )
@@ -421,13 +419,13 @@ export default function Navbar() {
 
                 <div className="flex items-center justify-center gap-4 mt-5">
                   <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                    <img src="/icons/instagram.png" alt="Instagram" width={20} height={20} className="w-5 h-5" />
+                    <img src="/icons/instagram.png" alt="Instagram" className="w-5 h-5" />
                   </a>
                   <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                    <img src="/icons/linkedin.png" alt="LinkedIn" width={20} height={20} className="w-5 h-5" />
+                    <img src="/icons/linkedin.png" alt="LinkedIn" className="w-5 h-5" />
                   </a>
                   <a href={SITE.x} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                    <img src="/icons/x.png" alt="X" width={20} height={20} className="w-5 h-5" />
+                    <img src="/icons/x.png" alt="X" className="w-5 h-5" />
                   </a>
                 </div>
               </div>

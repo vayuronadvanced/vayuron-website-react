@@ -5,10 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-seo-files.mjs",
     "build": "vite build",
-    "postbuild": "node scripts/prerender.mjs",
-    "seo:check": "node scripts/check-seo-drift.mjs",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
@@ -35,11 +32,6 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1",
-    "vite-plugin-image-optimizer": "^2.0.3",
-    "sharp": "^0.34.0",
-    "svgo": "^4.0.2",
-    "puppeteer": "^25.3.0",
-    "serve-handler": "^6.1.5"
+    "vite": "^5.3.1"
   }
 }

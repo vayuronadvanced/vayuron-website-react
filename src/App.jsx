@@ -2,55 +2,47 @@
 
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import SmoothScrollProvider from './components/layout/SmoothScrollProvider'
 import { LoadingScreen } from './components/ui'
 import { useLoadingScreen, useScrollProgress, useGoogleAnalyticsPageviews } from './hooks'
-import ScrollToTop from './components/layout/ScrollToTop'
-import ProtectedRoute from './components/layout/ProtectedRoute'
-import OrganizationSchema from './components/seo/OrganizationSchema'
 
 // ─── Pages ────────────────────────────────────────────────────────────────
-// Lazy-loaded so each route lands in its own chunk instead of one giant
-// bundle. Navbar/Footer/ScrollToTop/ProtectedRoute stay eager above since
-// they're needed on every route regardless.
-const HomePage = lazy(() => import('./pages/mainpages/HomePage'))
-const ProductsPage = lazy(() => import('./pages/products/ProductsPage'))
-const UAVSystemsPage = lazy(() => import('./pages/products/UAVSystemsPage'))
-const AIPage = lazy(() => import('./pages/products/AIPage'))
-const EngineeringPage = lazy(() => import('./pages/products/EngineeringPage'))
-const SectorsPage = lazy(() => import('./pages/sectors/SectorsPage'))
-const DefenceHomelandSecurityPage = lazy(() => import('./pages/sectors/DefenceHomelandSecurityPage'))
-const GovernmentSmartInfrastructurePage = lazy(() => import('./pages/sectors/GovernmentSmartInfrastructurePage'))
-const EnergyIndustrialPage = lazy(() => import('./pages/sectors/EnergyIndustrialPage'))
-const AgricultureEnvironmentalPage = lazy(() => import('./pages/sectors/AgricultureEnvironmentalPage'))
-const MiningSurveyingResearchPage = lazy(() => import('./pages/sectors/MiningSurveyingResearchPage'))
-const TechnologyPage = lazy(() => import('./pages/mainpages/TechnologyPage'))
-const AboutPage = lazy(() => import('./pages/mainpages/AboutPage'))
-const ContactPage = lazy(() => import('./pages/mainpages/ContactPage'))
-const NotFoundPage = lazy(() => import('./pages/mainpages/NotFoundPage'))
-const CareersPage = lazy(() => import('./pages/mainpages/CareersPage'))
-const JobListingPage = lazy(() => import('./pages/mainpages/JobListingPage'))
-const MVTXPage = lazy(() => import('./pages/products/MVTXPage'))
-const BlogPostPage = lazy(() => import('./pages/mainpages/BlogPostPage'))
-const NewsletterUnsubscribePage = lazy(() => import('./pages/mainpages/NewsletterUnsubscribePage'))
-const BlogPage = lazy(() => import('./pages/mainpages/BlogPage'))
-const LoginPage = lazy(() => import('./pages/mainpages/LoginPage'))
-const RegisterPage = lazy(() => import('./pages/mainpages/RegisterPage'))
-const ForgotPasswordPage = lazy(() => import('./pages/mainpages/ForgotPasswordPage'))
-const ResetPasswordPage = lazy(() => import('./pages/mainpages/ResetPasswordPage'))
-const VerifyEmailPage = lazy(() => import('./pages/mainpages/VerifyEmailPage'))
-const DashboardOverviewPage = lazy(() => import('./pages/dashboard/DashboardOverviewPage'))
-const DashboardEnquiriesPage = lazy(() => import('./pages/dashboard/DashboardEnquiriesPage'))
-const DashboardQuotationsPage = lazy(() => import('./pages/dashboard/DashboardQuotationsPage'))
-const DashboardCareersPage = lazy(() => import('./pages/dashboard/DashboardCareersPage'))
-const DashboardBlogPage = lazy(() => import('./pages/dashboard/DashboardBlogPage'))
-const DashboardBlogEditorPage = lazy(() => import('./pages/dashboard/DashboardBlogEditorPage'))
-const DashboardNewsletterPage = lazy(() => import('./pages/dashboard/DashboardNewsletterPage'))
-const DashboardUsersPage = lazy(() => import('./pages/dashboard/DashboardUsersPage'))
+import HomePage from './pages/mainpages/HomePage'
+import ProductsPage from './pages/products/ProductsPage'
+import UAVSystemsPage from './pages/products/UAVSystemsPage'
+import AIPage from './pages/products/AIPage'
+import EngineeringPage from './pages/products/EngineeringPage'
+import SectorsPage from './pages/sectors/SectorsPage'
+import DefenceHomelandSecurityPage from './pages/sectors/DefenceHomelandSecurityPage'
+import GovernmentSmartInfrastructurePage from './pages/sectors/GovernmentSmartInfrastructurePage'
+import EnergyIndustrialPage from './pages/sectors/EnergyIndustrialPage'
+import AgricultureEnvironmentalPage from './pages/sectors/AgricultureEnvironmentalPage'
+import MiningSurveyingResearchPage from './pages/sectors/MiningSurveyingResearchPage'
+import TechnologyPage from './pages/mainpages/TechnologyPage'
+import AboutPage from './pages/mainpages/AboutPage'
+import ContactPage from './pages/mainpages/ContactPage'
+import NotFoundPage from './pages/mainpages/NotFoundPage'
+import ScrollToTop from './components/layout/ScrollToTop'
+import CareersPage from './pages/mainpages/CareersPage'
+import MVTXPage from './pages/products/MVTXPage'
+import BlogPostPage from './pages/mainpages/BlogPostPage'
+import NewsletterUnsubscribePage from './pages/mainpages/NewsletterUnsubscribePage'
+import BlogPage from './pages/mainpages/BlogPage'
+import LoginPage from './pages/mainpages/LoginPage'
+import RegisterPage from './pages/mainpages/RegisterPage'
+import DashboardOverviewPage from './pages/dashboard/DashboardOverviewPage'
+import DashboardEnquiriesPage from './pages/dashboard/DashboardEnquiriesPage'
+import DashboardQuotationsPage from './pages/dashboard/DashboardQuotationsPage'
+import DashboardCareersPage from './pages/dashboard/DashboardCareersPage'
+import DashboardBlogPage from './pages/dashboard/DashboardBlogPage'
+import DashboardBlogEditorPage from './pages/dashboard/DashboardBlogEditorPage'
+import DashboardNewsletterPage from './pages/dashboard/DashboardNewsletterPage'
+import DashboardUsersPage from './pages/dashboard/DashboardUsersPage'
+import ProtectedRoute from './components/layout/ProtectedRoute'
 
 const pageVariants = {
   initial: { opacity: 0, y: 40 },
@@ -126,7 +118,6 @@ export default function App() {
 
   return (
     <SmoothScrollProvider>
-      <OrganizationSchema />
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen key="loading" />}
       </AnimatePresence>
@@ -141,8 +132,7 @@ export default function App() {
           <ScrollToTop />
 
           <AnimatePresence mode="wait">
-            <Suspense fallback={<LoadingScreen />}>
-              <Routes location={location} key={location.pathname}>
+            <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
 
               {/* Products */}
@@ -164,7 +154,6 @@ export default function App() {
 
               {/* Core Pages */}
               <Route path="/careers" element={<PageWrapper><CareersPage /></PageWrapper>} />
-              <Route path="/careers/:slug" element={<PageWrapper><JobListingPage /></PageWrapper>} />
               <Route path="/technology" element={<PageWrapper><TechnologyPage /></PageWrapper>} />
               <Route path="/about" element={<PageWrapper><AboutPage /></PageWrapper>} />
               <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
@@ -173,9 +162,6 @@ export default function App() {
               <Route path="/blog/:slug" element={<PageWrapper><BlogPostPage /></PageWrapper>} />
               <Route path="/login" element={<PageWrapper><LoginPage /></PageWrapper>} />
               <Route path="/register" element={<PageWrapper><RegisterPage /></PageWrapper>} />
-              <Route path="/forgot-password" element={<PageWrapper><ForgotPasswordPage /></PageWrapper>} />
-              <Route path="/reset-password/:uid/:token" element={<PageWrapper><ResetPasswordPage /></PageWrapper>} />
-              <Route path="/verify-email/:uid/:token" element={<PageWrapper><VerifyEmailPage /></PageWrapper>} />
 
               {/* Admin Dashboard (Stage 4, Phase 4.1) — staff only */}
               <Route
@@ -252,8 +238,7 @@ export default function App() {
               />
 
               <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
-              </Routes>
-            </Suspense>
+            </Routes>
           </AnimatePresence>
 
           <Footer />

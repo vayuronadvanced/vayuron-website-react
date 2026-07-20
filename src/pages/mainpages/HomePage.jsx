@@ -1,11 +1,11 @@
 {/*HomePage.jsx*/ }
 
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { SectionHeader, CTAButton, InfoCard, CardGrid } from '../../components/ui'
 import { PRODUCTS, SECTORS } from '../../data/siteData'
 import { useScrollReveal } from '../../hooks'
 import StackSection from '../../components/sections/StackSection'
-import Seo from '../../components/seo/Seo'
 
 // ─── Hero Section ──────────────────────────────────────────────────────────
 function Hero() {
@@ -243,10 +243,13 @@ function MissionCTA() {
 export default function HomePage() {
   return (
     <>
-      <Seo
-        description="Vayuron Advanced Systems builds autonomous UAVs, AI platforms, and defence-grade software for critical national and industrial operations."
-        path="/"
-      />
+      <Helmet>
+        <title>Vayuron Advanced Systems — Vayuron Advanced Systems</title>
+        <meta
+          name="description"
+          content="Vayuron Advanced Systems builds autonomous UAVs, AI platforms, and defence-grade software for critical national and industrial operations."
+        />
+      </Helmet>
 
       {/* Stacked scroll transitions: each StackSection pins in place
           (position: sticky) while the next one scrolls up to cover it.

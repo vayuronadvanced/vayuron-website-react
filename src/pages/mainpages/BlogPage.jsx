@@ -1,12 +1,12 @@
 {/*BlogPage.jsx*/ }
 
+import { Helmet } from 'react-helmet-async'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { PageBanner, SectionHeader, CardGrid } from '../../components/ui'
 import { useApi } from '../../hooks'
 import { getBlogCategories, getBlogPosts } from '../../lib/api/blog'
-import Seo from '../../components/seo/Seo'
 
 function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString('en-IN', {
@@ -167,10 +167,13 @@ export default function BlogPage() {
 
   return (
     <>
-      <Seo
-        description="Insights, updates, and engineering perspectives from Vayuron Advanced Systems."
-        path="/blog"
-      />
+      <Helmet>
+        <title>Blog — Vayuron Advanced Systems</title>
+        <meta
+          name="description"
+          content="Insights, updates, and engineering perspectives from Vayuron Advanced Systems."
+        />
+      </Helmet>
 
       <main>
         <PageBanner

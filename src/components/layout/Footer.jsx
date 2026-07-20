@@ -67,8 +67,6 @@ export default function Footer() {
                 <img
                   src="/icons/instagram.png"
                   alt="Instagram"
-                  width={28}
-                  height={28}
                   className="w-7 h-7"
                 />
               </a>
@@ -82,8 +80,6 @@ export default function Footer() {
                 <img
                   src="/icons/linkedin.png"
                   alt="LinkedIn"
-                  width={28}
-                  height={28}
                   className="w-7 h-7"
                 />
               </a>
@@ -97,8 +93,6 @@ export default function Footer() {
                 <img
                   src="/icons/x.png"
                   alt="X"
-                  width={28}
-                  height={28}
                   className="w-7 h-7"
                 />
               </a>

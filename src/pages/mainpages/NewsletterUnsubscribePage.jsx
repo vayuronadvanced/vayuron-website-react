@@ -1,10 +1,10 @@
 {/*NewsletterUnsubscribePage.jsx*/ }
 
+import { Helmet } from 'react-helmet-async'
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useApi } from '../../hooks'
 import apiClient from '../../lib/apiClient'
-import Seo from '../../components/seo/Seo'
 
 async function unsubscribe(token) {
   const { data } = await apiClient.post(`/newsletter/unsubscribe/${token}/`)
@@ -21,11 +21,9 @@ export default function NewsletterUnsubscribePage() {
 
   return (
     <>
-      <Seo
-        title="Unsubscribe"
-        path={`/newsletter/unsubscribe/${token}`}
-        noindex
-      />
+      <Helmet>
+        <title>Unsubscribe — Vayuron Advanced Systems</title>
+      </Helmet>
 
       <main className="min-h-screen flex items-center justify-center bg-black px-6">
         <div className="w-full max-w-md border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-8 rounded-sm text-center">

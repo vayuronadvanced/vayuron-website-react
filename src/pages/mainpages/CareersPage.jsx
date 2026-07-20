@@ -1,28 +1,74 @@
 /*CareerPage.jsx*/
 
+import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { Breadcrumb, SectionHeader } from '../../components/ui'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useApi } from '../../hooks'
-import { getJobListings } from '../../lib/api/careers'
-import Seo from '../../components/seo/Seo'
+import { getJobListings, submitJobApplication } from '../../lib/api/careers'
+import { logBusinessEvent } from '../../lib/api/analytics'
+import { trackEvent } from '../../lib/googleAnalytics'
+
+const initialApplication = {
+  full_name: '',
+  email: '',
+  phone_number: '',
+  education: '',
+  experience: '',
+  skills: '',
+  cover_letter: '',
+}
 
 export default function CareersPage() {
   const heroRef = useRef(null)
   const bgRef = useRef(null)
+  const [selectedListing, setSelectedListing] = useState(null)
+  const [application, setApplication] = useState(initialApplication)
+  const [resume, setResume] = useState(null)
+  const [applicationSubmitted, setApplicationSubmitted] = useState(false)
 
   const {
     data: listingsData,
     loading: listingsLoading,
     run: fetchListings,
   } = useApi(getJobListings)
+  const {
+    loading: applying,
+    error: applyError,
+    run: apply,
+  } = useApi(submitJobApplication)
 
   useEffect(() => {
     fetchListings({ status: 'open' })
   }, [fetchListings])
 
   const listings = listingsData?.results || listingsData || []
+
+  const handleApplicationChange = (e) => {
+    setApplication((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleApplicationSubmit = async (e) => {
+    e.preventDefault()
+    if (!resume) return
+
+    const formData = new FormData()
+    formData.append('job_listing', selectedListing.id)
+    Object.entries(application).forEach(([key, value]) => formData.append(key, value))
+    formData.append('resume', resume)
+
+    try {
+      await apply(formData)
+      setApplicationSubmitted(true)
+      setApplication(initialApplication)
+      setResume(null)
+      logBusinessEvent('application_submitted')
+      trackEvent('generate_lead', { form_name: 'job_application', job_title: selectedListing.title })
+    } catch {
+      // error state is already surfaced via applyError
+    }
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -117,10 +163,9 @@ export default function CareersPage() {
 
   return (
     <>
-      <Seo
-        description="Join Vayuron Advanced Systems — careers in autonomous UAV engineering, AI, and defence-grade systems in Bhopal, India."
-        path="/careers"
-      />
+      <Helmet>
+        <title>Careers — Vayuron Advanced Systems</title>
+      </Helmet>
 
       <main>
         <section
@@ -208,12 +253,15 @@ export default function CareersPage() {
                           .join(' · ')}
                       </p>
                     </div>
-                    <Link
-                      to={`/careers/${listing.slug}`}
+                    <button
+                      onClick={() => {
+                        setSelectedListing(listing)
+                        setApplicationSubmitted(false)
+                      }}
                       className="shrink-0 border border-cyan text-cyan px-5 py-2 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all"
                     >
-                      View & Apply
-                    </Link>
+                      {selectedListing?.id === listing.id ? 'Selected' : 'Apply'}
+                    </button>
                   </div>
 
                   {listing.description && (
@@ -224,6 +272,110 @@ export default function CareersPage() {
                 </div>
               ))}
             </div>
+
+            {/* Application Form */}
+            {selectedListing && (
+              <div className="mt-10 border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm">
+                <h3 className="font-display text-xl text-white mb-1">
+                  Apply — {selectedListing.title}
+                </h3>
+
+                {applicationSubmitted ? (
+                  <p className="text-sm text-cyan/90 leading-relaxed mt-4">
+                    Thank you — your application has been received. Our team
+                    will review it and reach out if there&apos;s a fit.
+                  </p>
+                ) : (
+                  <form onSubmit={handleApplicationSubmit} className="space-y-3 mt-4">
+                    <input
+                      type="text"
+                      name="full_name"
+                      required
+                      placeholder="Full name *"
+                      value={application.full_name}
+                      onChange={handleApplicationChange}
+                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                    />
+                    <div className="grid grid-cols-2 gap-3">
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="Email address *"
+                        value={application.email}
+                        onChange={handleApplicationChange}
+                        className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                      />
+                      <input
+                        type="tel"
+                        name="phone_number"
+                        placeholder="Phone"
+                        value={application.phone_number}
+                        onChange={handleApplicationChange}
+                        className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                      />
+                    </div>
+                    <textarea
+                      name="education"
+                      rows={2}
+                      placeholder="Education"
+                      value={application.education}
+                      onChange={handleApplicationChange}
+                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan resize-none"
+                    />
+                    <textarea
+                      name="experience"
+                      rows={2}
+                      placeholder="Experience"
+                      value={application.experience}
+                      onChange={handleApplicationChange}
+                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan resize-none"
+                    />
+                    <input
+                      type="text"
+                      name="skills"
+                      placeholder="Key skills"
+                      value={application.skills}
+                      onChange={handleApplicationChange}
+                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                    />
+                    <textarea
+                      name="cover_letter"
+                      rows={3}
+                      placeholder="Cover letter (optional)"
+                      value={application.cover_letter}
+                      onChange={handleApplicationChange}
+                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan resize-none"
+                    />
+
+                    <div>
+                      <label className="block text-xs text-[var(--muted)] mb-1">
+                        Resume (PDF/DOC, max 10MB) *
+                      </label>
+                      <input
+                        type="file"
+                        required
+                        accept=".pdf,.doc,.docx"
+                        onChange={(e) => setResume(e.target.files?.[0] || null)}
+                        className="w-full text-sm text-white/80 file:mr-3 file:border file:border-cyan/40 file:bg-black/60 file:text-cyan file:px-3 file:py-1.5 file:text-xs file:uppercase file:tracking-widest"
+                      />
+                    </div>
+
+                    {applyError && (
+                      <p className="text-xs text-red-400 leading-relaxed">{applyError}</p>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={applying}
+                      className="inline-flex items-center justify-center w-full border border-cyan text-cyan px-7 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {applying ? 'Submitting…' : 'Submit Application →'}
+                    </button>
+                  </form>
+                )}
+              </div>
+            )}
           </div>
         </section>
       </main>

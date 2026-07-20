@@ -5,11 +5,9 @@
     InfoCard, CardGrid, CTAButton) so the site's visual language, animation
     system, and routing are untouched — only sector content structure changes. */}
 
-import { Link, useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { PageBanner, CTAButton, InfoCard, CardGrid, StatCard } from '../../../components/ui'
 import StackSection from '../../../components/sections/StackSection'
-import Seo from '../../../components/seo/Seo'
-import { PRODUCTS } from '../../../data/siteData'
 
 // Background images cycled across application sections for visual variety —
 // all pre-existing site assets, no new files introduced.
@@ -38,7 +36,6 @@ export default function SectorApplicationsTemplate({
   backgroundVideoWebm,
 }) {
   const hasStats = stats.length > 0
-  const location = useLocation()
 
   let idx = 0
   const bannerIndex = idx++
@@ -48,12 +45,10 @@ export default function SectorApplicationsTemplate({
 
   return (
     <>
-      <Seo
-        title={title}
-        description={subtitle || overview}
-        path={location.pathname}
-        image={backgroundImage}
-      />
+      <Helmet>
+        <title>{title} — Vayuron Advanced Systems</title>
+        <meta name="description" content={subtitle} />
+      </Helmet>
 
       <main>
         {/* ── Banner ── */}
@@ -212,23 +207,6 @@ export default function SectorApplicationsTemplate({
               <CTAButton to="/contact" variant="primary">
                 Start a Conversation
               </CTAButton>
-
-              {/* Internal link: sector → relevant products, per SEO Phase 2's
-                  internal-linking pass. Links to all 4 (rather than a curated
-                  per-sector subset) since there's no existing data mapping
-                  specific products to specific sectors — adding one would be
-                  inventing a relationship not backed by real data. */}
-              <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
-                {PRODUCTS.map((product) => (
-                  <Link
-                    key={product.id}
-                    to={product.path}
-                    className="text-[var(--muted)] hover:text-cyan hover:underline transition-colors"
-                  >
-                    {product.label} →
-                  </Link>
-                ))}
-              </div>
             </div>
           </section>
         </StackSection>
