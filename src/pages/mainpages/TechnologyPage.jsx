@@ -1,39 +1,39 @@
 {/*TechnologyPage.jsx*/ }
 
-import { Helmet } from 'react-helmet-async'
 import { PageBanner, SectionHeader, CTAButton, CardGrid } from '../../components/ui'
 import StackSection from '../../components/sections/StackSection'
+import Seo from '../../components/seo/Seo'
 
 const techPillars = [
   {
     title: 'Autonomous Flight Systems',
     description:
-      'Indigenous autopilot firmware with sensor fusion, terrain following, obstacle avoidance, and comms-denied return-to-home. Validated across fixed-wing, rotary, and hybrid VTOL platforms.',
+      'Indigenous autopilot with terrain following, obstacle avoidance, and autonomous return-to-home.',
   },
   {
     title: 'Edge AI Architecture',
     description:
-      'Deep learning models optimised for embedded NPUs and GPUs, delivering real-time inference without cloud connectivity. Models trained on defence-grade annotated datasets.',
+      'Real-time AI inference on embedded hardware without cloud connectivity.',
   },
   {
     title: 'Encrypted Communications',
     description:
-      'Military-grade AES-256 encrypted datalinks with frequency hopping, anti-jam protection, and mesh radio fallback for contested and denied environments.',
+      'AES-256 encrypted links with anti-jam and frequency-hopping protection.',
   },
   {
     title: 'Swarm Intelligence',
     description:
-      'Distributed multi-UAV coordination protocols enabling autonomous swarm missions with decentralised decision-making — no single point of failure or control.',
+      'Autonomous multi-UAV coordination with decentralized decision-making.',
   },
   {
     title: 'Sensor Fusion',
     description:
-      'Multi-sensor data fusion combining visual, thermal, LiDAR, radar, and SIGINT streams into a unified operational picture with AI-powered correlation.',
+      'AI-powered fusion of visual, thermal, LiDAR, radar, and SIGINT data.',
   },
   {
     title: 'Indigenous Hardware',
     description:
-      'All avionics, power systems, and structural components designed and manufactured in India — ensuring full supply chain sovereignty and rapid support.',
+      'Indian-designed avionics, power systems, and structural components.',
   },
 ]
 
@@ -97,13 +97,11 @@ const techStack = [
 export default function TechnologyPage() {
   return (
     <>
-      <Helmet>
-        <title>Technology — Vayuron Advanced Systems</title>
-        <meta
-          name="description"
-          content="The indigenous technologies powering Vayuron's autonomous UAV, AI, and defence systems."
-        />
-      </Helmet>
+      <Seo
+        title="Technology"
+        description="The indigenous technologies powering Vayuron's autonomous UAV, AI, and defence systems."
+        path="/technology"
+      />
 
       <main>
         <StackSection index={0}>

@@ -161,7 +161,7 @@ function SectorsPreview() {
           subtitle="Delivering autonomous intelligence across five critical industries."
         />
 
-        <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
           {SECTORS.map((sector) => (
             <InfoCard
               key={sector.id}

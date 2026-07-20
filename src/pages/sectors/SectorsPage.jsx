@@ -38,8 +38,7 @@ export default function SectorsPage() {
             />
 
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
-              {/* UPDATED: Wrapped in CardGrid for premium hover effects (16px lift) */}
-              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
                 {SECTORS.map((sector) => (
                   <InfoCard
                     key={sector.id}
