@@ -48,6 +48,7 @@ function BlogCard({ post, index }) {
             <img
               src={post.cover_image}
               alt={post.title}
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
@@ -104,6 +105,7 @@ function FeaturedPost({ post }) {
             <img
               src={post.cover_image}
               alt={post.title}
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           ) : (
@@ -179,8 +181,8 @@ export default function BlogPage() {
           title="Blog"
           subtitle="Engineering perspectives, product updates, and news from Vayuron Advanced Systems."
           crumbs={[{ label: 'Blog' }]}
-          backgroundVideoMp4="/Drone1.mp4"
-          backgroundImage="/FixedWingDRone.png"
+          backgroundVideoMp4="/Drone4.mp4"
+        // backgroundImage="/FixedWingDRone.png"
         />
 
         <section className="relative py-16 sm:py-20 md:py-24 bg-black">

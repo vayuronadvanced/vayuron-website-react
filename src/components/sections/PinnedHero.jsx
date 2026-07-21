@@ -47,6 +47,7 @@ export default function PinnedHero({ image, title, eyebrow }) {
         data-hero-img
         src={image}
         alt={title}
+        fetchpriority="high"
         className="absolute inset-0 h-full w-full object-cover will-change-transform"
       />
       <div

@@ -8,6 +8,7 @@ export default function MVTXPage() {
       eyebrow="Standalone Product"
       title="MVTX"
       subtitle="Multi View Transmission System is a real-time video, complete situational awareness. MVTX connects your ground team to multiple remote views through a simple, secure wireless link."
+      metaDescription="MVTX is Vayuron's multi-view video transmission system, giving ground teams real-time, secure access to multiple live UAV feeds simultaneously."
       // backgroundImage="/MVTX1.jpg"
       heroVideo="/MVTX.mp4"
       // heroPoster="/MVTX1.jpg"

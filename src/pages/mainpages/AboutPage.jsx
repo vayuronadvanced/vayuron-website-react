@@ -173,7 +173,7 @@ export default function AboutPage() {
     <>
       <Seo
         title="About"
-        description="VAYURON Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
+        description="VAYURON Advanced Systems is an autonomous systems company developing mission-critical UAV and AI technologies for defence, industrial, and government sectors."
         path="/about"
         breadcrumbs={[{ label: 'About' }]}
       />
@@ -187,8 +187,8 @@ export default function AboutPage() {
             title="Engineering Intelligent Systems for Mission-Critical Operations"
             subtitle="Vayuron Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
             crumbs={[{ label: 'About' }]}
-            backgroundImage="/FixedWingDRone.png"
-            backgroundVideoMp4="/Drone1.mp4"
+            // backgroundImage="/FixedWingDRone.png"
+            backgroundVideoMp4="/Drone2.mp4"
           />
         </StackSection>
 

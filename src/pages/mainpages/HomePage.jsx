@@ -21,6 +21,7 @@ function Hero() {
           <img
             src="/images/hero-poster.jpg"
             alt="Vayuron autonomous drone in flight"
+            fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
@@ -35,7 +36,7 @@ function Hero() {
             aria-label="Vayuron autonomous drone in flight"
           >
             <source src="/videos/hero.webm" type="video/webm" />
-            <source src="/Drone1.mp4" type="video/mp4" />   {/*Section 1 Hero video */}
+            <source src="/DroneNew.mp4" type="video/mp4" />
           </video>
         )}
       </div>

@@ -11,6 +11,9 @@ export default function ProductPageTemplate({
   subtitle,
   eyebrow,
   description,
+  metaDescription,  // optional — short (<160 char) override for the <Seo> tag specifically;
+                     // falls back to subtitle (usually already short) rather than the long-form
+                     // `description` body copy, which was previously blowing past 160 characters
   backgroundImage,
   heroVideo,        // mp4 src (required to show the video hero section at all)
   heroVideoWebm,     // optional — additional <source> for smaller file size
@@ -75,7 +78,7 @@ export default function ProductPageTemplate({
     <>
       <Seo
         title={title}
-        description={description || subtitle}
+        description={metaDescription || subtitle || description}
         path={location.pathname}
         image={heroPoster || backgroundImage}
         jsonLd={productSchema}

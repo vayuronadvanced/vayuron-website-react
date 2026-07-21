@@ -81,6 +81,7 @@ export function PageBanner({
               src={backgroundImage}
               alt=""
               aria-hidden="true"
+              fetchpriority="high"
               className="absolute inset-0 h-full w-full object-cover"
             />
           )}

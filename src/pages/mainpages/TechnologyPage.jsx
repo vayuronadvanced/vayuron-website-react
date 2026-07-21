@@ -112,7 +112,7 @@ export default function TechnologyPage() {
             subtitle="Six core technology pillars engineered entirely in India for defence-grade operational requirements."
             crumbs={[{ label: 'Technology' }]}
             // backgroundImage="/technology-bg.png.png"
-            backgroundVideoMp4="/Drone1.mp4"  //video
+            backgroundVideoMp4="/Drone3.mp4"  //video
           />
         </StackSection>
 
