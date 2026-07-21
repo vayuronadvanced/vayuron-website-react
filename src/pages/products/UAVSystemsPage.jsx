@@ -6,7 +6,7 @@ export default function UAVSystemsPage() {
   return (
     <ProductPageTemplate
       eyebrow="Product Line 01"
-      title="UAV Systems"
+      title="Autonomous UAV Systems for Defence"
       subtitle="Autonomous unmanned aerial systems engineered for defence, surveillance, and civilian missions."
       backgroundImage="/images/Quadcopter.webp"  // Hero Section
       heroVideo="/videos/VTOL.webm"            // 2nd Section

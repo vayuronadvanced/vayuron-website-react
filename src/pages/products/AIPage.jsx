@@ -6,7 +6,7 @@ export default function AIPage() {
   return (
     <ProductPageTemplate
       eyebrow="Product Line 03"
-      title="Artificial Intelligence"
+      title="Defence AI & Autonomous Intelligence Systems"
       subtitle="Edge AI, computer vision, and decision intelligence platforms for autonomous and semi-autonomous operations."
       heroVideo="/videos/VTOL.webm"
       // backgroundImage="/images/AI1.webp"

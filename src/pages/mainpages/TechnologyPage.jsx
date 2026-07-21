@@ -108,8 +108,8 @@ export default function TechnologyPage() {
         <StackSection index={0}>
           <PageBanner
             eyebrow="Technology"
-            title="Our Technology Stack"
-            subtitle="Six core technology pillars engineered entirely in India for defence-grade operational requirements."
+            title="Indigenous Defence Technology Stack"
+            subtitle="Core technology pillars engineered entirely in India for defence-grade operational requirements."
             crumbs={[{ label: 'Technology' }]}
             // backgroundImage="/images/technology-bg.webp"
             backgroundVideoMp4="/videos/Drone3.webm"  //video

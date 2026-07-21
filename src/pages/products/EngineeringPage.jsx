@@ -5,7 +5,7 @@ import ProductPageTemplate from './templates/ProductPageTemplate'
 export default function EngineeringPage() {
   return (
     <ProductPageTemplate
-      title="Advanced Engineering"
+      title="Advanced Defence & Aerospace Engineering"
       subtitle="Precision manufacturing, systems integration, and mission-critical avionics for aerospace, defence, and industrial applications."
       heroVideo="/videos/Drone1.webm"
       backgroundImage="/images/AE1.webp"

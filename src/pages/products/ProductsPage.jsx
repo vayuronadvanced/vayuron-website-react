@@ -19,7 +19,7 @@ export default function ProductsPage() {
         <StackSection index={0}>
           <PageBanner
             eyebrow="Product Lines"
-            title="Our Capabilities"
+            title="Autonomous Systems & Defence Products"
             subtitle="Various technology domains engineered for defence, security, and industrial critical operations."
             crumbs={[{ label: 'Products' }]}
             backgroundImage="/images/ProductPage1.webp"

@@ -108,6 +108,9 @@ export default function BlogPostPage() {
                 <img
                   src={post.cover_image}
                   alt={post.title}
+                  loading="lazy"
+                  width={800}
+                  height={450}
                   className="w-full aspect-[16/9] object-cover"
                 />
               </motion.div>

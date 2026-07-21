@@ -82,6 +82,8 @@ export function PageBanner({
               alt=""
               aria-hidden="true"
               fetchpriority="high"
+              width={1920}
+              height={1080}
               className="absolute inset-0 h-full w-full object-cover"
             />
           )}

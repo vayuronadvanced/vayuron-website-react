@@ -21,6 +21,8 @@ function Hero() {
           <img
             src="/images/hero-poster.jpg"
             alt="Vayuron autonomous drone in flight"
+            width={1920}
+            height={1080}
             //fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -64,9 +66,9 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-display text-5xl sm:text-7xl md:text-8xl font-bold text-white leading-none tracking-tight mb-6"
         >
-          Vayuron
+          VAYURON
           <br />
-          <span className="text-cyan">Advanced</span>
+          <span className="text-cyan">ADVANCED</span>
           <br />
           Systems
         </motion.h1>
