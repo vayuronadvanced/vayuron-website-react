@@ -14,14 +14,14 @@ import { PRODUCTS, SITE } from '../../../data/siteData'
 // Background images cycled across application sections for visual variety —
 // all pre-existing site assets, no new files introduced.
 const BG_CYCLE = [
-  '/RightDrone.png',
-  '/Green.png',
-  '/ProductPage2.png',
-  '/drone-bg.png',
-  '/Tech2.png',
-  '/Tech4.png',
-  '/Tech5.png',
-  '/technology-bg.png.png',
+  '/images/RightDrone.webp',
+  '/images/Green.webp',
+  '/images/ProductPage2.webp',
+  '/images/drone-bg.webp',
+  '/images/Tech2.webp',
+  '/images/Tech4.webp',
+  '/images/Tech5.webp',
+  '/images/technology-bg.webp',
 ]
 
 export default function SectorApplicationsTemplate({
@@ -91,7 +91,7 @@ export default function SectorApplicationsTemplate({
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/RightDrone.png')",
+                backgroundImage: "url('/images/RightDrone.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -210,7 +210,7 @@ export default function SectorApplicationsTemplate({
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/DroneC.png')",
+                backgroundImage: "url('/images/DroneC.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

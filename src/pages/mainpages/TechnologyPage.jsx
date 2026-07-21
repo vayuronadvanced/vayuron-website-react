@@ -111,8 +111,8 @@ export default function TechnologyPage() {
             title="Our Technology Stack"
             subtitle="Six core technology pillars engineered entirely in India for defence-grade operational requirements."
             crumbs={[{ label: 'Technology' }]}
-            // backgroundImage="/technology-bg.png.png"
-            backgroundVideoMp4="/Drone3.mp4"  //video
+            // backgroundImage="/images/technology-bg.webp"
+            backgroundVideoMp4="/videos/Drone3.webm"  //video
           />
         </StackSection>
 
@@ -124,7 +124,7 @@ export default function TechnologyPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/Tech2.png')",
+                backgroundImage: "url('/images/Tech2.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -166,7 +166,7 @@ export default function TechnologyPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/Tech4.png')",
+                backgroundImage: "url('/images/Tech4.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -216,7 +216,7 @@ export default function TechnologyPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/TechIndigenous.png')",
+                backgroundImage: "url('/images/TechIndigenous.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -260,7 +260,7 @@ export default function TechnologyPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/Tech5.png')",
+                backgroundImage: "url('/images/Tech5.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

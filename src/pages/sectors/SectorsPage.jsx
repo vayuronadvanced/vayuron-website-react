@@ -22,7 +22,7 @@ export default function SectorsPage() {
             title="Sectors We Serve"
             subtitle="Five critical industries where Vayuron deploys autonomous intelligence at scale."
             crumbs={[{ label: 'Sectors' }]}
-            backgroundImage="/Operational.png"
+            backgroundImage="/images/Operational.webp"
           />
         </StackSection>
 
@@ -31,7 +31,7 @@ export default function SectorsPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/RightDrone.png')",
+                backgroundImage: "url('/images/RightDrone.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -65,7 +65,7 @@ export default function SectorsPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/Quadcopter.png')",
+                backgroundImage: "url('/images/Quadcopter.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

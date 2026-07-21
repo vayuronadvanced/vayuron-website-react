@@ -7,7 +7,7 @@ export default function MiningSurveyingResearchPage() {
       title="Mining, Surveying & Research"
       subtitle="High-precision aerial survey, 3D mapping, and exploration support for mining, geospatial, and scientific research operations."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Mining, Surveying & Research' }]}
-      backgroundVideoMp4="/Drone1.mp4"
+      backgroundVideoMp4="/videos/Drone1.webm"
       stats={[
         { value: 300, suffix: '+', label: 'Sites Surveyed' },
         { value: 98, suffix: '%', label: 'Survey Accuracy' },

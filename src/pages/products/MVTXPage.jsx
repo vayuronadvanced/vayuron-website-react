@@ -9,9 +9,8 @@ export default function MVTXPage() {
       title="MVTX"
       subtitle="Multi View Transmission System is a real-time video, complete situational awareness. MVTX connects your ground team to multiple remote views through a simple, secure wireless link."
       metaDescription="MVTX is Vayuron's multi-view video transmission system, giving ground teams real-time, secure access to multiple live UAV feeds simultaneously."
-      // backgroundImage="/MVTX1.jpg"
-      heroVideo="/MVTX.mp4"
-      // heroPoster="/MVTX1.jpg"
+      heroVideo="/videos/Drone4.webm"
+
       description="MVTX links a pilot/command station and a UAV over a long-range, encrypted command, telemetry, and video channel, then broadcasts live video to multiple ground users simultaneously — each receiving their own dedicated video-only feed."
 
       crumbs={[
@@ -20,7 +19,7 @@ export default function MVTXPage() {
       ]}
 
       // ── Mission Profile + Technical Specifications ──
-      specsBackgroundImage="/MVTX2.png"
+      specsBackgroundImage="/images/MVTX2.webp"
       specsEyebrow="Mission Profile"
       specsTitle="Technical Specifications"
       specsDescription="MVTX is a portable video distribution system enabling simultaneous reception and viewing of live UAV video feeds by multiple operators and decision-makers. Designed for command centers, field units, and tactical operations, MVTX improves situational awareness across distributed teams."
@@ -40,7 +39,7 @@ export default function MVTXPage() {
         {
           eyebrow: 'Why It Matters',
           title: 'Key Operational Advantages',
-          backgroundImage: '/MVTX3.png',
+          backgroundImage: '/images/MVTX3.webp',
           columns: 3,
           cards: [
             { title: 'Multiple Viewer Access' },
@@ -56,7 +55,7 @@ export default function MVTXPage() {
         {
           eyebrow: 'What It\u2019s Made Of',
           title: 'System Components',
-          backgroundImage: '/MVTX4.png',
+          backgroundImage: '/images/MVTX4.webp',
           columns: 3,
           cards: [
             { title: 'Transmission Unit' },
@@ -72,7 +71,7 @@ export default function MVTXPage() {
         {
           eyebrow: 'Where It\u2019s Used',
           title: 'Applications',
-          backgroundImage: '/ProductPage1.png',
+          backgroundImage: '/images/ProductPage1.webp',
           columns: 3,
           cards: [
             { title: 'UAV Operations' },

@@ -133,7 +133,7 @@ export default function CareersPage() {
             ref={bgRef}
             className="absolute inset-0"
             style={{
-              backgroundImage: "url('/career2.png')",
+              backgroundImage: "url('/images/career2.webp')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',

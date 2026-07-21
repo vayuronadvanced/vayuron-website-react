@@ -7,7 +7,7 @@ export default function DefenceHomelandSecurityPage() {
       title="Defence & Security"
       subtitle="Autonomous ISR, tactical support, and force-protection systems engineered for national security and armed forces operations."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Defence & Security' }]}
-      backgroundVideoMp4="/Drone1.mp4"
+      backgroundVideoMp4="/videos/Drone1.webm"
       stats={[
         { value: 15, suffix: '+', label: 'Defence Deployments' },
         { value: 99, suffix: '%', label: 'Mission Success Rate' },

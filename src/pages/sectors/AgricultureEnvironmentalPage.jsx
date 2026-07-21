@@ -7,7 +7,7 @@ export default function AgricultureEnvironmentalPage() {
       title="Agriculture & Environmental Intelligence"
       subtitle="Precision UAV platforms for crop health, automated spraying, water and forest management, and ecological monitoring."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Agriculture & Environmental Intelligence' }]}
-      backgroundVideoMp4="/Drone1.mp4"
+      backgroundVideoMp4="/videos/Drone1.webm"
       stats={[
         { value: 5000, suffix: '+', label: 'sq km Surveyed' },
         { value: 95, suffix: '%', label: 'Detection Accuracy' },

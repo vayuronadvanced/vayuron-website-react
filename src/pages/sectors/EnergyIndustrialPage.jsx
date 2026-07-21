@@ -7,7 +7,7 @@ export default function EnergyIndustrialPage() {
       title="Energy, Industrial & Critical Infrastructure"
       subtitle="Autonomous inspection and monitoring platforms for power grids, renewable assets, pipelines, and heavy industrial facilities."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Energy, Industrial & Critical Infrastructure' }]}
-      backgroundVideoMp4="/Drone1.mp4"
+      backgroundVideoMp4="/videos/Drone1.webm"
       stats={[
         { value: 70, suffix: '%', label: 'Downtime Reduction' },
         { value: 200, suffix: '+', label: 'Facility Inspections' },

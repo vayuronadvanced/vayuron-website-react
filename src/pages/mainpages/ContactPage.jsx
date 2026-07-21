@@ -218,7 +218,7 @@ export default function ContactPage() {
             ref={bgRef}
             className="absolute inset-0"
             style={{
-              backgroundImage: "url('/Green.png')",
+              backgroundImage: "url('/images/Green.webp')",
               backgroundSize: 'cover',
               backgroundPosition: 'center center',
               backgroundRepeat: 'no-repeat',

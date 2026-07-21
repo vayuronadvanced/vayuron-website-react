@@ -344,7 +344,7 @@ export default function ProductPageTemplate({
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/DroneC.png')",
+                backgroundImage: "url('/images/DroneC.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

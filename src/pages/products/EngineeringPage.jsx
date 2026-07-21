@@ -7,10 +7,10 @@ export default function EngineeringPage() {
     <ProductPageTemplate
       title="Advanced Engineering"
       subtitle="Precision manufacturing, systems integration, and mission-critical avionics for aerospace, defence, and industrial applications."
-      heroVideo="/Drone1.mp4"
-      backgroundImage="/AE1.png"
-      specsBackgroundImage="/AE2.png"
-      capabilitiesBackgroundImage="/AE3.png"
+      heroVideo="/videos/Drone1.webm"
+      backgroundImage="/images/AE1.webp"
+      specsBackgroundImage="/images/AE2.webp"
+      capabilitiesBackgroundImage="/images/AE3.webp"
       description="Vayuron's Advanced Engineering division provides end-to-end systems integration, precision fabrication, mechanical design, and indigenous avionics development. From composite airframe structures to flight computers, navigation systems, and ruggedised electronic enclosures, we engineer hardware that performs in the most demanding environments on earth."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Advanced Engineering' }]}
       specs={[

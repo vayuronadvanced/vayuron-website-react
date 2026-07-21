@@ -22,7 +22,7 @@ export default function ProductsPage() {
             title="Our Capabilities"
             subtitle="Various technology domains engineered for defence, security, and industrial critical operations."
             crumbs={[{ label: 'Products' }]}
-            backgroundImage="/ProductPage1.png"
+            backgroundImage="/images/ProductPage1.webp"
           />
         </StackSection>
 
@@ -31,7 +31,7 @@ export default function ProductsPage() {
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: "url('/ProductPage2.png')",
+                backgroundImage: "url('/images/ProductPage2.webp')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",

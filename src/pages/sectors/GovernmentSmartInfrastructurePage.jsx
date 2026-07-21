@@ -7,7 +7,7 @@ export default function GovernmentSmartInfrastructurePage() {
       title="Government & Smart Infrastructure"
       subtitle="Autonomous aerial intelligence for urban safety, disaster response, asset inspection, and public infrastructure management."
       crumbs={[{ label: 'Sectors', path: '/sectors' }, { label: 'Government & Smart Infrastructure' }]}
-      backgroundVideoMp4="/Drone1.mp4"
+      backgroundVideoMp4="/videos/Drone1.webm"
       stats={[
         { value: 20, suffix: '+', label: 'Government Deployments' },
         { value: 60, suffix: '%', label: 'Faster Incident Response' },

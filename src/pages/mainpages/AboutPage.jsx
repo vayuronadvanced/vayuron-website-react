@@ -187,15 +187,15 @@ export default function AboutPage() {
             title="Engineering Intelligent Systems for Mission-Critical Operations"
             subtitle="Vayuron Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
             crumbs={[{ label: 'About' }]}
-            // backgroundImage="/FixedWingDRone.png"
-            backgroundVideoMp4="/Drone2.mp4"
+            // backgroundImage="/images/FixedWingDRone.webp"
+            backgroundVideoMp4="/videos/Drone2.webm"
           />
         </StackSection>
 
         {/* ═══ S2 — MISSION FIRST SOLUTIONS  (index 1) ══════════════════ */}
         <StackSection index={1}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/about2.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/about2.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24">
               <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">Mission First Solutions</p>
@@ -226,7 +226,7 @@ export default function AboutPage() {
         {/* ═══ S3 — OUR MISSION AREAS  (index 2) ════════════════════════ */}
         <StackSection index={2}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/About4.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/About4.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="absolute inset-0 bg-black/55" />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="What We Focus On" title="Our Mission Areas" subtitle="Ten technology domains where VAYURON builds indigenous, mission-critical capability." />
@@ -245,7 +245,7 @@ export default function AboutPage() {
         {/* ═══ S4 — COMPANY PROFILE / VISION + MISSION  (index 3) ═══════ */}
         <StackSection index={3}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/about3.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/about3.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Company Profile" title="About VAYURON" centered />
               <p className="text-white text-lg leading-relaxed text-center max-w-3xl mx-auto mb-12">
@@ -270,7 +270,7 @@ export default function AboutPage() {
         {/* ═══ S6 — BUSINESS VERTICALS  (index 5) ═══════════════════════ */}
         <StackSection index={5}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/About4.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/About4.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Business Verticals" title="Four Divisions. One Mission." subtitle="VAYURON operates through four specialised divisions covering defence, autonomy, industrial, and aerospace domains." />
@@ -295,7 +295,7 @@ export default function AboutPage() {
         {/* ═══ S9 — SERVICES PORTFOLIO  (index 8) — NEW ══════════════════ */}
         <StackSection index={8}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/about3.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/about3.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="absolute inset-0 bg-black/55" />
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Services" title="Services Portfolio" subtitle="End-to-end aerial intelligence and UAV services delivered across defence, industrial, and government sectors." />
@@ -322,7 +322,7 @@ export default function AboutPage() {
         {/* ═══ S10 — ENGINEERING CAPABILITIES  (index 9) — NEW ═══════════ */}
         <StackSection index={9}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/Operational.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/Operational.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="absolute inset-0 bg-black/55" />
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Engineering" title="Engineering Capabilities" subtitle="VAYURON maintains multidisciplinary engineering capabilities covering the complete product lifecycle from concept to deployment." />
@@ -349,7 +349,7 @@ export default function AboutPage() {
         {/* ═══ S11 — WHY VAYURON  (index 10) ════════════════════════════ */}
         <StackSection index={10}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/about2.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/about2.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="relative z-10 w-full max-w-[1250px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Why Vayuron" title="Built for Operational Reality" subtitle="Six pillars that define how we engineer, deploy, and support every platform." />
               <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
@@ -368,7 +368,7 @@ export default function AboutPage() {
         {/* ═══ S12 — R&D FOCUS AREAS  (index 11) ════════════════════════ */}
         <StackSection index={11}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/about3.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/about3.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Research & Development" title="Current R&D Focus Areas" subtitle="Research and development form the foundation of VAYURON's long-term growth strategy." />
               <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mb-10">
@@ -386,7 +386,7 @@ export default function AboutPage() {
         {/* ═══ S13 — INFRASTRUCTURE / FACILITIES  (index 12) ════════════ */}
         <StackSection index={12}>
           <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/Operational.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/Operational.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Infrastructure" title="Facilities & Capabilities" subtitle="VAYURON maintains infrastructure supporting engineering, manufacturing, testing, and deployment activities." />
@@ -405,7 +405,7 @@ export default function AboutPage() {
         {/* ═══ S14 — COMPANY STATS  (index 13) ══════════════════════════ */}
         <StackSection index={13}>
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/TechIndigenous.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/TechIndigenous.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="absolute inset-0 bg-black/55" />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="By the Numbers" title="Company Stats" centered />
@@ -430,7 +430,7 @@ export default function AboutPage() {
         {/* ═══ S15 — CTA  (index 14) ═════════════════════════════════════ */}
         <StackSection index={14} dim={false}>
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/About4.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: "url('/images/About4.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6 py-24 text-center">
               <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">Join Our Mission</h2>
               <p className="text-white text-lg leading-relaxed max-w-3xl mx-auto mb-10">
