@@ -47,7 +47,7 @@ export default function MVTXPage() {
             { title: 'Reduced Decision Cycle' },
             { title: 'Portable Deployment' },
             { title: 'No Fixed Infrastructure Required' },
-            { title: 'Secure Encrypted Transmission' },
+            { title: 'Encrypted Secure Transmission' },  // ← added
           ],
         },
 
@@ -63,7 +63,7 @@ export default function MVTXPage() {
             { title: 'Monitoring Displays' },
             { title: 'Antenna Assembly' },
             { title: 'Portable Power Module' },
-            { title: 'Ruggedized Carry Case' },
+            { title: 'Command Interface Software' },  // ← added
           ],
         },
 
@@ -79,7 +79,7 @@ export default function MVTXPage() {
             { title: 'Command Centers' },
             { title: 'Emergency Response' },
             { title: 'Infrastructure Monitoring' },
-            { title: 'Border Security' },
+            { title: 'Border Patrol Operations' },  // ← added
           ],
         },
       ]}

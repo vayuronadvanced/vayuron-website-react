@@ -43,7 +43,7 @@ export default function SectorsPage() {
                   on breakpoints where all 5 cards can't fit in one row, the
                   last (partial) row centers itself instead of leaving dead
                   grid cells / empty space beside the final card. */}
-              <CardGrid gridClassName="flex flex-wrap justify-center gap-5">
+              <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
                 {SECTORS.map((sector) => (
                   <InfoCard
                     key={sector.id}
@@ -52,7 +52,7 @@ export default function SectorsPage() {
                     title={sector.label}
                     description={sector.description}
                     bullets={sector.bullets}
-                    className="p-5 w-full md:w-[calc(50%-0.625rem)] lg:w-[calc(20%-1rem)]"
+                    className="p-5"
                   />
                 ))}
               </CardGrid>
