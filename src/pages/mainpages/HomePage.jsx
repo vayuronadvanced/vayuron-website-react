@@ -21,7 +21,7 @@ function Hero() {
           <img
             src="/images/hero-poster.jpg"
             alt="Vayuron autonomous drone in flight"
-            fetchpriority="high"
+            //fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
