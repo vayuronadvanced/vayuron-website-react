@@ -1,12 +1,12 @@
 {/*BlogPage.jsx*/ }
 
-import { Helmet } from 'react-helmet-async'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { PageBanner, SectionHeader, CardGrid } from '../../components/ui'
 import { useApi } from '../../hooks'
 import { getBlogCategories, getBlogPosts } from '../../lib/api/blog'
+import Seo from '../../components/seo/Seo'
 
 function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString('en-IN', {
@@ -167,13 +167,11 @@ export default function BlogPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Blog — Vayuron Advanced Systems</title>
-        <meta
-          name="description"
-          content="Insights, updates, and engineering perspectives from Vayuron Advanced Systems."
-        />
-      </Helmet>
+      <Seo
+        description="Insights, updates, and engineering perspectives from Vayuron Advanced Systems."
+        path="/blog"
+        breadcrumbs={[{ label: 'Blog' }]}
+      />
 
       <main>
         <PageBanner
@@ -181,7 +179,7 @@ export default function BlogPage() {
           title="Blog"
           subtitle="Engineering perspectives, product updates, and news from Vayuron Advanced Systems."
           crumbs={[{ label: 'Blog' }]}
-          backgroundVideoMp4="/Drone4.mp4"
+          backgroundVideoMp4="/Drone1.mp4"
           backgroundImage="/FixedWingDRone.png"
         />
 

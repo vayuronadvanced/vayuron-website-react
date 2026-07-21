@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { initGA, trackPageview } from '../lib/googleAnalytics'
+import { initGTM } from '../lib/googleTagManager'
+import { initWebVitals } from '../lib/webVitals'
 
 // ─── Scroll Reveal Hook ────────────────────────────────────────────────────
 // Replaces js/scroll-reveal.js
@@ -178,9 +180,20 @@ export function useGoogleAnalyticsPageviews() {
 
   useEffect(() => {
     initGA()
+    initGTM()
   }, [])
 
   useEffect(() => {
     trackPageview(location.pathname + location.search)
   }, [location])
+}
+
+// ─── Core Web Vitals Monitoring ────────────────────────────────────────────
+// Call once, high in the component tree (App.jsx). Starts collecting
+// LCP/INP/CLS/FCP/TTFB for the current page load and forwards each metric
+// to GA4 (see lib/webVitals.js) as it becomes available.
+export function useWebVitals() {
+  useEffect(() => {
+    initWebVitals()
+  }, [])
 }

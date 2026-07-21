@@ -36,3 +36,23 @@ export async function updateUser(id, payload) {
   const { data } = await apiClient.patch(`/accounts/users/${id}/`, payload)
   return data
 }
+
+export async function requestPasswordReset(email) {
+  const { data } = await apiClient.post('/accounts/password-reset/', { email })
+  return data
+}
+
+export async function confirmPasswordReset(payload) {
+  const { data } = await apiClient.post('/accounts/password-reset/confirm/', payload)
+  return data
+}
+
+export async function confirmEmailVerification(payload) {
+  const { data } = await apiClient.post('/accounts/verify-email/confirm/', payload)
+  return data
+}
+
+export async function resendVerificationEmail(payload) {
+  const { data } = await apiClient.post('/accounts/verify-email/resend/', payload)
+  return data
+}

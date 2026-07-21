@@ -1,17 +1,18 @@
 {/* SectorsPage.jsx - PHASE 2 UPDATE */ }
 
-import { Helmet } from 'react-helmet-async'
 import { PageBanner, CTAButton, InfoCard, CardGrid } from '../../components/ui'
 import { SECTORS } from '../../data/siteData'
 import StackSection from '../../components/sections/StackSection'
+import Seo from '../../components/seo/Seo'
 
 export default function SectorsPage() {
   return (
     <>
-      <Helmet>
-        <title>Sectors — Vayuron Advanced Systems</title>
-        <meta name="description" content="Vayuron deploys autonomous UAV and AI solutions across 5 critical sectors including Defence & Homeland Security, Government & Smart Infrastructure, Energy & Industrial, Agriculture & Environment, and Mining & Surveying." />
-      </Helmet>
+      <Seo
+        description="Vayuron deploys autonomous UAV and AI solutions across 5 critical sectors including Defence & Homeland Security, Government & Smart Infrastructure, Energy & Industrial, Agriculture & Environment, and Mining & Surveying."
+        path="/sectors"
+        breadcrumbs={[{ label: 'Sectors' }]}
+      />
 
       {/* Stacked scroll transitions — same pattern as every other page. */}
       <main>
@@ -38,7 +39,11 @@ export default function SectorsPage() {
             />
 
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-10 sm:py-16 md:py-24">
-              <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+              {/* flex-wrap + justify-center (was a 5-col CSS grid) so that
+                  on breakpoints where all 5 cards can't fit in one row, the
+                  last (partial) row centers itself instead of leaving dead
+                  grid cells / empty space beside the final card. */}
+              <CardGrid gridClassName="flex flex-wrap justify-center gap-5">
                 {SECTORS.map((sector) => (
                   <InfoCard
                     key={sector.id}
@@ -47,7 +52,7 @@ export default function SectorsPage() {
                     title={sector.label}
                     description={sector.description}
                     bullets={sector.bullets}
-                    className="p-5"
+                    className="p-5 w-full md:w-[calc(50%-0.625rem)] lg:w-[calc(20%-1rem)]"
                   />
                 ))}
               </CardGrid>

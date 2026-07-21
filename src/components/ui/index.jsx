@@ -7,7 +7,7 @@ import { useScrollReveal, useStatCounter } from '../../hooks'
 // ─── Breadcrumb ────────────────────────────────────────────────────────────
 export function Breadcrumb({ crumbs = [] }) {
   return (
-    <nav className="flex items-center gap-2 font-mono text-xs text-dim mb-6" aria-label="Breadcrumb">
+    <nav className="flex items-center gap-2 font-mono text-xs text-muted mb-6" aria-label="Breadcrumb">
       <Link to="/" className="hover:text-muted transition-colors">Home</Link>
       {crumbs.map((crumb, i) => (
         <span key={i} className="flex items-center gap-2">
@@ -323,7 +323,7 @@ export function LoadingScreen() {
       <div className="loading-bar">
         <div className="loading-bar-fill" />
       </div>
-      <div className="font-mono text-xs text-dim tracking-widest uppercase">
+      <div className="font-mono text-xs text-muted tracking-widest uppercase">
         Initialising Systems...
       </div>
     </motion.div>

@@ -113,6 +113,7 @@ export default function JobListingPage() {
             },
           }),
         }}
+        breadcrumbs={[{ label: 'Careers', path: '/careers' }, { label: listing.title }]}
       />
 
       <main className="min-h-screen bg-black pt-24 sm:pt-28 md:pt-32 pb-20">

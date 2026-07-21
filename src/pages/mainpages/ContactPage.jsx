@@ -1,6 +1,5 @@
 {/*ContactPage.jsx*/ }
 
-import { Helmet } from 'react-helmet-async'
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { SITE } from '../../data/siteData'
@@ -9,6 +8,7 @@ import { useApi } from '../../hooks'
 import { submitContactEnquiry } from '../../lib/api/contacts'
 import { logBusinessEvent } from '../../lib/api/analytics'
 import { trackEvent } from '../../lib/googleAnalytics'
+import Seo from '../../components/seo/Seo'
 
 const initialForm = {
   name: '',
@@ -200,14 +200,11 @@ export default function ContactPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Contact — Vayuron Advanced Systems</title>
-
-        <meta
-          name="description"
-          content="Contact Vayuron Advanced Systems for product enquiries, partnerships, and defence briefings."
-        />
-      </Helmet>
+      <Seo
+        description="Contact Vayuron Advanced Systems for product enquiries, partnerships, and defence briefings."
+        path="/contact"
+        breadcrumbs={[{ label: 'Contact' }]}
+      />
 
       <main>
 

@@ -10,6 +10,8 @@ const VayuronLogo = () => (
   <img
     src="/favicon.jpeg"
     alt="Vayuron Logo"
+    width={40}
+    height={40}
     className="w-10 h-10 object-contain shrink-0"
   />
 )
@@ -87,6 +89,28 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Skip link — invisible until keyboard-focused (first Tab stop on
+          every page). Lets keyboard/screen-reader users jump straight past
+          the navbar instead of tabbing through every nav item on every
+          single page load. Targets the nearest <main> rather than a
+          specific #id, since every page/template already renders one
+          landmark <main> but doesn't consistently id it — this works
+          uniformly without needing an edit in every page file. */}
+      <a
+        href="#main-content"
+        onClick={(e) => {
+          e.preventDefault()
+          const main = document.querySelector('main')
+          if (!main) return
+          main.setAttribute('tabindex', '-1')
+          main.focus()
+          main.scrollIntoView()
+        }}
+        className="fixed top-2 left-2 z-[100] -translate-y-20 focus:translate-y-0 transition-transform duration-150 bg-black border border-cyan text-cyan font-mono text-xs uppercase tracking-widest px-4 py-2 rounded"
+      >
+        Skip to content
+      </a>
+
       <nav
         ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
@@ -419,13 +443,13 @@ export default function Navbar() {
 
                 <div className="flex items-center justify-center gap-4 mt-5">
                   <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                    <img src="/icons/instagram.png" alt="Instagram" className="w-5 h-5" />
+                    <img src="/icons/instagram.png" alt="Instagram" width={20} height={20} className="w-5 h-5" />
                   </a>
                   <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                    <img src="/icons/linkedin.png" alt="LinkedIn" className="w-5 h-5" />
+                    <img src="/icons/linkedin.png" alt="LinkedIn" width={20} height={20} className="w-5 h-5" />
                   </a>
                   <a href={SITE.x} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                    <img src="/icons/x.png" alt="X" className="w-5 h-5" />
+                    <img src="/icons/x.png" alt="X" width={20} height={20} className="w-5 h-5" />
                   </a>
                 </div>
               </div>

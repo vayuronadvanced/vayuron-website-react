@@ -39,6 +39,19 @@ const EXEMPT_ROUTE_PATTERNS = [
   /^\*$/,
 ]
 
+// Routes with a real, indexable page per item (blog posts, job listings)
+// that generate-seo-files.mjs populates with actual slugs fetched from the
+// API at build time — the sitemap will never contain the literal ":slug"
+// placeholder, so the check below (which compares against literal route
+// paths from App.jsx) would otherwise always flag these two. Kept separate
+// from EXEMPT_ROUTE_PATTERNS above since these routes still need — and do
+// have — their own <Seo> metadata; only the sitemap literal-match check
+// doesn't apply to them.
+const DYNAMIC_SITEMAP_ROUTE_PATTERNS = [
+  /^\/blog\/:slug$/,
+  /^\/careers\/:slug$/,
+]
+
 let errors = 0
 let warnings = 0
 
@@ -109,7 +122,13 @@ if (!existsSync(SITEMAP)) {
     pass(`sitemap.xml is well-formed and lists ${locMatches.length} URLs.`)
   }
 
-  const realPaths = new Set(routes.map((r) => r.path))
+  // Route paths as-authored (e.g. "/blog/:slug") can't be matched with a
+  // plain Set().has() against a real sitemap URL (e.g. "/blog/my-post") —
+  // build a regex per route so a param segment matches any real slug.
+  const routeMatchers = routes.map(({ path: routePath }) => ({
+    routePath,
+    regex: new RegExp('^' + routePath.replace(/:[^/]+/g, '[^/]+').replace(/\*/g, '.*') + '$'),
+  }))
   for (const loc of locMatches) {
     let urlPath
     try {
@@ -118,14 +137,17 @@ if (!existsSync(SITEMAP)) {
       fail(`sitemap.xml has an invalid URL: "${loc}"`)
       continue
     }
-    if (!realPaths.has(urlPath) && urlPath !== '/') {
-      warn(`sitemap.xml lists "${urlPath}" but no matching static route exists in App.jsx — may be stale, or intentionally dynamic (blog/careers).`)
+    const matchesKnownRoute = urlPath === '/' || routeMatchers.some((r) => r.regex.test(urlPath))
+    if (!matchesKnownRoute) {
+      warn(`sitemap.xml lists "${urlPath}" but no matching route exists in App.jsx — may be stale.`)
     }
   }
 
   for (const { path: routePath } of routes) {
     const isExempt = EXEMPT_ROUTE_PATTERNS.some((re) => re.test(routePath))
     if (isExempt) continue
+    const isDynamic = DYNAMIC_SITEMAP_ROUTE_PATTERNS.some((re) => re.test(routePath))
+    if (isDynamic) continue
     const inSitemap = locMatches.some((loc) => {
       try {
         return new URL(loc).pathname === routePath

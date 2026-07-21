@@ -1,11 +1,11 @@
 {/*HomePage.jsx*/ }
 
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { SectionHeader, CTAButton, InfoCard, CardGrid } from '../../components/ui'
-import { PRODUCTS, SECTORS } from '../../data/siteData'
+import { PRODUCTS, SECTORS, SITE } from '../../data/siteData'
 import { useScrollReveal } from '../../hooks'
 import StackSection from '../../components/sections/StackSection'
+import Seo from '../../components/seo/Seo'
 
 // ─── Hero Section ──────────────────────────────────────────────────────────
 function Hero() {
@@ -35,7 +35,7 @@ function Hero() {
             aria-label="Vayuron autonomous drone in flight"
           >
             <source src="/videos/hero.webm" type="video/webm" />
-            <source src="/DroneNew.mp4" type="video/mp4" />   {/*Section 1 Hero video */}
+            <source src="/Drone1.mp4" type="video/mp4" />   {/*Section 1 Hero video */}
           </video>
         )}
       </div>
@@ -161,7 +161,11 @@ function SectorsPreview() {
           subtitle="Delivering autonomous intelligence across five critical industries."
         />
 
-        <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+        {/* flex-wrap + justify-center (was a 5-col CSS grid) so that on
+            breakpoints where all 5 cards can't fit in one row, the last
+            (partial) row centers itself instead of leaving dead grid
+            cells / empty space beside the final card. */}
+        <CardGrid gridClassName="flex flex-wrap justify-center gap-4 mb-8">
           {SECTORS.map((sector) => (
             <InfoCard
               key={sector.id}
@@ -170,7 +174,7 @@ function SectorsPreview() {
               title={sector.label}
               description={sector.description}
               bullets={sector.bullets}
-              className="p-5"
+              className="p-5 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(20%-0.8rem)]"
             />
           ))}
         </CardGrid>
@@ -243,13 +247,19 @@ function MissionCTA() {
 export default function HomePage() {
   return (
     <>
-      <Helmet>
-        <title>Vayuron Advanced Systems — Vayuron Advanced Systems</title>
-        <meta
-          name="description"
-          content="Vayuron Advanced Systems builds autonomous UAVs, AI platforms, and defence-grade software for critical national and industrial operations."
-        />
-      </Helmet>
+      <Seo
+        description="Vayuron Advanced Systems builds autonomous UAVs, AI platforms, and defence-grade software for critical national and industrial operations."
+        path="/"
+        jsonLd={{
+          // Organization/LocalBusiness JSON-LD is already emitted sitewide
+          // by <OrganizationSchema /> in App.jsx — only WebSite belongs here,
+          // it doesn't duplicate that.
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: SITE.name,
+          url: SITE.url,
+        }}
+      />
 
       {/* Stacked scroll transitions: each StackSection pins in place
           (position: sticky) while the next one scrolls up to cover it.

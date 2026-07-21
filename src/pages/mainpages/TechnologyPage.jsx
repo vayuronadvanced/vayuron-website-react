@@ -101,6 +101,7 @@ export default function TechnologyPage() {
         title="Technology"
         description="The indigenous technologies powering Vayuron's autonomous UAV, AI, and defence systems."
         path="/technology"
+        breadcrumbs={[{ label: 'Technology' }]}
       />
 
       <main>
@@ -111,7 +112,7 @@ export default function TechnologyPage() {
             subtitle="Six core technology pillars engineered entirely in India for defence-grade operational requirements."
             crumbs={[{ label: 'Technology' }]}
             // backgroundImage="/technology-bg.png.png"
-            backgroundVideoMp4="/Drone2.mp4"  //video
+            backgroundVideoMp4="/Drone1.mp4"  //video
           />
         </StackSection>
 

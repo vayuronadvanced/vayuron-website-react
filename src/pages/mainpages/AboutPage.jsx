@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async'
 import { PageBanner, SectionHeader, StatCard, CTAButton, CardGrid } from '../../components/ui'
 import StackSection from '../../components/sections/StackSection'
+import Seo from '../../components/seo/Seo'
 
 // ─── Mission Areas ────────────────────────────────────────────────────────
 const missionAreas = [
@@ -171,13 +171,12 @@ const domainCard = "group relative rounded-lg border border-[rgba(0,212,255,0.12
 export default function AboutPage() {
   return (
     <>
-      <Helmet>
-        <title>About — Vayuron Advanced Systems</title>
-        <meta
-          name="description"
-          content="VAYURON Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
-        />
-      </Helmet>
+      <Seo
+        title="About"
+        description="VAYURON Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
+        path="/about"
+        breadcrumbs={[{ label: 'About' }]}
+      />
 
       <main>
 
@@ -189,7 +188,7 @@ export default function AboutPage() {
             subtitle="Vayuron Advanced Systems Pvt. Ltd. is an advanced autonomous systems company focused on the development, integration, and deployment of mission-critical technologies for defence, industrial, infrastructure, utility, and government sectors."
             crumbs={[{ label: 'About' }]}
             backgroundImage="/FixedWingDRone.png"
-            backgroundVideoMp4="/Drone3.mp4"
+            backgroundVideoMp4="/Drone1.mp4"
           />
         </StackSection>
 

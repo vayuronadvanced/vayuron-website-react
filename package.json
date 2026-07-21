@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-seo-files.mjs",
     "build": "vite build",
+    "postbuild": "node scripts/prerender.mjs",
+    "seo:check": "node scripts/check-seo-drift.mjs",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
@@ -19,7 +22,8 @@
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.4",
     "react-icons": "^5.6.0",
-    "react-router-dom": "^6.24.0"
+    "react-router-dom": "^6.24.0",
+    "web-vitals": "^5.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -31,7 +35,12 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.38",
+    "puppeteer": "^25.3.0",
+    "serve-handler": "^6.1.5",
+    "sharp": "^0.34.0",
+    "svgo": "^4.0.2",
     "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vite-plugin-image-optimizer": "^2.0.3"
   }
 }

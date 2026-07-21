@@ -1,6 +1,5 @@
 {/*BlogPostPage.jsx*/ }
 
-import { Helmet } from 'react-helmet-async'
 import { Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
@@ -8,6 +7,7 @@ import { Breadcrumb } from '../../components/ui'
 import { useApi } from '../../hooks'
 import { getBlogPost } from '../../lib/api/blog'
 import { logBusinessEvent } from '../../lib/api/analytics'
+import Seo from '../../components/seo/Seo'
 
 export default function BlogPostPage() {
   const { slug } = useParams()
@@ -50,10 +50,22 @@ export default function BlogPostPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{post.title} — Vayuron Advanced Systems</title>
-        {post.excerpt && <meta name="description" content={post.excerpt} />}
-      </Helmet>
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        path={`/blog/${slug}`}
+        image={post.cover_image}
+        type="article"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          ...(post.excerpt && { description: post.excerpt }),
+          ...(post.published_at && { datePublished: post.published_at }),
+          ...(post.cover_image && { image: post.cover_image }),
+        }}
+        breadcrumbs={[{ label: 'Blog', path: '/blog' }, { label: post.title }]}
+      />
 
       <main>
         <article className="relative pt-24 sm:pt-28 md:pt-32 pb-20 bg-black">
@@ -93,7 +105,11 @@ export default function BlogPostPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="mb-10 rounded-sm overflow-hidden border border-[rgba(0,212,255,0.15)] shadow-[0_0_40px_rgba(0,212,255,0.08)]"
               >
-                <img src={post.cover_image} alt={post.title} className="w-full h-auto" />
+                <img
+                  src={post.cover_image}
+                  alt={post.title}
+                  className="w-full aspect-[16/9] object-cover"
+                />
               </motion.div>
             )}
 

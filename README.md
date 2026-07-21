@@ -44,7 +44,7 @@ npm run preview
 ```
 vayuron-react/
 ├── public/
-│   └── favicon.svg
+│   └── favicon.jpeg
 ├── src/
 │   ├── components/
 │   │   ├── layout/
