@@ -1,6 +1,6 @@
 {/*ResetPasswordPage.jsx*/ }
 
-import { Helmet } from 'react-helmet-async'
+import Seo from '../../components/seo/Seo'
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { confirmPasswordReset } from '../../lib/api/accounts'
@@ -45,9 +45,7 @@ export default function ResetPasswordPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Reset Password — Vayuron Advanced Systems</title>
-      </Helmet>
+      <Seo title="Reset Password" description="Set a new password for your Vayuron Advanced Systems account." path="/reset-password" noindex />
 
       <main className="min-h-screen flex items-center justify-center bg-black px-6">
         <div className="w-full max-w-md border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-8 rounded-sm">

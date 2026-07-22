@@ -1,6 +1,6 @@
 {/*ForgotPasswordPage.jsx*/ }
 
-import { Helmet } from 'react-helmet-async'
+import Seo from '../../components/seo/Seo'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { requestPasswordReset } from '../../lib/api/accounts'
@@ -30,9 +30,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Forgot Password — Vayuron Advanced Systems</title>
-      </Helmet>
+      <Seo title="Forgot Password" description="Reset your Vayuron Advanced Systems account password." path="/forgot-password" noindex />
 
       <main className="min-h-screen flex items-center justify-center bg-black px-6">
         <div className="w-full max-w-md border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-8 rounded-sm">

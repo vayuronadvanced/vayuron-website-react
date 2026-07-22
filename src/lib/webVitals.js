@@ -14,7 +14,6 @@ import { trackEvent } from './googleAnalytics'
 
 function reportMetric(metric) {
   if (import.meta.env.DEV) {
-    // eslint-disable-next-line no-console
     console.log(`[web-vitals] ${metric.name}:`, Math.round(metric.value), metric.rating)
   }
 

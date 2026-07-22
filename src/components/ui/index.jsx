@@ -81,7 +81,7 @@ export function PageBanner({
               src={backgroundImage}
               alt=""
               aria-hidden="true"
-              fetchpriority="high"
+              fetchPriority="high"
               width={1920}
               height={1080}
               className="absolute inset-0 h-full w-full object-cover"
@@ -120,14 +120,14 @@ export function PageBanner({
 }
 
 // ─── Section Header ────────────────────────────────────────────────────────
-export function SectionHeader({ eyebrow, title, subtitle, centered = false, className = '' }) {
+export function SectionHeader({ eyebrow, title, subtitle, centered = false, className = '', as: Tag = 'h2' }) {
   const ref = useScrollReveal()
   return (
     <div ref={ref} className={`reveal ${centered ? 'text-center' : ''} ${className || 'mb-8'}`}>
       {eyebrow && (
         <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">{eyebrow}</p>
       )}
-      <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-3">{title}</h2>
+      <Tag className="font-display text-3xl md:text-4xl font-bold text-white mb-3">{title}</Tag>
       {subtitle && (
         <p className="text-muted text-base md:text-lg max-w-2xl leading-relaxed mb-2">
           {subtitle}

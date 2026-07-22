@@ -47,7 +47,7 @@ export default function PinnedHero({ image, title, eyebrow }) {
         data-hero-img
         src={image}
         alt={title}
-        fetchpriority="high"
+        fetchPriority="high"
         width={1920}
         height={1080}
         className="absolute inset-0 h-full w-full object-cover will-change-transform"

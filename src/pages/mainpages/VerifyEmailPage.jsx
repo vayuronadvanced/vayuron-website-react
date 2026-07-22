@@ -1,6 +1,6 @@
 {/*VerifyEmailPage.jsx*/ }
 
-import { Helmet } from 'react-helmet-async'
+import Seo from '../../components/seo/Seo'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { confirmEmailVerification, resendVerificationEmail } from '../../lib/api/accounts'
@@ -33,9 +33,7 @@ export default function VerifyEmailPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Verify Email — Vayuron Advanced Systems</title>
-      </Helmet>
+      <Seo title="Verify Email" description="Verify your Vayuron Advanced Systems account email address." path="/verify-email" noindex />
 
       <main className="min-h-screen flex items-center justify-center bg-black px-6">
         <div className="w-full max-w-md border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-8 rounded-sm text-center">

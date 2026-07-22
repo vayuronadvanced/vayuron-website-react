@@ -1,15 +1,13 @@
 {/*NotFoundPage.jsx*/}
 
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import Seo from '../../components/seo/Seo'
 import { motion } from 'framer-motion'
 
 export default function NotFoundPage() {
   return (
     <>
-      <Helmet>
-        <title>404 — Page Not Found — Vayuron Advanced Systems</title>
-      </Helmet>
+      <Seo title="404 — Page Not Found" description="The page you're looking for doesn't exist. Return to Vayuron Advanced Systems' homepage." path="/404" noindex />
       <main className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
         {/* Grid */}
         <div className="absolute inset-0 grid-overlay opacity-40" />
@@ -33,12 +31,24 @@ export default function NotFoundPage() {
               The page you are looking for does not exist or has been moved.
               Return to base and reacquire your target.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
               <Link
                 to="/"
                 className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-6 py-3 font-mono text-xs tracking-widest uppercase"
               >
                 Return to Home
+              </Link>
+              <Link
+                to="/products"
+                className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-6 py-3 font-mono text-xs tracking-widest uppercase"
+              >
+                View Products
+              </Link>
+              <Link
+                to="/sectors"
+                className="border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all px-6 py-3 font-mono text-xs tracking-widest uppercase"
+              >
+                Explore Sectors
               </Link>
               <Link
                 to="/contact"

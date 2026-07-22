@@ -240,6 +240,7 @@ export default function ContactPage() {
 
             <div className="contact-title">
               <SectionHeader
+                as="h1"
                 title="Get in Touch"
                 className="mb-6"
               />

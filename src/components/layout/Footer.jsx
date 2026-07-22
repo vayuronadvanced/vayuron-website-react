@@ -142,8 +142,69 @@ export default function Footer() {
 
           </div>
 
-          {/* Newsletter */}
-          <div className="lg:justify-self-end w-full max-w-sm">
+          {/* Site Navigation — was previously missing entirely: FOOTER_LINKS
+              (products/sectors/company) was already defined in siteData.js
+              but never rendered anywhere, so every important page only had
+              inbound links from the navbar dropdowns and homepage grids.
+              Since the footer renders on every single page, this is the
+              single highest-leverage place to add internal links. */}
+          <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-8 lg:justify-self-end lg:max-w-lg">
+
+            <div>
+              <h4 className="font-display text-sm uppercase tracking-[0.12em] text-cyan mb-3">
+                Products
+              </h4>
+              <ul className="space-y-2">
+                {FOOTER_LINKS.products.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-sm text-white/100 hover:text-cyan transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-display text-sm uppercase tracking-[0.12em] text-cyan mb-3">
+                Sectors
+              </h4>
+              <ul className="space-y-2">
+                {FOOTER_LINKS.sectors.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-sm text-white/100 hover:text-cyan transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link to="/sectors" className="text-sm text-white/100 hover:text-cyan transition-colors">
+                    All Sectors
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-display text-sm uppercase tracking-[0.12em] text-cyan mb-3">
+                Company
+              </h4>
+              <ul className="space-y-2">
+                {FOOTER_LINKS.company.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-sm text-white/100 hover:text-cyan transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Newsletter */}
+        <div className="w-full max-w-sm py-2">
 
             <h4 className="font-display text-lg uppercase tracking-[0.12em] text-cyan mb-2">
               Stay Updated
@@ -182,7 +243,6 @@ export default function Footer() {
               </form>
             )}
 
-          </div>
         </div>
 
         {/* Bottom Bar */}

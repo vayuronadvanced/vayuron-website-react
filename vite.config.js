@@ -29,48 +29,22 @@ export default defineConfig({
       '@': '/src',
     },
   },
-  build: {
-    rollupOptions: {
-      output: {
-        // Vendor code changes far less often than app code (new deploy =
-        // new app chunk hash, but React/GSAP/etc. stay the same until a
-        // dependency bump) — splitting them out means returning visitors
-        // re-download only the small app chunk on a new release instead of
-        // the whole ~525 kB entry bundle every time. Grouped by how
-        // together and how volatile-vs-stable they are, not one-per-package
-        // (that would trade one big request for dozens of tiny ones).
-        manualChunks(id) {
-          if (!id.includes('node_modules')) return
-
-          // Core runtime — present on every route regardless.
-          if (
-            id.includes('node_modules/react/') ||
-            id.includes('node_modules/react-dom/') ||
-            id.includes('node_modules/react-router-dom/') ||
-            id.includes('node_modules/react-router/') ||
-            id.includes('node_modules/scheduler/')
-          ) {
-            return 'vendor-react'
-          }
-
-          // Animation stack — large, and shared by most (not all) pages via
-          // StackSection/scroll-reveal, so it's worth its own cacheable
-          // chunk rather than being duplicated across page chunks.
-          if (
-            id.includes('node_modules/framer-motion/') ||
-            id.includes('node_modules/gsap/') ||
-            id.includes('node_modules/@gsap/') ||
-            id.includes('node_modules/lenis/')
-          ) {
-            return 'vendor-animation'
-          }
-
-          // Everything else third-party (axios, react-helmet-async,
-          // react-icons, web-vitals, ...) — smaller libraries that don't
-          // warrant their own chunk each.
-          return 'vendor-misc'
-        },
-      },
-    },
-  },
+  // NOTE: a manual vendor-chunk split (react/router/framer-motion/gsap/lenis
+  // grouped apart from app code) was tried here for long-term browser
+  // caching, but it broke the production bundle at *runtime*: Chrome threw
+  // `Cannot access 'X' before initialization` the instant the app tried to
+  // mount, on every single route, with the page staying permanently blank
+  // (confirmed by prerendering directly with Puppeteer — a plain
+  // `vite build` never catches this, since building doesn't execute the
+  // bundle). This is a live-binding initialization-order bug: something in
+  // this dependency graph has a circular import, and Rollup can only
+  // guarantee correct init order for a circular cycle when every module in
+  // it stays in the same chunk. Tracing the exact pair of modules involved
+  // wasn't worth the risk of leaving a subtler variant of the same crash in
+  // production — Vite's default chunking (this file's current, unconfigured
+  // state) reliably produces a working bundle, confirmed by prerendering
+  // every route successfully. If chunk-splitting is revisited, verify with
+  // `npm run build && npm run postbuild` (which actually loads and renders
+  // every route) — a successful `vite build` alone does NOT prove the
+  // output runs correctly.
 })

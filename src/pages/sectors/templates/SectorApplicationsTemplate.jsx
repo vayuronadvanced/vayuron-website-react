@@ -130,9 +130,9 @@ export default function SectorApplicationsTemplate({
                     <p className="font-mono text-xs tracking-[0.28em] uppercase text-cyan mb-4">
                       Vayuron Solution
                     </p>
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-5 leading-tight">
+                    <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-5 leading-tight">
                       How We Help
-                    </h3>
+                    </h2>
                     <p className="text-white/100 text-base md:text-lg leading-relaxed">
                       {solution}
                     </p>

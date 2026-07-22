@@ -155,6 +155,7 @@ export default function CareersPage() {
 
             <div className="career-title">
               <SectionHeader
+                as="h1"
                 title="We're Hiring"
                 centered
                 className="mb-6"

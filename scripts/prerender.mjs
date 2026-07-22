@@ -92,12 +92,51 @@ async function main() {
     for (const route of ROUTES) {
       const page = await browser.newPage()
       const url = `http://localhost:${PORT}${route}`
+
+      // Surface uncaught runtime errors instead of letting them manifest
+      // only as an opaque "waiting for selector" timeout below. This is
+      // what actually caught the root cause of a real regression once
+      // (a manualChunks vendor-splitting config that broke the production
+      // bundle's module init order — every route rendered a blank page
+      // with "Cannot access 'X' before initialization" — `vite build`
+      // itself doesn't execute the bundle, so it never caught it; only
+      // actually loading the page here did). Keeping these listeners
+      // means the next time something breaks the bundle, this script's
+      // output says why instead of just "0/17 routes prerendered".
+      const pageErrors = []
+      page.on('pageerror', (err) => pageErrors.push(err.message))
+
       try {
         await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 })
-        // App shows a branded 1.6s loading screen before mounting real
-        // content (useLoadingScreen in hooks/index.js) — wait past it, then
-        // for the Navbar (present on every non-loading route) as a mount signal.
-        await page.waitForSelector('nav', { timeout: 15000 })
+
+        // App shows a branded ~1.6s loading screen (useLoadingScreen in
+        // hooks/index.js) before mounting real content. Rather than
+        // assuming any specific element (like `nav`) will exist once
+        // mounted — a assumption that breaks the moment that particular
+        // component is restructured, even on a page that mounted
+        // correctly — wait for the actual app-ready condition: the
+        // loading screen (`.loading-screen`, from the LoadingScreen
+        // component) is gone AND #root has real content in it. This is
+        // the true signal every route shares, independent of what any
+        // individual page happens to render.
+        await page.waitForFunction(
+          () => {
+            const root = document.getElementById('root')
+            const stillLoading = document.querySelector('.loading-screen')
+            return !!root && root.children.length > 0 && !stillLoading
+          },
+          { timeout: 20000 },
+        )
+
+        if (pageErrors.length > 0) {
+          // The app can technically finish mounting (loading screen gone,
+          // #root populated) while an unrelated uncaught error still fired
+          // earlier in the page's life — surface it as a warning rather
+          // than silently discarding it, since it's still worth knowing
+          // about even if it didn't block this particular capture.
+          console.warn(`[prerender] ${route} mounted but logged ${pageErrors.length} page error(s): ${pageErrors.join(' | ')}`)
+        }
+
         // Small settle buffer for Helmet's effect-based tag writes and any
         // late layout-affecting animation class toggles.
         await new Promise((r) => setTimeout(r, 300))
@@ -105,7 +144,8 @@ async function main() {
         results.push({ route, html })
         console.log(`[prerender] captured ${route}`)
       } catch (err) {
-        console.warn(`[prerender] FAILED to capture ${route}: ${err.message} — leaving original SPA index.html for this route`)
+        const errorDetail = pageErrors.length > 0 ? ` — page threw: ${pageErrors.join(' | ')}` : ''
+        console.warn(`[prerender] FAILED to capture ${route}: ${err.message}${errorDetail} — leaving original SPA index.html for this route`)
       } finally {
         await page.close()
       }
@@ -125,6 +165,11 @@ async function main() {
   }
 
   console.log(`[prerender] done — ${results.length}/${ROUTES.length} routes prerendered into dist/`)
+
+  if (results.length < ROUTES.length) {
+    console.error(`[prerender] ${ROUTES.length - results.length} route(s) failed to prerender — see warnings above for the cause.`)
+    process.exitCode = 1
+  }
 }
 
 main()

@@ -45,6 +45,22 @@ export default function Seo({
   const ogImage = image ? (image.startsWith('http') ? image : `${SITE.url}${image}`) : undefined
   const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
 
+  // Pages that pass their own jsonLd (Product, Service, BlogPosting, ...)
+  // already have a specific, more useful schema type — this generic
+  // WebPage fallback only fires when nothing else was provided, so plain
+  // content pages (About, Technology, Contact, Careers, the /products and
+  // /sectors index pages) still get baseline WebPage structured data
+  // instead of none at all.
+  if (jsonLdList.length === 0 && title && !noindex) {
+    jsonLdList.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: fullTitle,
+      ...(description && { description }),
+      url: canonicalUrl,
+    })
+  }
+
   if (breadcrumbs && breadcrumbs.length > 0) {
     jsonLdList.push({
       '@context': 'https://schema.org',
