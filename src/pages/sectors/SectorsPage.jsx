@@ -9,6 +9,7 @@ export default function SectorsPage() {
   return (
     <>
       <Seo
+        title="Sectors We Serve — Defence, Energy, Agriculture & Mining"
         description="Vayuron deploys autonomous UAV and AI solutions across 5 critical sectors: Defence, Government, Energy & Industrial, Agriculture, and Mining."
         path="/sectors"
         breadcrumbs={[{ label: 'Sectors' }]}

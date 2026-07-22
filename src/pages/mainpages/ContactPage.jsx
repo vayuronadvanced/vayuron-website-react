@@ -201,6 +201,7 @@ export default function ContactPage() {
   return (
     <>
       <Seo
+        title="Contact Us — Product Enquiries & Defence Briefings"
         description="Contact Vayuron Advanced Systems for product enquiries, partnerships, and defence briefings."
         path="/contact"
         breadcrumbs={[{ label: 'Contact' }]}

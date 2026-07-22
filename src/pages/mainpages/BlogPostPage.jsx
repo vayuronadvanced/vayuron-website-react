@@ -13,6 +13,17 @@ export default function BlogPostPage() {
   const { slug } = useParams()
   const { data: post, loading, error, run: fetchPost } = useApi(getBlogPost)
 
+  // Fallback for the (real) data case where a post has no excerpt set —
+  // description={post.excerpt} alone would render zero <meta
+  // name="description"> for that post, which is exactly the class of bug
+  // an SEO scan flags as "missing meta description". Strips any HTML from
+  // `content` (rendered as rich text) and truncates to a safe length.
+  const metaDescription =
+    post?.excerpt ||
+    (post?.content
+      ? post.content.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155)
+      : undefined)
+
   useEffect(() => {
     fetchPost(slug)
   }, [fetchPost, slug])
@@ -52,7 +63,7 @@ export default function BlogPostPage() {
     <>
       <Seo
         title={post.title}
-        description={post.excerpt}
+        description={metaDescription}
         path={`/blog/${slug}`}
         image={post.cover_image}
         type="article"

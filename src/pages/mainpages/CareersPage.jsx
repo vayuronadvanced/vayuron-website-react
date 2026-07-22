@@ -118,6 +118,7 @@ export default function CareersPage() {
   return (
     <>
       <Seo
+        title="Careers — Join Our UAV & AI Engineering Team"
         description="Join Vayuron Advanced Systems — careers in autonomous UAV engineering, AI, and defence-grade systems in Bhopal, India."
         path="/careers"
         breadcrumbs={[{ label: 'Careers' }]}

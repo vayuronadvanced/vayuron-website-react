@@ -29,6 +29,20 @@ export function Breadcrumb({ crumbs = [] }) {
 // in <StackSection index={0}> from the calling page, same as any other
 // section. Keeping this component pin-free avoids double-pinning when
 // it's nested inside StackSection's own sticky wrapper.
+// Infers the correct <source type="..."> from the file's actual extension
+// rather than trusting which prop (backgroundVideoMp4 vs backgroundVideoWebm)
+// it was passed into — every current call site in this codebase passes a
+// .webm file into backgroundVideoMp4 (naming mismatch, not a format choice),
+// and a hardcoded type="video/mp4" on an actual .webm file is a real MIME
+// mismatch: browsers use the `type` attribute to decide whether to even
+// fetch a <source> at all, so this could cause the browser to skip or
+// reject a source that would otherwise have played fine.
+function videoMimeType(src) {
+  if (!src) return undefined
+  const ext = src.split('.').pop().toLowerCase()
+  return { webm: 'video/webm', mp4: 'video/mp4', mov: 'video/quicktime' }[ext] || undefined
+}
+
 export function PageBanner({
   eyebrow,
   title,
@@ -73,8 +87,8 @@ export function PageBanner({
               poster={backgroundImage}
               aria-hidden="true"
             >
-              {backgroundVideoWebm && <source src={backgroundVideoWebm} type="video/webm" />}
-              {backgroundVideoMp4 && <source src={backgroundVideoMp4} type="video/mp4" />}
+              {backgroundVideoWebm && <source src={backgroundVideoWebm} type={videoMimeType(backgroundVideoWebm)} />}
+              {backgroundVideoMp4 && <source src={backgroundVideoMp4} type={videoMimeType(backgroundVideoMp4)} />}
             </video>
           ) : (
             <img

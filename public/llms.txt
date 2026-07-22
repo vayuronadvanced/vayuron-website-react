@@ -1,0 +1,33 @@
+# Vayuron Advanced Systems
+
+> Autonomous UAV systems, AI platforms, and advanced defence/aerospace
+> engineering for national security, government infrastructure, energy,
+> agriculture, and industrial sectors.
+
+Vayuron Advanced Systems designs and manufactures unmanned aerial vehicles,
+edge-deployed artificial intelligence for real-time operational intelligence,
+and precision engineering/systems integration services, serving defence,
+government, energy, agriculture, and mining/surveying customers.
+
+## Products
+
+- [UAV Systems](https://vayuronadvancedsystems.com/products/uav-systems): Autonomous fixed-wing, rotary, and hybrid VTOL drones built on indigenous technology.
+- [MVTX](https://vayuronadvancedsystems.com/products/mvtx): Multi-view video transmission system for real-time, secure multi-feed UAV video access.
+- [Artificial Intelligence](https://vayuronadvancedsystems.com/products/artificial-intelligence): Edge-deployed AI for real-time object detection, sensor fusion, and autonomous decision-making.
+- [Advanced Engineering](https://vayuronadvancedsystems.com/products/advanced-engineering): Precision fabrication, structural design, and indigenous avionics development.
+
+## Sectors
+
+- [Defence & Homeland Security](https://vayuronadvancedsystems.com/sectors/defence-homeland-security)
+- [Government & Smart Infrastructure](https://vayuronadvancedsystems.com/sectors/government-smart-infrastructure)
+- [Energy, Industrial & Critical Infrastructure](https://vayuronadvancedsystems.com/sectors/energy-industrial-critical-infrastructure)
+- [Agriculture & Environmental Intelligence](https://vayuronadvancedsystems.com/sectors/agriculture-environmental-intelligence)
+- [Mining, Surveying & Research](https://vayuronadvancedsystems.com/sectors/mining-surveying-research)
+
+## Company
+
+- [About](https://vayuronadvancedsystems.com/about): Company background and leadership.
+- [Technology](https://vayuronadvancedsystems.com/technology): Core technology platform overview.
+- [Careers](https://vayuronadvancedsystems.com/careers): Open positions.
+- [Blog](https://vayuronadvancedsystems.com/blog): Company and industry updates.
+- [Contact](https://vayuronadvancedsystems.com/contact): info@vayuronadvancedsystems.com

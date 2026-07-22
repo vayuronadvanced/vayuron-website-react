@@ -25,28 +25,21 @@ export default function NewsletterUnsubscribePage() {
 
       <main className="min-h-screen flex items-center justify-center bg-black px-6">
         <div className="w-full max-w-md border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-8 rounded-sm text-center">
-          {loading && <p className="text-sm text-[var(--muted)]">Processing…</p>}
+          <h1 className="font-display text-2xl font-bold text-white mb-2">
+            Newsletter Unsubscribe
+          </h1>
+
+          {loading && <p className="text-sm text-[var(--muted)]">Processing your request…</p>}
 
           {!loading && !error && (
-            <>
-              <h1 className="font-display text-2xl font-bold text-white mb-2">
-                You&apos;ve been unsubscribed
-              </h1>
-              <p className="text-sm text-[var(--muted)]">
-                You won&apos;t receive further newsletter emails from us. You
-                can resubscribe any time from the site footer.
-              </p>
-            </>
+            <p className="text-sm text-[var(--muted)]">
+              You&apos;ve been unsubscribed and won&apos;t receive further
+              newsletter emails from us. You can resubscribe any time from
+              the site footer.
+            </p>
           )}
 
-          {error && (
-            <>
-              <h1 className="font-display text-2xl font-bold text-white mb-2">
-                Something went wrong
-              </h1>
-              <p className="text-sm text-red-400">{error}</p>
-            </>
-          )}
+          {error && <p className="text-sm text-red-400">{error}</p>}
 
           <Link
             to="/"

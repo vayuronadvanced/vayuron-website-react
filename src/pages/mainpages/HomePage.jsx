@@ -19,11 +19,11 @@ function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         {prefersReducedMotion ? (
           <img
-            src="/images/hero-poster.jpg"
+            src="/images/ProductPageDroneBigImg.webp"
             alt="Vayuron autonomous drone in flight"
             width={1920}
             height={1080}
-            //fetchpriority="high"
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
@@ -34,11 +34,18 @@ function Hero() {
             loop
             playsInline
             preload="auto"
-            poster="/images/hero-poster.jpg"
+            poster="/images/ProductPageDroneBigImg.webp"
             aria-label="Vayuron autonomous drone in flight"
           >
-            <source src="/videos/hero.webm" type="video/webm" />
-            <source src="/videos/DroneNew.webm" type="video/mp4" />
+            {/* Only one real encoded file exists for this hero (webm) — the
+                previous second <source> pointed at this same real file but
+                mislabeled it type="video/mp4", which is a genuine MIME
+                mismatch (browsers use `type` to decide whether to even
+                fetch a source, so a real .webm file declared as video/mp4
+                can be silently rejected). A prior first <source> pointed at
+                "/videos/hero.webm", which doesn't exist on disk at all —
+                removed rather than left as a dead request. */}
+            <source src="/videos/DroneNew.webm" type="video/webm" />
           </video>
         )}
       </div>

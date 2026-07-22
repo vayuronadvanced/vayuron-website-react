@@ -47,7 +47,7 @@ loadDotEnv(path.join(FRONTEND_DIR, '.env'))
 // transform available) and the source has no non-JS syntax, so a light
 // require-free duplication keeps this dependency-free. If SITE/PRODUCTS/
 // SECTORS change shape, update both this list and data/siteData.js together.
-const SITE_URL = 'https://www.vayuronadvancedsystems.com' // ⚠ update to your real production domain
+const SITE_URL = 'https://vayuronadvancedsystems.com' // must match SITE.url in src/data/siteData.js — mismatched domains break canonical/sitemap consistency
 
 // Internal API base for this build-time fetch specifically — deliberately
 // separate from VITE_API_BASE_URL (that one's baked into the browser
