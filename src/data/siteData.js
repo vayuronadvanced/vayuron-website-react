@@ -22,6 +22,17 @@ export const SITE = {
   },
 }
 
+// Gmail's web compose URL (opens gmail.com directly with the "to" field
+// pre-filled), used in place of a plain `mailto:` link wherever the site
+// links to SITE.email — `mailto:` hands off to whatever mail app is
+// registered on the visitor's device (which may not be Gmail, or may not
+// be configured at all), whereas this always opens Gmail specifically.
+// `fs=1` forces the full compose window; `tf=1` requests it in a new tab
+// rather than navigating gmail.com's own UI away from itself.
+export function gmailComposeUrl(to = SITE.email) {
+  return `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${encodeURIComponent(to)}`
+}
+
 export const NAV_LINKS = [
   { label: 'Products', path: '/products', hasDropdown: true },
   { label: 'Sectors', path: '/sectors', hasDropdown: true },

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { SITE } from '../../data/siteData'
+import { SITE, gmailComposeUrl } from '../../data/siteData'
 import { Breadcrumb, SectionHeader } from '../../components/ui'
 import { useApi } from '../../hooks'
 import { submitContactEnquiry } from '../../lib/api/contacts'
@@ -304,7 +304,9 @@ export default function ContactPage() {
                   </a>
 
                   <a
-                    href={`mailto:${SITE.email}`}
+                    href={gmailComposeUrl(SITE.email)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-3 text-white/100 hover:text-cyan transition-colors font-mono text-base"
                   >
                     <span>✉</span>

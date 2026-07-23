@@ -20,7 +20,7 @@ function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         {prefersReducedMotion ? (
           <img
-            src="/images/drone-bg.webp"
+            //  src="/images/drone-bg.webp"
             alt="Vayuron autonomous drone in flight"
             width={1920}
             height={1080}
@@ -35,7 +35,7 @@ function Hero() {
             loop
             playsInline
             preload="auto"
-            poster="/images/drone-bg.webp"
+            //  poster="/images/drone-bg.webp"
             aria-label="Vayuron autonomous drone in flight"
           >
             <source src="/videos/DroneNew.webm" type="video/webm" />

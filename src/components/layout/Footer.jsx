@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { SITE, FOOTER_LINKS } from '../../data/siteData'
+import { SITE, FOOTER_LINKS, gmailComposeUrl } from '../../data/siteData'
 import { useApi } from '../../hooks'
 import { subscribeToNewsletter } from '../../lib/api/newsletter'
 import { logBusinessEvent } from '../../lib/api/analytics'
@@ -132,7 +132,9 @@ export default function Footer() {
               </a>
 
               <a
-                href={`mailto:${SITE.email}`}
+                href={gmailComposeUrl(SITE.email)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-sm text-white hover:text-cyan transition-colors"
               >
                 {SITE.email}
