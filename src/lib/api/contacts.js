@@ -44,3 +44,7 @@ export async function publishQuestion(id) {
   const { data } = await apiClient.post(`/contacts/questions/${id}/publish/`)
   return data
 }
+
+export async function deleteQuestion(id) {
+  await apiClient.delete(`/contacts/questions/${id}/`)
+}

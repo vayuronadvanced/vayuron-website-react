@@ -187,6 +187,8 @@ export default function BlogPage() {
         />
 
         <section className="relative py-16 sm:py-20 md:py-24 bg-black">
+          <div className="absolute inset-0" style={{ backgroundImage: "url('/images/VayuronImage.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+          <div className="absolute inset-0 bg-black/55" />
           <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6">
             <SectionHeader eyebrow="Latest" title="All Articles" className="mb-8" />
 

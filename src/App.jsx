@@ -49,6 +49,8 @@ const DashboardQuotationsPage = lazy(() => import('./pages/dashboard/DashboardQu
 const DashboardCareersPage = lazy(() => import('./pages/dashboard/DashboardCareersPage'))
 const DashboardBlogPage = lazy(() => import('./pages/dashboard/DashboardBlogPage'))
 const DashboardBlogEditorPage = lazy(() => import('./pages/dashboard/DashboardBlogEditorPage'))
+const DashboardQuestionsPage = lazy(() => import('./pages/dashboard/DashboardQuestionsPage'))
+const DashboardQuestionEditorPage = lazy(() => import('./pages/dashboard/DashboardQuestionEditorPage'))
 const DashboardNewsletterPage = lazy(() => import('./pages/dashboard/DashboardNewsletterPage'))
 const DashboardUsersPage = lazy(() => import('./pages/dashboard/DashboardUsersPage'))
 
@@ -232,6 +234,22 @@ export default function App() {
                 element={
                   <ProtectedRoute roles={['admin', 'employee']}>
                     <DashboardBlogEditorPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/questions"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardQuestionsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard/questions/:id/edit"
+                element={
+                  <ProtectedRoute roles={['admin', 'employee']}>
+                    <DashboardQuestionEditorPage />
                   </ProtectedRoute>
                 }
               />

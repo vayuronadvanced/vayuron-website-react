@@ -104,9 +104,6 @@ export function PageBanner({
         </div>
       )}
 
-      {/* DARK OVERLAY FOR READABILITY : <div className="absolute inset-0 bg-black/60" />*/}
-
-
       {/* Cyan glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 

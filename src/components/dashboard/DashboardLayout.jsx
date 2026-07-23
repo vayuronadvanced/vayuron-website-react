@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { label: 'Quotations', path: '/dashboard/quotations' },
   { label: 'Careers', path: '/dashboard/careers' },
   { label: 'Blog', path: '/dashboard/blog' },
+  { label: 'Community Q&A', path: '/dashboard/questions' },
   { label: 'Newsletter', path: '/dashboard/newsletter' },
   { label: 'Users', path: '/dashboard/users', adminOnly: true },
 ]
