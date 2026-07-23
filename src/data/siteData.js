@@ -13,6 +13,13 @@ export const SITE = {
   linkedin: 'https://www.linkedin.com/company/vaayu-robotics/',   // update with real URL
   x: 'https://x.com/VayuronUAV',
   url: 'https://vayuronadvancedsystems.com',
+  address: {
+    streetAddress: '47, Balaji Nagar, Ayodhya Bypass',
+    addressLocality: 'Bhopal',
+    addressRegion: 'Madhya Pradesh',
+    postalCode: '462023',
+    addressCountry: 'IN',
+  },
 }
 
 export const NAV_LINKS = [
@@ -107,15 +114,10 @@ export const FOOTER_LINKS = {
     { label: 'Blog', path: '/blog' },
     { label: 'Contact', path: '/contact' },
   ],
-  // ⚠ SEO FIX: these 4 files do not exist in /public/documents — every one
-  // of them 404'd from the footer of EVERY page on the site (a real,
-  // sitewide broken-link issue an SEO audit will always catch). Emptied
-  // rather than left broken. This is a content gap, not a code bug: real
-  // legal documents (privacy policy, terms of use, cookie policy, security
-  // policy) need to be provided by the company — fabricating legal text
-  // here would be actively wrong to publish. Once you have real PDFs (or
-  // real content pages), drop the files into /public/documents/ and
-  // restore entries here, e.g.:
-  //   { label: 'Privacy Policy', path: '/documents/privacy-policy.pdf' },
-  legal: [],
+  legal: [
+    { label: 'Privacy Policy', path: '/documents/privacy-policy.pdf' },
+    { label: 'Terms of Use', path: '/documents/terms-of-use.pdf' },
+    { label: 'Cookie Policy', path: '/documents/cookie-policy.pdf' },
+    { label: 'Security', path: '/documents/security-policy.pdf' },
+  ],
 }

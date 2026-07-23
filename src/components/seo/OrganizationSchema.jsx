@@ -3,8 +3,7 @@
 // Sitewide Organization JSON-LD, rendered once (in App.jsx) so it's present
 // on every route. Pulls every value from SITE (data/siteData.js) — no
 // invented fields. Fields Google's Organization schema commonly expects but
-// that aren't available anywhere in the codebase (logo as an absolute URL
-// asset, a founding date, a registered legal name distinct from the trading
+// that aren't available anywhere in the codebase (a founding date, a registered legal name distinct from the trading
 // name) are left out rather than guessed; add them to SITE and this
 // component will pick them up automatically.
 
@@ -24,6 +23,7 @@ export default function OrganizationSchema() {
     '@type': hasAddress ? 'LocalBusiness' : 'Organization',
     name: SITE.name,
     url: SITE.url,
+    logo: `${SITE.url}/favicon.jpeg`,
     email: SITE.email,
     telephone: SITE.phone,
     ...(sameAs.length > 0 && { sameAs }),

@@ -39,10 +39,19 @@ export default function Seo({
   noindex = false,
   jsonLd,          // optional object or array of objects to emit as JSON-LD
   breadcrumbs,     // optional [{ label, path? }] — auto-emits BreadcrumbList JSON-LD
+  publishedTime,   // article only — ISO date string, emits og:article:published_time
+  modifiedTime,    // article only — ISO date string, emits og:article:modified_time
+  author,          // article only — plain author name string, emits og:article:author
 }) {
   const fullTitle = title ? `${title} — ${SITE.name}` : SITE.name
   const canonicalUrl = `${SITE.url}${path}`
-  const ogImage = image ? (image.startsWith('http') ? image : `${SITE.url}${image}`) : undefined
+  // Pages that don't pass an explicit `image` (Home, Sectors, Products,
+  // Careers, Contact, Blog index) previously got NO og:image/twitter:image
+  // at all, which means social shares showed no preview thumbnail. Falls
+  // back to a real, already-in-use site asset rather than leaving it blank.
+  const DEFAULT_OG_IMAGE = '/images/IndiTechHome.webp'
+  const resolvedImage = image || DEFAULT_OG_IMAGE
+  const ogImage = resolvedImage.startsWith('http') ? resolvedImage : `${SITE.url}${resolvedImage}`
   const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
 
   // Pages that pass their own jsonLd (Product, Service, BlogPosting, ...)
@@ -97,6 +106,15 @@ export default function Seo({
       {description && <meta property="og:description" content={description} />}
       <meta property="og:url" content={canonicalUrl} />
       {ogImage && <meta property="og:image" content={ogImage} />}
+      {type === 'article' && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {type === 'article' && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {type === 'article' && author && (
+        <meta property="article:author" content={author} />
+      )}
 
       {/* Twitter Card */}
       <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />

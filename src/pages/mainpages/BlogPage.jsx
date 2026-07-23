@@ -170,8 +170,8 @@ export default function BlogPage() {
   return (
     <>
       <Seo
-        title="Blog — Engineering Insights & Company Updates"
-        description="Insights, updates, and engineering perspectives from Vayuron Advanced Systems."
+        title="Engineering Blog & Insights"
+        description="Insights, updates, and engineering perspectives from Vayuron Advanced Systems on UAV technology, AI, and autonomous systems for defence and industry."
         path="/blog"
         breadcrumbs={[{ label: 'Blog' }]}
       />

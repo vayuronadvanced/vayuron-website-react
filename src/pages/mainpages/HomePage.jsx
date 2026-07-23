@@ -1,6 +1,7 @@
 {/*HomePage.jsx*/ }
 
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { SectionHeader, CTAButton, InfoCard, CardGrid } from '../../components/ui'
 import { PRODUCTS, SECTORS, SITE } from '../../data/siteData'
 import { useScrollReveal } from '../../hooks'
@@ -19,11 +20,11 @@ function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         {prefersReducedMotion ? (
           <img
-            src="/images/ProductPageDroneBigImg.webp"
+            src="/images/drone-bg.webp"
             alt="Vayuron autonomous drone in flight"
             width={1920}
             height={1080}
-            fetchPriority="high"
+            //fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
@@ -34,17 +35,9 @@ function Hero() {
             loop
             playsInline
             preload="auto"
-            poster="/images/ProductPageDroneBigImg.webp"
+            poster="/images/drone-bg.webp"
             aria-label="Vayuron autonomous drone in flight"
           >
-            {/* Only one real encoded file exists for this hero (webm) — the
-                previous second <source> pointed at this same real file but
-                mislabeled it type="video/mp4", which is a genuine MIME
-                mismatch (browsers use `type` to decide whether to even
-                fetch a source, so a real .webm file declared as video/mp4
-                can be silently rejected). A prior first <source> pointed at
-                "/videos/hero.webm", which doesn't exist on disk at all —
-                removed rather than left as a dead request. */}
             <source src="/videos/DroneNew.webm" type="video/webm" />
           </video>
         )}
@@ -235,6 +228,15 @@ function MissionCTA() {
           <CTAButton to="/contact" variant="secondary">
             Partner With Us
           </CTAButton>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-x-8 gap-y-3 justify-center mt-6 text-sm">
+          <Link to="/careers" className="text-white/80 hover:text-cyan transition-colors underline underline-offset-4">
+            Explore Careers at Vayuron
+          </Link>
+          <Link to="/blog" className="text-white/80 hover:text-cyan transition-colors underline underline-offset-4">
+            Read Our Engineering Blog
+          </Link>
         </div>
 
         <button

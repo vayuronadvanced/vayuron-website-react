@@ -74,14 +74,14 @@ const SECTOR_PATHS = [
 ]
 
 const STATIC_PATHS = [
-  { path: '/', priority: '1.0' },
-  { path: '/products', priority: '0.9' },
-  { path: '/sectors', priority: '0.9' },
-  { path: '/technology', priority: '0.7' },
-  { path: '/about', priority: '0.7' },
-  { path: '/careers', priority: '0.6' },
-  { path: '/contact', priority: '0.6' },
-  { path: '/blog', priority: '0.6' },
+  { path: '/', priority: '1.0', changefreq: 'weekly' },
+  { path: '/products', priority: '0.9', changefreq: 'monthly' },
+  { path: '/sectors', priority: '0.9', changefreq: 'monthly' },
+  { path: '/technology', priority: '0.7', changefreq: 'monthly' },
+  { path: '/about', priority: '0.7', changefreq: 'monthly' },
+  { path: '/careers', priority: '0.6', changefreq: 'weekly' },
+  { path: '/contact', priority: '0.6', changefreq: 'yearly' },
+  { path: '/blog', priority: '0.6', changefreq: 'weekly' },
 ]
 
 // ── Dynamic URLs (blog posts, open job listings) ────────────────────────
@@ -143,15 +143,16 @@ async function fetchDynamicUrls() {
 function buildSitemap(dynamicUrls) {
   const allUrls = [
     ...STATIC_PATHS,
-    ...PRODUCT_PATHS.map((p) => ({ path: p, priority: '0.8' })),
-    ...SECTOR_PATHS.map((p) => ({ path: p, priority: '0.7' })),
-    ...dynamicUrls,
+    ...PRODUCT_PATHS.map((p) => ({ path: p, priority: '0.8', changefreq: 'monthly' })),
+    ...SECTOR_PATHS.map((p) => ({ path: p, priority: '0.7', changefreq: 'monthly' })),
+    ...dynamicUrls.map((u) => ({ changefreq: 'monthly', ...u })),
   ]
 
   const urlEntries = allUrls
-    .map(({ path: p, priority, lastmod }) => {
+    .map(({ path: p, priority, lastmod, changefreq }) => {
       const lastmodTag = lastmod ? `<lastmod>${new Date(lastmod).toISOString().slice(0, 10)}</lastmod>` : ''
-      return `  <url><loc>${SITE_URL}${p}</loc>${lastmodTag}<priority>${priority}</priority></url>`
+      const changefreqTag = changefreq ? `<changefreq>${changefreq}</changefreq>` : ''
+      return `  <url><loc>${SITE_URL}${p}</loc>${lastmodTag}${changefreqTag}<priority>${priority}</priority></url>`
     })
     .join('\n')
 
@@ -171,14 +172,73 @@ Disallow: /forgot-password
 Disallow: /reset-password/
 Disallow: /verify-email/
 
+# AI / LLM crawlers — explicitly allowed (GEO: AI Search Optimization).
+# Listed individually rather than relying on the wildcard "*" block above
+# so each can be tuned or blocked independently later without touching the
+# rules that apply to Google/Bing.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: ${SITE_URL}/sitemap.xml
 `
 }
+
+// ── llms.txt (GEO: AI Search Optimization) ──────────────────────────────
+// Emerging convention (llmstxt.org) for giving AI/LLM crawlers a concise,
+// structured map of the site — plain markdown, not HTML, so it can't be
+// mistaken for the rendered page content. Built from the same SITE/
+// PRODUCT_PATHS/SECTOR_PATHS data as the sitemap, so it can't drift out of
+// sync with the real route list.
+function buildLlmsTxt() {
+  const productLines = PRODUCT_PATHS.map((p) => `- [${SITE_URL}${p}](${SITE_URL}${p})`).join('\n')
+  const sectorLines = SECTOR_PATHS.map((p) => `- [${SITE_URL}${p}](${SITE_URL}${p})`).join('\n')
+
+  return `# Vayuron Advanced Systems
+
+> Indigenous defence, security, and industrial technology company building
+> autonomous UAV systems, the MVTX platform, applied AI, and advanced
+> engineering solutions.
+
+## Company
+- [Homepage](${SITE_URL}/)
+- [About](${SITE_URL}/about)
+- [Technology](${SITE_URL}/technology)
+- [Careers](${SITE_URL}/careers)
+- [Contact](${SITE_URL}/contact)
+- [Blog](${SITE_URL}/blog)
+
+## Products
+${productLines}
+
+## Sectors Served
+${sectorLines}
+`
+}
+
 
 const dynamicUrls = await fetchDynamicUrls()
 const { xml, count } = buildSitemap(dynamicUrls)
 
 writeFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), xml)
 writeFileSync(path.join(PUBLIC_DIR, 'robots.txt'), buildRobots())
+writeFileSync(path.join(PUBLIC_DIR, 'llms.txt'), buildLlmsTxt())
 
-console.log(`[generate-seo-files] wrote sitemap.xml (${count} URLs) and robots.txt to public/`)
+console.log(`[generate-seo-files] wrote sitemap.xml (${count} URLs), robots.txt, and llms.txt to public/`)

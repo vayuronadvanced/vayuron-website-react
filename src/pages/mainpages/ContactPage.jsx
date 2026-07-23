@@ -10,6 +10,29 @@ import { logBusinessEvent } from '../../lib/api/analytics'
 import { trackEvent } from '../../lib/googleAnalytics'
 import Seo from '../../components/seo/Seo'
 
+const FAQ_ITEMS = [
+  {
+    question: 'What products does Vayuron Advanced Systems offer?',
+    answer: 'Four core product lines: UAV Systems, the MVTX platform, Artificial Intelligence solutions, and Advanced Engineering services.',
+  },
+  {
+    question: 'Which industries does Vayuron serve?',
+    answer: 'Five sectors: Defence & Homeland Security, Government & Smart Infrastructure, Energy, Industrial & Critical Infrastructure, Agriculture & Environmental Intelligence, and Mining, Surveying & Research.',
+  },
+  {
+    question: 'How can I request a product demo or defence briefing?',
+    answer: 'Use the contact form on this page, or reach out by phone or email using the details above — our team will schedule a product enquiry or briefing.',
+  },
+  {
+    question: 'Where is Vayuron Advanced Systems located?',
+    answer: '47, Balaji Nagar, Ayodhya Bypass, Bhopal, Madhya Pradesh 462023, India.',
+  },
+  {
+    question: 'Is Vayuron currently hiring?',
+    answer: 'Open roles are listed on our Careers page.',
+  },
+]
+
 const initialForm = {
   name: '',
   email: '',
@@ -201,10 +224,19 @@ export default function ContactPage() {
   return (
     <>
       <Seo
-        title="Contact Us — Product Enquiries & Defence Briefings"
-        description="Contact Vayuron Advanced Systems for product enquiries, partnerships, and defence briefings."
+        title="Contact Our Engineering Team"
+        description="Contact Vayuron Advanced Systems for product enquiries, partnership discussions, and defence briefings. Our team responds to every enquiry directly."
         path="/contact"
         breadcrumbs={[{ label: 'Contact' }]}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: FAQ_ITEMS.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: { '@type': 'Answer', text: item.answer },
+          })),
+        }}
       />
 
       <main>
@@ -405,8 +437,27 @@ export default function ContactPage() {
 
         </section>
 
-      </main>
+        {/* FAQ — visible content backing the FAQPage schema below (Google
+            requires FAQ schema to match content actually shown on the page) */}
+        <section className="relative bg-black border-t border-cyan/10 py-20 px-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              {FAQ_ITEMS.map((item) => (
+                <div key={item.question} className="border-b border-white/10 pb-6">
+                  <h3 className="font-display text-base font-semibold text-white mb-2">
+                    {item.question}
+                  </h3>
+                  <p className="text-sm text-[var(--muted)] leading-relaxed">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
+      </main>
     </>
   )
 }

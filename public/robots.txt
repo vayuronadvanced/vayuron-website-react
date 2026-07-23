@@ -7,4 +7,29 @@ Disallow: /forgot-password
 Disallow: /reset-password/
 Disallow: /verify-email/
 
-Sitemap: https://www.vayuronadvancedsystems.com/sitemap.xml
+# AI / LLM crawlers — explicitly allowed (GEO: AI Search Optimization).
+# Listed individually rather than relying on the wildcard "*" block above
+# so each can be tuned or blocked independently later without touching the
+# rules that apply to Google/Bing.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://vayuronadvancedsystems.com/sitemap.xml

@@ -9,8 +9,8 @@ export default function ProductsPage() {
   return (
     <>
       <Seo
-        title="Product Lines — UAV Systems, MVTX, AI & Engineering"
-        description="Vayuron's core product lines: UAV Systems, MVTX, Artificial Intelligence, and Advanced Engineering."
+        title="UAV, MVTX, AI & Engineering"
+        description="Vayuron's core product lines: UAV Systems, the MVTX platform, Artificial Intelligence, and Advanced Engineering — built for defence and industrial operations."
         path="/products"
         breadcrumbs={[{ label: 'Products' }]}
       />
