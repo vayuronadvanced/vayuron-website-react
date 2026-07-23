@@ -37,7 +37,7 @@ export function Breadcrumb({ crumbs = [] }) {
 // mismatch: browsers use the `type` attribute to decide whether to even
 // fetch a <source> at all, so this could cause the browser to skip or
 // reject a source that would otherwise have played fine.
-function videoMimeType(src) {
+export function videoMimeType(src) {
   if (!src) return undefined
   const ext = src.split('.').pop().toLowerCase()
   return { webm: 'video/webm', mp4: 'video/mp4', mov: 'video/quicktime' }[ext] || undefined

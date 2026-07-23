@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { SITE, gmailComposeUrl } from '../../data/siteData'
-import { Breadcrumb, SectionHeader } from '../../components/ui'
+import { Breadcrumb, SectionHeader, videoMimeType } from '../../components/ui'
 import { useApi } from '../../hooks'
 import { submitContactEnquiry, submitQuestion, getPublishedQuestions } from '../../lib/api/contacts'
 import { logBusinessEvent } from '../../lib/api/analytics'
@@ -200,6 +200,12 @@ export default function ContactPage() {
   const { loading, error, run: submit } = useApi(submitContactEnquiry)
   const [submitted, setSubmitted] = useState(false)
 
+  // Same convention as PageBanner: fall back to a plain poster image when
+  // the visitor prefers reduced motion, instead of autoplaying video.
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
@@ -389,17 +395,33 @@ export default function ContactPage() {
             className="relative w-full h-full flex items-center overflow-hidden"
           >
 
-            {/* Animated Background */}
-            <div
-              ref={bgRef}
-              className="absolute inset-0"
-              style={{
-                backgroundImage: "url('/images/Green.webp')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center center',
-                backgroundRepeat: 'no-repeat',
-              }}
-            />
+            {/* Animated Background — same video convention as PageBanner:
+                autoplaying webm with the original image kept as poster and
+                as the reduced-motion fallback. */}
+            <div ref={bgRef} className="absolute inset-0 overflow-hidden">
+              {prefersReducedMotion ? (
+                <img
+                  src="/images/Green.webp"
+                  alt=""
+                  aria-hidden="true"
+                  fetchPriority="high"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              ) : (
+                <video
+                  className="absolute inset-0 h-full w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  poster="/images/Green.webp"
+                  aria-hidden="true"
+                >
+                  <source src="/videos/Green.webm" type={videoMimeType('/videos/Green.webm')} />
+                </video>
+              )}
+            </div>
 
             {/* Cyan Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
