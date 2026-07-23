@@ -4,6 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { PageBanner, SectionHeader, CardGrid } from '../../components/ui'
+import StackSection from '../../components/sections/StackSection'
 import { useApi } from '../../hooks'
 import { getBlogCategories, getBlogPosts } from '../../lib/api/blog'
 import Seo from '../../components/seo/Seo'
@@ -177,6 +178,7 @@ export default function BlogPage() {
       />
 
       <main>
+        <StackSection index={0}>
         <PageBanner
           eyebrow="Insights"
           title="Blog"
@@ -185,7 +187,15 @@ export default function BlogPage() {
           backgroundVideoMp4="/videos/Drone4.webm"
         // backgroundImage="/images/FixedWingDRone.webp"
         />
+        </StackSection>
 
+        {/* All Articles — deliberately NOT wrapped in StackSection: the
+            post grid is unbounded (category filters, pagination) while
+            StackSection's pinned container is hard-capped to one viewport
+            height with overflow hidden, which would silently clip
+            articles beyond the first screen. It still sits directly
+            beneath the pinned banner and gets covered by it naturally on
+            scroll, matching the stacking feel without the clipping risk. */}
         <section className="relative py-16 sm:py-20 md:py-24 bg-black">
           <div className="absolute inset-0" style={{ backgroundImage: "url('/images/VayuronImage.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
           <div className="absolute inset-0 bg-black/55" />

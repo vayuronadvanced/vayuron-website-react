@@ -9,6 +9,7 @@ import { submitContactEnquiry, submitQuestion, getPublishedQuestions } from '../
 import { logBusinessEvent } from '../../lib/api/analytics'
 import { trackEvent } from '../../lib/googleAnalytics'
 import Seo from '../../components/seo/Seo'
+import StackSection from '../../components/sections/StackSection'
 
 const initialForm = {
   name: '',
@@ -29,23 +30,15 @@ const initialQuestionForm = {
 // Reuses the same card/input/button styling as the "Send an Enquiry" form
 // above. Submissions go to the same review workflow as the blog CMS
 // (pending → staff answers & publishes in Django Admin → appears here).
-function AskQuestionSection() {
+//
+// Sized to fill one screen (min-h-screen, flex-centered) to match the
+// other StackSection panels — its own <StackSection> wrapper clips
+// anything beyond h-screen, so content stays vertically centered and
+// compact rather than top-anchored with dead space below.
+function AskQuestionFormSection() {
   const [form, setForm] = useState(initialQuestionForm)
   const { loading, error, run: submit } = useApi(submitQuestion)
   const [submitted, setSubmitted] = useState(false)
-
-  const {
-    data: questionsData,
-    loading: faqLoading,
-    error: faqError,
-    run: fetchQuestions,
-  } = useApi(getPublishedQuestions)
-
-  useEffect(() => {
-    fetchQuestions()
-  }, [fetchQuestions])
-
-  const publishedQuestions = questionsData?.results || questionsData || []
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -65,28 +58,28 @@ function AskQuestionSection() {
   }
 
   return (
-    <section className="relative bg-black border-t border-cyan/10 py-20 px-6">
+    <section className="relative w-full h-full flex items-center bg-black border-t border-cyan/10 px-6 overflow-hidden">
       <div className="absolute inset-0" style={{ backgroundImage: "url('/images/VayuronImage.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
       <div className="absolute inset-0 bg-black/55" />
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div className="relative z-10 max-w-3xl mx-auto w-full">
         <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
           Community Q&amp;A
         </p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
           Ask a Question
         </h2>
-        <p className="text-[var(--muted)] leading-relaxed mb-8 text-sm">
+        <p className="text-[var(--muted)] leading-relaxed mb-6 text-sm">
           Have a question about our products, sectors, or capabilities? Ask
           below — our team reviews and answers submissions, and published
-          answers appear here for everyone.
+          answers appear on the next section for everyone.
         </p>
 
         {/* Same card treatment as the enquiry-card above */}
-        <div className="border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full mb-14">
+        <div className="border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full">
           {submitted ? (
             <div className="border border-cyan/30 bg-cyan/5 px-5 py-4 text-sm text-white/90 leading-relaxed">
               Thank you — your question has been received. Once our team
-              answers it, it will appear in the list below.
+              answers it, it will appear in the next section.
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3">
@@ -132,9 +125,42 @@ function AskQuestionSection() {
             </form>
           )}
         </div>
+      </div>
+    </section>
+  )
+}
 
-        {/* Published answers only — pending/unanswered questions never
-            render here (enforced server-side by the Question API). */}
+// ─── Recently Answered Questions ───────────────────────────────────────────
+// Published answers only — pending/unanswered questions never render here
+// (enforced server-side by the Question API). This list can grow without
+// bound as more questions get answered, which is incompatible with a
+// fixed-height, overflow-hidden StackSection panel — so the list itself
+// scrolls internally (max-h + overflow-y-auto) instead of the section
+// growing past one screen.
+function AnsweredQuestionsSection() {
+  const {
+    data: questionsData,
+    loading: faqLoading,
+    error: faqError,
+    run: fetchQuestions,
+  } = useApi(getPublishedQuestions)
+
+  useEffect(() => {
+    fetchQuestions()
+  }, [fetchQuestions])
+
+  const publishedQuestions = questionsData?.results || questionsData || []
+
+  return (
+    <section className="relative w-full h-full flex items-center bg-black border-t border-cyan/10 px-6 overflow-hidden">
+      <div className="relative z-10 max-w-3xl mx-auto w-full">
+        <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+          Community Q&amp;A
+        </p>
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
+          Recently Answered Questions
+        </h2>
+
         {faqLoading && (
           <p className="text-sm text-[var(--muted)]">Loading answered questions…</p>
         )}
@@ -143,22 +169,24 @@ function AskQuestionSection() {
           <p className="text-sm text-red-400 leading-relaxed">{faqError}</p>
         )}
 
+        {!faqLoading && !faqError && publishedQuestions.length === 0 && (
+          <p className="text-sm text-[var(--muted)] leading-relaxed">
+            No published questions yet — be the first to ask on the previous
+            section.
+          </p>
+        )}
+
         {!faqLoading && !faqError && publishedQuestions.length > 0 && (
-          <>
-            <h3 className="font-display text-xl font-bold text-white mb-6">
-              Recently Answered Questions
-            </h3>
-            <div className="space-y-6">
-              {publishedQuestions.map((q) => (
-                <div key={q.id} className="border-b border-white/10 pb-6">
-                  <h4 className="font-display text-base font-semibold text-white mb-2">
-                    {q.question_text}
-                  </h4>
-                  <p className="text-sm text-[var(--muted)] leading-relaxed">{q.answer_text}</p>
-                </div>
-              ))}
-            </div>
-          </>
+          <div className="space-y-6 max-h-[52vh] overflow-y-auto pr-2">
+            {publishedQuestions.map((q) => (
+              <div key={q.id} className="border-b border-white/10 pb-6">
+                <h3 className="font-display text-base font-semibold text-white mb-2">
+                  {q.question_text}
+                </h3>
+                <p className="text-sm text-[var(--muted)] leading-relaxed">{q.answer_text}</p>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </section>
@@ -355,205 +383,214 @@ export default function ContactPage() {
 
       <main>
 
-        <section
-          ref={heroRef}
-          className="relative min-h-[100vh] flex items-center overflow-hidden border-b border-[rgba(0,212,255,0.1)]"
-        >
+        <StackSection index={0}>
+          <section
+            ref={heroRef}
+            className="relative w-full h-full flex items-center overflow-hidden"
+          >
 
-          {/* Animated Background */}
-          <div
-            ref={bgRef}
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url('/images/Green.webp')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
+            {/* Animated Background */}
+            <div
+              ref={bgRef}
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/images/Green.webp')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
 
-          {/* Cyan Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
+            {/* Cyan Glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
-          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-20 sm:py-24 md:py-28">
+            <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 pt-32 sm:pt-36 md:pt-40 pb-10">
+              <div className="mt-6 md:mt-8">
+                <div className="contact-breadcrumb mb-4">
+                  <Breadcrumb crumbs={[{ label: 'Contact' }]} />
+                </div>
 
-            <div className="contact-breadcrumb mb-6">
-              <Breadcrumb crumbs={[{ label: 'Contact' }]} />
-            </div>
-
-            <p className="contact-tag font-mono text-xs tracking-[0.25em] uppercase text-cyan mb-4">
-              Contact
-            </p>
-
-            <div className="contact-title">
-              <SectionHeader
-                as="h1"
-                title="Get in Touch"
-                className="mb-6"
-              />
-            </div>
-
-            <p className="contact-text max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-8 md:mb-14">
-              Speak with our engineering and commercial team about your
-              operational requirements.
-            </p>
-
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-16 items-start">
-
-              {/* Direct Contact */}
-              <div className="contact-info">
-
-                <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">
-                  Direct Contact
+                <p className="contact-tag font-mono text-xs tracking-[0.25em] uppercase text-cyan mb-3">
+                  Contact
                 </p>
-
-                <div className="space-y-3 mb-10">
-
-                  <a
-                    href={`tel:${SITE.phoneTel}`}
-                    className="flex items-center gap-3 text-white/100 hover:text-cyan transition-colors font-mono text-base"
-                  >
-                    <span>📞</span>
-                    {SITE.phone}
-                  </a>
-
-                  <a
-                    href={gmailComposeUrl(SITE.email)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-white/100 hover:text-cyan transition-colors font-mono text-base"
-                  >
-                    <span>✉</span>
-                    {SITE.email}
-                  </a>
-
-                </div>
-
-                <div>
-
-                  <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
-                    Office Address
-                  </p>
-
-                  <p className="text-[var(--muted)] leading-relaxed mb-2">
-                    Vayuron Advanced Systems
-                  </p>
-
-                  <a
-                    href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-[var(--muted)] hover:text-cyan transition leading-relaxed"
-                  >
-                    47, Balaji Nagar, Ayodhya Bypass,
-                    <br />
-                    Bhopal, Madhya Pradesh 462023,
-                    <br />
-                    India
-                  </a>
-
-                </div>
-
               </div>
 
-              {/* Enquiry Card */}
-              <div className="enquiry-card border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full">
-                <p className="response-tag font-mono text-xs tracking-widest uppercase text-cyan mb-3">
-                  Response Time
-                </p>
+              <div className="contact-title">
+                <SectionHeader
+                  as="h1"
+                  title="Get in Touch"
+                  className="mb-4"
+                />
+              </div>
 
-                <h2 className="enquiry-title font-display text-2xl md:text-3xl font-bold text-white mb-4">
-                  Send an Enquiry
-                </h2>
+              <p className="contact-text max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+                Speak with our engineering and commercial team about your
+                operational requirements.
+              </p>
 
-                <p className="enquiry-text text-[var(--muted)] leading-relaxed mb-6 text-sm">                  Complete our secure enquiry form and our engineering team
-                  will respond within two business days.
-                </p>
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 lg:gap-10 items-start">
+                {/* Direct Contact */}
+                <div className="contact-info">
 
-                {submitted ? (
-                  <div className="enquiry-btn border border-cyan/30 bg-cyan/5 px-5 py-4 text-sm text-white/90 leading-relaxed">
-                    Thank you — your enquiry has been received. Our team will
-                    respond within two business days.
+                  <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">
+                    Direct Contact
+                  </p>
+
+                  <div className="space-y-3 mb-6">
+
+                    <a
+                      href={`tel:${SITE.phoneTel}`}
+                      className="flex items-center gap-3 text-white/100 hover:text-cyan transition-colors font-mono text-base"
+                    >
+                      <span>📞</span>
+                      {SITE.phone}
+                    </a>
+
+                    <a
+                      href={gmailComposeUrl(SITE.email)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-white/100 hover:text-cyan transition-colors font-mono text-base"
+                    >
+                      <span>✉</span>
+                      {SITE.email}
+                    </a>
+
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="enquiry-btn space-y-3">
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="Full name *"
-                      value={form.name}
-                      onChange={handleChange}
-                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="Email address *"
-                      value={form.email}
-                      onChange={handleChange}
-                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
-                    />
-                    <div className="grid grid-cols-2 gap-3">
-                      <input
-                        type="tel"
-                        name="phone_number"
-                        placeholder="Phone"
-                        value={form.phone_number}
-                        onChange={handleChange}
-                        className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
-                      />
+
+                  <div>
+
+                    <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-2">
+                      Office Address
+                    </p>
+
+                    <p className="text-[var(--muted)] leading-relaxed mb-2">
+                      Vayuron Advanced Systems
+                    </p>
+
+                    <a
+                      href="https://maps.google.com/?q=47+Balaji+Nagar,+Ayodhya+Nagar,+Bhopal,+Madhya+Pradesh+462023"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-[var(--muted)] hover:text-cyan transition leading-relaxed"
+                    >
+                      47, Balaji Nagar, Ayodhya Bypass,
+                      <br />
+                      Bhopal, Madhya Pradesh 462023,
+                      <br />
+                      India
+                    </a>
+
+                  </div>
+
+                </div>
+
+                {/* Enquiry Card */}
+                <div className="enquiry-card self-start -mt-40 lg:-mt-52 border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-5 md:p-6 rounded-sm w-full">
+                  <p className="response-tag font-mono text-xs tracking-widest uppercase text-cyan mb-2">
+                    Response Time
+                  </p>
+
+                  <h2 className="enquiry-title font-display text-xl md:text-2xl font-bold text-white mb-3">
+                    Send an Enquiry
+                  </h2>
+
+                  <p className="enquiry-text text-[var(--muted)] leading-relaxed mb-4 text-sm">
+                    Complete our secure enquiry form and our engineering team
+                    will respond within two business days.
+                  </p>
+
+                  {submitted ? (
+                    <div className="enquiry-btn border border-cyan/30 bg-cyan/5 px-5 py-4 text-sm text-white/90 leading-relaxed">
+                      Thank you — your enquiry has been received. Our team will
+                      respond within two business days.
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="enquiry-btn space-y-2.5">
                       <input
                         type="text"
-                        name="company"
-                        placeholder="Company"
-                        value={form.company}
+                        name="name"
+                        required
+                        placeholder="Full name *"
+                        value={form.name}
                         onChange={handleChange}
                         className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
                       />
-                    </div>
-                    <input
-                      type="text"
-                      name="subject"
-                      placeholder="Subject"
-                      value={form.subject}
-                      onChange={handleChange}
-                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
-                    />
-                    <textarea
-                      name="message"
-                      required
-                      rows={4}
-                      placeholder="Your message *"
-                      value={form.message}
-                      onChange={handleChange}
-                      className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan resize-none"
-                    />
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="Email address *"
+                        value={form.email}
+                        onChange={handleChange}
+                        className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                      />
+                      <div className="grid grid-cols-2 gap-3">
+                        <input
+                          type="tel"
+                          name="phone_number"
+                          placeholder="Phone"
+                          value={form.phone_number}
+                          onChange={handleChange}
+                          className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                        />
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Company"
+                          value={form.company}
+                          onChange={handleChange}
+                          className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                        />
+                      </div>
+                      <input
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        value={form.subject}
+                        onChange={handleChange}
+                        className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                      />
+                      <textarea
+                        name="message"
+                        required
+                        rows={3}
+                        placeholder="Your message *"
+                        value={form.message}
+                        onChange={handleChange}
+                        className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan resize-none"
+                      />
 
-                    {error && (
-                      <p className="text-xs text-red-400 leading-relaxed">{error}</p>
-                    )}
+                      {error && (
+                        <p className="text-xs text-red-400 leading-relaxed">{error}</p>
+                      )}
 
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="inline-flex items-center justify-center w-full border border-cyan text-cyan px-7 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {loading ? 'Sending…' : 'Send Enquiry →'}
-                    </button>
-                  </form>
-                )}
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="inline-flex items-center justify-center w-full border border-cyan text-cyan px-7 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {loading ? 'Sending…' : 'Send Enquiry →'}
+                      </button>
+                    </form>
+                  )}
+
+                </div>
 
               </div>
 
             </div>
 
-          </div>
+          </section>
+        </StackSection>
 
-        </section>
+        <StackSection index={1}>
+          <AskQuestionFormSection />
+        </StackSection>
 
-        <AskQuestionSection />
+        <StackSection index={2} dim={false}>
+          <AnsweredQuestionsSection />
+        </StackSection>
 
       </main>
     </>

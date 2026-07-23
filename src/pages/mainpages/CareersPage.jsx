@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Breadcrumb, SectionHeader } from '../../components/ui'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import StackSection from '../../components/sections/StackSection'
 import { useApi } from '../../hooks'
 import { getJobListings } from '../../lib/api/careers'
 import Seo from '../../components/seo/Seo'
@@ -125,6 +126,7 @@ export default function CareersPage() {
       />
 
       <main>
+        <StackSection index={0}>
         <section
           ref={heroRef}
           className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-[rgba(0,212,255,0.1)]"
@@ -178,8 +180,18 @@ export default function CareersPage() {
             </Link>
           </div>
         </section>
+        </StackSection>
 
-        {/* Open Positions */}
+        {/* Open Positions — deliberately NOT wrapped in StackSection: this
+            list is unbounded (however many job openings are live via the
+            API), while StackSection's pinned container is hard-capped to
+            one viewport height with overflow hidden. Pinning it would
+            silently clip listings beyond the first screen on any device —
+            a real functionality regression, not just a visual one. It
+            still sits directly beneath the pinned hero and gets covered by
+            it naturally as the page scrolls, matching the same "next
+            section covers the previous one" feel without the clipping
+            risk. */}
         <section className="relative py-16 sm:py-20 md:py-24 bg-black border-b border-[rgba(0,212,255,0.1)]">
           <div className="relative z-10 w-full max-w-[1000px] mx-auto px-6">
             <SectionHeader eyebrow="Open Positions" title="Current Openings" centered className="mb-10" />
