@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { SITE, gmailComposeUrl } from '../../data/siteData'
 import { Breadcrumb, SectionHeader } from '../../components/ui'
 import { useApi } from '../../hooks'
-import { submitContactEnquiry } from '../../lib/api/contacts'
+import { submitContactEnquiry, submitQuestion, getPublishedQuestions } from '../../lib/api/contacts'
 import { logBusinessEvent } from '../../lib/api/analytics'
 import { trackEvent } from '../../lib/googleAnalytics'
 import Seo from '../../components/seo/Seo'
@@ -40,6 +40,150 @@ const initialForm = {
   company: '',
   subject: '',
   message: '',
+}
+
+const initialQuestionForm = {
+  name: '',
+  email: '',
+  question_text: '',
+}
+
+// ─── Ask a Question (below the Contact Hero) ───────────────────────────────
+// Reuses the same card/input/button styling as the "Send an Enquiry" form
+// above. Submissions go to the same review workflow as the blog CMS
+// (pending → staff answers & publishes in Django Admin → appears here).
+function AskQuestionSection() {
+  const [form, setForm] = useState(initialQuestionForm)
+  const { loading, error, run: submit } = useApi(submitQuestion)
+  const [submitted, setSubmitted] = useState(false)
+
+  const {
+    data: questionsData,
+    loading: faqLoading,
+    error: faqError,
+    run: fetchQuestions,
+  } = useApi(getPublishedQuestions)
+
+  useEffect(() => {
+    fetchQuestions()
+  }, [fetchQuestions])
+
+  const publishedQuestions = questionsData?.results || questionsData || []
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      await submit(form)
+      setSubmitted(true)
+      logBusinessEvent('question_submitted')
+      trackEvent('generate_lead', { form_name: 'ask_a_question' })
+      setForm(initialQuestionForm)
+    } catch {
+      // error state is already surfaced via the `error` value from useApi
+    }
+  }
+
+  return (
+    <section className="relative bg-black border-t border-cyan/10 py-20 px-6">
+      <div className="max-w-3xl mx-auto">
+        <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-3">
+          Community Q&amp;A
+        </p>
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
+          Ask a Question
+        </h2>
+        <p className="text-[var(--muted)] leading-relaxed mb-8 text-sm">
+          Have a question about our products, sectors, or capabilities? Ask
+          below — our team reviews and answers submissions, and published
+          answers appear here for everyone.
+        </p>
+
+        {/* Same card treatment as the enquiry-card above */}
+        <div className="border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-6 md:p-8 rounded-sm w-full mb-14">
+          {submitted ? (
+            <div className="border border-cyan/30 bg-cyan/5 px-5 py-4 text-sm text-white/90 leading-relaxed">
+              Thank you — your question has been received. Once our team
+              answers it, it will appear in the list below.
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full name"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email address"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan"
+                />
+              </div>
+              <textarea
+                name="question_text"
+                required
+                rows={4}
+                placeholder="Your question *"
+                value={form.question_text}
+                onChange={handleChange}
+                className="w-full bg-black/60 border border-cyan/20 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-cyan resize-none"
+              />
+
+              {error && (
+                <p className="text-xs text-red-400 leading-relaxed">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="inline-flex items-center justify-center w-full border border-cyan text-cyan px-7 py-3 font-mono text-xs tracking-widest uppercase hover:bg-cyan hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? 'Sending…' : 'Submit Question →'}
+              </button>
+            </form>
+          )}
+        </div>
+
+        {/* Published answers only — pending/unanswered questions never
+            render here (enforced server-side by the Question API). */}
+        {faqLoading && (
+          <p className="text-sm text-[var(--muted)]">Loading answered questions…</p>
+        )}
+
+        {faqError && (
+          <p className="text-sm text-red-400 leading-relaxed">{faqError}</p>
+        )}
+
+        {!faqLoading && !faqError && publishedQuestions.length > 0 && (
+          <>
+            <h3 className="font-display text-xl font-bold text-white mb-6">
+              Recently Answered Questions
+            </h3>
+            <div className="space-y-6">
+              {publishedQuestions.map((q) => (
+                <div key={q.id} className="border-b border-white/10 pb-6">
+                  <h4 className="font-display text-base font-semibold text-white mb-2">
+                    {q.question_text}
+                  </h4>
+                  <p className="text-sm text-[var(--muted)] leading-relaxed">{q.answer_text}</p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  )
 }
 
 export default function ContactPage() {
@@ -438,6 +582,8 @@ export default function ContactPage() {
           </div>
 
         </section>
+
+        <AskQuestionSection />
 
         {/* FAQ — visible content backing the FAQPage schema below (Google
             requires FAQ schema to match content actually shown on the page) */}
