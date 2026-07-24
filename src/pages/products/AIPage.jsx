@@ -14,6 +14,7 @@ export default function AIPage() {
       capabilitiesBackgroundImage="/images/AI3.webp"
       description="Vayuron's AI division develops intelligent software systems that transform raw sensor data into actionable operational intelligence. From real-time object detection on embedded hardware to full command-and-control AI backends, our systems operate at the edge without cloud dependency — critical for contested and denied environments."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Artificial Intelligence' }]}
+      specsLighterCardMobile
       specs={[
         { label: 'Inference Speed', value: '<10 ms' },
         { label: 'Accuracy', value: '97.4%' },

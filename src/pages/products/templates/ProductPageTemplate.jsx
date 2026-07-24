@@ -24,6 +24,9 @@ export default function ProductPageTemplate({
   specsDescription,            // optional prose paragraph shown above the spec grid
   specsMoreDetailsHref,         // optional — e.g. a PDF in public/documents; renders a "More Details" button
   specsMoreDetailsLabel = 'More Details',
+  specsHideCardMobile = false,  // mobile-only: hide the spec glass-panel card, keep title/description/CTA
+  specsLighterCardMobile = false, // mobile-only: lighter/more-transparent card styling (matches Contact page card), desktop unchanged
+  specsMobilePointsMode = false, // mobile-only: hide description + card, show a plain 5-point list (from `specs` labels) instead. Desktop unchanged.
   secondaryBackgroundImage,    // distinct background for the optional second spec-showcase section
   secondaryEyebrow = 'Technical Data',
   secondaryTitle,
@@ -31,6 +34,7 @@ export default function ProductPageTemplate({
   secondarySpecs = [],         // same shape as `specs` — renders as its own StackSection, same design as the Specs section
   secondaryMoreDetailsHref,     // optional — e.g. a PDF in public/documents; renders a "More Details" button
   secondaryMoreDetailsLabel = 'More Details',
+  secondaryHideCardMobile = false, // mobile-only: hide the spec glass-panel card, keep title/description/CTA
   capabilitiesBackgroundImage, // distinct background for the Capabilities section
   specs = [],
   features = [],     // each: { icon, title, description, bullets? } — bullets optional but should be equal-length across a page's features for card consistency
@@ -141,9 +145,24 @@ export default function ProductPageTemplate({
                     </h2>
 
                     {specsDescription && (
-                      <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
+                      <p className={`${specsMobilePointsMode ? 'hidden md:block' : ''} text-white/80 text-base md:text-lg leading-relaxed mb-8`}>
                         {specsDescription}
                       </p>
+                    )}
+
+                    {/* Mobile-only 5-point list, shown in place of the
+                        description + card when specsMobilePointsMode is on.
+                        Hidden from md: up, where the original description +
+                        glass-panel card (below) take over unchanged. */}
+                    {specsMobilePointsMode && specs.length > 0 && (
+                      <ul className="md:hidden space-y-2.5 mb-8">
+                        {specs.slice(0, 5).map((spec, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-white/80 text-sm leading-relaxed">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+                            {spec.label}
+                          </li>
+                        ))}
+                      </ul>
                     )}
 
                     {specsMoreDetailsHref && (
@@ -154,7 +173,13 @@ export default function ProductPageTemplate({
                   </div>
 
                   {/* Right — spec grid in a glass panel */}
-                  <div className="rounded-xl border border-[rgba(0,212,255,0.18)] bg-black/40 backdrop-blur-lg p-6 md:p-8 shadow-[0_0_40px_rgba(0,212,255,0.06)]">
+                  <div className={
+                    specsHideCardMobile || specsMobilePointsMode
+                      ? 'hidden md:block rounded-xl border border-[rgba(0,212,255,0.18)] bg-black/40 backdrop-blur-lg p-6 md:p-8 shadow-[0_0_40px_rgba(0,212,255,0.06)]'
+                      : specsLighterCardMobile
+                        ? 'rounded-sm md:rounded-xl border border-[rgba(0,212,255,0.15)] md:border-[rgba(0,212,255,0.18)] bg-[rgba(0,0,0,0.45)] md:bg-black/40 backdrop-blur-sm md:backdrop-blur-lg p-6 md:p-8 shadow-none md:shadow-[0_0_40px_rgba(0,212,255,0.06)]'
+                        : 'rounded-xl border border-[rgba(0,212,255,0.18)] bg-black/40 backdrop-blur-lg p-6 md:p-8 shadow-[0_0_40px_rgba(0,212,255,0.06)]'
+                  }>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       {specs.map((spec, i) => (
                         <SpecCard key={i} label={spec.label} value={spec.value} />
@@ -192,7 +217,7 @@ export default function ProductPageTemplate({
               <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
                   {/* Left — spec grid in a glass panel (mirrored order) */}
-                  <div className="order-2 lg:order-1 rounded-xl border border-[rgba(0,212,255,0.18)] bg-black/40 backdrop-blur-lg p-6 md:p-8 shadow-[0_0_40px_rgba(0,212,255,0.06)]">
+                  <div className={`order-2 lg:order-1 ${secondaryHideCardMobile ? 'hidden md:block' : ''} rounded-xl border border-[rgba(0,212,255,0.18)] bg-black/40 backdrop-blur-lg p-6 md:p-8 shadow-[0_0_40px_rgba(0,212,255,0.06)]`}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       {secondarySpecs.map((spec, i) => (
                         <SpecCard key={i} label={spec.label} value={spec.value} />
@@ -257,7 +282,7 @@ export default function ProductPageTemplate({
                   Capabilities
                 </h2>
 
-                <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <CardGrid mobileMax5 gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {features.map((feature, i) => (
                     <InfoCard
                       key={i}
@@ -310,6 +335,7 @@ export default function ProductPageTemplate({
                 </div>
 
                 <CardGrid
+                  mobileMax5={section.mobileMax5}
                   gridClassName={`grid grid-cols-1 md:grid-cols-2 gap-6 ${(section.columns || 3) >= 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2'
                     }`}
                 >

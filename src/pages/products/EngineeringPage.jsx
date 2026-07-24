@@ -13,6 +13,7 @@ export default function EngineeringPage() {
       capabilitiesBackgroundImage="/images/AE3.webp"
       description="Vayuron's Advanced Engineering division provides end-to-end systems integration, precision fabrication, mechanical design, and indigenous avionics development. From composite airframe structures to flight computers, navigation systems, and ruggedised electronic enclosures, we engineer hardware that performs in the most demanding environments on earth."
       crumbs={[{ label: 'Products', path: '/products' }, { label: 'Advanced Engineering' }]}
+      specsLighterCardMobile
       specs={[
         { label: 'Tolerance', value: '±0.01 mm' },
         { label: 'Materials', value: 'CFRP/Ti/Al' },

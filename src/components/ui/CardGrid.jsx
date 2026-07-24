@@ -3,14 +3,14 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-export function CardGrid({ children, gridClassName = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6' }) {
+export function CardGrid({ children, gridClassName = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6', mobileMax5 = false }) {
   const [hoveredId, setHoveredId] = useState(null)
 
   // Convert children to array and filter out null/undefined
   const childArray = Array.isArray(children) ? children : [children]
 
   return (
-    <div className={`card-grid ${gridClassName}`}>
+    <div className={`card-grid ${mobileMax5 ? 'mobile-max-5' : ''} ${gridClassName}`}>
       {childArray.map((child, idx) => {
         // Use child key if available, otherwise use index
         const cardId = child?.key || `card-${idx}`

@@ -148,7 +148,7 @@ export default function TechnologyPage() {
                     <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="text-white/100 leading-relaxed group-hover:text-white transition-colors">
+                    <p className="hidden md:block text-white/100 leading-relaxed group-hover:text-white transition-colors">
                       {pillar.description}
                     </p>
                   </div>
@@ -190,7 +190,7 @@ export default function TechnologyPage() {
                     <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-cyan mb-4">
                       {stack.category}
                     </h3>
-                    <ul className="space-y-2.5">
+                    <ul className="hidden md:block space-y-2.5">
                       {stack.items.map((item, j) => (
                         <li
                           key={j}

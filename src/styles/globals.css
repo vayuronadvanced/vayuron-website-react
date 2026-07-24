@@ -327,6 +327,14 @@ video {
     max-height: 100dvh;
   }
 
+  /* Supports CardGrid's `mobileMax5` prop: caps a card grid to its first
+     5 direct children (cards) on mobile only, for sections that want a
+     shorter "show only 5 points" list on small screens while keeping the
+     full set on tablet/desktop. */
+  .mobile-max-5 > *:nth-child(n + 6) {
+    display: none;
+  }
+
   /* Safety net: nothing should ever force horizontal scrolling on mobile,
      regardless of a fixed max-width or negative margin used somewhere in
      a desktop-oriented layout. */

@@ -125,15 +125,15 @@ export default function SectorApplicationsTemplate({
                 </div>
 
                 {solution && (
-                  <div className="relative rounded-xl border border-[rgba(0,212,255,0.22)] bg-black/50 backdrop-blur-xl p-7 md:p-9 shadow-[0_0_60px_rgba(0,212,255,0.07)]">
-                    <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl bg-gradient-to-r from-cyan/60 via-cyan to-cyan/60" />
+                  <div className="group relative rounded-lg md:rounded-xl border border-[rgba(0,212,255,0.12)] md:border-[rgba(0,212,255,0.22)] bg-black/20 md:bg-black/50 backdrop-blur-lg md:backdrop-blur-xl p-5 sm:p-6 md:p-9 shadow-none md:shadow-[0_0_60px_rgba(0,212,255,0.07)] transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 md:hover:translate-y-0 md:hover:border-[rgba(0,212,255,0.22)] md:hover:bg-black/50">
+                    <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-lg md:rounded-t-xl bg-gradient-to-r from-cyan/60 via-cyan to-cyan/60" />
                     <p className="font-mono text-xs tracking-[0.28em] uppercase text-cyan mb-4">
                       Vayuron Solution
                     </p>
-                    <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-5 leading-tight">
+                    <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white mb-5 leading-tight">
                       How We Help
                     </h2>
-                    <p className="text-white/100 text-base md:text-lg leading-relaxed">
+                    <p className="text-white/100 text-sm sm:text-base md:text-lg leading-relaxed">
                       {solution}
                     </p>
                   </div>

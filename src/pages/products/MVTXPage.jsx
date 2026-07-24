@@ -33,6 +33,7 @@ export default function MVTXPage() {
         { label: 'Power Source', value: 'Portable Battery' },
         { label: 'Ground Station', value: 'Modular' },
       ]}
+      specsMobilePointsMode
 
       cardSections={[
         // ── Section 1: Key Operational Advantages (title-only cards) ──
@@ -41,6 +42,7 @@ export default function MVTXPage() {
           title: 'Key Operational Advantages',
           backgroundImage: '/images/MVTX3.webp',
           columns: 3,
+          mobileMax5: true,
           cards: [
             { title: 'Multiple Viewer Access' },
             { title: 'Real-Time Intelligence Sharing' },
@@ -57,6 +59,7 @@ export default function MVTXPage() {
           title: 'System Components',
           backgroundImage: '/images/MVTX4.webp',
           columns: 3,
+          mobileMax5: true,
           cards: [
             { title: 'Transmission Unit' },
             { title: 'Receiving Stations' },
@@ -73,6 +76,7 @@ export default function MVTXPage() {
           title: 'Applications',
           backgroundImage: '/images/ProductPage1.webp',
           columns: 3,
+          mobileMax5: true,
           cards: [
             { title: 'UAV Operations' },
             { title: 'Surveillance Missions' },

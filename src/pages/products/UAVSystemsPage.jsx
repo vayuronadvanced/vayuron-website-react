@@ -28,6 +28,7 @@ export default function UAVSystemsPage() {
         { label: 'Comm. Range', value: '20 km' },
       ]}
       specsMoreDetailsHref="/documents/Ghost Stalker.pdf"
+      specsHideCardMobile
 
       // ── Section 4: AGNI — FPV Tactical Strike UAV ──
       secondaryBackgroundImage="/images/Product2-Agni.webp"
@@ -44,6 +45,7 @@ export default function UAVSystemsPage() {
         { label: 'Guidance', value: 'AI-Assisted Targeting' },
       ]}
       secondaryMoreDetailsHref="/documents/AGNI FPV Tactical Strike UAV.pdf"
+      secondaryHideCardMobile
 
       nextProduct={{ label: 'MVTX', path: '/products/mvtx' }}
     />
