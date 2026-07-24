@@ -64,7 +64,7 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display text-5xl sm:text-7xl md:text-8xl font-bold text-white leading-none tracking-tight mb-6"
+          className="font-display text-4xl sm:text-7xl md:text-8xl font-bold text-white leading-none tracking-tight mb-6"
         >
           VAYURON
           <br />

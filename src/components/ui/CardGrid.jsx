@@ -3,14 +3,14 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-export function CardGrid({ children, gridClassName = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6' }) {
+export function CardGrid({ children, gridClassName = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6' }) {
   const [hoveredId, setHoveredId] = useState(null)
 
   // Convert children to array and filter out null/undefined
   const childArray = Array.isArray(children) ? children : [children]
 
   return (
-    <div className={gridClassName}>
+    <div className={`card-grid ${gridClassName}`}>
       {childArray.map((child, idx) => {
         // Use child key if available, otherwise use index
         const cardId = child?.key || `card-${idx}`
@@ -55,7 +55,7 @@ export function CardGrid({ children, gridClassName = 'grid grid-cols-1 md:grid-c
  */
 export function CardGridWithRef({
   children,
-  gridClassName = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6',
+  gridClassName = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6',
   onCardHover = null, // Optional callback: (hoveredId) => {}
 }) {
   const [hoveredId, setHoveredId] = useState(null)
@@ -68,7 +68,7 @@ export function CardGridWithRef({
   }
 
   return (
-    <div className={gridClassName}>
+    <div className={`card-grid ${gridClassName}`}>
       {childArray.map((child, idx) => {
         const cardId = child?.key || `card-${idx}`
 

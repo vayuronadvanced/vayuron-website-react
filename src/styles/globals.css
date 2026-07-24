@@ -298,6 +298,33 @@ video {
   }
 }
 
+/* ─── Mobile-only optimizations (< 640px / Tailwind's `sm` breakpoint) ───
+   Everything in this block is scoped to small screens only, so desktop and
+   tablet layouts are completely unaffected. */
+@media (max-width: 639px) {
+
+  /* Tighter gap between cards in every CardGrid across the site — applies
+     even where a page passes its own gridClassName override (gap-4/5/6),
+     since `.card-grid` is present on every grid CardGrid renders. */
+  .card-grid {
+    gap: 0.75rem !important;
+  }
+
+  /* Slightly denser base line-height/scroll so stacked mobile sections
+     (hero copy, card text, descriptions) feel less sparse without
+     resizing anything that Tailwind's sm:/md: classes already handle. */
+  body {
+    line-height: 1.5;
+  }
+
+  /* Safety net: nothing should ever force horizontal scrolling on mobile,
+     regardless of a fixed max-width or negative margin used somewhere in
+     a desktop-oriented layout. */
+  #root {
+    overflow-x: hidden;
+  }
+}
+
 /* ─── Print ─── */
 @media print {
   .no-print {

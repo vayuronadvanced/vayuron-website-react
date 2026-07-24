@@ -193,7 +193,10 @@ export function CyanDivider({ className = '' }) {
 // number of bullets per card within a given grid (pass the same-length
 // `bullets` arrays for every card in a section).
 export function InfoCard({ icon, title, description, bullets = [], to, href, className = '' }) {
-  const cls = `group relative flex h-full flex-col overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 ${className}`
+  // Mobile (< sm): tighter padding so more cards fit per viewport without
+  // feeling cramped. sm: and up restore the original desktop/tablet p-6 —
+  // desktop look is completely unchanged.
+  const cls = `group relative flex h-full flex-col overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-4 sm:p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 ${className}`
 
   const content = (
     <>
@@ -201,23 +204,26 @@ export function InfoCard({ icon, title, description, bullets = [], to, href, cla
       <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
 
       {icon && (
-        <span className="text-cyan text-2xl mb-4 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+        <span className="text-cyan text-xl sm:text-2xl mb-2 sm:mb-4 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
           {icon}
         </span>
       )}
 
-      <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-cyan transition-colors">
+      <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-0 sm:mb-3 group-hover:text-cyan transition-colors">
         {title}
       </h3>
 
+      {/* Description + bullets: hidden on mobile to keep card sections
+          compact and scannable on small screens (title-only there), shown
+          from `sm:` up exactly as before — desktop/tablet unchanged. */}
       {description && (
-        <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors mb-4">
+        <p className="hidden sm:block text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors mb-4">
           {description}
         </p>
       )}
 
       {bullets.length > 0 && (
-        <ul className="space-y-2 mb-4">
+        <ul className="hidden sm:block space-y-2 mb-4">
           {bullets.map((item, i) => (
             <li
               key={i}
