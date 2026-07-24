@@ -55,6 +55,12 @@ export default function Navbar() {
   const location = useLocation()
   const navRef = useRef(null)
 
+  // The Contact page already IS the "Get in Touch" destination, so its own
+  // navbar CTA pointing to itself is redundant there — hidden on this one
+  // route only. Exact-path check (not startsWith) so it doesn't also hide
+  // on unrelated routes that happen to start with "/contact".
+  const isContactPage = location.pathname === '/contact'
+
   const DROPDOWN_PREVIEW_COUNT = 5
 
   const closeDropdown = () => {
@@ -276,12 +282,14 @@ export default function Navbar() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <Link
-              to="/contact"
-              className="hidden xl:flex items-center gap-2 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all duration-200 px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase"
-            >
-              Get in Touch
-            </Link>
+            {!isContactPage && (
+              <Link
+                to="/contact"
+                className="hidden xl:flex items-center gap-2 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-all duration-200 px-4 py-2 font-sans text-xs tracking-[0.14em] uppercase"
+              >
+                Get in Touch
+              </Link>
+            )}
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -426,15 +434,17 @@ export default function Navbar() {
 
               {/* Drawer footer — CTA + socials */}
               <div className="px-5 py-5 border-t border-cyan-dim shrink-0">
-                <Link
-                  to="/contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full rounded-md border border-cyan text-cyan text-center py-3 font-sans text-xs tracking-[0.14em] uppercase hover:bg-cyan hover:text-black hover:shadow-cyan transition-all duration-200"
-                >
-                  Get in Touch
-                </Link>
+                {!isContactPage && (
+                  <Link
+                    to="/contact"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-center gap-2 w-full rounded-md border border-cyan text-cyan text-center py-3 font-sans text-xs tracking-[0.14em] uppercase hover:bg-cyan hover:text-black hover:shadow-cyan transition-all duration-200"
+                  >
+                    Get in Touch
+                  </Link>
+                )}
 
-                <div className="flex items-center justify-center gap-4 mt-5">
+                <div className={`flex items-center justify-center gap-4 ${isContactPage ? '' : 'mt-5'}`}>
                   <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
                     <img src="/icons/instagram.png" alt="Instagram" width={20} height={20} className="w-5 h-5" />
                   </a>
