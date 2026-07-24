@@ -146,7 +146,7 @@ function AnsweredQuestionsSection() {
   } = useApi(getPublishedQuestions)
 
   useEffect(() => {
-    fetchQuestions()
+    fetchQuestions().catch(() => {})
   }, [fetchQuestions])
 
   const publishedQuestions = questionsData?.results || questionsData || []

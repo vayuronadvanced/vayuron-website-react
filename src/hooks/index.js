@@ -112,6 +112,35 @@ export function useStatCounter(target, duration = 2000) {
   return { count, ref }
 }
 
+// ─── Mobile Viewport Hook ───────────────────────────────────────────────────
+// Tracks whether the viewport is at/below Tailwind's `sm` breakpoint (640px)
+// — the same breakpoint InfoCard already uses for its `hidden sm:block`
+// description/bullets. Used to gate mobile-only tap-to-expand behavior on
+// cards without touching anything at `sm:` and up (desktop/tablet stay on
+// the original always-expanded, non-interactive render path).
+export function useIsMobile(breakpoint = 640) {
+  const getMatch = () =>
+    typeof window !== 'undefined' && window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches
+
+  const [isMobile, setIsMobile] = useState(getMatch)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`)
+    const handler = (e) => setIsMobile(e.matches)
+    // Older Safari only supports addListener/removeListener
+    if (mql.addEventListener) mql.addEventListener('change', handler)
+    else mql.addListener(handler)
+    setIsMobile(mql.matches)
+    return () => {
+      if (mql.removeEventListener) mql.removeEventListener('change', handler)
+      else mql.removeListener(handler)
+    }
+  }, [breakpoint])
+
+  return isMobile
+}
+
 // ─── Loading Screen Hook ───────────────────────────────────────────────────
 export function useLoadingScreen(minDuration = 1500) {
   const [isLoading, setIsLoading] = useState(true)

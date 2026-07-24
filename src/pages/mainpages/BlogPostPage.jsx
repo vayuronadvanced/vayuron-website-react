@@ -25,7 +25,7 @@ export default function BlogPostPage() {
       : undefined)
 
   useEffect(() => {
-    fetchPost(slug)
+    fetchPost(slug).catch(() => {})
   }, [fetchPost, slug])
 
   useEffect(() => {

@@ -37,7 +37,7 @@ export default function JobListingPage() {
   const { loading: applying, error: applyError, run: apply } = useApi(submitJobApplication)
 
   useEffect(() => {
-    fetchListing(slug)
+    fetchListing(slug).catch(() => {})
   }, [fetchListing, slug])
 
   const handleChange = (e) => {

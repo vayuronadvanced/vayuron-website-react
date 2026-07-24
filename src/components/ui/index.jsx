@@ -1,8 +1,10 @@
 {/*index.jsx*/ }
 
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { useScrollReveal, useStatCounter } from '../../hooks'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useSyncExternalStore, useId } from 'react'
+import { useScrollReveal, useStatCounter, useIsMobile } from '../../hooks'
+import { getExpandedCardId, subscribeExpandedCard, toggleExpandedCardId } from '../../lib/expandableCardStore'
 
 // ─── Breadcrumb ────────────────────────────────────────────────────────────
 export function Breadcrumb({ crumbs = [] }) {
@@ -196,9 +198,27 @@ export function InfoCard({ icon, title, description, bullets = [], to, href, cla
   // Mobile (< sm): tighter padding so more cards fit per viewport without
   // feeling cramped. sm: and up restore the original desktop/tablet p-6 —
   // desktop look is completely unchanged.
-  const cls = `group relative flex h-full flex-col overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-4 sm:p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 ${className}`
+  const hasDescription = Boolean(description) || bullets.length > 0
+  const isMobile = useIsMobile()
+  const cardId = useId()
 
-  const content = (
+  // Only cards that actually have a description/bullets on desktop ever
+  // enter the mobile expand/collapse behavior — cards without one render
+  // through the exact original (unchanged) path below regardless of
+  // viewport, per spec ("cards without desktop descriptions must remain
+  // unchanged").
+  const expandableOnMobile = hasDescription && isMobile
+
+  const expandedId = useSyncExternalStore(
+    subscribeExpandedCard,
+    getExpandedCardId,
+    () => null // SSR/prerender snapshot: nothing expanded
+  )
+  const isExpanded = expandableOnMobile && expandedId === cardId
+
+  const cls = `group relative flex h-full flex-col overflow-hidden rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-4 sm:p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 ${isExpanded ? '-translate-y-1 border-cyan/50 bg-black/30' : ''} ${className}`
+
+  const headerContent = (
     <>
       {/* Top Accent Line — same on every card */}
       <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
@@ -212,16 +232,19 @@ export function InfoCard({ icon, title, description, bullets = [], to, href, cla
       <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-0 sm:mb-3 group-hover:text-cyan transition-colors">
         {title}
       </h3>
+    </>
+  )
 
-      {/* Description + bullets: hidden on mobile to keep card sections
-          compact and scannable on small screens (title-only there), shown
-          from `sm:` up exactly as before — desktop/tablet unchanged. */}
+  // Desktop/tablet (sm and up) description + bullets — always rendered,
+  // exactly as before. Separate from the mobile expandable block below so
+  // the `sm:` breakpoint keeps working purely in CSS with no JS branching.
+  const staticDescriptionBlock = hasDescription && (
+    <>
       {description && (
         <p className="hidden sm:block text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors mb-4">
           {description}
         </p>
       )}
-
       {bullets.length > 0 && (
         <ul className="hidden sm:block space-y-2 mb-4">
           {bullets.map((item, i) => (
@@ -235,19 +258,129 @@ export function InfoCard({ icon, title, description, bullets = [], to, href, cla
           ))}
         </ul>
       )}
+    </>
+  )
 
-      {(to || href) && (
-        <span className="mt-auto inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
-          Learn More
-          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </span>
+  // Mobile-only expandable description + bullets, revealed on tap with a
+  // smooth height animation. Only mounted at all when this card both has a
+  // description and the viewport is mobile, so desktop/tablet never pay for
+  // or render any of this.
+  const mobileExpandableBlock = expandableOnMobile && (
+    <AnimatePresence initial={false}>
+      {isExpanded && (
+        <motion.div
+          key="mobile-description"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className="sm:hidden overflow-hidden"
+        >
+          <div className="pt-3">
+            {description && (
+              <p className="text-white/75 text-sm leading-relaxed mb-4">{description}</p>
+            )}
+            {bullets.length > 0 && (
+              <ul className="space-y-2 mb-4">
+                {bullets.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-white/70 text-[13px] leading-relaxed">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+
+  const learnMoreLink = (to || href) && (
+    <>
+      {/* Desktop/tablet: same inline non-interactive label as before
+          (whole card is already the link there). */}
+      <span className="hidden sm:inline-flex mt-auto items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan group-hover:text-white transition-colors">
+        Learn More
+        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+      </span>
+
+      {/* Mobile: only a real, tappable navigation target once the card is
+          expanded — stops propagation so it doesn't just re-toggle the
+          card, and is the only way to navigate from an expandable card on
+          mobile (tapping the heading toggles expand/collapse instead). */}
+      {expandableOnMobile && isExpanded && (
+        to ? (
+          <Link
+            to={to}
+            onClick={(e) => e.stopPropagation()}
+            className="sm:hidden mt-auto inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan"
+          >
+            Learn More
+            <span>→</span>
+          </Link>
+        ) : (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="sm:hidden mt-auto inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-cyan"
+          >
+            Learn More
+            <span>→</span>
+          </a>
+        )
       )}
     </>
   )
 
-  if (to) return <Link to={to} className={cls}>{content}</Link>
-  if (href) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{content}</a>
-  return <div className={cls}>{content}</div>
+  const content = (
+    <>
+      {headerContent}
+      {staticDescriptionBlock}
+      {mobileExpandableBlock}
+      {learnMoreLink}
+    </>
+  )
+
+  // Cards with no description are untouched: same Link/a/div as before,
+  // on every viewport.
+  if (!hasDescription) {
+    if (to) return <Link to={to} className={cls}>{content}</Link>
+    if (href) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{content}</a>
+    return <div className={cls}>{content}</div>
+  }
+
+  // Desktop/tablet with a description: unchanged — whole card stays the
+  // Link/a/div it always was.
+  if (!isMobile) {
+    if (to) return <Link to={to} className={cls}>{content}</Link>
+    if (href) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{content}</a>
+    return <div className={cls}>{content}</div>
+  }
+
+  // Mobile with a description: the card itself is a tap target that
+  // toggles expand/collapse (never a navigating Link/a — navigation only
+  // happens via the explicit "Learn More" link once expanded), and
+  // collapses any other expanded card site-wide.
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      aria-expanded={isExpanded}
+      onClick={() => toggleExpandedCardId(cardId)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          toggleExpandedCardId(cardId)
+        }
+      }}
+      className={cls}
+    >
+      {content}
+    </div>
+  )
 }
 
 // ─── Universal Card ───────────────────────────────────────────────────────

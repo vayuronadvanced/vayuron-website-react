@@ -20,7 +20,7 @@ export default function CareersPage() {
   } = useApi(getJobListings)
 
   useEffect(() => {
-    fetchListings({ status: 'open' })
+    fetchListings({ status: 'open' }).catch(() => {})
   }, [fetchListings])
 
   const listings = listingsData?.results || listingsData || []

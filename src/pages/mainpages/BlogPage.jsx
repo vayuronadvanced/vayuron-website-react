@@ -155,11 +155,11 @@ export default function BlogPage() {
   const { data: categoriesData, run: fetchCategories } = useApi(getBlogCategories)
 
   useEffect(() => {
-    fetchCategories()
+    fetchCategories().catch(() => {})
   }, [fetchCategories])
 
   useEffect(() => {
-    fetchPosts(activeCategory ? { category: activeCategory } : {})
+    fetchPosts(activeCategory ? { category: activeCategory } : {}).catch(() => {})
   }, [fetchPosts, activeCategory])
 
   const posts = postsData?.results || postsData || []
