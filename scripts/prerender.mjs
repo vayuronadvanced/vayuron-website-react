@@ -84,7 +84,19 @@ async function main() {
   }
 
   const server = await startServer()
-  const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'] })
+
+  let browser
+  try {
+    browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'] })
+  } catch (err) {
+    // No local Chrome binary (e.g. PUPPETEER_SKIP_DOWNLOAD=true on Netlify,
+    // where downloading Chrome during `npm install` isn't reliable). This
+    // step is a pure enhancement — the plain Vite bundle already renders
+    // the full SPA client-side — so skip it instead of failing the deploy.
+    console.warn(`[prerender] skipping — no Chrome available (${err.message}). dist/ keeps the plain Vite SPA output.`)
+    server.close()
+    return
+  }
 
   const results = []
 
@@ -167,8 +179,10 @@ async function main() {
   console.log(`[prerender] done — ${results.length}/${ROUTES.length} routes prerendered into dist/`)
 
   if (results.length < ROUTES.length) {
-    console.error(`[prerender] ${ROUTES.length - results.length} route(s) failed to prerender — see warnings above for the cause.`)
-    process.exitCode = 1
+    // Don't fail the deploy over this — routes that failed to prerender
+    // simply keep the plain SPA index.html (still fully functional client-
+    // side), see the warning logged above for the cause.
+    console.warn(`[prerender] ${ROUTES.length - results.length} route(s) failed to prerender — see warnings above for the cause.`)
   }
 }
 
