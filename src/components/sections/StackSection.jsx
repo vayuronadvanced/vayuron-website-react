@@ -35,7 +35,38 @@ export default function StackSection({
     // below is untouched) — only this extra per-frame animation is skipped.
     // Desktop is completely unaffected.
     const isMobileViewport = window.matchMedia('(max-width: 767px)').matches
-    if (isMobileViewport) return undefined
+    if (isMobileViewport) {
+      // Lightweight substitute: a single threshold-crossing fade/scale-in
+      // instead of a continuous scroll-scrubbed animation. IntersectionObserver
+      // only fires on enter/exit (not per scroll frame) and doesn't read
+      // scroll position or viewport height at all, so it can't fight the
+      // mobile browser's dynamic viewport the way ScrollTrigger did — this
+      // is what keeps mobile scrolling smooth while still giving each
+      // section a soft entrance instead of popping in instantly.
+      // Skip entirely for content already visible on load (e.g. the hero,
+      // index 0) — animating those in would delay first paint of
+      // above-the-fold content for no visual benefit and could regress LCP.
+      const rect = el.getBoundingClientRect()
+      const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0
+      if (alreadyVisible) return undefined
+
+      inner.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'
+      inner.style.opacity = '0'
+      inner.style.transform = 'translateY(24px)'
+
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            inner.style.opacity = '1'
+            inner.style.transform = 'translateY(0)'
+          }
+        },
+        { threshold: 0.15 }
+      )
+      io.observe(el)
+
+      return () => io.disconnect()
+    }
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({

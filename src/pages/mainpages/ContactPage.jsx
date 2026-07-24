@@ -427,7 +427,7 @@ export default function ContactPage() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[1px] bg-gradient-to-r from-transparent via-cyan to-transparent opacity-30" />
 
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 pt-32 sm:pt-36 md:pt-40 pb-10">
-              <div className="mt-6 md:mt-8">
+              <div className="hidden md:block mt-6 md:mt-8">
                 <div className="contact-breadcrumb mb-4">
                   <Breadcrumb crumbs={[{ label: 'Contact' }]} />
                 </div>
@@ -437,7 +437,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="contact-title">
+              <div className="hidden md:block contact-title">
                 <SectionHeader
                   as="h1"
                   title="Get in Touch"
@@ -445,14 +445,14 @@ export default function ContactPage() {
                 />
               </div>
 
-              <p className="contact-text max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+              <p className="hidden md:block contact-text max-w-xl text-[var(--muted)] text-base md:text-lg leading-relaxed mb-6 md:mb-8">
                 Speak with our engineering and commercial team about your
                 operational requirements.
               </p>
 
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 lg:gap-10 items-start">
                 {/* Direct Contact */}
-                <div className="contact-info">
+                <div className="hidden md:block contact-info">
 
                   <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-4">
                     Direct Contact
@@ -508,7 +508,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Enquiry Card */}
-                <div className="enquiry-card self-start -mt-40 lg:-mt-52 border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-5 md:p-6 rounded-sm w-full">
+                <div className="enquiry-card self-start mt-0 md:-mt-40 lg:-mt-52 border border-[rgba(0,212,255,0.15)] bg-[rgba(0,0,0,0.45)] backdrop-blur-sm p-5 md:p-6 rounded-sm w-full">
                   <p className="response-tag font-mono text-xs tracking-widest uppercase text-cyan mb-2">
                     Response Time
                   </p>

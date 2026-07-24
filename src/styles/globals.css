@@ -341,6 +341,14 @@ video {
   #root {
     overflow-x: hidden;
   }
+
+  /* Native momentum scrolling on touch devices — cheap (no JS, no per-frame
+     work), unlike the Lenis/GSAP scrub combo that was disabled on mobile
+     for feeling janky. Purely additive smoothing on top of the browser's
+     own scroll handling. */
+  html, body {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* ─── Print ─── */

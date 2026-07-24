@@ -213,8 +213,8 @@ export default function AboutPage() {
                   <div key={i} className="flex items-start gap-4">
                     <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
                     <p className="text-white text-lg leading-relaxed">
-                      <span className="font-bold text-cyan">{point.title}: </span>
-                      {point.description}
+                      <span className="font-bold text-cyan">{point.title}</span>
+                      <span className="hidden md:inline">: {point.description}</span>
                     </p>
                   </div>
                 ))}
@@ -232,7 +232,7 @@ export default function AboutPage() {
               <SectionHeader eyebrow="What We Focus On" title="Our Mission Areas" subtitle="Ten technology domains where VAYURON builds indigenous, mission-critical capability." />
               <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
                 {missionAreas.map((area, i) => (
-                  <div key={i} className="group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                  <div key={i} className={`group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden ${i >= 5 ? 'hidden md:flex' : ''}`}>
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <span className="text-white text-sm leading-relaxed group-hover:text-cyan transition-colors">{area}</span>
                   </div>
@@ -248,7 +248,7 @@ export default function AboutPage() {
             <div className="absolute inset-0" style={{ backgroundImage: "url('/images/about3.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
             <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Company Profile" title="About VAYURON" centered />
-              <p className="text-white text-lg leading-relaxed text-center max-w-3xl mx-auto mb-12">
+              <p className="hidden md:block text-white text-lg leading-relaxed text-center max-w-3xl mx-auto mb-12">
                 The company specializes in UAV platforms, FPV systems, ISR technologies, AI-enabled mission systems, aerial intelligence platforms, robotics, and autonomous technologies. By combining engineering expertise, operational experience, indigenous innovation, and field deployment knowledge, VAYURON develops practical solutions designed for real-world operational environments.
               </p>
               <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -259,7 +259,7 @@ export default function AboutPage() {
                   <div key={i} className="group relative rounded-xl border border-[rgba(0,212,255,0.12)] backdrop-blur-lg bg-black/20 hover:bg-black/30 hover:border-cyan/50 hover:-translate-y-1 transition-all duration-300 p-10 overflow-hidden">
                     <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
                     <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">{card.label}</p>
-                    <p className="text-white text-xl leading-relaxed">{card.text}</p>
+                    <p className="hidden md:block text-white text-xl leading-relaxed">{card.text}</p>
                   </div>
                 ))}
               </CardGrid>
@@ -279,8 +279,8 @@ export default function AboutPage() {
                   <div key={i} className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-7 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden">
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <h3 className="font-display text-sm font-bold text-cyan mb-1 tracking-wide">{bv.title}</h3>
-                    <p className="text-white text-xs leading-normal mb-5">{bv.tagline}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <p className="hidden md:block text-white text-xs leading-normal mb-5">{bv.tagline}</p>
+                    <div className="hidden md:flex flex-wrap gap-2">
                       {bv.capabilities.map((cap, j) => (
                         <span key={j} className="text-[10px] font-mono tracking-widest uppercase text-white border border-white/10 rounded px-2 py-1 group-hover:border-cyan/20 transition-colors">{cap}</span>
                       ))}
@@ -303,8 +303,8 @@ export default function AboutPage() {
                 {services.map((svc, i) => (
                   <div key={i} className={domainCard}>
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
-                    <h3 className="font-display text-base font-bold text-cyan mb-4">{svc.title}</h3>
-                    <ul className="space-y-2">
+                    <h3 className="font-display text-base font-bold text-cyan md:mb-4">{svc.title}</h3>
+                    <ul className="hidden md:block space-y-2">
                       {svc.items.map((item, j) => (
                         <li key={j} className="flex items-start gap-2">
                           <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
@@ -326,7 +326,11 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-black/55" />
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 py-24">
               <SectionHeader eyebrow="Engineering" title="Engineering Capabilities" subtitle="VAYURON maintains multidisciplinary engineering capabilities covering the complete product lifecycle from concept to deployment." />
-              <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+              {/* Mobile: single View More CTA instead of the card grid */}
+              <div className="flex md:hidden justify-center mt-8">
+                <CTAButton to="/products/advanced-engineering" variant="primary">View More</CTAButton>
+              </div>
+              <CardGrid gridClassName="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
                 {engineeringCapabilities.map((eng, i) => (
                   <div key={i} className={domainCard}>
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
@@ -357,7 +361,7 @@ export default function AboutPage() {
                   <div key={i} className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden">
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-cyan transition-colors">{d.title}</h3>
-                    <p className="text-white text-sm leading-relaxed">{d.description}</p>
+                    <p className="hidden md:block text-white text-sm leading-relaxed">{d.description}</p>
                   </div>
                 ))}
               </CardGrid>
@@ -373,7 +377,7 @@ export default function AboutPage() {
               <SectionHeader eyebrow="Research & Development" title="Current R&D Focus Areas" subtitle="Research and development form the foundation of VAYURON's long-term growth strategy." />
               <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mb-10">
                 {rdFocusAreas.map((area, i) => (
-                  <div key={i} className="group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                  <div key={i} className={`group relative flex items-start rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden ${i >= 5 ? 'hidden md:flex' : ''}`}>
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <span className="text-white text-sm leading-relaxed group-hover:text-cyan transition-colors">{area}</span>
                   </div>
@@ -392,7 +396,7 @@ export default function AboutPage() {
               <SectionHeader eyebrow="Infrastructure" title="Facilities & Capabilities" subtitle="VAYURON maintains infrastructure supporting engineering, manufacturing, testing, and deployment activities." />
               <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
                 {facilities.map((facility, i) => (
-                  <div key={i} className="group relative flex items-center rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                  <div key={i} className={`group relative flex items-center rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg px-5 py-4 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden ${i >= 5 ? 'hidden md:flex' : ''}`}>
                     <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
                     <span className="text-white text-sm group-hover:text-cyan transition-colors">{facility}</span>
                   </div>
