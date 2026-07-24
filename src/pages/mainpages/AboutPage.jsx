@@ -1,4 +1,4 @@
-import { PageBanner, SectionHeader, StatCard, CTAButton, CardGrid } from '../../components/ui'
+import { PageBanner, SectionHeader, StatCard, CTAButton, CardGrid, useExpandableMobileCard, ExpandableReveal } from '../../components/ui'
 import StackSection from '../../components/sections/StackSection'
 import Seo from '../../components/seo/Seo'
 
@@ -168,6 +168,121 @@ const facilities = [
 // ─── Shared card class helpers ────────────────────────────────────────────
 const domainCard = "group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden"
 
+// ─── Mobile tap-to-expand card wrappers ────────────────────────────────────
+// Same pattern used site-wide (InfoCard, TechnologyPage): desktop/tablet
+// (md: and up) keep rendering their existing `hidden md:block` copy exactly
+// as before; only mobile gets a tap-to-reveal toggle layered on top via
+// ExpandableReveal, wired to the shared "one card open at a time" store
+// through useExpandableMobileCard.
+
+function VisionMissionCard({ card }) {
+  const { isMobile, isExpanded, toggle } = useExpandableMobileCard(768)
+  return (
+    <div
+      role={isMobile ? 'button' : undefined}
+      tabIndex={isMobile ? 0 : undefined}
+      aria-expanded={isMobile ? isExpanded : undefined}
+      onClick={isMobile ? toggle : undefined}
+      onKeyDown={isMobile ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() } } : undefined}
+      className={`group relative rounded-xl border border-[rgba(0,212,255,0.12)] backdrop-blur-lg bg-black/20 hover:bg-black/30 hover:border-cyan/50 hover:-translate-y-1 transition-all duration-300 p-10 overflow-hidden ${isExpanded ? '-translate-y-1 border-cyan/50 bg-black/30' : ''}`}
+    >
+      <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
+      <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">{card.label}</p>
+      <p className="hidden md:block text-white text-xl leading-relaxed">{card.text}</p>
+      <ExpandableReveal expanded={isExpanded} breakpointClass="md:hidden">
+        <p className="text-white text-base leading-relaxed">{card.text}</p>
+      </ExpandableReveal>
+    </div>
+  )
+}
+
+function BusinessVerticalCard({ bv }) {
+  const { isMobile, isExpanded, toggle } = useExpandableMobileCard(768)
+  return (
+    <div
+      role={isMobile ? 'button' : undefined}
+      tabIndex={isMobile ? 0 : undefined}
+      aria-expanded={isMobile ? isExpanded : undefined}
+      onClick={isMobile ? toggle : undefined}
+      onKeyDown={isMobile ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() } } : undefined}
+      className={`group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-7 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden ${isExpanded ? '-translate-y-1 border-cyan/50 bg-black/30' : ''}`}
+    >
+      <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+      <h3 className="font-display text-sm font-bold text-cyan mb-1 tracking-wide">{bv.title}</h3>
+      <p className="hidden md:block text-white text-xs leading-normal mb-5">{bv.tagline}</p>
+      <div className="hidden md:flex flex-wrap gap-2">
+        {bv.capabilities.map((cap, j) => (
+          <span key={j} className="text-[10px] font-mono tracking-widest uppercase text-white border border-white/10 rounded px-2 py-1 group-hover:border-cyan/20 transition-colors">{cap}</span>
+        ))}
+      </div>
+      <ExpandableReveal expanded={isExpanded} breakpointClass="md:hidden">
+        <p className="text-white text-xs leading-normal mb-3">{bv.tagline}</p>
+        <div className="flex flex-wrap gap-2">
+          {bv.capabilities.map((cap, j) => (
+            <span key={j} className="text-[10px] font-mono tracking-widest uppercase text-white border border-white/10 rounded px-2 py-1">{cap}</span>
+          ))}
+        </div>
+      </ExpandableReveal>
+    </div>
+  )
+}
+
+function ServiceCard({ svc }) {
+  const { isMobile, isExpanded, toggle } = useExpandableMobileCard(768)
+  return (
+    <div
+      role={isMobile ? 'button' : undefined}
+      tabIndex={isMobile ? 0 : undefined}
+      aria-expanded={isMobile ? isExpanded : undefined}
+      onClick={isMobile ? toggle : undefined}
+      onKeyDown={isMobile ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() } } : undefined}
+      className={`${domainCard} ${isExpanded ? '-translate-y-1 border-cyan/50 bg-black/30' : ''}`}
+    >
+      <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+      <h3 className="font-display text-base font-bold text-cyan md:mb-4">{svc.title}</h3>
+      <ul className="hidden md:block space-y-2">
+        {svc.items.map((item, j) => (
+          <li key={j} className="flex items-start gap-2">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+            <span className="text-white text-sm leading-relaxed">{item}</span>
+          </li>
+        ))}
+      </ul>
+      <ExpandableReveal expanded={isExpanded} breakpointClass="md:hidden">
+        <ul className="space-y-2">
+          {svc.items.map((item, j) => (
+            <li key={j} className="flex items-start gap-2">
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+              <span className="text-white text-sm leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </ExpandableReveal>
+    </div>
+  )
+}
+
+function DifferentiatorCard({ d }) {
+  const { isMobile, isExpanded, toggle } = useExpandableMobileCard(768)
+  return (
+    <div
+      role={isMobile ? 'button' : undefined}
+      tabIndex={isMobile ? 0 : undefined}
+      aria-expanded={isMobile ? isExpanded : undefined}
+      onClick={isMobile ? toggle : undefined}
+      onKeyDown={isMobile ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() } } : undefined}
+      className={`group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden ${isExpanded ? '-translate-y-1 border-cyan/50 bg-black/30' : ''}`}
+    >
+      <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+      <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-cyan transition-colors">{d.title}</h3>
+      <p className="hidden md:block text-white text-sm leading-relaxed">{d.description}</p>
+      <ExpandableReveal expanded={isExpanded} breakpointClass="md:hidden">
+        <p className="text-white text-sm leading-relaxed">{d.description}</p>
+      </ExpandableReveal>
+    </div>
+  )
+}
+
 export default function AboutPage() {
   return (
     <>
@@ -256,11 +371,7 @@ export default function AboutPage() {
                   { label: 'Vision', text: 'To become a globally respected advanced autonomous systems company developing indigenous technologies that redefine intelligence, mobility, surveillance, and operational effectiveness across defence, industrial, and public sector domains.' },
                   { label: 'Mission', text: 'To engineer reliable, intelligent, and scalable autonomous systems that solve critical challenges through innovation, precision engineering, and operational excellence while strengthening technological self-reliance through indigenous development.' },
                 ].map((card, i) => (
-                  <div key={i} className="group relative rounded-xl border border-[rgba(0,212,255,0.12)] backdrop-blur-lg bg-black/20 hover:bg-black/30 hover:border-cyan/50 hover:-translate-y-1 transition-all duration-300 p-10 overflow-hidden">
-                    <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
-                    <p className="font-mono text-xs tracking-widest uppercase text-cyan mb-5">{card.label}</p>
-                    <p className="hidden md:block text-white text-xl leading-relaxed">{card.text}</p>
-                  </div>
+                  <VisionMissionCard key={i} card={card} />
                 ))}
               </CardGrid>
             </div>
@@ -276,16 +387,7 @@ export default function AboutPage() {
               <SectionHeader eyebrow="Business Verticals" title="Four Divisions. One Mission." subtitle="VAYURON operates through four specialised divisions covering defence, autonomy, industrial, and aerospace domains." />
               <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 {businessVerticals.map((bv, i) => (
-                  <div key={i} className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-7 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden">
-                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
-                    <h3 className="font-display text-sm font-bold text-cyan mb-1 tracking-wide">{bv.title}</h3>
-                    <p className="hidden md:block text-white text-xs leading-normal mb-5">{bv.tagline}</p>
-                    <div className="hidden md:flex flex-wrap gap-2">
-                      {bv.capabilities.map((cap, j) => (
-                        <span key={j} className="text-[10px] font-mono tracking-widest uppercase text-white border border-white/10 rounded px-2 py-1 group-hover:border-cyan/20 transition-colors">{cap}</span>
-                      ))}
-                    </div>
-                  </div>
+                  <BusinessVerticalCard key={i} bv={bv} />
                 ))}
               </CardGrid>
             </div>
@@ -301,18 +403,7 @@ export default function AboutPage() {
               <SectionHeader eyebrow="Services" title="Services Portfolio" subtitle="End-to-end aerial intelligence and UAV services delivered across defence, industrial, and government sectors." />
               <CardGrid gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
                 {services.map((svc, i) => (
-                  <div key={i} className={domainCard}>
-                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
-                    <h3 className="font-display text-base font-bold text-cyan md:mb-4">{svc.title}</h3>
-                    <ul className="hidden md:block space-y-2">
-                      {svc.items.map((item, j) => (
-                        <li key={j} className="flex items-start gap-2">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
-                          <span className="text-white text-sm leading-relaxed">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ServiceCard key={i} svc={svc} />
                 ))}
               </CardGrid>
             </div>
@@ -358,11 +449,7 @@ export default function AboutPage() {
               <SectionHeader eyebrow="Why Vayuron" title="Built for Operational Reality" subtitle="Six pillars that define how we engineer, deploy, and support every platform." />
               <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {differentiators.map((d, i) => (
-                  <div key={i} className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg p-6 transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 overflow-hidden">
-                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
-                    <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-cyan transition-colors">{d.title}</h3>
-                    <p className="hidden md:block text-white text-sm leading-relaxed">{d.description}</p>
-                  </div>
+                  <DifferentiatorCard key={i} d={d} />
                 ))}
               </CardGrid>
             </div>

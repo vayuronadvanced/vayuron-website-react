@@ -383,6 +383,47 @@ export function InfoCard({ icon, title, description, bullets = [], to, href, cla
   )
 }
 
+// ─── Expandable Mobile Card (shared helper) ────────────────────────────────
+// Reusable pieces so any hand-rolled card section (not just InfoCard) can
+// get the same "tap heading to reveal description, only one open at a time"
+// mobile behavior without duplicating the store-wiring logic. Desktop/
+// tablet callers simply never render ExpandableReveal's content (it's
+// mobile-only by className), so nothing here touches desktop markup.
+export function useExpandableMobileCard(breakpoint = 640) {
+  const isMobile = useIsMobile(breakpoint)
+  const cardId = useId()
+  const expandedId = useSyncExternalStore(
+    subscribeExpandedCard,
+    getExpandedCardId,
+    () => null // SSR/prerender snapshot: nothing expanded
+  )
+  const isExpanded = isMobile && expandedId === cardId
+  const toggle = () => toggleExpandedCardId(cardId)
+  return { isMobile, isExpanded, toggle, cardId }
+}
+
+// breakpointClass controls which viewport this reveal is confined to —
+// pass the inverse of whatever "hidden X:block" class the section already
+// uses for its always-rendered desktop copy (e.g. sections hiding desktop
+// content below `md:` should pass 'md:hidden' here).
+export function ExpandableReveal({ expanded, breakpointClass = 'sm:hidden', className = '', children }) {
+  return (
+    <AnimatePresence initial={false}>
+      {expanded && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className={`${breakpointClass} overflow-hidden`}
+        >
+          <div className={`pt-2 ${className}`}>{children}</div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
 // ─── Universal Card ───────────────────────────────────────────────────────
 export function Card({
   children,

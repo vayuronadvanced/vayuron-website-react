@@ -1,8 +1,98 @@
 {/*TechnologyPage.jsx*/ }
 
-import { PageBanner, SectionHeader, CTAButton, CardGrid } from '../../components/ui'
+import { PageBanner, SectionHeader, CTAButton, CardGrid, useExpandableMobileCard, ExpandableReveal } from '../../components/ui'
 import StackSection from '../../components/sections/StackSection'
 import Seo from '../../components/seo/Seo'
+
+// Mobile-only tap-to-expand wrapper for the Core Pillars cards — desktop/
+// tablet (md: and up) render the description exactly as before via the
+// always-present `hidden md:block` paragraph below; this only adds a
+// mobile reveal + toggle on top, matching InfoCard's site-wide pattern.
+function PillarCard({ pillar }) {
+  const { isMobile, isExpanded, toggle } = useExpandableMobileCard(768)
+  return (
+    <div
+      role={isMobile ? 'button' : undefined}
+      tabIndex={isMobile ? 0 : undefined}
+      aria-expanded={isMobile ? isExpanded : undefined}
+      onClick={isMobile ? toggle : undefined}
+      onKeyDown={
+        isMobile
+          ? (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                toggle()
+              }
+            }
+          : undefined
+      }
+      className={`group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6 ${isExpanded ? '-translate-y-1 border-cyan/50 bg-black/30' : ''}`}
+    >
+      <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
+      <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
+        {pillar.title}
+      </h3>
+      <p className="hidden md:block text-white/100 leading-relaxed group-hover:text-white transition-colors">
+        {pillar.description}
+      </p>
+      <ExpandableReveal expanded={isExpanded} breakpointClass="md:hidden">
+        <p className="text-white/100 text-sm leading-relaxed">{pillar.description}</p>
+      </ExpandableReveal>
+    </div>
+  )
+}
+
+// Mobile-only tap-to-expand wrapper for the Stack Details cards — same
+// pattern as PillarCard, but revealing the bullet list instead of a
+// paragraph.
+function StackCard({ stack }) {
+  const { isMobile, isExpanded, toggle } = useExpandableMobileCard(768)
+  return (
+    <div
+      role={isMobile ? 'button' : undefined}
+      tabIndex={isMobile ? 0 : undefined}
+      aria-expanded={isMobile ? isExpanded : undefined}
+      onClick={isMobile ? toggle : undefined}
+      onKeyDown={
+        isMobile
+          ? (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                toggle()
+              }
+            }
+          : undefined
+      }
+      className={`group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6 ${isExpanded ? '-translate-y-1 border-cyan/50 bg-black/30' : ''}`}
+    >
+      <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
+      <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-cyan mb-4">
+        {stack.category}
+      </h3>
+      <ul className="hidden md:block space-y-2.5">
+        {stack.items.map((item, j) => (
+          <li
+            key={j}
+            className="flex items-center gap-2.5 text-white/100 text-[13px] leading-relaxed group-hover:text-white transition-colors"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+            {item}
+          </li>
+        ))}
+      </ul>
+      <ExpandableReveal expanded={isExpanded} breakpointClass="md:hidden">
+        <ul className="space-y-2.5">
+          {stack.items.map((item, j) => (
+            <li key={j} className="flex items-center gap-2.5 text-white/100 text-[13px] leading-relaxed">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </ExpandableReveal>
+    </div>
+  )
+}
 
 const techPillars = [
   {
@@ -140,18 +230,7 @@ export default function TechnologyPage() {
 
               <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {techPillars.map((pillar, i) => (
-                  <div
-                    key={i}
-                    className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6"
-                  >
-                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:w-full" />
-                    <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-cyan transition-colors">
-                      {pillar.title}
-                    </h3>
-                    <p className="hidden md:block text-white/100 leading-relaxed group-hover:text-white transition-colors">
-                      {pillar.description}
-                    </p>
-                  </div>
+                  <PillarCard key={i} pillar={pillar} />
                 ))}
               </CardGrid>
             </div>
@@ -182,26 +261,7 @@ export default function TechnologyPage() {
 
               <CardGrid gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {techStack.map((stack, i) => (
-                  <div
-                    key={i}
-                    className="group relative rounded-lg border border-[rgba(0,212,255,0.12)] bg-black/20 backdrop-blur-lg overflow-hidden transition-all duration-300 hover:border-cyan/50 hover:bg-black/30 hover:-translate-y-1 p-6"
-                  >
-                    <div className="absolute top-0 left-0 w-0 h-[2px] bg-cyan group-hover:w-full transition-all duration-300" />
-                    <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-cyan mb-4">
-                      {stack.category}
-                    </h3>
-                    <ul className="hidden md:block space-y-2.5">
-                      {stack.items.map((item, j) => (
-                        <li
-                          key={j}
-                          className="flex items-center gap-2.5 text-white/100 text-[13px] leading-relaxed group-hover:text-white transition-colors"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <StackCard key={i} stack={stack} />
                 ))}
               </CardGrid>
             </div>
