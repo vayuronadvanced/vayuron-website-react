@@ -317,6 +317,16 @@ video {
     line-height: 1.5;
   }
 
+  /* Use dynamic viewport height (accounts for the mobile browser address
+     bar showing/hiding) instead of the static 100vh Tailwind's h-screen
+     produces — this was another source of jumpy/unreliable mobile scroll
+     on the pinned/stacked sections. Falls back silently to 100vh (already
+     applied) on browsers that don't support dvh. Desktop untouched. */
+  .stack-section-inner {
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
   /* Safety net: nothing should ever force horizontal scrolling on mobile,
      regardless of a fixed max-width or negative margin used somewhere in
      a desktop-oriented layout. */

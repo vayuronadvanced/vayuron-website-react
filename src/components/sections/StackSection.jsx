@@ -27,6 +27,16 @@ export default function StackSection({
     ).matches
     if (prefersReducedMotion) return undefined
 
+    // Mobile: skip the scroll-scrubbed scale/dim/tint animation. Recomputing
+    // this on every scroll-frame, on top of GSAP ScrollTrigger having to
+    // fight the mobile browser's dynamic viewport (address bar show/hide
+    // changing 100vh mid-scroll), is what made mobile scrolling feel janky.
+    // The section still stacks the same way visually (CSS `position: sticky`
+    // below is untouched) — only this extra per-frame animation is skipped.
+    // Desktop is completely unaffected.
+    const isMobileViewport = window.matchMedia('(max-width: 767px)').matches
+    if (isMobileViewport) return undefined
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -74,7 +84,7 @@ export default function StackSection({
     >
       <div
         ref={innerRef}
-        className="relative w-full h-screen max-h-screen overflow-hidden will-change-transform"
+        className="stack-section-inner relative w-full h-screen max-h-screen overflow-hidden will-change-transform"
         style={{
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',

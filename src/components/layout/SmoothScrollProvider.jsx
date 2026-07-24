@@ -17,7 +17,17 @@ export default function SmoothScrollProvider({ children }) {
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
-    if (prefersReducedMotion) return;
+    // Mobile/touch viewports: skip Lenis entirely and let the browser's
+    // native touch scrolling handle everything. Lenis's synthetic scroll
+    // physics plus the wheel-only section-snap handler below are a
+    // desktop (mouse wheel) affordance — they do nothing useful on touch
+    // input, and layering Lenis's scroll interpolation on top of native
+    // touch scroll + GSAP ScrollTrigger pinning is what was making mobile
+    // scrolling feel janky/unreliable. Desktop (>= 768px, mouse/wheel)
+    // keeps the exact same Lenis + snap behavior as before.
+    const isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
+
+    if (prefersReducedMotion || isMobileViewport) return;
 
     const lenis = new Lenis({
       duration: 0.8,

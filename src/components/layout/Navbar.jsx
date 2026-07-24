@@ -387,19 +387,12 @@ export default function Navbar() {
                                       key={item.id}
                                       to={item.path}
                                       onClick={(e) => scrollToTop(e, location.pathname, item.path)}
-                                      className="flex items-start gap-3 px-3 py-2.5 rounded-md hover:bg-[rgba(0,212,255,0.06)] transition-colors group"
+                                      className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-[rgba(0,212,255,0.06)] transition-colors group"
                                     >
-                                      <span className="w-1 h-1 mt-2 rounded-full bg-dim group-hover:bg-cyan group-hover:shadow-cyan-sm transition-colors flex-shrink-0" />
-                                      <div>
-                                        <h3 className="font-sans font-semibold text-sm text-white group-hover:text-cyan transition-colors">
-                                          {item.label}
-                                        </h3>
-                                        {link.label === 'Products' && item.description && (
-                                          <p className="text-xs text-muted mt-0.5 leading-relaxed">
-                                            {item.description}
-                                          </p>
-                                        )}
-                                      </div>
+                                      <span className="w-1 h-1 rounded-full bg-dim group-hover:bg-cyan group-hover:shadow-cyan-sm transition-colors flex-shrink-0" />
+                                      <h3 className="font-sans text-xs tracking-[0.14em] uppercase text-white group-hover:text-cyan transition-colors">
+                                        {item.label}
+                                      </h3>
                                     </Link>
                                   ))}
                                 </div>
